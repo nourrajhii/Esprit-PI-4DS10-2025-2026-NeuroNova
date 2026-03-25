@@ -1,0 +1,605 @@
+<!DOCTYPE html> <html lang="fr"> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf8" /> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="x-ua-compatible" content="ie=edge"> <title>Agence immobilière à Tunis | NEWKEY - Votre partenaire pour l'achat et la location de biens immobiliers</title> <link rel="canonical" href="https://www.newkey.com.tn/" /> <meta name="description" content="Découvrez l'agence immobilière NEWKEY à Tunis. Nous sommes votre partenaire de confiance pour l'achat, la vente et la location de biens immobiliers de qualité. Contactez-nous dès maintenant !"> <meta property="og:title" content="Agence immobilière à Tunis | NEWKEY - Votre partenaire pour l'achat et la location de biens immobiliers" /> <meta property="og:description" content="Découvrez l'agence immobilière NEWKEY à Tunis. Nous sommes votre partenaire de confiance pour l'achat, la vente et la location de biens immobiliers de qualité. Contactez-nous dès maintenant !" /> <meta property="og:type" content="website" /> <meta property="og:url" content="https://www.newkey.com.tn/" /> <meta property="og:site_name" content="New Key Immobilier" /> <meta property="og:image" content="https://www.newkey.com.tn/assets/images/logo-newkey.webp" /> <meta property="og:locale" content="fr_FR" /> <meta name="twitter:card" content="summary"/> <meta name="twitter:description" content="Découvrez l'agence immobilière NEWKEY à Tunis. Nous sommes votre partenaire de confiance pour l'achat, la vente et la location de biens immobiliers de qualité. Contactez-nous dès maintenant !"/> <meta name="twitter:title" content="Agence immobilière à Tunis | NEWKEY - Votre partenaire pour l'achat et la location de biens immobiliers"/> <meta name="twitter:image:src" content="https://www.newkey.com.tn/assets/images/logo-newkey.webp"/> <link rel="shortcut icon" href="https://www.newkey.com.tn/assets/images/favicon.ico" type="image/x-icon"> <link rel="icon" href="https://www.newkey.com.tn/assets/images/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="https://www.newkey.com.tn/new-assets/css/bootstrap.min-min.css?v=1675415224"> <link rel="stylesheet" href="https://www.newkey.com.tn/new-assets/css/bootstrap-select.min-min.css?v=1675415217"> <link rel="stylesheet" href="https://www.newkey.com.tn/new-assets/css/font-awesome.min.css?v=1675415226"> <link rel="stylesheet" href="https://www.newkey.com.tn/assets/css/icomoon.css?v=1675414831"> <link rel="stylesheet" href="https://www.newkey.com.tn/assets/css/async-google-recaptcha.css?v=1675414825"> <link rel="preload" href="https://www.newkey.com.tn/new-assets/css/main.min.css?v=1709225383" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="https://www.newkey.com.tn/new-assets/css/main.min.css?v=1709225383"></noscript> <link href="https://www.newkey.com.tn/assets/css/intlTelInput.css?v=1700477367" rel="stylesheet" type="text/css"/> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QJVSQFJ3D"></script> <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2QJVSQFJ3D');
+        </script> <!-- Meta Pixel Code --> <script>
+			!function(f,b,e,v,n,t,s)
+			{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+				n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+				if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+				n.queue=[];t=b.createElement(e);t.async=!0;
+				t.src=v;s=b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t,s)}(window, document,'script',
+				'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '1042333277378021');
+			fbq('track', 'PageView');
+		</script> <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1042333277378021&ev=PageView&noscript=1" /></noscript> <!-- End Meta Pixel Code --> </head> <body data-rsssl=1 class="home page-template page-template-template page-template-template-homepage page-template-templatetemplate-homepage-php page page-id-63 transparent-yes wpb-js-composer js-comp-ver-5.7 vc_responsive"> <div class="top-bar container-fluid"> <div class="row align-items-center"> <div class="col-3 col-sm-4 col-md-6"> <div class="top-contact d-inline-block d-sm-none"> <ul class=""> <li class="top-bar-phone"> <a title="Téléphone" href="tel:+21629232927"> <i class="fa fa-phone"></i> <span>+216 29 23 29 27</span> </a> </li> <li class="top-bar-contact"><a title="Email" href="mailto:contact@newkey.tn"> <i class="fa fa-envelope-open"></i> <span>contact@newkey.tn</span> </a> </li> </ul> </div> </div> <div class="col-9 col-sm-8 col-md-6 text-right top-bar-right"> <div class="top-contact"> <ul class=""> <li class="top-bar-phone d-none d-sm-inline-block"> <a href="tel:+21629232927" title="Téléphone"> <i class="fa fa-phone"></i> <span>+216 29 23 29 27</span> </a> </li> <li class="top-bar-contact d-none d-sm-inline-block"> <a href="mailto:contact@newkey.tn" title="Email"> <i class="fa fa-envelope-open"></i> <span>contact@newkey.tn</span> </a> </li> <li class=""> <a rel="nofollow" title="Facebook" target="_blank" class="btn-facebook" href="https://www.facebook.com/AgenceImmobiliereNewKey/"> <i class="fa fa-facebook-square"></i> </a> </li> <li class=""> <a rel="nofollow" title="Pinterest" target="_blank" href="https://www.pinterest.com/agenceimmobilierenewkeymarsa"> <i class="fa fa-pinterest"></i> </a> </li> <li class=""> <a rel="nofollow" title="Youtube" target="_blank" href="https://www.youtube.com/channel/UChGFjiddvkuHOlbGE-3S9tA"> <i class="fa fa-youtube"></i> </a> </li> <li class=""> <a rel="nofollow" title="Linkedin" target="_blank" class="btn-linkedin" href="https://www.linkedin.com/in/newkey-marsa-5520401a1"> <i class="fa fa-linkedin-square"></i> </a> </li> <li class="top-bar-social"> <select title="Devise" class="bootstrap-select devise"> <option selected value="DT" data-content="<img src='https://www.newkey.com.tn/assets/images/tnd.webp?v=0.0.1' height='20' width='20' alt='TND'> TND"> TND </option> <option value="€" data-content="<img src='https://www.newkey.com.tn/assets/images/eur.webp?v=0.0.1' height='20' width='20' alt='EUR'> EUR"> EUR </option> <option value="$" data-content="<img src='https://www.newkey.com.tn/assets/images/usd.webp?v=0.0.1' height='20' width='20' alt='USD'> USD"> USD </option> </select> </li> </ul> </div> </div> </div> </div> <header id="header-section" class="houzez-header-main header-section-4 nav-right houzez-header-transparent menu-right-no-user" data-sticky="1"> <div class="container-fluid"> <div class="header-left"> <div class="logo logo-desktop"> <a href="https://www.newkey.com.tn/" title="Accueil"> <img class="logo-couleur" src="https://www.newkey.com.tn/assets/images/logo-newkey.svg" alt="logo" width="300" height="74"> <img class="logo-blanc" src="https://www.newkey.com.tn/assets/images/logo-newkey-blanc.svg" alt="logo" width="275" height="110"> </a> </div> <nav class="navi main-nav"> <ul id="main-nav" class=""> <li id="menu-item-23743" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23743"><a href="https://www.newkey.com.tn/acheter" title="Achat">Achat</a></li> <li id="menu-item-23742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23742"><a href="https://www.newkey.com.tn/louer" title="Location">Location</a></li> <li id="menu-item-37718" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37718"><a href="https://www.newkey.com.tn/bureaux-et-commerces" title="Bureaux et commerces">Bureaux et commerces</a></li> <li id="menu-item-8145" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8145"><a href="https://www.newkey.com.tn/terrains" title="Terrains">Terrains</a></li> <li id="menu-item-8146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8146"><a href="https://www.newkey.com.tn/a-propos" title="Notre Groupe">Notre Groupe</a></li> <li id="menu-item-27407" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27407"><a href="https://www.newkey.com.tn/blog" title="Nos Conseils">Nos Conseils</a></li> <li id="menu-item-27408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27407"><a href="https://www.newkey.com.tn/recrutement" title="Nos Conseils">Recrutement</a></li> <li id="menu-item-425" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-425"><a href="https://www.newkey.com.tn/contact" title="Contact">Contact</a></li> </ul> </nav> </div> </div> </header> <div class="header-mobile houzez-header-mobile " data-sticky="0"> <div class="container"> <div class="mobile-nav"> <span class="nav-trigger"><i class="fa fa-navicon"></i></span> <div class="nav-dropdown main-nav-dropdown"></div> </div> <div class="header-logo logo-mobile"> <a href="https://www.newkey.com.tn/"> <img width="275" height="100" style="width:275px;height: auto" src="https://www.newkey.com.tn/assets/images/logo-newkey.svg" alt="Mobile logo"> <noscript> <img src="https://www.newkey.com.tn/assets/images/logo-newkey.svg" alt="Mobile logo"> </noscript> </a> </div> </div> </div> <div id="section-body" class="container-fluid slider-home-section"> <div class="page-banner-revolution-slider h-100 lazy" style="background: url(https://www.newkey.com.tn/assets/images/4-2-e1521768377667.webp);background-position: center center;background-repeat: no-repeat;background-size: cover"> <div class="text-homepage"> <div class="container"> <div class="row"> <div class="col-12 text-center"> <h1 class="mb-4 text-white">La Solution Clé En Main</h1> <a rel="nofollow" onclick="return openModalDemande()" href="javascript:void(0)" class="btn btn-secondary">Déposer votre demande</a> </div> </div> </div> </div> </div> <div class="search-expandable container"> <div class="search-inner-wrap"></div> <div class="advanced-search advanced-search-openclose advanced-search-home houzez-adv-price-range"> <div class="advanced-search advance-search-header houzez-adv-price-range " data-sticky='0'> <h2>Trouver votre bien</h2> <form id="form-home" method="get" action="https://www.newkey.com.tn/search"> <div class="row"> <div class="col-sm-9 col-12 search-expandable-left"> <div class="row"> <div class="col-sm-3 col-6"> <div class="form-group"> <select multiple="multiple" name="locations[]" class="selectpicker" title="Toutes les villes" data-live-search="true"> <option value="">Toutes les villes</option> <option value="1128">La Marsa</option> <option value="50543">Les berges du Lac 1</option> <option value="50862">Les berges du Lac 2</option> <option value="50406">Jardins De Carthage</option> <option value="880">La Soukra</option> <option value="50879">Route du relais</option><option value="50878">Le palace</option><option value="50877">Marina Gammarth</option><option value="50876">Sidi abdelaziz</option><option value="50875">Gammarth village</option><option value="50874">Gammarth supérieur</option><option value="50873">Golden tulipe</option><option value="50872">Marsa cube</option><option value="50871">Marsa Cube</option><option value="50869">La perle du lac (lac 3)</option><option value="50867">Jardin de l'aouina</option><option value="50866">Cité les palmeraies</option><option value="50865">El Aouina</option><option value="50864">Ain Zaghouan Nord</option><option value="50863">El aouina</option><option value="50860">Marsa ville</option><option value="50859">Marsa plage</option><option value="50858">Marsa corniche</option><option value="50857">Cité les pins</option><option value="50756">yasmine hammamet</option><option value="50577">Sidi Daoud</option><option value="50576">Marsa Safsaf</option><option value="50575">Marsa Erriadh</option><option value="50574">Marsa Ennassim</option><option value="50573">Gammarth</option><option value="50572">El Aouina</option><option value="50564">Cite Erriadh</option><option value="50563">Cite El Ouns</option><option value="50561">Cite El Moustakbel (La Marsa)</option><option value="50560">Cite El Moez</option><option value="50558">Cite El Khalil</option><option value="50557">Cite El Hana</option><option value="50554">Cite Du Stade</option><option value="50551">Cite Des Juges 2</option><option value="50547">Cite Bhar Lazreg</option><option value="50540">La Goulette</option><option value="50539">Kheireddine</option><option value="50535">Casino La Goulette</option><option value="50486">Mutuelle Ville</option><option value="50485">El Menzah 9</option><option value="50468">Le Kram</option><option value="50445">Zone urbaine nord</option><option value="50444">Kheireddine Pacha</option><option value="50437">Cite El Khadra</option><option value="50436">Sidi Bousaid</option><option value="50435">Salambo</option><option value="50431">Carthage</option><option value="50429">Cartage Byrsa</option><option value="50428">Amilcar</option><option value="50405">Ain Zaghouan</option><option value="48423">Mornaguia</option><option value="46005">Mnihla</option><option value="46004">Jardins d'el Menzah</option><option value="45999">Cite Ennasr</option><option value="45988">Sidi Salah</option><option value="45987">Sidi Frej</option><option value="45981">Mosque Erraoudha</option><option value="45980">La Soukra</option><option value="45979">Dar Fadhal</option><option value="45939">Chotrana 3</option><option value="45938">Chotrana 2</option><option value="45937">Chotrana 1</option><option value="45936">Charguia 2</option><option value="45935">Charguia 1</option><option value="45934">Borj Louzir</option><option value="45933">Aeroport Tunis Carthage</option><option value="45887">Cite Ennasr 1</option><option value="1226">Tunis</option><option value="1224">El Aouina</option><option value="1127">La Goulette</option><option value="1119">El Menzah</option><option value="1118">El Kram</option><option value="1115">Cite El Khadra</option><option value="1114">Carthage</option><option value="1111">Ain Zaghouan</option><option value="1039">Hammamet</option><option value="1006">Mornaguia</option><option value="882">Raoued</option><option value="881">Mnihla</option><option value="877">Ariana Ville</option><option value="148">Tunis</option><option value="141">Nabeul</option><option value="138">Manouba</option><option value="126">Ariana</option></select> </div> </div> <div class="col-sm-3 col-6"> <div class="form-group"> <select name="vocations" class="bootstrap-select" title="Tous les status" onchange="javascript:onChangeStatus(this)"> <option value="">Tous les status</option> <option value="1" > Achat</option> <option value="2" > Location</option> </select> </div> </div> <div class="col-sm-3 col-6"> <div class="form-group"> <script>
+                                var types = [{"id":"1","id_crm":"5","name":"Appartement","property_sub_types":[{"id":"2","id_crm":"6","id_parent":"5","name":"Appartement Duplex"},{"id":"6","id_crm":"8","id_parent":"5","name":"Penthouse"},{"id":"13","id_crm":"5","id_parent":"5","name":"Studio"},{"id":"14","id_crm":"3","id_parent":"5","name":"Appartement Triplex"},{"id":"23","id_crm":"15","id_parent":"5","name":"Loft"}]},{"id":"2","id_crm":"1","name":"Maison","property_sub_types":[{"id":"3","id_crm":"1","id_parent":"1","name":"Villa"},{"id":"4","id_crm":"31","id_parent":"1","name":"Rez-de-chauss\u00e9e"},{"id":"5","id_crm":"11","id_parent":"1","name":"\u00c9tage de villa"},{"id":"8","id_crm":"2","id_parent":"1","name":"Maison en Duplex"},{"id":"12","id_crm":"4","id_parent":"1","name":"Villa de maitre"},{"id":"16","id_crm":"27","id_parent":"1","name":"Maison en Triplex"},{"id":"27","id_crm":"33","id_parent":"1","name":"Maisons de ville"},{"id":"28","id_crm":"34","id_parent":"1","name":"Maisonnettes"},{"id":"31","id_crm":"14","id_parent":"1","name":"Arabesque"},{"id":"33","id_crm":"12","id_parent":"1","name":"Mitoyenne"}]},{"id":"3","id_crm":"10","name":"Terrain","property_sub_types":[{"id":"7","id_crm":"16","id_parent":"10","name":"Constructible"},{"id":"10","id_crm":"10","id_parent":"10","name":"Commercial"},{"id":"17","id_crm":"19","id_parent":"10","name":"Viabilis\u00e9"},{"id":"19","id_crm":"17","id_parent":"10","name":"En lotissement"},{"id":"21","id_crm":"37","id_parent":"10","name":"Habitation individuelle"},{"id":"24","id_crm":"18","id_parent":"10","name":"Pour promotion"}]},{"id":"4","id_crm":"11","name":"Immeuble","property_sub_types":[]},{"id":"5","id_crm":"12","name":"Pour professionnels","property_sub_types":[{"id":"1","id_crm":"21","id_parent":"12","name":"Bureau"},{"id":"9","id_crm":"22","id_parent":"12","name":"Local commercial"},{"id":"11","id_crm":"23","id_parent":"12","name":"Fond de commerce"},{"id":"15","id_crm":"24","id_parent":"12","name":"G\u00e9rance"},{"id":"18","id_crm":"32","id_parent":"12","name":"Showrooms"},{"id":"20","id_crm":"30","id_parent":"12","name":"D\u00e9p\u00f4t"},{"id":"22","id_crm":"43","id_parent":"12","name":"Immeubles"},{"id":"25","id_crm":"25","id_parent":"12","name":"Boutique"},{"id":"26","id_crm":"28","id_parent":"12","name":"Local industriel"},{"id":"29","id_crm":"42","id_parent":"12","name":"\u00c9tages"},{"id":"30","id_crm":"41","id_parent":"12","name":"Open Space - Plateau"},{"id":"32","id_crm":"40","id_parent":"12","name":"Coworking spaces"}]}];
+                            </script> <select class="bootstrap-select select-search-types w100 show-tick" title="Type de bien" multiple data-hide-disabled="true" onchange="javascript:onChangeType(this)"> <option value="5" class="type">Appartement </option> <optgroup label="Appartement" data-category-id="5"> <option value="6" data-category-id="5" class="sub-type">Appartement Duplex</option> <option value="8" data-category-id="5" class="sub-type">Penthouse</option> <option value="5" data-category-id="5" class="sub-type">Studio</option> <option value="3" data-category-id="5" class="sub-type">Appartement Triplex</option> <option value="15" data-category-id="5" class="sub-type">Loft</option> </optgroup> <option value="1" class="type">Maison </option> <optgroup label="Maison" data-category-id="1"> <option value="1" data-category-id="1" class="sub-type">Villa</option> <option value="31" data-category-id="1" class="sub-type">Rez-de-chaussée</option> <option value="11" data-category-id="1" class="sub-type">Étage de villa</option> <option value="2" data-category-id="1" class="sub-type">Maison en Duplex</option> <option value="4" data-category-id="1" class="sub-type">Villa de maitre</option> <option value="27" data-category-id="1" class="sub-type">Maison en Triplex</option> <option value="33" data-category-id="1" class="sub-type">Maisons de ville</option> <option value="34" data-category-id="1" class="sub-type">Maisonnettes</option> <option value="14" data-category-id="1" class="sub-type">Arabesque</option> <option value="12" data-category-id="1" class="sub-type">Mitoyenne</option> </optgroup> <option value="10" class="type">Terrain </option> <optgroup label="Terrain" data-category-id="10"> <option value="16" data-category-id="10" class="sub-type">Constructible</option> <option value="10" data-category-id="10" class="sub-type">Commercial</option> <option value="19" data-category-id="10" class="sub-type">Viabilisé</option> <option value="17" data-category-id="10" class="sub-type">En lotissement</option> <option value="37" data-category-id="10" class="sub-type">Habitation individuelle</option> <option value="18" data-category-id="10" class="sub-type">Pour promotion</option> </optgroup> <option value="11" class="type">Immeuble </option> <option value="12" class="type">Bureau et local... </option> <optgroup label="Bureau et local..." data-category-id="12"> <option value="21" data-category-id="12" class="sub-type">Bureau</option> <option value="22" data-category-id="12" class="sub-type">Local commercial</option> <option value="23" data-category-id="12" class="sub-type">Fond de commerce</option> <option value="24" data-category-id="12" class="sub-type">Gérance</option> <option value="32" data-category-id="12" class="sub-type">Showrooms</option> <option value="30" data-category-id="12" class="sub-type">Dépôt</option> <option value="43" data-category-id="12" class="sub-type">Immeubles</option> <option value="25" data-category-id="12" class="sub-type">Boutique</option> <option value="28" data-category-id="12" class="sub-type">Local industriel</option> <option value="42" data-category-id="12" class="sub-type">Étages</option> <option value="41" data-category-id="12" class="sub-type">Open Space - Plateau</option> <option value="40" data-category-id="12" class="sub-type">Coworking spaces</option> </optgroup> </select> <select name="property_types[]" class="d-none" multiple> <option value="5" class="type">Appartement </option> <option value="1" class="type">Maison </option> <option value="10" class="type">Terrain </option> <option value="11" class="type">Immeuble </option> <option value="12" class="type">Bureau et local... </option> </select> <select name="sub_types[]" class="d-none" multiple> <optgroup label="Appartement" data-category-id="5"> <option value="6" data-category-id="5" class="sub-type">Appartement Duplex</option> <option value="8" data-category-id="5" class="sub-type">Penthouse</option> <option value="5" data-category-id="5" class="sub-type">Studio</option> <option value="3" data-category-id="5" class="sub-type">Appartement Triplex</option> <option value="15" data-category-id="5" class="sub-type">Loft</option> </optgroup> <optgroup label="Maison" data-category-id="1"> <option value="1" data-category-id="1" class="sub-type">Villa</option> <option value="31" data-category-id="1" class="sub-type">Rez-de-chaussée</option> <option value="11" data-category-id="1" class="sub-type">Étage de villa</option> <option value="2" data-category-id="1" class="sub-type">Maison en Duplex</option> <option value="4" data-category-id="1" class="sub-type">Villa de maitre</option> <option value="27" data-category-id="1" class="sub-type">Maison en Triplex</option> <option value="33" data-category-id="1" class="sub-type">Maisons de ville</option> <option value="34" data-category-id="1" class="sub-type">Maisonnettes</option> <option value="14" data-category-id="1" class="sub-type">Arabesque</option> <option value="12" data-category-id="1" class="sub-type">Mitoyenne</option> </optgroup> <optgroup label="Terrain" data-category-id="10"> <option value="16" data-category-id="10" class="sub-type">Constructible</option> <option value="10" data-category-id="10" class="sub-type">Commercial</option> <option value="19" data-category-id="10" class="sub-type">Viabilisé</option> <option value="17" data-category-id="10" class="sub-type">En lotissement</option> <option value="37" data-category-id="10" class="sub-type">Habitation individuelle</option> <option value="18" data-category-id="10" class="sub-type">Pour promotion</option> </optgroup> <optgroup label="Bureau et local..." data-category-id="12"> <option value="21" data-category-id="12" class="sub-type">Bureau</option> <option value="22" data-category-id="12" class="sub-type">Local commercial</option> <option value="23" data-category-id="12" class="sub-type">Fond de commerce</option> <option value="24" data-category-id="12" class="sub-type">Gérance</option> <option value="32" data-category-id="12" class="sub-type">Showrooms</option> <option value="30" data-category-id="12" class="sub-type">Dépôt</option> <option value="43" data-category-id="12" class="sub-type">Immeubles</option> <option value="25" data-category-id="12" class="sub-type">Boutique</option> <option value="28" data-category-id="12" class="sub-type">Local industriel</option> <option value="42" data-category-id="12" class="sub-type">Étages</option> <option value="41" data-category-id="12" class="sub-type">Open Space - Plateau</option> <option value="40" data-category-id="12" class="sub-type">Coworking spaces</option> </optgroup> </select> </div> </div> <div class="col-sm-3 col-6"> <div class="form-group"> <input type="text" class="form-control" value="" name="reference" placeholder="Référence"></div> </div> <div class="col-sm-3 col-6" id="rooms"> <div class="form-group"> <select name="chambres[]" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title="Chambres" multiple> <option value="">Chambres</option> <option value="1">1 </option> <option value="2">2 </option> <option value="3">3 </option> <option value="4">4 </option> <option value="5">5 </option> <option value="6">6 </option> <option value="7">7 </option> <option value="8">8 </option> <option value="9">9 </option> <option value="10">10 </option> </select> </div> </div> <div class="col-sm-3 col-6" id="sdb"> <div class="form-group"> <select name="bathrooms" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title=""> <option value="">SDB</option> <option value="1">1 </option> <option value="2">2 </option> <option value="3">3 </option> <option value="4">4 </option> <option value="5">5 </option> <option value="6">6 </option> <option value="7">7 </option> <option value="8">8 </option> <option value="9">9 </option> <option value="10">10 </option> </select> </div> </div> <div class="col-sm-3 col-6"> <div class="form-group prices-for-all"> <select name="prix_min" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title=""> <option value="">Budget minimum</option> <option value="1000">1,000TND</option> <option value="5000">5,000TND</option> <option value="10000">10,000TND</option> <option value="50000">50,000TND</option> <option value="100000">100,000TND</option> <option value="200000">200,000TND</option> <option value="300000">300,000TND</option> <option value="400000">400,000TND</option> <option value="500000">500,000TND</option> <option value="600000">600,000TND</option> <option value="700000">700,000TND</option> <option value="800000">800,000TND</option> <option value="900000">900,000TND</option> <option value="1000000">1,000,000TND</option> <option value="1500000">1,500,000TND</option> <option value="2000000">2,000,000TND</option> <option value="2500000">2,500,000TND</option> <option value="5000000">5,000,000TND</option> </select> </div> <div class="form-group d-none prices-only-for-rent"> <select name="prix_min_rent" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title=""> <option value="">Budget minimum</option> <option value="500">500TND</option> <option value="1000">1,000TND</option> <option value="2000">2,000TND</option> <option value="3000">3,000TND</option> <option value="4000">4,000TND</option> <option value="5000">5,000TND</option> <option value="7500">7,500TND</option> <option value="10000">10,000TND</option> <option value="15000">15,000TND</option> <option value="20000">20,000TND</option> <option value="25000">25,000TND</option> <option value="30000">30,000TND</option> <option value="40000">40,000TND</option> <option value="50000">50,000TND</option> <option value="75000">75,000TND</option> <option value="100000">100,000TND</option> </select> </div> </div> <div class="col-sm-3 col-6"> <div class="form-group prices-for-all"> <select name="prix_max" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title=""> <option value="">Budget maximum</option> <option value="5000">5,000TND</option> <option value="10000">10,000TND</option> <option value="50000">50,000TND</option> <option value="100000">100,000TND</option> <option value="200000">200,000TND</option> <option value="300000">300,000TND</option> <option value="400000">400,000TND</option> <option value="500000">500,000TND</option> <option value="600000">600,000TND</option> <option value="700000">700,000TND</option> <option value="800000">800,000TND</option> <option value="900000">900,000TND</option> <option value="1000000">1,000,000TND</option> <option value="1500000">1,500,000TND</option> <option value="2000000">2,000,000TND</option> <option value="2500000">2,500,000TND</option> <option value="5000000">5,000,000TND</option> <option value="10000000">10,000,000TND</option> </select> </div> <div class="form-group d-none prices-only-for-rent"> <select name="prix_max_rent" class="bootstrap-select" data-live-search="false" data-live-search-style="begins" title=""> <option value="">Budget maximum</option> <option value="1000">1,000TND</option> <option value="2000">2,000TND</option> <option value="3000">3,000TND</option> <option value="4000">4,000TND</option> <option value="5000">5,000TND</option> <option value="7500">7,500TND</option> <option value="10000">10,000TND</option> <option value="15000">15,000TND</option> <option value="20000">20,000TND</option> <option value="25000">25,000TND</option> <option value="30000">30,000TND</option> <option value="40000">40,000TND</option> <option value="50000">50,000TND</option> <option value="75000">75,000TND</option> <option value="100000">100,000TND</option> <option value="150000">150,000TND</option> </select> </div> </div> <div class="col-sm-3 col-6 w-20 amenities-search-form"> <div class="form-group"> <label class="control control--checkbox"> <input name="pool" class="d-none" value="1" type="checkbox"> Piscine <span class="control__indicator"></span> </label> </div> </div> <div class="col-sm-3 col-6 w-20 amenities-search-form"> <div class="form-group"> <label class="control control--checkbox"> <input name="garden" class="d-none" value="1" type="checkbox"> Jardin <span class="control__indicator"></span> </label> </div> </div> <div class="col-sm-3 col-6 w-20 amenities-search-form"> <div class="form-group"> <label class="control control--checkbox"> <input name="optical_fiber" class="d-none" value="1" type="checkbox"> Fibre optique <span class="control__indicator"></span> </label> </div> </div> <div class="col-sm-3 col-6 w-20 amenities-search-form"> <div class="form-group"> <label class="control control--checkbox"> <input name="meuble" class="d-none" value="1" type="checkbox"> Meublé <span class="control__indicator"></span> </label> </div> </div> <div class="col-sm-3 col-6 w-20 amenities-search-form"> <div class="form-group"> <label class="control control--checkbox"> <input name="parking" class="d-none" value="1" type="checkbox"> Parking <span class="control__indicator"></span> </label> </div> </div> </div> </div> <div class="col-sm-3 col-12 search-expandable-right"> <div class="row"> <div class="col-sm-12 col-12"> <div class="form-group"> <button type="submit" class="btn btn-primary btn-block"> Rechercher <i style="float: none;line-height: normal;margin-right: 0;margin-left: 5px;" class="fa fa-search"></i> </button> </div> </div> <div class="col-sm-12 col-12"> <div class="form-group"> <a rel="nofollow" onclick="return openModalDemande()" href="#" class="btn btn-secondary btn-block"> Déposer votre demande </a> </div> </div> </div> </div> </div> </form> </div> </div> </div> </div> <div class="clearfix"></div> <div class="container"> <div class="vc_custom_1528828461429 mt-5"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper text-center"> <h2 style="font-size: 48px"> NOS ANNONCES LES PLUS RÉCENTES </h2> <p> <span style="font-size: 20px;">Découvrez une sélection de nos biens récemment mis en ligne</span> </p> </div> </div> <div id="carousel-module-grid" class="houzez-module carousel-module"> <div class="row grid-row container-carousel"> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129849" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8943a </span> </div> <a title="Villa en triplex S+4 en cours de finition à La Soukra" href="https://www.newkey.com.tn/bien/details/129849-villa-en-triplex-s4-en-cours-de-finition-a-la-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288714_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> Prix sur demande </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129849); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129849);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129849-villa-en-triplex-s4-en-cours-de-finition-a-la-soukra"> Villa en triplex S+4 en cours de finition à La Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> Prix sur demande </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>4</span>Chambres</li> <li class="h-area"><span>175</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129867" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8946a </span> </div> <a title="Un Appartement S+2 Direct promoteur à La Soukra" href="https://www.newkey.com.tn/bien/details/129867-un-appartement-s2-direct-promoteur-a-la-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288954_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 485 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129867); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129867);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129867-un-appartement-s2-direct-promoteur-a-la-soukra"> Un Appartement S+2 Direct promoteur à La Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 485 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>2</span>Chambres</li> <li class="h-area"><span>107</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129864" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8945a </span> </div> <a title="Appartement S3 à vendre aux Berges du Lac 1" href="https://www.newkey.com.tn/bien/details/129864-appartement-s3-a-vendre-aux-berges-du-lac-1" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288922_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 1 100 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129864); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129864);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129864-appartement-s3-a-vendre-aux-berges-du-lac-1"> Appartement S3 à vendre aux Berges du Lac 1 </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 1 100 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>3</span>Chambres</li> <li class="h-area"><span>300</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/107-new-key-les-berges-du-lac"> New key Les Berges Du Lac </a> </li> </ul> </div> </div> </div> </div> </div> </div> <div class="col-md-12 text-right mt-4"> <a href="https://www.newkey.com.tn/biens" class="btn btn-secondary" title="Voir plus"> Voir plus </a> </div> </div> </div> <div class="vc_custom_1528828461429"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper"> <h2 style="text-align: center;font-size: 48px;line-height: 60px;"> BIENS DE PRESTIGE </h2> <p style="text-align: center;"> <span style="font-size: 20px;">Découvrez une sélection de nos biens de prestige !!</span> </p> </div> </div> <div id="carousel-module-grid-1" class="houzez-module carousel-module"> <div class="row grid-row container-carousel"> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129869" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8947a </span> </div> <a title="Appartement S+3 Direct Promoteur à La Nouvelle Soukra" href="https://www.newkey.com.tn/bien/details/129869-appartement-s3-direct-promoteur-a-la-nouvelle-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288972_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 699 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129869); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129869);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129869-appartement-s3-direct-promoteur-a-la-nouvelle-soukra"> Appartement S+3 Direct Promoteur à La Nouvelle Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 699 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>3</span>Chambres</li> <li class="h-area"><span>144</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129818" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8941a </span> </div> <a title="Un Duplex de Prestige S+3 avec vue Nature Verdoyante" href="https://www.newkey.com.tn/bien/details/129818-un-duplex-de-prestige-s3-avec-vue-nature-verdoyante" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288327_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> Prix sur demande </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129818); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129818);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129818-un-duplex-de-prestige-s3-avec-vue-nature-verdoyante"> Un Duplex de Prestige S+3 avec vue Nature Verdoyante </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> Prix sur demande </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>3</span>Chambres</li> <li class="h-area"><span>267</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129726" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8927a </span> </div> <a title="Appartement S+2 à vendre à Ain Zaghouan nord" href="https://www.newkey.com.tn/bien/details/129726-appartement-s2-a-vendre-a-ain-zaghouan-nord" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/88/thumb_1287030_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 550 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129726); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129726);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129726-appartement-s2-a-vendre-a-ain-zaghouan-nord"> Appartement S+2 à vendre à Ain Zaghouan nord </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 550 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>2</span>Chambres</li> <li class="h-area"><span>115</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> </div> <div class="col-md-12 text-right mt-4"> <a href="https://www.newkey.com.tn/biens-de-prestiges" class="btn btn-secondary" title="Voir plus"> Voir plus </a> </div> </div> </div> <div class="vc_custom_1528828461429"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper"> <h3 style="text-align: center;font-size: 48px;line-height: 60px;"> Exclusivités </h3> <p style="text-align: center;"> <span style="font-size: 20px;">Découvrez une sélection de nos exclusivités !!</span> </p> </div> </div> <div id="carousel-module-grid-2" class="houzez-module carousel-module"> <div class="row grid-row container-carousel"> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129869" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8947a </span> </div> <a title="Appartement S+3 Direct Promoteur à La Nouvelle Soukra" href="https://www.newkey.com.tn/bien/details/129869-appartement-s3-direct-promoteur-a-la-nouvelle-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288972_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 699 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129869); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129869);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129869-appartement-s3-direct-promoteur-a-la-nouvelle-soukra"> Appartement S+3 Direct Promoteur à La Nouvelle Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 699 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>3</span>Chambres</li> <li class="h-area"><span>144</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129726" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8927a </span> </div> <a title="Appartement S+2 à vendre à Ain Zaghouan nord" href="https://www.newkey.com.tn/bien/details/129726-appartement-s2-a-vendre-a-ain-zaghouan-nord" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/88/thumb_1287030_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 550 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129726); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129726);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129726-appartement-s2-a-vendre-a-ain-zaghouan-nord"> Appartement S+2 à vendre à Ain Zaghouan nord </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 550 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>2</span>Chambres</li> <li class="h-area"><span>115</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129647" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8921a </span> </div> <a title="Appartement S+2 Direct Promoteur à La Nouvelle Soukra" href="https://www.newkey.com.tn/bien/details/129647-appartement-s2-direct-promoteur-a-la-nouvelle-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/86/thumb_1285887_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 353 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129647); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129647);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129647-appartement-s2-direct-promoteur-a-la-nouvelle-soukra"> Appartement S+2 Direct Promoteur à La Nouvelle Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 353 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>2</span>Chambres</li> <li class="h-area"><span>86</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> </div> <div class="col-md-12 text-right mt-4"> <a href="https://www.newkey.com.tn/exclusivites" class="btn btn-secondary" title="Voir plus"> Voir plus </a> </div> </div> </div> <div class="vc_custom_1528828461429"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper"> <h3 style="text-align: center;font-size: 48px;line-height: 60px;"> Meilleures Opportunités </h3> <p style="text-align: center;"> <span style="font-size: 20px;">Découvrez une sélection de nos meilleures opportunités !!</span> </p> </div> </div> <div id="carousel-module-grid-3" class="houzez-module carousel-module"> <div class="row grid-row container-carousel"> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129867" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8946a </span> </div> <a title="Un Appartement S+2 Direct promoteur à La Soukra" href="https://www.newkey.com.tn/bien/details/129867-un-appartement-s2-direct-promoteur-a-la-soukra" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/89/thumb_1288954_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 485 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129867); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129867);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129867-un-appartement-s2-direct-promoteur-a-la-soukra"> Un Appartement S+2 Direct promoteur à La Soukra </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 485 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>2</span>Chambres</li> <li class="h-area"><span>107</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/133-new-key-la-soukra"> New key La Soukra </a> </li> </ul> </div> </div> </div> </div> </div> <div class="item col-md-4 col-sm-6 col-12 mb-3 mb-sm-0"> <div id="ID-129766" class="item-wrap"> <div class="property-item-v2 item-grid"> <div class="figure-block"> <figure class="item-thumb"> <div class="label-wrap label-right"> <span class="label-status label-status-34 label label-default">Vente</span> <span class="label-status label-status-109 label label-default"> Ref8937a </span> </div> <a title="Appartement S3 à vendre aux Jardins de Carthage" href="https://www.newkey.com.tn/bien/details/129766-appartement-s3-a-vendre-aux-jardins-de-carthage" class="hover-effect"> <div class="div-img" style="background-image: url(https://www.newkey.com.tn/uploads/media/property/0013/88/thumb_1287551_property_large.jpeg?v=0.0.0)"></div> </a> <div class="item-price-block hide-on-list"> <span class="item-price"> 650 000 DT </span> </div> </figure> <ul class="actions"> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter aux favoris" aria-label="Favoris" class="favoris-btn mr-1" data-toggle="tooltip" data-placement="top" onclick="addRemoveToFavorieList(this, 129766); "> <span class="add_fav"> <i class="icon-heart"></i> </span> </a> </li> <li> <a rel="nofollow" href="javascript:void(0)" title="Ajouter au comparateur" aria-label="Comparateur" class="compar-btn" data-toggle="tooltip" data-placement="left" onclick="return addRemoveToCompareList(this, 129766);"> <span class="compare-property"> <i class="icon-right-arrow"></i> </span> </a> </li> </ul> </div> <div class="item-body"> <div class="item-body-top"> <div class="item-title"> <h2 class="property-title"> <a href="https://www.newkey.com.tn/bien/details/129766-appartement-s3-a-vendre-aux-jardins-de-carthage"> Appartement S3 à vendre aux Jardins de Carthage </a> </h2> </div> <div class="item-price-block hide-on-grid"> <span class="item-price"> 650 000 DT </span> </div> </div> <div class="item-body-bottom"> <ul class="item-amenities"> <li class="h-beds"><span>3</span>Chambres</li> <li class="h-area"><span>157</span>m²</li> </ul> <ul class="item-date"> <li class="prop-user-agent"> <i class="fa fa-user"></i> <a href="https://www.newkey.com.tn/agent/110-new-key-jardins-de-carthage"> New Key Jardins De Carthage </a> </li> </ul> </div> </div> </div> </div> </div> </div> <div class="col-md-12 text-right mt-4"> <a href="https://www.newkey.com.tn/opportunites" class="btn btn-secondary" title="Voir plus"> Voir plus </a> </div> </div> </div> <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1559676507527 vc_row-has-fill vc_row-no-padding vc_row-o-content-middle vc_row-flex"> <div class="wpb_column vc_column_container vc_col-sm-6"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="wpb_text_column wpb_content_element vc_custom_1582450954395"> <div class="wpb_wrapper"><h2><span style="font-size: 48px;"><span style="line-height: 60px;">Nous Sommes New Key</span></span> </h2> <p>New Key Immobilier est un réseau d’agences immobilières en Tunisie, présent à la Marsa, aux Berges du Lac et aux Jardins de Carthage. Les conseillers Newkey sont à votre disposition pour estimer votre bien immobilier. Une estimation fiable est la définition du prix optimum de mise en vente de votre bien. Ce prix optimum n’est ni le prix apparent, ni le prix bradé mais le prix réel établi à partir des transactions réalisées récemment pour des biens équivalents sur le même secteur.</p></div> </div> <div class="vc_btn3-container btn vc_btn3-inline vc_custom_1561747654039"> <a style="background-color:#fdc613; color:#ffffff;" class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-custom" href="https://www.newkey.com.tn/a-propos/" title="">Notre Groupe</a></div> </div> </div> </div> <div class="wpb_column vc_column_container vc_col-sm-6"> <div class="vc_column-inner vc_custom_1531535355999"> <div class="wpb_wrapper"> <div class="wpb_single_image wpb_content_element vc_align_left vc_custom_1580023248262"> <figure class="wpb_wrapper vc_figure"> <div class="vc_single_image-wrapper vc_box_border_grey"><img data-lazyloaded="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIiB2aWV3Qm94PSIwIDAgODAwIDgwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==" class="vc_single_image-img " data-src="assets/images/new-key-immobilier-la-marsa-min.webp" width="800" height="800" alt="photo agence immobiliere la marsa" title="new key immobilier la marsa-min"/> <noscript><img class="vc_single_image-img " src="assets/images/new-key-immobilier-la-marsa-min.webp" width="800" height="800" alt="photo agence immobiliere la marsa" title="new key immobilier la marsa-min"/></noscript> </div> </figure> </div> </div> </div> </div> </div> <div class="vc_row-full-width vc_clearfix"></div> <div style="padding-bottom: 50px" data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid vc_custom_1559676583230"> <div class="wpb_column vc_column_container vc_col-sm-12"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="vc_row wpb_row vc_inner vc_row-fluid"> <div class="wpb_column vc_column_container vc_col-sm-12"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper"><h3> Découvrez Nos Biens Sur La Banlieue Nord De Tunis </h3></div> </div> <div class="vc_empty_space" style="height: 32px"> <span class="vc_empty_space_inner"></span> </div> <div class="vc_col-md-2 city-select"> <a title="LA MARSA" href="https://www.newkey.com.tn/city/la-marsa"> <div class="ville"> LA MARSA </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="GAMMARTH" href="https://www.newkey.com.tn/city/gammarth"> <div class="ville"> GAMMARTH </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="SIDI BOU SAID" href="https://www.newkey.com.tn/area/sidi-bousaid"> <div class="ville"> SIDI BOU SAID </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="CARTHAGE" href="https://www.newkey.com.tn/city/carthage"> <div class="ville"> CARTHAGE </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LES JARDINS DE CARTHAGE" href="https://www.newkey.com.tn/state/jardins-de-carthage"> <div class="ville"> LES JARDINS DE CARTHAGE </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LES BERGES DU LAC 1" href="https://www.newkey.com.tn/area/les-berges-du-lac-1"> <div class="ville"> LES BERGES DU LAC 1 </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LES BERGES DU LAC 2" href="https://www.newkey.com.tn/area/les-berges-du-lac-2"> <div class="ville"> LES BERGES DU LAC 2 </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="AIN ZAGHOUAN NORD" href="https://www.newkey.com.tn/city/ain-zaghouan-nord"> <div class="ville"> AIN ZAGHOUAN NORD </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="AIN ZAGHOUAN" href="https://www.newkey.com.tn/city/ain-zaghouan"> <div class="ville"> AIN ZAGHOUAN </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LA SOUKRA" href="https://www.newkey.com.tn/city/la-soukra"> <div class="ville"> LA SOUKRA </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LES JARDINS DE L'AOUINA" href="https://www.newkey.com.tn/city/les-jardins-de-l-aouina"> <div class="ville"> LES JARDINS DE L'AOUINA </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="L'AOUINA" href="https://www.newkey.com.tn/city/l-aouina"> <div class="ville"> L'AOUINA </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LES BERGES DU LAC 3" href="https://www.newkey.com.tn/area/les-berges-du-lac-3"> <div class="ville"> LES BERGES DU LAC 3 </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LE KRAM" href="https://www.newkey.com.tn/city/le-kram"> <div class="ville"> LE KRAM </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="LA GOULETTE" href="https://www.newkey.com.tn/city/la-goulette"> <div class="ville"> LA GOULETTE </div> </a> </div> <div class="vc_col-md-2 city-select"> <a title="TUNIS" href="https://www.newkey.com.tn/city/tunis"> <div class="ville"> TUNIS </div> </a> </div> </div> </div> </div> </div> </div> </div> </div> </div> <div class="vc_row-full-width vc_clearfix"></div> <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-parallax="1.5" data-vc-parallax-image="assets/images/18016840_29-1.webp" class="vc_row wpb_row vc_row-fluid vc_row-has-fill vc_row-o-full-height vc_row-o-columns-middle vc_row-o-content-middle vc_row-flex vc_general vc_parallax vc_parallax-content-moving"> <div class="wpb_column vc_column_container vc_col-sm-1 vc_hidden-sm vc_hidden-xs"> <div class="vc_column-inner"> <div class="wpb_wrapper"></div> </div> </div> <div class="wpb_column vc_column_container vc_col-sm-10"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1531771927286 vc_row-has-fill"> <div class="wpb_column vc_column_container vc_col-sm-12"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="wpb_text_column wpb_content_element "> <div class="wpb_wrapper"><h4 style="text-align: center;"><span style="font-size: 36px;"><span style="line-height: 60px;">Estimez Votre Bien Gratuitement</span></span> </h4> <p style="text-align: center;"><span style="font-size: 20px;">Obtenez l’estimation la plus juste de la valeur de votre bien immobilier grâce à l’expertise des conseillers New Key en la matière. L’estimation de valeur de votre bien à la vente ou à la location prend en compte plusieurs facteurs tels que la conjoncture du marché au moment de la conclusion de la transaction et le prix moyen des transactions de vente ou de location constaté sur la même période.</span> </p></div> </div> <div class="text-center"> <a class="wpcf7-form-control wpcf7-submit" href="https://www.newkey.com.tn/proposer-un-bien">Estimez Votre Bien</a> </div> </div> </div> </div> </div> </div> </div> </div> <div class="wpb_column vc_column_container vc_col-sm-1 vc_hidden-sm vc_hidden-xs"> <div class="vc_column-inner"> <div class="wpb_wrapper"></div> </div> </div> </div> <div class="vc_row-full-width vc_clearfix"></div> </div></div> <button class="scrolltop-btn back-top"><i class="fa fa-angle-up"></i></button><footer id="footer-section"> <div class="footer"> <div class="container"> <div class="row"> <div class="col-md-4 col-sm-12 col-12"> <div class="footer-widget widget_text"> <div class="widget-top"> <img data-lazyloaded="1" style="width: 60%" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDMiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAyMDMgOTQiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjZmQ0ZGIiLz48L3N2Zz4=" loading="lazy" class="wp-image-40140" data-src="https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0" alt="" width="203" height="94" data-srcset="https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 300w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1024w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 768w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 150w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 350w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1034w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1476w" data-sizes="(max-width: 203px) 100vw, 203px"/> <noscript><img loading="lazy" style="width: 60%" class="wp-image-40140" src="https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0" alt="" width="203" height="94" data-srcset="https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 300w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1024w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 768w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 150w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 350w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1034w, https://www.newkey.com.tn/assets/images/logo_newkey_blancjaune.svg?v=0 1476w" sizes="(max-width: 203px) 100vw, 203px"/></noscript> </div> </div> </div> </div> <div class="row"> <div class="col-md-4 col-sm-12 col-12"> <div id="text-6" class="footer-widget widget_text"> <div class="widget-top"> <h4 class="widget-title">New Key, Votre Agence Immobilière En Tunisie</h4> </div> <div class="textwidget text-justify"> <p>New Key est un réseau d’agences immobilières en Tunisie implanté à La Marsa, aux Berges du Lac et aux Jardins de Carthage. Les conseillers immobiliers New Key vous accompagnent pour mener à bien votre projet d’achat, de vente ou de location.</p> </div> <div class="fb-like" data-href="https://www.facebook.com/AgenceImmobiliereNewKey/" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="false" data-colorscheme="dark"></div> </div> </div> <div class="col-md-4 col-sm-12 col-12"> <div id="text-5" class="footer-widget widget_text text-center"> <div class="widget-top"><h3 class="widget-title color-jaune">Directions et Horaires D'ouvertures</h3> </div> <div class="textwidget"> <p> <a href="https://www.newkey.com.tn/locations/new-key-agence-immobiliere-aux-berges-du-lac-2/"> New Key Les Berges du Lac (+216 29 232 927) </a> </p> <p> <a href="https://www.newkey.com.tn/locations/new-key-agence-immobiliere-a-la-marsa/"> New Key La Marsa (+216 27 031 000) </a> </p> <p> <a href="https://www.newkey.com.tn/locations/new-key-agence-immobiliere-aux-jardins-de-carthage/"> New Key Les Jardins de Carthage (+216 20 265 265) </a> </p> <p> <a href="https://www.newkey.com.tn/locations/new-key-la-soukra/"> New Key La soukra (+216 29 265 265) </a> </p> </div> </div> </div> <div class="col-md-4 col-sm-12 col-12"> <div id="text-7" class="footer-widget widget_text"> <div class="textwidget"> <span style="font-size: 16px" class="color-jaune">CONTACT RAPIDE</span> <form id="contact-form" method="post" class="wpcf7-form" novalidate="novalidate"> <div class="form-group"> <span class="your-name"> <input placeholder="Votre Nom" type="text" name="firstname" value="" size="40" class="form-control" required="required"/> </span> </div> <div class="form-group"> <span class="your-email"> <input placeholder="Votre Email" type="email" name="email" value="" size="40" class="form-control" required="required"/> </span> </div> <div class="form-group"> <span class="your-email"> <input placeholder="Votre Téléphone" type="text" name="phone" value="" class="form-control phone-number" required="required"/> </span> </div> <div class="form-group"> <span class="your-message"> <textarea placeholder="Votre Message" name="message" cols="" rows="3"                                                  class="form-control" required="required"></textarea> </span> </div> <div class="form-group"> <div class="g-recaptcha" data-sitekey="6LcaD0IcAAAAAFrhh5oqamNSR918wgYuUv-oTwdt" data-theme="light" data-type="image" data-size="normal"></div> </div> <div class="form-group"> <input type="submit" value="Envoyer" class="btn btn-primary btn-lg btn-footer"/> </div> <div id="success"></div> </form> </div> </div> </div> </div> </div> </div> <div class="bg-noir"> <div class="container"> <div class="row"> <div class="col-md-12 col-sm-12 text-center"> <div class="footer-col footer-bottom"><p>© NEW KEY 2021. Conçu avec <a style="color: #f7bc3f!important;" target="_blank" href="https://immotech.tn/"><strong>iMMOTECH</strong></a> par <strong style="color: #f7bc3f!important;">PROPTECH</strong>.</p></div> </div> </div> </div> </div></footer> <div class="social-fixed"> <a rel="nofollow" title="Messenger" target="_blank" href="https://m.me/AgenceImmobiliereNewKey" class="btn-social-pages messenger"><i class="fa fa-facebook"></i></a> <a rel="nofollow" title="WhatsApp" target="_blank" href="https://wa.me/+21629232927" class="btn-social-pages whatsapp"><i class="fa fa-whatsapp"></i></a> <a title="Téléphone" href="tel:0021629232927" class="btn-social-pages"><i class="fa fa-phone"></i></a> </div> <div class="favories d-none"> <a href="https://www.newkey.com.tn/favoris" class="favorie-basket d-sm-inline favorie-btn no-decoration background-color"> <i class="icon-heart-1"></i> <div id="fav"></div> </a> </div> <div class="favories-compare d-none"> <a href="https://www.newkey.com.tn/comparateur" class="comparer-basket comparer-btn no-decoration background-color"> <i class="icon-left"></i> <div id="comp"></div> </a> </div> <div class="modal right fade" id="modal-demande" tabindex="-1" role="dialog" aria-labelledby="modal-demandeLabel" aria-hidden="true"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title" id="exampleModalLabel">Mandat de recherche</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div> <div class="modal-body"> </div> </div> </div> </div> <script type="text/javascript">
+            var baseweb = 'https://www.newkey.com.tn/';
+            var uiAutocompleteL10n = {
+                "noResults": "Aucun r\u00e9sultat.",
+                "oneResult": "Un r\u00e9sultat trouv\u00e9. Utilisez les fl\u00e8ches haut et bas du clavier pour les parcourir. ",
+                "manyResults": "%d r\u00e9sultats trouv\u00e9s. Utilisez les fl\u00e8ches haut et bas du clavier pour les parcourir.",
+                "itemSelected": "\u00c9l\u00e9ment s\u00e9lectionn\u00e9."
+            };
+            var hz_plugin = {
+                "rating_terrible": "Tr\u00e8s mauvais",
+                "rating_poor": "Path\u00e9tique",
+                "rating_average": "Moyen",
+                "rating_vgood": "Efficace",
+                "rating_exceptional": "Super efficace"
+            };
+            var HOUZEZ_ajaxcalls_vars = {
+                "houzez_rtl": "no",
+                "redirect_type": "same_page",
+                "login_redirect": "https://www.newkey.com.tn/",
+                "login_loading": "Connexion en cours...",
+                "direct_pay_text": "Traitement, Veuillez patienter...",
+                "user_id": "0",
+                "transparent_menu": "",
+                "simple_logo": "https://www.newkey.com.tn/assets/images/logo-newkey.svg",
+                "retina_logo": "",
+                "retina_logo_mobile": "",
+                "retina_logo_mobile_splash": "",
+                "retina_logo_splash": "",
+                "retina_logo_height": "24",
+                "retina_logo_width": "140",
+                "property_lat": "",
+                "property_lng": "",
+                "property_map": "1",
+                "property_map_street": "",
+                "is_singular_property": "yes",
+                "process_loader_refresh": "fa fa-spin fa-refresh",
+                "process_loader_spinner": "fa fa-spin fa-spinner",
+                "process_loader_circle": "fa fa-spin fa-circle-o-notch",
+                "process_loader_cog": "fa fa-spin fa-cog",
+                "success_icon": "fa fa-check",
+                "set_as_featured": "D\u00e9finir comme En Vedette",
+                "remove_featured": "Supprimer de la vedette",
+                "prop_featured": "En vedette",
+                "featured_listings_none": "Vous avez utilis\u00e9 toutes les listes \"En vedette\" dans votre forfait.",
+                "prop_sent_for_approval": "Envoy\u00e9 pour approbation",
+                "paypal_connecting": "Connexion \u00e0 Paypal, Veuillez patienter...",
+                "mollie_connecting": "Connexion \u00e0 mollie, Veuillez patienter...",
+                "confirm": "Etes-vous s\u00fbr de vouloir supprimer?",
+                "confirm_featured": "Voulez-vous vraiment en faire une annonce en vedette?",
+                "confirm_featured_remove": "Voulez-vous vraiment supprimer de la liste en vedette?",
+                "confirm_relist": "Voulez-vous vraiment r\u00e9 annoncer ce bien?",
+                "delete_property": "Processing, please wait...",
+                "delete_confirmation": "Etes-vous s\u00fbr de vouloir supprimer?",
+                "not_found": "Nous n'avons pas trouv\u00e9 de r\u00e9sultats",
+                "for_rent": "a-louer",
+                "for_rent_price_range": "a-vendre",
+                "currency_symbol": "TND",
+                "advanced_search_widget_min_price": "200",
+                "advanced_search_widget_max_price": "2500000",
+                "advanced_search_min_price_range_for_rent": "50",
+                "advanced_search_max_price_range_for_rent": "25000",
+                "advanced_search_widget_min_area": "10",
+                "advanced_search_widget_max_area": "6000",
+                "advanced_search_price_slide": "0",
+                "fave_page_template": "page.php",
+                "google_map_style": "",
+                "googlemap_default_zoom": "12",
+                "googlemap_pin_cluster": "",
+                "googlemap_zoom_cluster": "10",
+                "map_icons_path": "https://www.newkey.com.tn/assets/images/map/",
+                "infoboxClose": "https://www.newkey.com.tn/assets/images/map/close.webp",
+                "clusterIcon": "https://www.newkey.com.tn/assets/images/map/cluster-icon.webp",
+                "marker_spiderfier": "1",
+                "google_map_needed": "yes",
+                "paged": "0",
+                "search_result_page": "normal_page",
+                "search_keyword": "",
+                "search_country": "",
+                "search_state": "",
+                "search_city": "",
+                "search_feature": "",
+                "search_area": "",
+                "search_status": "",
+                "search_label": "",
+                "search_type": "",
+                "search_bedrooms": "",
+                "search_bathrooms": "",
+                "search_min_price": "",
+                "search_max_price": "",
+                "search_currency": "",
+                "search_min_area": "",
+                "search_max_area": "",
+                "search_property_id": "",
+                "search_publish_date": "",
+                "search_no_posts": "10",
+                "search_location": "",
+                "use_radius": "on",
+                "search_lat": "",
+                "search_long": "",
+                "search_radius": "",
+                "transportation": "Transport",
+                "supermarket": "Supermarch\u00e9",
+                "schools": "Ecoles",
+                "libraries": "Librairie",
+                "pharmacies": "Pharmacies",
+                "hospitals": "H\u00f4pitaux",
+                "sort_by": "",
+                "measurement_updating_msg": "Mise \u00e0 jour, Veuillez patienter...",
+                "autosearch_text": "Searching...",
+                "currency_updating_msg": "Mise \u00e0 jour de la devise, veuillez patienter ...",
+                "currency_position": "after",
+                "submission_currency": "USD",
+                "wire_transfer_text": "\u00catre pay\u00e9",
+                "direct_pay_thanks": "Nous vous remercions. Veuillez v\u00e9rifier votre email pour les instructions de paiement.",
+                "direct_payment_title": "Instructions de paiement direct",
+                "direct_payment_button": "ENVOYEZ-MOI LA FACTURE",
+                "direct_payment_details": "",
+                "measurement_unit": "m\u00b2",
+                "header_map_selected_city": [],
+                "thousands_separator": ",",
+                "current_tempalte": "",
+                "monthly_payment": "Paiement mensuel",
+                "weekly_payment": "Paiement hebdomadaire",
+                "bi_weekly_payment": "Paiement bi-hebdomadaire",
+                "compare_button_url": "",
+                "template_thankyou": "https://www.newkey.com.tn/",
+                "compare_page_not_found": "Veuillez cr\u00e9er une page en utilisant le mod\u00e8le de propri\u00e9t\u00e9s de comparaison",
+                "property_detail_top": "v3",
+                "keyword_search_field": "prop_city_state_county",
+                "keyword_autocomplete": "1",
+                "houzez_date_language": "fr",
+                "houzez_default_radius": "2",
+                "enable_radius_search": "0",
+                "enable_radius_search_halfmap": "1",
+                "houzez_primary_color": "#000000",
+                "geo_country_limit": "1",
+                "geocomplete_country": "TN",
+                "houzez_logged_in": "no",
+                "ipinfo_location": "1",
+                "gallery_autoplay": "1",
+                "banner_slider_autoplay": "1",
+                "banner_slider_loop": "1",
+                "banner_slider_autoplayspeed": "5000",
+                "stripe_page": "https://www.newkey.com.tn/",
+                "twocheckout_page": "https://www.newkey.com.tn/",
+                "custom_fields": "[]",
+                "markerPricePins": "no",
+                "houzez_reCaptcha": "0",
+                "houzez_map_system": "osm",
+                "is_mapbox": "osm",
+                "api_mapbox": "",
+                "is_marker_cluster": "0",
+                "offsetSlider": "30"
+            };
+            /*var prop_carousel_v2_Hz1uR = {
+                "slide_auto": "false",
+                "auto_speed": "3000",
+                "slide_dots": "true",
+                "slide_infinite": "false",
+                "slides_to_scroll": "1"
+            };
+            var prop_carousel_v2_Hz1uC = {
+                "slide_auto": "false",
+                "auto_speed": "3000",
+                "slide_dots": "true",
+                "slide_infinite": "false",
+                "slides_to_scroll": "1"
+            };
+            var prop_carousel_v2_Hz1uE = {
+                "slide_auto": "false",
+                "auto_speed": "3000",
+                "slide_dots": "true",
+                "slide_infinite": "false",
+                "slides_to_scroll": "1"
+            };
+            var prop_carousel_v2_Hz1uF = {
+                "slide_auto": "false",
+                "auto_speed": "3000",
+                "slide_dots": "true",
+                "slide_infinite": "false",
+                "slides_to_scroll": "1"
+            };
+            var prop_carousel_v2_Hz1uX = {
+                "slide_auto": "false",
+                "auto_speed": "3000",
+                "slide_dots": "true",
+                "slide_infinite": "false",
+                "slides_to_scroll": "1"
+            };*/
+        </script> <script src="https://www.newkey.com.tn/assets/js/jquery.js?v=1675415147"></script> <script src="https://www.newkey.com.tn/assets/js/jquery.lazy.min.js?v=1675415147"></script> <script src="https://www.newkey.com.tn/new-assets/js/jquery.cookie.js?v=1675415310"></script> <script src="https://www.newkey.com.tn/new-assets/js/popper.min.js?v=1675415328"></script> <script src="https://www.newkey.com.tn/new-assets/js/bootstrap.min.js?v=1675415289"></script> <script src="https://www.newkey.com.tn/new-assets/js/bootstrap-select.js?v=1675415284"></script> <script src="https://www.newkey.com.tn/new-assets/js/theia-sticky-sidebar.js?v=1675415334"></script> <script src="https://www.newkey.com.tn/new-assets/plugins/js_composer/js/js_composer_front.min.js?v=1675415785"></script> <script src="https://www.newkey.com.tn/assets/js/validate.js?v=1675415148"></script> <script src="https://www.newkey.com.tn/assets/js/async-google-recaptcha.min.js?v=1675415131"></script> <script src="https://www.newkey.com.tn/assets/js/intlTelInput.js?v=1700477391"></script> <script src="https://www.newkey.com.tn/new-assets/js/custom.js?v=1675415292"></script> <script src="https://www.newkey.com.tn/assets/js/script.js?v=1700481726"></script> <script>
+            if(typeof types !== 'undefined'){
+                function onChangeType(select) {
+                    var data_type_selected = [];
+                    var data_subtype_selected = [];
+                    jQuery(select).parents('form').eq(0).find('select[name="property_types[]"]').val([])
+                    jQuery(select).parents('form').eq(0).find('select[name="sub_types[]"]').val([])
+                    //jQuery('select[name="property_types[]"]').val([])
+                    jQuery(select).find(":selected.type").each(function (k, option) {
+                        data_type_selected.push(parseInt(jQuery(option).val()));
+                        jQuery(select).parents('form').eq(0).find('select[name="property_types[]"] option[value="'+jQuery(option).val()+'"]').prop('selected',true)
+                    })
+                    jQuery(select).find(":selected.sub-type").each(function (k, option) {
+                        var data = jQuery(this).data();
+                        var categoryId = parseInt(data.categoryId);
+                        if(data_type_selected.indexOf(categoryId)>=0) {
+                            data_subtype_selected.push(parseInt(jQuery(option).val()));
+                            jQuery(select).parents('form').eq(0).find('select[name="sub_types[]"] option[value="' + jQuery(option).val() + '"]').prop('selected', true)
+                        }
+                    })
+                    var options = [];
+                    types.forEach(function (type) {
+                        var selected = data_type_selected.indexOf(parseInt(type.id_crm)) >= 0;
+                        var icon = '';
+                        switch (parseInt(type.id_crm)) {
+                            case 1:
+                                icon = 'fa fa-home';
+                                break;
+                            case 5:
+                                icon = 'fa fa-building';
+                                break;
+                            case 10:
+                                icon = 'fa fa-map';
+                                break;
+                            case 11:
+                                icon = 'fa fa-building';
+                                break;
+                            case 12:
+                                icon = 'fa fa-briefcase';
+                                break;
+                        }
+                        if(type.id_crm == 12) {
+                            type.name='Bureau et local...';
+                        }
+                        options.push(`<option value="${type.id_crm}" ${selected ? 'selected="selected"' : ''} class="type" data-icon="${icon}">${type.name}</option>`)
+                        if(selected && type.property_sub_types){
+                            if(type.property_sub_types.length){
+                                type.property_sub_types.forEach(function(subType){
+                                    var selectedSubType = data_subtype_selected.indexOf(parseInt(subType.id_crm)) >= 0;
+                                    options.push(`<option value="${subType.id_crm}" ${selectedSubType ? 'selected="selected"' : ''} class="sub-type" data-category-id="${type.id_crm}">${subType.name}</option>`)
+                                })
+                            }
+                        }
+
+                        if(type.id_crm == 10){
+                            if(selected){
+                                jQuery('#rooms').addClass('d-none');
+                                jQuery('#rooms-1').addClass('d-none');
+                                jQuery('#sdb-1').addClass('d-none');
+                                jQuery('#sdb').addClass('d-none');
+                                jQuery('.amenities-search-form').addClass('d-none');
+                                /*$('#Cos').removeClass('d-none');
+                                 $('#Cuf').removeClass('d-none');
+                                 $('#etage').addClass('d-none');
+                                 $('#r-etage').removeClass('d-none');
+                                 $('#prix-min').addClass('d-none');
+                                 $('#prix-max').addClass('d-none');
+                                 $('#rooms-1').addClass('d-none');
+                                 $('#Cos-1').removeClass('d-none');
+                                 $('#Cuf-1').removeClass('d-none');
+                                 $('#etage-1').addClass('d-none');
+                                 $('#r-etage-1').removeClass('d-none');
+                                 $('#prix-min-1').addClass('d-none');
+                                 $('#prix-max-1').addClass('d-none');
+                                 $('#rooms-2').addClass('d-none');
+                                 $('#Cos-2').removeClass('d-none');
+                                 $('#Cuf-2').removeClass('d-none');
+                                 $('#etage-2').addClass('d-none');
+                                 $('#r-etage-2').removeClass('d-none');
+                                 $('#prix-min-2').addClass('d-none');
+                                 $('#prix-max-2').addClass('d-none');
+                                 $('#rooms-all').addClass('d-none');
+                                 $('#Cos-all').removeClass('d-none');
+                                 $('#Cuf-all').removeClass('d-none');
+                                 $('#etage-all').addClass('d-none');
+                                 $('#r-etage-all').removeClass('d-none');
+                                 $('#prix-min-all').addClass('d-none');
+                                 $('#prix-max-all').addClass('d-none');
+                                 $('#rooms-mobile').addClass('d-none');
+                                 $('#Cos-mobile').removeClass('d-none');
+                                 $('#Cuf-mobile').removeClass('d-none');
+                                 $('#etage-mobile').addClass('d-none');
+                                 $('#r-etage-mobile').removeClass('d-none');
+                                 $('#prix-min-mobile').addClass('d-none');
+                                 $('#prix-max-mobile').addClass('d-none');*/
+                            } else {
+                                jQuery('#rooms').removeClass('d-none');
+                                jQuery('#rooms-1').removeClass('d-none');
+                                jQuery('#rooms-2').removeClass('d-none');
+                                jQuery('#sdb').removeClass('d-none');
+                                jQuery('.amenities-search-form').removeClass('d-none');
+                                /*$('#Cos').addClass('d-none');
+                                 $('#Cuf').addClass('d-none');
+                                 $('#etage').removeClass('d-none');
+                                 $('#r-etage').addClass('d-none');
+                                 $('#prix-min').removeClass('d-none');
+                                 $('#prix-max').removeClass('d-none');
+                                 $('#rooms-1').removeClass('d-none');
+                                 $('#Cos-1').addClass('d-none');
+                                 $('#Cuf-1').addClass('d-none');
+                                 $('#etage-1').removeClass('d-none');
+                                 $('#r-etage-1').addClass('d-none');
+                                 $('#prix-min-1').removeClass('d-none');
+                                 $('#prix-max-1').removeClass('d-none');
+                                 $('#rooms-2').removeClass('d-none');
+                                 $('#Cos-2').addClass('d-none');
+                                 $('#Cuf-2').addClass('d-none');
+                                 $('#etage-2').removeClass('d-none');
+                                 $('#r-etage-2').addClass('d-none');
+                                 $('#prix-min-2').removeClass('d-none');
+                                 $('#prix-max-2').removeClass('d-none');
+                                 $('#rooms-all').removeClass('d-none');
+                                 $('#Cos-all').addClass('d-none');
+                                 $('#Cuf-all').addClass('d-none');
+                                 $('#etage-all').removeClass('d-none');
+                                 $('#r-etage-all').addClass('d-none');
+                                 $('#prix-min-all').removeClass('d-none');
+                                 $('#prix-max-all').removeClass('d-none');
+                                 $('#rooms-mobile').removeClass('d-none');
+                                 $('#Cos-mobile').addClass('d-none');
+                                 $('#Cuf-mobile').addClass('d-none');
+                                 $('#etage-mobile').removeClass('d-none');
+                                 $('#r-etage-mobile').addClass('d-none');
+                                 $('#prix-min-mobile').removeClass('d-none');
+                                 $('#prix-max-mobile').removeClass('d-none');*/
+                            }
+                        }
+                    })
+                    jQuery(select).html(options.join());
+                    jQuery(select).selectpicker('refresh');
+                }
+            }
+
+			/*if(typeof places !== 'undefined'){
+				function onChangePlaces(select) {
+					var data_gouvernorats_selected = [];
+					var data_delegations_selected = [];
+					var data_localites_selected = [];
+					jQuery(select).parents('form').eq(0).find('select[name="gouvernorats[]"]').val([]);
+					jQuery(select).parents('form').eq(0).find('select[name="delegations[]"]').val([]);
+					jQuery(select).parents('form').eq(0).find('select[name="localites[]"]').val([]);
+					jQuery(select).find(":selected").each(function (k, option) {
+						if (jQuery(option).hasClass('gouvernorat')) {
+							data_gouvernorats_selected.push(parseInt(jQuery(option).val()));
+							jQuery(select).parents('form').eq(0).find('select[name="gouvernorats[]"] option[value="' + jQuery(option).val() + '"]').prop('selected', true)
+						}
+					})
+					jQuery(select).find(":selected").each(function (k, option) {
+						if (jQuery(option).hasClass('delegation')) {
+							var data = jQuery(option).data();
+							if(data_gouvernorats_selected.indexOf(parseInt(data.gouvernoratId))>=0) {
+								data_delegations_selected.push(parseInt(jQuery(option).val()));
+								jQuery(select).parents('form').eq(0).find('select[name="delegations[]"] option[value="' + jQuery(option).val() + '"]').prop('selected', true)
+							}
+						}
+					})
+					jQuery(select).find(":selected").each(function (k, option) {
+						if(jQuery(option).hasClass('localite')){
+							var data = jQuery(option).data();
+							if(data_delegations_selected.indexOf(parseInt(data.delegationId))>=0){
+								data_localites_selected.push(parseInt(jQuery(option).val()));
+								jQuery(select).parents('form').eq(0).find('select[name="localites[]"] option[value="'+jQuery(option).val()+'"]').prop('selected',true)
+							}
+						}
+					});
+					var options = [];
+					Object.keys(places).forEach(function (kgouvenorat) {
+						var gouvenorat = places[kgouvenorat];
+						var selected = data_gouvernorats_selected.indexOf(parseInt(gouvenorat.gouvernorat.id)) >= 0;
+						options.push(`<option value="${gouvenorat.gouvernorat.id}" ${selected ? 'selected="selected"' : ''} class="gouvernorat">${gouvenorat.gouvernorat.name}</option>`)
+						if(selected && gouvenorat.delegations){
+							Object.keys(gouvenorat.delegations).forEach(function(kdelegation){
+								var delegation = gouvenorat.delegations[kdelegation];
+								var delegationSelected = data_delegations_selected.indexOf(parseInt(delegation.delegation.id)) >= 0;
+								options.push(`<option value="${delegation.delegation.id}" ${delegationSelected ? 'selected="selected"' : ''} class="delegation" data-gouvernorat-id="${gouvenorat.gouvernorat.id}">${delegation.delegation.name}</option>`)
+								if(delegationSelected && delegation.localites){
+									Object.keys(delegation.localites).forEach(function(klocalite){
+										var localite = delegation.localites[klocalite];
+										var localiteSelected = data_localites_selected.indexOf(parseInt(localite.id)) >= 0;
+										options.push(`<option value="${localite.id}" ${localiteSelected ? 'selected="selected"' : ''} class="localite" data-delegation-id="${delegation.delegation.id}">${localite.name}</option>`);
+									})
+								}
+							})
+						}
+					})
+					jQuery(select).html(options.join());
+					jQuery(select).selectpicker('refresh');
+				}
+			}*/
+        </script> <script data-no-optimize="1">
+        var _extends = Object.assign || function (t) {
+                for (var e = 1; e < arguments.length; e++) {
+                    var n = arguments[e];
+                    for (var o in n)Object.prototype.hasOwnProperty.call(n, o) && (t[o] = n[o])
+                }
+                return t
+            }, _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (t) {
+            return typeof t
+        } : function (t) {
+            return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+        };
+        !function (t, e) {
+            "object" === ("undefined" == typeof exports ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.LazyLoad = e()
+        }(this, function () {
+            "use strict";
+            var n = {
+                elements_selector: "img",
+                container: document,
+                threshold: 300,
+                thresholds: null,
+                data_src: "src",
+                data_srcset: "srcset",
+                data_sizes: "sizes",
+                data_bg: "bg",
+                class_loading: "litespeed-loading",
+                class_loaded: "litespeed-loaded",
+                class_error: "error",
+                load_delay: 0,
+                callback_load: null,
+                callback_error: null,
+                callback_set: null,
+                callback_enter: null,
+                callback_finish: null,
+                to_webp: !1
+            }, s = "data-", r = "was-processed", o = "ll-timeout", a = "true", c = function (t, e) {
+                return t.getAttribute(s + e)
+            }, i = function (t, e, n) {
+                var o = s + e;
+                null !== n ? t.setAttribute(o, n) : t.removeAttribute(o)
+            }, l = function (t) {
+                return c(t, r) === a
+            }, u = function (t, e) {
+                return i(t, o, e)
+            }, d = function (t) {
+                return c(t, o)
+            }, f = function (t, e) {
+                var n, o = "LazyLoad::Initialized", s = new t(e);
+                try {
+                    n = new CustomEvent(o, {detail: {instance: s}})
+                } catch (t) {
+                    (n = document.createEvent("CustomEvent")).initCustomEvent(o, !1, !1, {instance: s})
+                }
+                window.dispatchEvent(n)
+            };
+            var _ = function (t, e) {
+                    return e ? t.replace(/\.(jpe?g|png)/gi, ".webp") : t
+                }, t = "undefined" != typeof window,
+                v = t && !("onscroll" in window) || /(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),
+                e = t && "IntersectionObserver" in window, h = t && "classList" in document.createElement("p"), b = t && !1,
+                g = function (t, e, n, o) {
+                    for (var s, r = 0; s = t.children[r]; r += 1)if ("SOURCE" === s.tagName) {
+                        var a = c(s, n);
+                        m(s, e, a, o)
+                    }
+                }, m = function (t, e, n, o) {
+                    n && t.setAttribute(e, _(n, o))
+                }, p = {
+                    IMG: function (t, e) {
+                        var n = b && e.to_webp, o = e.data_srcset, s = t.parentNode;
+                        s && "PICTURE" === s.tagName && g(s, "srcset", o, n);
+                        var r = c(t, e.data_sizes);
+                        m(t, "sizes", r);
+                        var a = c(t, o);
+                        m(t, "srcset", a, n);
+                        var i = c(t, e.data_src);
+                        m(t, "src", i, n)
+                    }, IFRAME: function (t, e) {
+                        var n = c(t, e.data_src);
+                        m(t, "src", n)
+                    }, VIDEO: function (t, e) {
+                        var n = e.data_src, o = c(t, n);
+                        g(t, "src", n), m(t, "src", o), t.load()
+                    }
+                }, y = function (t, e) {
+                    var n, o, s = e._settings, r = t.tagName, a = p[r];
+                    if (a)return a(t, s), e._updateLoadingCount(1), void(e._elements = (n = e._elements, o = t, n.filter(function (t) {
+                        return t !== o
+                    })));
+                    !function (t, e) {
+                        var n = b && e.to_webp, o = c(t, e.data_src), s = c(t, e.data_bg);
+                        if (o) {
+                            var r = _(o, n);
+                            t.style.backgroundImage = 'url("' + r + '")'
+                        }
+                        if (s) {
+                            var a = _(s, n);
+                            t.style.backgroundImage = a
+                        }
+                    }(t, s)
+                }, w = function (t, e) {
+                    h ? t.classList.add(e) : t.className += (t.className ? " " : "") + e
+                }, E = function (t, e) {
+                    t && t(e)
+                }, L = "load", I = "loadeddata", O = "error", k = function (t, e, n) {
+                    t.addEventListener(e, n)
+                }, A = function (t, e, n) {
+                    t.removeEventListener(e, n)
+                }, C = function (t, e, n) {
+                    A(t, L, e), A(t, I, e), A(t, O, n)
+                }, z = function (t, e, n) {
+                    var o, s, r = n._settings, a = e ? r.class_loaded : r.class_error, i = e ? r.callback_load : r.callback_error,
+                        c = t.target;
+                    o = c, s = r.class_loading, h ? o.classList.remove(s) : o.className = o.className.replace(new RegExp("(^|\\s+)" + s + "(\\s+|$)"), " ").replace(/^\s+/, "").replace(/\s+$/, ""), w(c, a), E(i, c), n._updateLoadingCount(-1)
+                }, N = function (n, o) {
+                    var t, e, s, r = function t(e) {
+                        z(e, !0, o), C(n, t, a)
+                    }, a = function t(e) {
+                        z(e, !1, o), C(n, r, t)
+                    };
+                    s = a, k(t = n, L, e = r), k(t, I, e), k(t, O, s)
+                }, x = ["IMG", "IFRAME", "VIDEO"], M = function (t, e, n) {
+                    R(t, n), e.unobserve(t)
+                }, S = function (t) {
+                    var e = d(t);
+                    e && (clearTimeout(e), u(t, null))
+                };
+
+            function R(t, e, n) {
+                var o = e._settings;
+                !n && l(t) || (E(o.callback_enter, t), -1 < x.indexOf(t.tagName) && (N(t, e), w(t, o.class_loading)), y(t, e), i(t, r, a), E(o.callback_set, t))
+            }
+
+            var j = function (t) {
+                return t.isIntersecting || 0 < t.intersectionRatio
+            }, T = function (t, e) {
+                this._settings = _extends({}, n, t), this._setObserver(), this._loadingCount = 0, this.update(e)
+            };
+            return T.prototype = {
+                _manageIntersection: function (t) {
+                    var e, n, o, s, r, a = this._observer, i = this._settings.load_delay, c = t.target;
+                    i ? j(t) ? (e = c, n = a, s = (o = this)._settings.load_delay, (r = d(e)) || (r = setTimeout(function () {
+                        M(e, n, o), S(e)
+                    }, s), u(e, r))) : S(c) : j(t) && M(c, a, this)
+                }, _onIntersection: function (t) {
+                    t.forEach(this._manageIntersection.bind(this))
+                }, _setObserver: function () {
+                    var t;
+                    e && (this._observer = new IntersectionObserver(this._onIntersection.bind(this), {
+                        root: (t = this._settings).container === document ? null : t.container,
+                        rootMargin: t.thresholds || t.threshold + "px"
+                    }))
+                }, _updateLoadingCount: function (t) {
+                    this._loadingCount += t, 0 === this._elements.length && 0 === this._loadingCount && E(this._settings.callback_finish)
+                }, update: function (t) {
+                    var e = this, n = this._settings, o = t || n.container.querySelectorAll(n.elements_selector);
+                    this._elements = Array.prototype.slice.call(o).filter(function (t) {
+                        return !l(t)
+                    }), !v && this._observer ? this._elements.forEach(function (t) {
+                        e._observer.observe(t)
+                    }) : this.loadAll()
+                }, destroy: function () {
+                    var e = this;
+                    this._observer && (this._elements.forEach(function (t) {
+                        e._observer.unobserve(t)
+                    }), this._observer = null), this._elements = null, this._settings = null
+                }, load: function (t, e) {
+                    R(t, this, e)
+                }, loadAll: function () {
+                    var e = this;
+                    this._elements.forEach(function (t) {
+                        e.load(t)
+                    })
+                }
+            }, t && function (t, e) {
+                if (e)if (e.length)for (var n, o = 0; n = e[o]; o += 1)f(t, n); else f(t, e)
+            }(T, window.lazyLoadOptions), T
+        }),
+            function (e, t) {
+                "use strict";
+                function n() {
+                    t.body.classList.add("litespeed_lazyloaded")
+                }
+
+                function a() {
+                    d = new LazyLoad({elements_selector: "[data-lazyloaded]", callback_finish: n}), o = function () {
+                        d.update()
+                    }, e.MutationObserver && new MutationObserver(o).observe(t.documentElement, {
+                        childList: !0,
+                        subtree: !0,
+                        attributes: !0
+                    })
+                }
+
+                var d, o;
+                e.addEventListener ? e.addEventListener("load", a, !1) : e.attachEvent("onload", a)
+            }(window, document);
+    </script> </body> </html> 
