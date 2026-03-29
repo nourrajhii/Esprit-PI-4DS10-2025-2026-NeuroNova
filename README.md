@@ -1,58 +1,76 @@
-# Tunisian Real Estate EstateMind Scraper 🚀
+# EstateMind: Tunisian Real Estate Data Pipeline & AI Automation
 
-EstateMind is a high-performance, automated real estate data harvesting engine designed to map the Tunisian property market.
+EstateMind is a comprehensive, high-performance data harvesting and artificial intelligence engine tailored specifically for the Tunisian real estate ecosystem. It automates the discovery, extraction, cleaning, and modeling of real estate data, providing predictive analytics and generative design capabilities.
 
-## 🛠 Project Architecture
-The system follows a 3-stage pipeline to ensure data completeness and quality:
+## Architecture Overview
 
-### 1. 🔍 Crawling (Discovery Stage)
-**Main Logic**: `discovery/explorer.py`
-The engine recursively discovers the Tunisian real estate ecosystem.
-- **Deep Discovery**: Uses SerpAPI to paginate through Google results for regional keywords (e.g., "agence immobilière Sousse").
-- **Exhaustive Mapping**: Scans for `sitemap.xml` and DNS records (`crt.sh`) to find niche agencies that are normally hidden.
-- **Quality Score**: Every discovered site is validated for relevance before being added to the target list.
+The system operates through a structured, multi-stage pipeline designed for data completeness, quality assurance, and automated machine learning.
 
-### 2. ✂️ Scraping (Extraction Stage)
-**Main Logic**: `scrapers/` (Generic & Specialized)
-Once a target is validated, the scraper dives deep into the property categories.
-- **Specialized Engines** (`mubawab_scraper.py`, `menzili_scraper.py`): Custom logic for major platforms.
-- **Heuristic Generic Scraper** (`generic_scraper.py`): A robust fallback system that automatically extracts titles, prices, and images from any real estate site using BS4.
-- **Data Normalization**: Cleans and validates prices, surfaces, and locations to ensure a uniform dataset.
+### 1. Data Collection (Discovery and Scraping)
+**Primary Logic:** `main.py`, `discovery/explorer.py`, `scrapers/`
+The scraping engine recursively mapped the Tunisian real estate ecosystem:
+- **Deep Discovery:** Utilizes search engine APIs (e.g., SerpAPI) to paginate through and locate regional real estate agencies based on specific queries.
+- **Exhaustive Mapping:** Scans sitemaps and DNS records to find niche or unlisted agencies.
+- **Specialized & Generic Extraction:** Employs custom scraping logic for major platforms and a heuristic fallback system (using BeautifulSoup4) for generic websites.
+- **Media Harvesting:** Asynchronously downloads and organizes property images without blocking the main scraping thread.
 
-### 3. 💾 Data Storage (MongoDB Integration)
-**Main Logic**: `database/models.py` & `processing/reporting.py`
-All extracted data is synced in real-time to a Cloud database.
-- **MongoDB Atlas**: Fully persistent storage allowing for complex queries and analysis.
-- **Deduplication**: Uses data hashing to ensure no property is ever saved twice, even across multiple runs.
-- **Excel Export**: For every cycle, a fresh `final_listings_report.xlsx` is generated for instant business use.
+### 2. Data Cleaning and Filtration
+**Primary Logic:** `processing/cleaner.py`
+Raw data is synchronized in real-time to MongoDB Atlas. Stage 1 of the AI pipeline prepares this data:
+- **Geographical Enforcement:** Implements strict keyword whitelists and blacklists to guarantee the dataset contains exclusively Tunisian properties.
+- **Quality Assurance:** Identifies and securely drops corrupted data, outlier prices, and erroneous property parameters.
+- **Text Normalization:** Standardizes property titles, cities, and formatting for Natural Language Processing compatibility.
 
-## 🛠 Command Reference
+### 3. Feature Engineering and Predictive Modeling
+**Primary Logic:** `processing/feature_engineering.py`, `processing/model_trainer.py`
+The cleaned data is transformed into a predictive asset:
+- **Feature Engineering:** Derives metrics such as price per square meter, categorizes cities into valuation tiers, and applies log transformations for skewed variables.
+- **Model Training:** Utilizes a Gradient Boosting Regressor to predict property prices based on the engineered features. The model automatically retrains during each major pipeline cycle, organically increasing its accuracy as the database grows.
+- **Performance Auditing:** Maintains a continuous log of model accuracy (R-squared, MAPE) to track performance metrics over time.
 
-### 1. The Main Engine (Collection + Scraping + AI Sync)
-Run this to start a fresh 24h cycle of data gathering. It will automatically update your AI model at the end.
+### 4. Generative AI Property Visualization
+**Primary Logic:** `processing/terrain_generator.py`, `generate_villa.py`
+Leverages architectural computer vision to visualize real estate investments.
+- **Image-to-Image Generation:** Utilizes Hugging Face's Stable Diffusion InstructPix2Pix model to transform images of empty land or existing structures into generated 3D conceptual architectural renders.
+- **Dynamic Prompting:** Supports customizable text prompts allowing the automatic rendering of specific structures such as modern villas, apartment complexes, or minimalist houses based on the terrain.
+
+---
+
+## Command Reference
+
+Below are the primary commands required to operate the various modules of the application.
+
+### The Main Collection Engine
+Initiates a complete cycle of discovery, scraping, media downloading, and automatic AI model retraining.
 ```powershell
 python main.py
 ```
 
-### 2. The AI Pipeline (Clean + Encode + Retrain)
-Run this if you only want to process existing data in MongoDB and update your model without a new scrape.
+### Manual AI Pipeline Execution
+Processes existing MongoDB data (cleaning, feature engineering, and model training) without initiating a new web scraping cycle.
 ```powershell
 python run_pipeline.py
 ```
 
-### 3. Model Testing
-Test your current AI model with a simulated property.
+### Price Prediction Testing
+Tests the currently trained predictive model by estimating the price of a simulated property.
 ```powershell
 python predict_example.py
 ```
 
-### 4. Database Check
-Quickly see how many listings you have in your local environment.
+### Generative AI Design
+Transforms an image of an empty terrain into a customized 3D architectural render.
+```powershell
+python generate_villa.py "path/to/image.jpg" --type "modern luxury villa" --style "realistic 8k render"
+```
+
+### Database Diagnostics
+Outputs the current total count of listings successfully stored in the local environment database.
 ```powershell
 python get_count.py
 ```
 
-## 📂 Data Structure
-- `pipeline/`: Standardized CSVs for training.
-- `models/`: Your actual AI brain (`.joblib`) and performance history.
-- `downloads/images/`: Automatically collected media folders.
+## Directory Structure
+- `pipeline/`: Standardized, AI-ready CSV files utilized for training.
+- `models/`: The compiled machine learning models (`.joblib`) and historical performance tracking.
+- `downloads/`: Automatically collected media, organized into property images and AI-generated renders.
