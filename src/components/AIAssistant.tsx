@@ -16,6 +16,8 @@ function replyTo(input: string): string {
     return 'Investor mode can layer cap-rate estimates, occupancy, and risk tags. Plug in your spreadsheet model or BI API for real numbers.'
   if (/post|publish|listing|announce/.test(q))
     return 'Signed-in users can open Publish to draft a listing. Persist posts to your API and add image upload + moderation before production.'
+  if (/map|carte|marker|geo/.test(q))
+    return 'Open Map to see listings pinned by city using a static coordinate lookup. Replace with geocoding or exact lat/lng from your database for production.'
   return 'I am REAL’s assistant shell. Ask about 3D previews, accounts, publishing, budgets, or investor workflows — or connect an LLM API to this panel.'
 }
 

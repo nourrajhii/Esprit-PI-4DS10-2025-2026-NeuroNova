@@ -1,16 +1,23 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Box, Layers, Shield } from 'lucide-react'
 import { PropertyCard } from '../components/PropertyCard'
-import { MOCK_LISTINGS } from '../data/mockListings'
+import { useListings } from '../lib/listingsStore'
 
 const Property3DPreview = lazy(() =>
   import('../components/Property3DPreview').then((m) => ({ default: m.Property3DPreview })),
 )
 
 export function Home() {
-  const featured = MOCK_LISTINGS.slice(0, 3)
+  const listings = useListings()
+  const featured = useMemo(
+    () =>
+      [...listings]
+        .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+        .slice(0, 3),
+    [listings],
+  )
 
   return (
     <div className="page-home">

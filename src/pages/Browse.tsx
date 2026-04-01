@@ -1,34 +1,51 @@
 import { useMemo, useState } from 'react'
 import { PropertyCard } from '../components/PropertyCard'
-import { MOCK_LISTINGS } from '../data/mockListings'
+import { useListings } from '../lib/listingsStore'
 
 export function Browse() {
+  const listings = useListings()
+  const [query, setQuery] = useState('')
   const [city, setCity] = useState('')
   const [type, setType] = useState<string>('all')
-  const [maxPrice, setMaxPrice] = useState(800000)
+  const [maxPrice, setMaxPrice] = useState(900000)
 
   const cities = useMemo(() => {
-    const s = new Set(MOCK_LISTINGS.map((l) => l.city))
+    const s = new Set(listings.map((l) => l.city))
     return [...s].sort()
-  }, [])
+  }, [listings])
 
   const filtered = useMemo(() => {
-    return MOCK_LISTINGS.filter((l) => {
+    const q = query.trim().toLowerCase()
+    return listings.filter((l) => {
+      if (q) {
+        const blob = `${l.title} ${l.city} ${l.description}`.toLowerCase()
+        if (!blob.includes(q)) return false
+      }
       if (city && l.city !== city) return false
       if (type !== 'all' && l.type !== type) return false
       if (l.price > maxPrice) return false
       return true
     })
-  }, [city, type, maxPrice])
+  }, [listings, query, city, type, maxPrice])
 
   return (
     <div className="page-browse">
       <header className="page-head">
         <h1>Explore</h1>
-        <p>Filter demo listings — connect your API for live inventory.</p>
+        <p>Search and filter — your published listings appear here with the demo catalog.</p>
       </header>
 
       <div className="filters">
+        <label className="field field--grow">
+          <span>Search</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Title, city, keywords…"
+            aria-label="Search listings"
+          />
+        </label>
         <label className="field">
           <span>City</span>
           <select value={city} onChange={(e) => setCity(e.target.value)}>

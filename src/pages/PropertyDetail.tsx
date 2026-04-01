@@ -1,7 +1,8 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { MapPin, Maximize2, DoorOpen, Calendar } from 'lucide-react'
-import { MOCK_LISTINGS } from '../data/mockListings'
+import { MapPin, Maximize2, DoorOpen, Calendar, Heart } from 'lucide-react'
+import { useListings } from '../lib/listingsStore'
+import { useFavorites } from '../lib/favoritesStore'
 
 const Property3DPreview = lazy(() =>
   import('../components/Property3DPreview').then((m) => ({ default: m.Property3DPreview })),
@@ -9,7 +10,11 @@ const Property3DPreview = lazy(() =>
 
 export function PropertyDetail() {
   const { id } = useParams()
-  const listing = MOCK_LISTINGS.find((l) => l.id === id)
+  const listings = useListings()
+  const { has, toggle } = useFavorites()
+
+  const listing = useMemo(() => listings.find((l) => l.id === id), [listings, id])
+  const favorite = id ? has(id) : false
 
   if (!listing) {
     return (
@@ -36,7 +41,19 @@ export function PropertyDetail() {
       <div className="detail-hero">
         <img src={listing.image} alt="" className="detail-hero__img" />
         <div className="detail-hero__overlay">
-          <span className="detail-badge">{listing.type}</span>
+          <div className="detail-hero__row">
+            <span className="detail-badge">{listing.type}</span>
+            <button
+              type="button"
+              className={`detail-fav${favorite ? ' detail-fav--on' : ''}`}
+              aria-label={favorite ? 'Remove from saved' : 'Save listing'}
+              aria-pressed={favorite}
+              onClick={() => toggle(listing.id)}
+            >
+              <Heart size={22} fill={favorite ? 'currentColor' : 'none'} />
+              {favorite ? 'Saved' : 'Save'}
+            </button>
+          </div>
           <h1>{listing.title}</h1>
           <p className="detail-price">{price}</p>
         </div>

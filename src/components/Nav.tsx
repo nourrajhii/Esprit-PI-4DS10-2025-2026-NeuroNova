@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Building2, LayoutDashboard, LogIn, LogOut, PlusCircle, Search } from 'lucide-react'
+import { Building2, LayoutDashboard, LogIn, LogOut, Map, PlusCircle, Search } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -30,6 +30,10 @@ export function Nav() {
           <NavLink to="/browse" className={linkClass}>
             <Search size={18} aria-hidden />
             Explore
+          </NavLink>
+          <NavLink to="/map" className={linkClass}>
+            <Map size={18} aria-hidden />
+            Map
           </NavLink>
           {user && (
             <>
