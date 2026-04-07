@@ -48,3 +48,35 @@ def build_detailed_reason(a, b, score_a, score_b, budget):
         f"Le bien A est recommandé avec un score de {score_a} contre {score_b} pour le bien B, "
         + "car " + ", ".join(reasons) + "."
     )
+def compute_enriched_score(apt, city_avg_price, city_avg_surface, market_data):
+    # Comparaison avec le prix moyen au m² du marché
+    price_per_m2 = apt['price'] / apt['surface_m2']
+    price_per_m2_ratio = price_per_m2 / city_avg_price
+
+    # Bonus en fonction de la surface par rapport à la moyenne du marché
+    surface_ratio = apt['surface_m2'] / city_avg_surface
+
+    # Calcul du score basé sur ces critères
+    score = (price_per_m2_ratio * 0.4) + (surface_ratio * 0.3) + (apt['rooms'] * 0.2) + (apt['bathrooms'] * 0.1)
+    
+    # Appliquer un facteur supplémentaire pour la localisation (exemple : quartier prisé)
+    if apt['city'] in market_data['premium_cities']:
+        score *= 1.2  # Bonus pour les quartiers populaires
+
+    return score
+
+def recommend_apartments(budget, all_apts, city, market_data):
+    # Filtrer les appartements qui rentrent dans le budget
+    apartments_in_budget = [apt for apt in all_apts if apt['price'] <= budget]
+
+    # Calculer le score enrichi pour chaque appartement
+    apartment_scores = []
+    for apt in apartments_in_budget:
+        score = compute_enriched_score(apt, market_data['avg_price_per_m2'][city], market_data['avg_surface'][city], market_data)
+        apartment_scores.append((apt, score))
+
+    # Trier les appartements par score (le meilleur score en premier)
+    apartment_scores.sort(key=lambda x: x[1], reverse=True)
+
+    # Retourner les appartements triés par pertinence
+    return [apt for apt, score in apartment_scores]

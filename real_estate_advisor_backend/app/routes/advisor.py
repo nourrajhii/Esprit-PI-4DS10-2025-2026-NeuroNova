@@ -20,6 +20,8 @@ from app.schemas.recommendation_schema_v2 import RecommendRequest, RecommendResp
 from app.services.recommendation_service_v2 import get_recommendations
 from app.schemas.market_insights_schema import MarketInsightsResponse
 from app.services.market_insights_service import get_market_insights
+from app.routes.advisor import router as advisor_router
+from typing import List
 
 
 router = APIRouter(prefix="/advisor", tags=["Advisor"])
@@ -143,45 +145,25 @@ def generate_quote(payload: QuoteRequest, db: Session = Depends(get_db)):
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Quote generation failed: {str(e)}")
     
+router = APIRouter(prefix="/advisor", tags=["Advisor"])
+
 @router.post("/predict-price", response_model=PricePredictionResponse)
 def predict_apartment_price(payload: PricePredictionRequest):
-    """
-    Prédit le prix d'un appartement à partir de ses caractéristiques.
- 
-    Retourne :
-    - **predicted_price** : prix estimé (médiane du marché)
-    - **confidence_range** : fourchette basse–haute (Q25–Q75)
-    - **price_per_m2** : prix au m² estimé
-    - **market_data** : statistiques du marché pour la ville donnée
-    """
     try:
+        # Appeler la fonction de prédiction de prix
         result = predict_price(
-            surface_m2       = payload.surface_m2,
-            rooms            = payload.rooms,
-            bathrooms        = payload.bathrooms,
-            city             = payload.city,
-            property_type    = payload.property_type,
-            transaction_type = payload.transaction_type,
-        )
-    except FileNotFoundError as e:
-        raise HTTPException(
-            status_code=503,
-            detail=str(e),
+            surface_m2=payload.surface_m2,
+            rooms=payload.rooms,
+            bathrooms=payload.bathrooms,
+            city=payload.city,
+            property_type=payload.property_type,
+            transaction_type=payload.transaction_type
         )
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erreur de prédiction : {str(e)}",
-        )
- 
-    return PricePredictionResponse(
-        predicted_price  = result["predicted_price"],
-        confidence_range = result["confidence_range"],
-        price_per_m2     = result["price_per_m2"],
-        market_data      = result["market_data"],
-        input_summary    = payload.model_dump(),
-    )
- 
+        raise HTTPException(status_code=500, detail=f"Erreur dans la prédiction du prix : {str(e)}")
+    
+    # Retourner le résultat de la prédiction
+    return result
  
 @router.get("/model-info", response_model=ModelInfoResponse)
 def get_prediction_model_info():
@@ -193,36 +175,17 @@ def get_prediction_model_info():
         return get_model_info()
     except FileNotFoundError as e:
         raise HTTPException(status_code=503, detail=str(e))
-@router.post("/recommend", response_model=RecommendResponse)
-def recommend_apartments(payload: RecommendRequest, db: Session = Depends(get_db)):
+@router.post("/recommend", response_model=List[Apartment])
+def recommend_apartments_route(budget: float, db: Session = Depends(get_db)):
     """
-    Recommande les appartements les plus proches des préférences utilisateur.
- 
-    **Modèle : scoring multi-critères pondéré**
-    - budget    40%
-    - surface   25%
-    - pièces    20%
-    - ville     10%
-    - salles de bain 5%
- 
-    Chaque résultat inclut un `score_detail` pour expliquer la note.
+    Cette route recommande des appartements en fonction du budget de l'utilisateur et de leur score.
     """
-    results = get_recommendations(
-        db               = db,
-        budget           = payload.budget,
-        surface_m2       = payload.surface_m2,
-        rooms            = payload.rooms,
-        bathrooms        = payload.bathrooms,
-        city             = payload.city,
-        transaction_type = payload.transaction_type,
-        top_n            = payload.top_n,
-    )
- 
-    return RecommendResponse(
-        total_found   = len(results),
-        user_criteria = payload.model_dump(),
-        results       = results,
-    )
+    all_apts = db.query(Apartment).all()  # Récupère tous les appartements de la base
+    market_data = get_market_insights(db)  # Récupère les statistiques du marché
+
+    recommended_apts = recommend_apartments(budget, all_apts, "Tunis", market_data)
+
+    return recommended_apts
 @router.get("/market-insights", response_model=MarketInsightsResponse)
 def market_insights(db: Session = Depends(get_db)):
     """

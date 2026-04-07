@@ -56,3 +56,17 @@ class ModelInfoResponse(BaseModel):
     price_max:         float
     price_mean:        float
     market_pm2_median: float
+
+class PricePredictionRequest(BaseModel):
+    surface_m2: float
+    rooms: int
+    bathrooms: int
+    city: str
+    property_type: str
+    transaction_type: str
+
+class PricePredictionResponse(BaseModel):
+    predicted_price: float
+    confidence_range: dict
+    price_per_m2: float
+    market_data: dict
