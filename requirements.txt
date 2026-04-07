@@ -1,0 +1,17 @@
+# ── API ───────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+
+# ── LangChain / RAG ───────────────────────────────────────────
+langchain==0.3.13
+langchain-community==0.3.13
+langchain-ollama==0.2.3
+langchain-text-splitters==0.3.4
+faiss-cpu==1.9.0
+
+# ── PDF (pour build_db.py) ────────────────────────────────────
+pymupdf==1.25.1
+
+# ── Utilitaires ───────────────────────────────────────────────
+python-dotenv==1.0.1

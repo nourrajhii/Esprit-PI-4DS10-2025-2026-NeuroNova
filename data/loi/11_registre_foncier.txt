@@ -1,0 +1,120 @@
+وفي صورة عدم الإعلام فإن حق القيام يسقط بمضي ستة أشهر من يوم ترسيم العقد بالسجل العقاري.
+Le droit de préemption se prescrit :
+- 1 mois à compter de la notification de l'achat par l'acheteur (avec indication du prix)
+- 6 mois à compter de l'enregistrement du contrat au registre foncier en l'absence de notification
+
+================================================================
+TITRE VIII — PARTAGE (القسمة)
+================================================================
+
+الفصل 116 / Article 116 :
+تتم القسمة بالمراضاة على حسب ما يتفق عليه الشركاء الذين لهم أهلية التصرف في حقوقهم ولا تثبت إلا بكتب.
+Le partage amiable est effectué selon les conventions des copartageants capables. Il n'est valable que par écrit.
+
+الفصل 119 / Article 119 :
+تتولى المحكمة ضبط نصيب كل شريك وفرز ما يمكن أن يمتاز به من الأعيان المشتركة.
+Le tribunal fixe la quote-part de chaque copartageant et procède à l'attribution des biens communs.
+
+الفصل 123 / Article 123 :
+يعتبر كل من المتقاسمين مالكا للحصة التي آلت إليه منذ أن كان مالكا من أول الشيوع.
+Chaque copartageant est réputé avoir été propriétaire de la portion qui lui est attribuée depuis le début de l'indivision.
+→ Effet déclaratif et rétroactif du partage.
+
+الفصل 125 / Article 125 :
+القسمة الرضائية أو الحكمية باتة لا رجوع فيها ولا تنقض إلا بسبب الإكراه أو الغلط أو التغرير.
+Le partage amiable ou judiciaire est définitif et ne peut être annulé que pour contrainte, erreur ou dol.
+
+الفصل 129 / Article 129 :
+لا تسقط دعوى القسمة بمرور الزمن.
+L'action en partage ne se prescrit pas.
+→ IMPORTANT : On peut demander le partage à tout moment, sans délai.
+
+================================================================
+TITRE IX — USUFRUIT, USAGE ET HABITATION
+================================================================
+
+الفصل 142 / Article 142 — USUFRUIT (حق الانتفاع) :
+الانتفاع هو الحق في استعمال شيء على ملك الغير واستغلاله مثل مالكه لكن بشرط حفظ عينه.
+L'usufruit est le droit d'user et de jouir d'une chose appartenant à autrui comme le propriétaire lui-même, mais à charge d'en conserver la substance.
+
+الفصل 150 / Article 150 :
+للمنتفع مباشرة حقه في الانتفاع بنفسه أو بجميع أوجه التصرف الأخرى.
+L'usufruitier peut exercer son droit par lui-même ou par tout autre mode de jouissance (location notamment).
+
+الفصل 152 / Article 152 :
+يتسلم المنتفع الأشياء على حالتها وعليه قبل تسلمها أن يضبطها بكشف.
+L'usufruitier reçoit les choses en l'état et doit en dresser un état descriptif avant la prise de possession.
+
+الفصل 153 / Article 153 — RÉPARATIONS :
+لا يلزم المنتفع إلا بإصلاحات الحفظ.
+أما الإصلاحات الجسيمة فهي على مالك الرقبة.
+L'usufruitier n'est tenu qu'aux réparations d'entretien. Les grosses réparations incombent au nu-propriétaire.
+
+الفصل 157 / Article 157 — EXTINCTION DE L'USUFRUIT :
+ينقضي حق الانتفاع بأحد الأسباب الآتية :
+أولا : موت المنتفع / Décès de l'usufruitier
+ثانيا : انتهاء مدة الانتفاع / Expiration du terme
+ثالثا : اجتماع حقي الانتفاع والملكية في شخص واحد / Réunion de l'usufruit et de la nue-propriété
+رابعا : عدم ممارسة حق الانتفاع مدة خمس سنوات / Non-exercice pendant 5 ans
+خامسا : هلاك العين / Perte de la chose
+
+الفصل 159 / Article 159 :
+مدة المنفعة المقررة لذات معنوية لا يمكن أن تتجاوز ثلاثين سنة.
+La durée de l'usufruit accordé à une personne morale ne peut dépasser 30 ans.
+
+الفصل 162 / Article 162 — DROIT D'USAGE ET D'HABITATION :
+نطاق حق الاستعمال أو حق السكنى يتحدد بمقدار ما يحتاج إليه صاحب الحق هو وأسرته لخاصة أنفسهم.
+Le droit d'usage ou d'habitation se limite à ce dont le titulaire et sa famille ont besoin pour leurs besoins personnels.
+
+الفصل 163 / Article 163 :
+لا يجوز إحالة ولا كراء حق الاستعمال أو حق السكنى.
+Le droit d'usage et le droit d'habitation sont incessibles et ne peuvent être loués.
+
+================================================================
+TITRE X — SERVITUDES (حقوق الارتفاق)
+================================================================
+
+الفصل 165 / Article 165 :
+الارتفاق حق مرتب على عقار لمنفعة عقار يملكه شخص غير مالك للعقار الأول.
+La servitude est une charge établie sur un immeuble pour l'utilité d'un immeuble appartenant à une personne différente.
+
+الفصل 166 / Article 166 :
+ينشأ الارتفاق إما عن الوضعية الطبيعية للأماكن وإما عن القانون وإما عن اتفاقات بين مالكي العقارات.
+Les servitudes naissent de la situation naturelle des lieux, de la loi ou de conventions entre propriétaires.
+
+الفصل 167 / Article 167 — ÉCOULEMENT DES EAUX :
+الأراضي المنخفضة تتحمل إزاء الأراضي المرتفعة عنها سيلان مياهها إذا كانت المياه جارية بنفسها بدون فعل فاعل.
+Les fonds inférieurs sont assujettis à recevoir les eaux qui découlent naturellement des fonds supérieurs sans intervention humaine.
+
+الفصل 168 / Article 168 — DISTANCES PLANTATIONS :
+لا يجوز غرس أشجار ولا شجيرات بقرب أرض الجار إلا على البعد المعين بالقوانين الخاصة.
+Il n'est pas permis de planter des arbres ou arbustes à proximité du terrain voisin qu'à la distance fixée par les lois particulières.
+→ Distance : 2 mètres pour les arbres de plus de 2m de hauteur / 0,5 m pour les autres.
+
+الفصل 172 / Article 172 — FENÊTRES SUR MUR MITOYEN :
+لا يجوز للجار أن يحدث نافذة أو فتحة في الحائط المشترك إلا بإذن كتابي من جاره.
+Il est interdit d'ouvrir une fenêtre ou une ouverture dans le mur mitoyen sans autorisation écrite du voisin.
+
+الفصل 174 / Article 174 — VUES :
+لا يجوز لصاحب عقار أن يكون له مطل مستقيم على أرض المالك المجاور إلا على مسافة مترين بين الحائط الذي يحدث فيه ما ذكر وبين الأرض المجاورة.
+Le propriétaire ne peut avoir de vue droite sur le fonds voisin qu'à une distance de 2 mètres entre le mur et le fonds voisin.
+→ Vue oblique : distance minimale 0,5 mètre.
+
+الفصل 177 / Article 177 — DROIT DE PASSAGE :
+لمالك العقار المحاط من كل جانب إذا لم يكن له منفذ إلى الطريق العام أن يطلب ممرا في العقارات المجاورة مقابل دفعه تعويضا عادلا.
+Le propriétaire d'un fonds enclavé qui n'a pas d'issue sur la voie publique peut réclamer un passage sur les fonds voisins moyennant une juste indemnité.
+
+الفصل 178 / Article 178 :
+يؤخذ الممر من الجهة التي تكون فيها مسافته أقصر ما يمكن ويراعى في تعيينه أخف ضرر لمالك العقار المحدث به.
+Le passage est pris du côté où il est le plus court possible et où il cause le moins de préjudice au propriétaire du fonds traversé.
+
+الفصل 188 / Article 188 — EXTINCTION DES SERVITUDES :
+ينقضي حق الارتفاق :
+أولا : بزوال الموجب / Par disparition de la cause
+ثانيا : باجتماع العقار المرتب له والعقار المرتب عليه في يد مالك واحد / Par réunion des deux fonds en une seule main
+
+الفصل 189 / Article 189 :
+يسقط حق الارتفاق بعدم استعماله مدة خمس عشرة سنة.
+La servitude s'éteint par le non-usage pendant 15 ans.
+
+================================================================
