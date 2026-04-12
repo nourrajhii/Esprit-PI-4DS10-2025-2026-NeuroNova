@@ -1,82 +1,92 @@
-def build_reason(total_cost_a: float, total_cost_b: float, budget: float) -> str:
-    if total_cost_a <= budget and total_cost_b <= budget:
-        if total_cost_a < total_cost_b:
-            return "L'appartement A respecte le budget et coûte moins cher au total."
-        return "L'appartement B respecte le budget et coûte moins cher au total."
+from app.services.apartment_classifier_service import classify_apartment_listing
 
-    if total_cost_a <= budget and total_cost_b > budget:
-        return "L'appartement A est recommandé car il respecte le budget alors que B le dépasse."
 
-    if total_cost_b <= budget and total_cost_a > budget:
-        return "L'appartement B est recommandé car il respecte le budget alors que A le dépasse."
+def compute_enriched_score(apt, budget: float, market_data: dict) -> float:
+    price = float(apt.price or 0)
+    surface = float(apt.surface_m2 or 0)
+    rooms = int(apt.rooms or 0)
+    bathrooms = int(apt.bathrooms or 0)
 
-    if total_cost_a < total_cost_b:
-        return "Les deux dépassent le budget, mais l'appartement A reste le choix le moins coûteux."
-    return "Les deux dépassent le budget, mais l'appartement B reste le choix le moins coûteux."
-def build_detailed_reason(a, b, score_a, score_b, budget):
-    reasons = []
+    if price <= 0 or surface <= 0:
+        return 0.0
 
-    # 1. Budget
-    if a.price <= budget and b.price > budget:
-        reasons.append("il respecte votre budget contrairement au bien B")
-    elif b.price <= budget and a.price > budget:
-        reasons.append("le bien B respecte mieux le budget")
-    elif a.price < b.price:
-        reasons.append("il est moins cher que le bien B")
+    pm2 = price / surface
 
-    # 2. Surface / prix
-    if a.surface_m2 and b.surface_m2:
-        ratio_a = a.surface_m2 / a.price if a.price else 0
-        ratio_b = b.surface_m2 / b.price if b.price else 0
+    global_stats = market_data.get("global_stats", {})
+    pm2_median = float(global_stats.get("pm2_median", 1) or 1)
+    surface_moyenne = float(global_stats.get("surface_moyenne", 1) or 1)
 
-        if ratio_a > ratio_b:
-            reasons.append("il offre une meilleure surface par rapport au prix")
+    # score budget
+    if price <= budget:
+        budget_score = 40
+    else:
+        overflow = (price - budget) / budget if budget > 0 else 1
+        budget_score = max(0, 40 - overflow * 50)
 
-    # 3. Rooms
-    if (a.rooms or 0) > (b.rooms or 0):
-        reasons.append("il propose plus de pièces")
+    # score prix/m²
+    pm2_score = max(0, 25 - abs(pm2 - pm2_median) / pm2_median * 25)
 
-    # 4. Bathrooms
-    if (a.bathrooms or 0) > (b.bathrooms or 0):
-        reasons.append("il dispose de plus de salles de bain")
+    # score surface
+    surface_score = min(15, (surface / surface_moyenne) * 15)
 
-    # fallback
-    if not reasons:
-        reasons.append("il présente un meilleur score global")
+    # score confort
+    comfort_score = min(10, rooms * 2) + min(10, bathrooms * 2)
 
-    return (
-        f"Le bien A est recommandé avec un score de {score_a} contre {score_b} pour le bien B, "
-        + "car " + ", ".join(reasons) + "."
-    )
-def compute_enriched_score(apt, city_avg_price, city_avg_surface, market_data):
-    # Comparaison avec le prix moyen au m² du marché
-    price_per_m2 = apt['price'] / apt['surface_m2']
-    price_per_m2_ratio = price_per_m2 / city_avg_price
+    total = budget_score + pm2_score + surface_score + comfort_score
+    return round(total, 2)
 
-    # Bonus en fonction de la surface par rapport à la moyenne du marché
-    surface_ratio = apt['surface_m2'] / city_avg_surface
 
-    # Calcul du score basé sur ces critères
-    score = (price_per_m2_ratio * 0.4) + (surface_ratio * 0.3) + (apt['rooms'] * 0.2) + (apt['bathrooms'] * 0.1)
-    
-    # Appliquer un facteur supplémentaire pour la localisation (exemple : quartier prisé)
-    if apt['city'] in market_data['premium_cities']:
-        score *= 1.2  # Bonus pour les quartiers populaires
+def recommend_apartments(budget: float, all_apts: list, market_data: dict, limit: int = 5):
+    apartments_in_budget = [apt for apt in all_apts if float(apt.price or 0) <= budget]
 
-    return score
+    if not apartments_in_budget:
+        apartments_in_budget = all_apts
 
-def recommend_apartments(budget, all_apts, city, market_data):
-    # Filtrer les appartements qui rentrent dans le budget
-    apartments_in_budget = [apt for apt in all_apts if apt['price'] <= budget]
-
-    # Calculer le score enrichi pour chaque appartement
     apartment_scores = []
     for apt in apartments_in_budget:
-        score = compute_enriched_score(apt, market_data['avg_price_per_m2'][city], market_data['avg_surface'][city], market_data)
+        score = compute_enriched_score(apt, budget, market_data)
         apartment_scores.append((apt, score))
 
-    # Trier les appartements par score (le meilleur score en premier)
     apartment_scores.sort(key=lambda x: x[1], reverse=True)
 
-    # Retourner les appartements triés par pertinence
-    return [apt for apt, score in apartment_scores]
+    return [apt for apt, _ in apartment_scores[:limit]]
+
+
+def recommend_apartments_from_prompt(criteria: dict, all_apts: list, market_data: dict, limit: int = 5):
+    scored = []
+
+    budget = criteria.get("budget_max") or 999999999
+
+    for apt in all_apts:
+        price = float(apt.price or 0)
+        surface = float(apt.surface_m2 or 0)
+        rooms = int(apt.rooms or 0)
+        bathrooms = int(apt.bathrooms or 0)
+
+        if price <= 0 or surface <= 0:
+            continue
+
+        base_score = compute_enriched_score(apt, budget, market_data)
+
+        listing_class = classify_apartment_listing(apt.title, apt.property_type, apt.url)
+
+        type_bonus = 0
+
+        if criteria.get("category") and listing_class["category"] == criteria["category"]:
+            type_bonus += 20
+
+        if criteria.get("sub_type") and listing_class["sub_type"] == criteria["sub_type"]:
+            type_bonus += 15
+
+        if criteria.get("sub_type") == "maison" and listing_class["sub_type"] in ["villa", "duplex"]:
+            type_bonus += 10
+
+        if criteria.get("sub_type") == "fonds_de_commerce" and listing_class["sub_type"] in ["fonds_de_commerce", "local_commercial", "commercial"]:
+            type_bonus += 10
+
+        score = round(base_score + type_bonus, 2)
+        scored.append((apt, score, listing_class))
+
+    scored.sort(key=lambda x: x[1], reverse=True)
+
+    return [item[0] for item in scored[:limit]]

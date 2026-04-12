@@ -1,208 +1,159 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models.apartment import Apartment
-from app.models.quote import Quote
-from app.models.recommendation import Recommendation
-from app.schemas.advisor_schema import CompareRequest, CompareResponse
-from app.schemas.quote_schema import QuoteRequest, QuoteResponse
+from app.schemas.prompt_schema import PromptRequest, PromptAdvisorResponse
+from app.services.prompt_parser_service import parse_user_prompt
+from app.services.prompt_recommendation_service import filter_apartments_by_criteria
+from app.services.prompt_response_service import generate_natural_response
+from app.services.recommendation_service import recommend_apartments
 from app.services.scoring_service import compute_apartment_score
-from app.services.quote_service import estimate_quote
-import traceback
-from fastapi import HTTPException
-from app.schemas.price_prediction_schema import (
-    PricePredictionRequest,
-    PricePredictionResponse,
-    ModelInfoResponse
-)
-from app.services.price_prediction_service import predict_price, get_model_info
-from app.schemas.recommendation_schema_v2 import RecommendRequest, RecommendResponse
-from app.services.recommendation_service_v2 import get_recommendations
-from app.schemas.market_insights_schema import MarketInsightsResponse
+from app.models.apartment import Apartment
 from app.services.market_insights_service import get_market_insights
-from app.routes.advisor import router as advisor_router
-from typing import List
-
-
+from app.database import get_db
+from app.services.recommendation_service import recommend_apartments_from_prompt
+from app.services.apartment_classifier_service import classify_apartment_listing 
 router = APIRouter(prefix="/advisor", tags=["Advisor"])
+ 
+ 
+import traceback
 
+@router.post("/prompt", response_model=PromptAdvisorResponse)
+def advisor_from_prompt(payload: PromptRequest, db: Session = Depends(get_db)):
+    try:
+        # 1. Parser le prompt utilisateur avec Ollama
+        criteria = parse_user_prompt(payload.prompt)
 
-@router.post("/compare", response_model=CompareResponse)
-def compare_apartments(payload: CompareRequest, db: Session = Depends(get_db)):
-    apartment_a = db.query(Apartment).filter(Apartment.id == payload.apartment_a_id).first()
-    apartment_b = db.query(Apartment).filter(Apartment.id == payload.apartment_b_id).first()
+        # 2. Charger tous les biens
+        all_apts = db.query(Apartment).all()
 
-    if not apartment_a or not apartment_b:
-        raise HTTPException(status_code=404, detail="Un ou deux appartements sont introuvables.")
+        # 3. Filtrage intelligent initial
+        filtered_apts = filter_apartments_by_criteria(all_apts, criteria)
 
-    score_a = compute_apartment_score(
-        float(apartment_a.price),
-        payload.budget,
-        float(apartment_a.surface_m2 or 0),
-        int(apartment_a.rooms or 0),
-        int(apartment_a.bathrooms or 0),
-    )
+        # 4. Fallback progressif si aucun résultat
+        if not filtered_apts:
+            relaxed_criteria = criteria.copy()
+            relaxed_criteria["transaction_type"] = None
+            filtered_apts = filter_apartments_by_criteria(all_apts, relaxed_criteria)
 
-    score_b = compute_apartment_score(
-        float(apartment_b.price),
-        payload.budget,
-        float(apartment_b.surface_m2 or 0),
-        int(apartment_b.rooms or 0),
-        int(apartment_b.bathrooms or 0),
-    )
+        if not filtered_apts:
+            relaxed_criteria = criteria.copy()
+            relaxed_criteria["allowed_property_types"] = []
+            filtered_apts = filter_apartments_by_criteria(all_apts, relaxed_criteria)
 
-    total_cost_a = float(apartment_a.price)
-    total_cost_b = float(apartment_b.price)
+        if not filtered_apts:
+            relaxed_criteria = criteria.copy()
+            relaxed_criteria["city"] = None
+            filtered_apts = filter_apartments_by_criteria(all_apts, relaxed_criteria)
 
-    details = {
-        "budget_ok_a": total_cost_a <= payload.budget,
-        "budget_ok_b": total_cost_b <= payload.budget,
-        "price_diff": round(total_cost_a - total_cost_b, 2),
-        "surface_ratio_a": round(float(apartment_a.surface_m2 or 0) / float(apartment_a.price or 1), 6),
-        "surface_ratio_b": round(float(apartment_b.surface_m2 or 0) / float(apartment_b.price or 1), 6),
+        # 5. Charger les market insights
+        market_data = get_market_insights(db)
+        if "error" in market_data:
+            raise HTTPException(status_code=404, detail=market_data["error"])
+
+        # 6. Recommandation des meilleurs biens
+        recommended_apts = recommend_apartments_from_prompt(
+    criteria=criteria,
+    all_apts=filtered_apts,
+    market_data=market_data,
+    limit=criteria.get("top_k", 5)
+)
+
+        # 7. Transformer en dictionnaires pour la réponse
+        recommended_dicts = [
+    {
+        "id": a.id,
+        "title": a.title,
+        "price": float(a.price or 0),
+        "city": a.city,
+        "property_type": a.property_type,
+        "surface_m2": float(a.surface_m2 or 0),
+        "rooms": int(a.rooms or 0),
+        "bathrooms": int(a.bathrooms or 0),
+        "transaction_type": a.transaction_type,
+        "url": a.url,
+        "detected_category": classify_apartment_listing(a.title, a.property_type, a.url)["category"],
+        "detected_sub_type": classify_apartment_listing(a.title, a.property_type, a.url)["sub_type"]
     }
+    for a in recommended_apts
+]
+        # 8. Comparaison optionnelle
+        comparison_result = None
 
-    if score_a >= score_b:
-        recommended_id = apartment_a.id
-        reason = (
-            f"Le bien A est recommandé avec un score de {score_a} contre {score_b} pour le bien B, "
-            f"car il offre un meilleur équilibre entre budget, surface et confort."
-        )
-    else:
-        recommended_id = apartment_b.id
-        reason = (
-            f"Le bien B est recommandé avec un score de {score_b} contre {score_a} pour le bien A, "
-            f"car il offre un meilleur équilibre entre budget, surface et confort."
-        )
+        if criteria.get("compare") and len(recommended_apts) >= 2:
+            a = recommended_apts[0]
+            b = recommended_apts[1]
+            budget = criteria.get("budget_max") or 999999999
 
-    recommendation = Recommendation(
-        user_id=payload.user_id,
-        apartment_a_id=apartment_a.id,
-        apartment_b_id=apartment_b.id,
-        budget=payload.budget,
-        score_a=score_a,
-        score_b=score_b,
-        recommended_apartment_id=recommended_id,
-        reason_text=reason,
-        total_cost_a=total_cost_a,
-        total_cost_b=total_cost_b
-    )
+            score_a = compute_apartment_score(
+                float(a.price or 0),
+                budget,
+                float(a.surface_m2 or 0),
+                int(a.rooms or 0),
+                int(a.bathrooms or 0),
+            )
 
-    db.add(recommendation)
-    db.commit()
+            score_b = compute_apartment_score(
+                float(b.price or 0),
+                budget,
+                float(b.surface_m2 or 0),
+                int(b.rooms or 0),
+                int(b.bathrooms or 0),
+            )
 
-    return CompareResponse(
-        apartment_a_id=apartment_a.id,
-        apartment_b_id=apartment_b.id,
-        score_a=score_a,
-        score_b=score_b,
-        total_cost_a=total_cost_a,
-        total_cost_b=total_cost_b,
-        recommended_apartment_id=recommended_id,
-        reason=reason,
-        details=details
-    )
+            comparison_result = {
+                "apartment_a_id": a.id,
+                "apartment_b_id": b.id,
+                "score_a": score_a,
+                "score_b": score_b,
+                "recommended_apartment_id": a.id if score_a >= score_b else b.id
+            }
 
+        # 9. Réponse naturelle
+        natural_response = generate_natural_response(criteria, recommended_dicts, comparison_result)
 
-@router.post("/quote", response_model=QuoteResponse)
-def generate_quote(payload: QuoteRequest, db: Session = Depends(get_db)):
-    try:
-        apartment = db.query(Apartment).filter(Apartment.id == payload.apartment_id).first()
-
-        if not apartment:
-            raise HTTPException(status_code=404, detail="Appartement introuvable.")
-
-        result = estimate_quote(float(apartment.surface_m2 or 0), "medium")
-
-        quote = Quote(
-            user_id=payload.user_id,
-            apartment_id=apartment.id,
-            project_type=payload.project_type,
-            surface_m2=float(apartment.surface_m2 or 0),
-            subtotal_materials=float(result["subtotal_materials"]),
-            subtotal_labor=float(result["subtotal_labor"]),
-            subtotal_equipment=float(result["subtotal_equipment"]),
-            contingency_cost=float(result["contingency_cost"]),
-            total_cost=float(result["total_cost"])
-        )
-
-        db.add(quote)
-        db.commit()
-        db.refresh(quote)
-
-        return QuoteResponse(
-            apartment_id=apartment.id,
-            project_type=payload.project_type,
-            subtotal_materials=float(result["subtotal_materials"]),
-            subtotal_labor=float(result["subtotal_labor"]),
-            subtotal_equipment=float(result["subtotal_equipment"]),
-            contingency_cost=float(result["contingency_cost"]),
-            total_cost=float(result["total_cost"])
-        )
+        return {
+            "parsed_criteria": criteria,
+            "recommended_apartments": recommended_dicts,
+            "comparison_result": comparison_result,
+            "natural_response": natural_response
+        }
 
     except Exception as e:
-        db.rollback()
         traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Quote generation failed: {str(e)}")
-    
-router = APIRouter(prefix="/advisor", tags=["Advisor"])
+        raise HTTPException(status_code=500, detail=f"advisor_from_prompt failed: {str(e)}")
+@router.get("/debug/property-types")
+def debug_property_types(db: Session = Depends(get_db)):
+    all_apts = db.query(Apartment).all()
 
-@router.post("/predict-price", response_model=PricePredictionResponse)
-def predict_apartment_price(payload: PricePredictionRequest):
-    try:
-        # Appeler la fonction de prédiction de prix
-        result = predict_price(
-            surface_m2=payload.surface_m2,
-            rooms=payload.rooms,
-            bathrooms=payload.bathrooms,
-            city=payload.city,
-            property_type=payload.property_type,
-            transaction_type=payload.transaction_type
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erreur dans la prédiction du prix : {str(e)}")
-    
-    # Retourner le résultat de la prédiction
-    return result
- 
-@router.get("/model-info", response_model=ModelInfoResponse)
-def get_prediction_model_info():
-    """
-    Retourne les métadonnées du modèle :
-    villes connues, prix min/max/moyen, prix au m² médian du marché.
-    """
-    try:
-        return get_model_info()
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=503, detail=str(e))
-@router.post("/recommend", response_model=List[Apartment])
-def recommend_apartments_route(budget: float, db: Session = Depends(get_db)):
-    """
-    Cette route recommande des appartements en fonction du budget de l'utilisateur et de leur score.
-    """
-    all_apts = db.query(Apartment).all()  # Récupère tous les appartements de la base
-    market_data = get_market_insights(db)  # Récupère les statistiques du marché
+    values = sorted(list({
+        (a.property_type or "").strip()
+        for a in all_apts
+        if a.property_type
+    }))
 
-    recommended_apts = recommend_apartments(budget, all_apts, "Tunis", market_data)
+    return {"property_types": values[:200]}
 
-    return recommended_apts
-@router.get("/market-insights", response_model=MarketInsightsResponse)
-def market_insights(db: Session = Depends(get_db)):
-    """
-    Analyse complète du marché immobilier basée sur les données de la BDD.
- 
-    Retourne :
-    - **global_stats** : prix moyen, médian, prix/m², surface moyenne
-    - **distribution_prix** : répartition des biens par tranche de prix
-    - **stats_par_rooms** : statistiques par nombre de pièces
-    - **top_opportunites** : 5 biens avec le meilleur rapport surface/prix
-    - **top_premium** : 5 biens avec le prix/m² le plus élevé
-    - **market_indicators** : % biens premium, % accessibles, fourchette typique
-    """
-    result = get_market_insights(db)
- 
-    if "error" in result:
-        raise HTTPException(status_code=404, detail=result["error"])
- 
-    return result
- 
+
+@router.get("/debug/cities")
+def debug_cities(db: Session = Depends(get_db)):
+    all_apts = db.query(Apartment).all()
+
+    values = sorted(list({
+        (a.city or "").strip()
+        for a in all_apts
+        if a.city
+    }))
+
+    return {"cities": values[:200]}
+
+
+@router.get("/debug/transaction-types")
+def debug_transaction_types(db: Session = Depends(get_db)):
+    all_apts = db.query(Apartment).all()
+
+    values = sorted(list({
+        (a.transaction_type or "").strip()
+        for a in all_apts
+        if a.transaction_type
+    }))
+
+    return {"transaction_types": values[:200]}
