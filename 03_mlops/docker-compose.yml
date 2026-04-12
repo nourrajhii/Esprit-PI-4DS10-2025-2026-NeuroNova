@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  # ── API FastAPI ────────────────────────────────────────────────
+  api:
+    build:
+      context: ..
+      dockerfile: 03_mlops/Dockerfile
+    container_name: immo_api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_DIR=/app/models
+      - BEST_MODEL_JSON=/app/best_model.json
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    volumes:
+      - ../02_modeling/outputs/models:/app/models:ro
+      - ../02_modeling/outputs/best_model.json:/app/best_model.json:ro
+    depends_on:
+      - mlflow
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── Frontend React ─────────────────────────────────────────────
+  frontend:
+    image: node:20-alpine
+    container_name: immo_frontend
+    working_dir: /app
+    command: sh -c "npm install && npm run build && npx serve -s dist -l 3000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../04_deployment/frontend:/app
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # ── MLflow ────────────────────────────────────────────────────
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.11.1
+    container_name: immo_mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    volumes:
+      - mlflow_data:/mlflow
+    restart: unless-stopped
+
+  # ── Base de données MLflow (SQLite via volume) ─────────────────
+  # Note : pour production, remplacer par PostgreSQL
+
+volumes:
+  mlflow_data:
+    driver: local
