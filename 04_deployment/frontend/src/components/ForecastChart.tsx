@@ -1,5 +1,4 @@
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -15,7 +14,9 @@ import type { ForecastPoint } from "../services/api.service";
 
 interface Props {
   points: ForecastPoint[];
-  prixActuel: number;
+  valeurActuelle: number;
+  unite: string;
+  titre?: string;
 }
 
 interface ChartPoint {
@@ -41,7 +42,7 @@ function CustomTooltip({ active, payload, label }: any) {
     <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-lg text-sm">
       <p className="font-semibold text-slate-700 mb-1">{label}</p>
       <p className="text-blue-600">
-        Prix prédit : <strong>{FMT.format(d.prix)} TND/m²</strong>
+        Prédit : <strong>{FMT.format(d.prix)}</strong>
       </p>
       {d.ic_bas !== undefined && d.ic_haut !== undefined && (
         <p className="text-slate-400 text-xs mt-1">
@@ -52,14 +53,13 @@ function CustomTooltip({ active, payload, label }: any) {
   );
 }
 
-export default function ForecastChart({ points, prixActuel }: Props) {
+export default function ForecastChart({ points, valeurActuelle, unite, titre }: Props) {
   const today = new Date().toISOString().slice(0, 7);
 
-  // Ajouter le point "aujourd'hui"
   const todayPoint: ChartPoint = {
     date: today + "-01",
     label: "Aujourd'hui",
-    prix: prixActuel,
+    prix: valeurActuelle,
     ic_bas: undefined,
     ic_haut: undefined,
     isToday: true,
@@ -77,59 +77,36 @@ export default function ForecastChart({ points, prixActuel }: Props) {
     })),
   ];
 
-  // Sous-ensemble pour l'axe X (ne pas afficher trop de labels)
   const step = Math.max(1, Math.floor(data.length / 8));
-
   const todayLabel = formatDate(today + "-01");
 
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">
-        Évolution prévue du prix au m²
+      <h2 className="text-xl font-semibold text-slate-800 mb-1">
+        {titre ?? "Évolution prévue sur 24 mois"}
       </h2>
-      <ResponsiveContainer width="100%" height={360}>
+      <p className="text-xs text-slate-400 mb-4">Unité : {unite} · IC 90% affiché</p>
+      <ResponsiveContainer width="100%" height={340}>
         <ComposedChart data={data} margin={{ top: 8, right: 24, left: 8, bottom: 8 }}>
           <defs>
-            <linearGradient id="icGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.12} />
+            <linearGradient id="icGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%"  stopColor="#3b82f6" stopOpacity={0.12} />
               <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.02} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-          <XAxis
-            dataKey="label"
-            tick={{ fontSize: 11, fill: "#94a3b8" }}
-            interval={step - 1}
-          />
+          <XAxis dataKey="label" tick={{ fontSize: 11, fill: "#94a3b8" }} interval={step - 1} />
           <YAxis
             tickFormatter={(v) => FMT.format(v)}
             tick={{ fontSize: 11, fill: "#94a3b8" }}
-            width={72}
+            width={78}
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
 
-          {/* Zone IC 90% */}
-          <Area
-            type="monotone"
-            dataKey="ic_haut"
-            stroke="none"
-            fill="url(#icGradient)"
-            name="IC 90% haut"
-            legendType="none"
-            connectNulls
-          />
-          <Area
-            type="monotone"
-            dataKey="ic_bas"
-            stroke="none"
-            fill="#ffffff"
-            name="IC 90% bas"
-            legendType="none"
-            connectNulls
-          />
+          <Area type="monotone" dataKey="ic_haut" stroke="none" fill="url(#icGrad)" legendType="none" connectNulls />
+          <Area type="monotone" dataKey="ic_bas"  stroke="none" fill="#ffffff"        legendType="none" connectNulls />
 
-          {/* Ligne de prévision */}
           <Line
             type="monotone"
             dataKey="prix"
@@ -137,26 +114,22 @@ export default function ForecastChart({ points, prixActuel }: Props) {
             strokeWidth={2.5}
             dot={(props: any) =>
               props.payload.isToday ? (
-                <circle
-                  key={props.key}
-                  cx={props.cx}
-                  cy={props.cy}
-                  r={6}
-                  fill="#f59e0b"
-                  stroke="#fff"
-                  strokeWidth={2}
-                />
+                <circle key={props.key} cx={props.cx} cy={props.cy} r={6} fill="#f59e0b" stroke="#fff" strokeWidth={2} />
               ) : (
                 <circle key={props.key} cx={props.cx} cy={props.cy} r={0} />
               )
             }
             activeDot={{ r: 5 }}
-            name="Prix prédit (TND/m²)"
+            name={`Valeur prédite (${unite})`}
             connectNulls
           />
 
-          {/* Ligne verticale "aujourd'hui" */}
-          <ReferenceLine x={todayLabel} stroke="#f59e0b" strokeDasharray="4 3" label={{ value: "Aujourd'hui", fill: "#f59e0b", fontSize: 11 }} />
+          <ReferenceLine
+            x={todayLabel}
+            stroke="#f59e0b"
+            strokeDasharray="4 3"
+            label={{ value: "Auj.", fill: "#f59e0b", fontSize: 10 }}
+          />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

@@ -53,22 +53,36 @@ export default function ResultCard({ resume, modele, mape, zone, typeBien, prixA
         <TendancePill tendance={resume.tendance} />
       </div>
 
-      {/* Prix actuels vs prédits */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-xl bg-slate-50 p-3 text-center">
+      {/* Prix actuels vs prédits — 4 horizons */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        <div className="rounded-xl bg-slate-50 p-3 text-center col-span-2 sm:col-span-1">
           <p className="text-xs text-slate-500 mb-1">Aujourd'hui</p>
           <p className="text-lg font-bold text-slate-800">{FMT.format(prixActuel)}</p>
           <p className="text-xs text-slate-400">TND/m²</p>
         </div>
+        <div className="rounded-xl bg-sky-50 p-3 text-center">
+          <p className="text-xs text-sky-500 mb-1">+6 mois</p>
+          <p className="text-lg font-bold text-sky-700">{FMT.format(resume.prix_j6)}</p>
+          <div className="flex justify-center mt-1">
+            <VariationBadge pct={resume.variation_pct_6} />
+          </div>
+        </div>
         <div className="rounded-xl bg-blue-50 p-3 text-center">
-          <p className="text-xs text-blue-500 mb-1">Dans 12 mois</p>
+          <p className="text-xs text-blue-500 mb-1">+12 mois</p>
           <p className="text-lg font-bold text-blue-700">{FMT.format(resume.prix_j12)}</p>
           <div className="flex justify-center mt-1">
             <VariationBadge pct={resume.variation_pct_12} />
           </div>
         </div>
+        <div className="rounded-xl bg-violet-50 p-3 text-center">
+          <p className="text-xs text-violet-500 mb-1">+18 mois</p>
+          <p className="text-lg font-bold text-violet-700">{FMT.format(resume.prix_j18)}</p>
+          <div className="flex justify-center mt-1">
+            <VariationBadge pct={resume.variation_pct_18} />
+          </div>
+        </div>
         <div className="rounded-xl bg-indigo-50 p-3 text-center">
-          <p className="text-xs text-indigo-500 mb-1">Dans 24 mois</p>
+          <p className="text-xs text-indigo-500 mb-1">+24 mois</p>
           <p className="text-lg font-bold text-indigo-700">{FMT.format(resume.prix_j24)}</p>
           <div className="flex justify-center mt-1">
             <VariationBadge pct={resume.variation_pct_24} />
