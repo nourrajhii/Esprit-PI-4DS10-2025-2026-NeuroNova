@@ -10,6 +10,9 @@ export type Listing = {
   image: string
   description: string
   publishedAt: string
+  externalUrl?: string
+  bathrooms?: number
+  transactionType?: 'vente' | 'location'
 }
 
 export const MOCK_LISTINGS: Listing[] = [

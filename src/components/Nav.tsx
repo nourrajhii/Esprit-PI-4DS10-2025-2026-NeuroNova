@@ -8,6 +8,9 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 
 export function Nav() {
   const { user, logout } = useAuth()
+  const canOpenDashboard =
+    !!user &&
+    ['professional_investor', 'real_estate_agency', 'developer_fund'].includes(user.role)
 
   return (
     <header className="site-header">
@@ -35,7 +38,7 @@ export function Nav() {
             <Map size={18} aria-hidden />
             Map
           </NavLink>
-          {user && (
+          {canOpenDashboard && (
             <>
               <NavLink to="/post" className={linkClass}>
                 <PlusCircle size={18} aria-hidden />

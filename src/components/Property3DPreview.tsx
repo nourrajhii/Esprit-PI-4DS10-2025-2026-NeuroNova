@@ -4,12 +4,24 @@ import { useMemo } from 'react'
 import * as THREE from 'three'
 
 function RoomSketch() {
-  const wall = useMemo(() => new THREE.MeshStandardMaterial({ color: '#c4b8a8', roughness: 0.55 }), [])
-  const floor = useMemo(() => new THREE.MeshStandardMaterial({ color: '#2a2520', roughness: 0.4, metalness: 0.05 }), [])
+  // Light colors for a premium, non-dark 3D preview.
+  const wall = useMemo(
+    () => new THREE.MeshStandardMaterial({ color: '#f1ece3', roughness: 0.75, metalness: 0.02 }),
+    [],
+  )
+  const floor = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: '#d9c7aa',
+        roughness: 0.55,
+        metalness: 0.03,
+      }),
+    [],
+  )
   const glass = useMemo(
     () =>
       new THREE.MeshPhysicalMaterial({
-        color: '#a8c4e8',
+        color: '#b9d9ff',
         roughness: 0.1,
         metalness: 0,
         transmission: 0.92,
@@ -38,11 +50,11 @@ function RoomSketch() {
       </mesh>
       <mesh position={[0, 0.4, 0]} castShadow>
         <boxGeometry args={[1.2, 0.08, 0.7]} />
-        <meshStandardMaterial color="#8b7355" roughness={0.5} />
+        <meshStandardMaterial color="#c49a6c" roughness={0.55} metalness={0.02} />
       </mesh>
       <mesh position={[0, 0.85, 0]} castShadow>
         <boxGeometry args={[0.4, 0.5, 0.35]} />
-        <meshStandardMaterial color="#e8dfd0" roughness={0.35} />
+        <meshStandardMaterial color="#ffffff" roughness={0.35} metalness={0.01} />
       </mesh>
       <pointLight position={[1.2, 2.2, 1.5]} intensity={12} distance={8} decay={2} />
       <spotLight
@@ -66,17 +78,17 @@ export function Property3DPreview() {
         camera={{ position: [4.2, 2.4, 4.2], fov: 42 }}
         gl={{ antialias: true }}
       >
-        <color attach="background" args={['#0c0e12']} />
-        <ambientLight intensity={0.35} />
+        <color attach="background" args={['#f6f7ff']} />
+        <ambientLight intensity={0.6} />
         <RoomSketch />
         <ContactShadows
           position={[0, 0, 0]}
-          opacity={0.45}
+          opacity={0.22}
           scale={12}
           blur={2.5}
           far={5}
         />
-        <Environment preset="city" />
+        <Environment preset="sunset" />
         <OrbitControls
           enablePan={false}
           minPolarAngle={0.35}

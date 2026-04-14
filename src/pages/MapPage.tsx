@@ -5,8 +5,8 @@ import '../lib/mapIcons'
 import { coordsForCity } from '../data/cityCoords'
 import { useListings } from '../lib/listingsStore'
 
-const FR_CENTER: [number, number] = [46.603354, 1.888334]
-const DEFAULT_ZOOM = 5.5
+const TN_CENTER: [number, number] = [34.0, 9.0]
+const DEFAULT_ZOOM = 6.5
 
 export function MapPage() {
   const listings = useListings()
@@ -17,6 +17,7 @@ export function MapPage() {
         id: l.id,
         title: l.title,
         city: l.city,
+        externalUrl: l.externalUrl,
         price: new Intl.NumberFormat('fr-FR', {
           style: 'currency',
           currency: l.currency,
@@ -31,11 +32,11 @@ export function MapPage() {
     <div className="page-map">
       <header className="page-head">
         <h1>Map</h1>
-        <p>Listings by city — coordinates come from a static lookup; plug geocoding for precision.</p>
+        <p>Tunisia-only map — markers are placed by city name (static lookup). Add geocoding for exact addresses.</p>
       </header>
       <div className="map-wrap">
         <MapContainer
-          center={FR_CENTER}
+          center={TN_CENTER}
           zoom={DEFAULT_ZOOM}
           className="map-leaflet"
           scrollWheelZoom
@@ -51,9 +52,15 @@ export function MapPage() {
                 <br />
                 {m.city} · {m.price}
                 <br />
-                <Link to={`/property/${m.id}`} className="text-link">
-                  View listing
-                </Link>
+                {m.externalUrl ? (
+                  <a className="text-link" href={m.externalUrl} target="_blank" rel="noreferrer">
+                    Open source →
+                  </a>
+                ) : (
+                  <Link to={`/property/${m.id}`} className="text-link">
+                    View listing →
+                  </Link>
+                )}
               </Popup>
             </Marker>
           ))}

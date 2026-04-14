@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  individual_investor
+  professional_investor
+  real_estate_agency
+  developer_fund
+}
+
+enum ListingType {
+  apartment
+  house
+  studio
+  loft
+}
+
+enum ListingStatus {
+  draft
+  submitted
+  published
+  rejected
+}
+
+enum JobStatus {
+  queued
+  processing
+  succeeded
+  failed
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         UserRole
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  listings Listing[] @relation("ListingOwner")
+  favorites Favorite[]
+  revisions ListingRevision[] @relation("RevisionActor")
+  jobs AIAgentJob[] @relation("JobActor")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Listing {
+  id          String        @id @default(cuid())
+  ownerId     String
+  owner       User          @relation("ListingOwner", fields: [ownerId], references: [id])
+
+  title       String
+  city        String
+  price       Int
+  currency    String
+  rooms       Int
+  areaM2      Int
+  type        ListingType
+  description String
+
+  status ListingStatus @default(draft)
+  publishedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  images ListingImage[]
+  revisions ListingRevision[]
+  favorites Favorite[]
+}
+
+model ListingImage {
+  id          String   @id @default(cuid())
+  listingId   String
+  listing     Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  url         String
+  storageKey  String
+  altText     String?
+  sortOrder   Int      @default(0)
+
+  createdAt DateTime @default(now())
+}
+
+model Favorite {
+  id         String   @id @default(cuid())
+  userId     String
+  listingId  String
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, listingId])
+}
+
+model ListingRevision {
+  id         String   @id @default(cuid())
+  listingId  String
+  listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  actorId    String
+  actor      User     @relation("RevisionActor", fields: [actorId], references: [id])
+
+  operation  String
+  beforeJson String
+  afterJson  String
+
+  createdAt DateTime @default(now())
+}
+
+model AIAgentJob {
+  id        String    @id @default(cuid())
+  actorId   String
+  actor     User      @relation("JobActor", fields: [actorId], references: [id])
+
+  kind      String
+  inputJson String
+  outputJson String?
+
+  status    JobStatus @default(queued)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { MOCK_LISTINGS } from '../data/mockListings'
 import type { Listing } from '../data/mockListings'
+import { readImportedListings, subscribeImportedListings } from './importedListingsStore'
 
 const STORAGE_KEY = 'realstate_user_listings'
 const EVENT = 'realstate-listings-updated'
@@ -26,7 +27,8 @@ function writeUserListings(listings: Listing[]) {
 
 export function getMergedListings(): Listing[] {
   const user = readUserListings()
-  return [...MOCK_LISTINGS, ...user]
+  const imported = readImportedListings()
+  return [...imported, ...MOCK_LISTINGS, ...user]
 }
 
 export function getListingById(id: string | undefined): Listing | undefined {
@@ -78,9 +80,11 @@ export function useListings(): Listing[] {
   useEffect(() => {
     window.addEventListener(EVENT, bump)
     window.addEventListener('storage', bump)
+    const unsubImported = subscribeImportedListings(bump)
     return () => {
       window.removeEventListener(EVENT, bump)
       window.removeEventListener('storage', bump)
+      unsubImported()
     }
   }, [bump])
 

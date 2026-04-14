@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import type { UserRole } from '../contexts/AuthContext'
 
 export function Register() {
   const { register, user } = useAuth()
@@ -9,6 +10,7 @@ export function Register() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [role, setRole] = useState<UserRole>('developer_fund')
   const [err, setErr] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -29,7 +31,7 @@ export function Register() {
     }
     setLoading(true)
     try {
-      await register(name.trim(), email.trim(), password)
+      await register(name.trim(), email.trim(), password, role)
       navigate('/dashboard', { replace: true })
     } catch {
       setErr('Could not create account.')
@@ -75,6 +77,15 @@ export function Register() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
             />
+          </label>
+          <label className="field">
+            <span>Account type</span>
+            <select value={role} onChange={(e) => setRole(e.target.value as UserRole)}>
+              <option value="individual_investor">Individual investor</option>
+              <option value="professional_investor">Professional investor</option>
+              <option value="real_estate_agency">Real estate agency</option>
+              <option value="developer_fund">Property developer & funds</option>
+            </select>
           </label>
           {err && <p className="form-error">{err}</p>}
           <button type="submit" className="btn btn--primary btn--block" disabled={loading}>

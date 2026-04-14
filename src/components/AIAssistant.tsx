@@ -1,6 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Bot, MessageCircle, Send, Sparkles, X } from 'lucide-react'
+import {
+  HardHat,
+  MessageCircle,
+  Scale,
+  Send,
+  Sparkles,
+  TrendingUp,
+  X,
+} from 'lucide-react'
 
 type Msg = { id: string; role: 'user' | 'assistant'; text: string }
 
@@ -22,12 +30,14 @@ function replyTo(input: string): string {
 }
 
 export function AIAssistant() {
+  type AssistantKind = 'legal' | 'advisor' | 'developer'
   const [open, setOpen] = useState(false)
+  const [kind, setKind] = useState<AssistantKind>('advisor')
   const [messages, setMessages] = useState<Msg[]>([
     {
       id: '0',
       role: 'assistant',
-      text: 'Hi — I help you navigate listings, 3D previews, and publishing. What are you looking for?',
+      text: 'Hi — choose an assistant and ask your question.',
     },
   ])
   const [draft, setDraft] = useState('')
@@ -37,22 +47,80 @@ export function AIAssistant() {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, open])
 
-  function send() {
+  function detectTunisiaLegal(q: string) {
+    const s = q.toLowerCase()
+    return /tunisie|tunis|jurid|immobilier|immobiliere|loi|code|bail|vente|agence/.test(s)
+  }
+
+  function scenarioFromText(q: string): 'sale' | 'lease' | 'agency' | 'developer' {
+    const s = q.toLowerCase()
+    if (/bail|rent|loyer|lease|locat/.test(s)) return 'lease'
+    if (/agence|commission|mandat|intermediaire|intermed/.test(s)) return 'agency'
+    if (/developer|promoteur|fund|fonds|develop/.test(s)) return 'developer'
+    return 'sale'
+  }
+
+  async function send() {
     const text = draft.trim()
     if (!text) return
+
+    const assistantId = crypto.randomUUID()
     const userMsg: Msg = { id: crypto.randomUUID(), role: 'user', text }
-    setMessages((m) => [...m, userMsg])
+    setMessages((m) => [
+      ...m,
+      userMsg,
+      { id: assistantId, role: 'assistant', text: 'Thinking…' },
+    ])
     setDraft('')
-    setTimeout(() => {
-      setMessages((m) => [
-        ...m,
-        {
-          id: crypto.randomUUID(),
-          role: 'assistant',
-          text: replyTo(text),
-        },
-      ])
-    }, 320)
+
+    try {
+      let next = replyTo(text)
+
+      if (kind === 'legal' || detectTunisiaLegal(text)) {
+        const scenario = scenarioFromText(text)
+        const r = await fetch('http://localhost:4000/ai/legal-assistant', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jurisdiction: 'Tunisia',
+            scenario,
+            question: text,
+          }),
+        })
+
+        if (r.ok) {
+          const data = (await r.json()) as {
+            answer: string
+            disclaimer: string
+          }
+          next = `${data.answer}\n\n${data.disclaimer}`
+        } else {
+          next = 'Legal assistant is available, but the backend returned an error.'
+        }
+      } else if (kind === 'advisor') {
+        next =
+          'Investor advisor (demo):\n' +
+          '- Tell me: city, budget, and target (rental yield vs capital gain).\n' +
+          '- I can propose a shortlist strategy (filters + due diligence checklist) and the KPIs to track.\n\n' +
+          'Ask: “I have 300k€ in Tunis, I want rental yield” or “I want a flip in Sousse”.'
+      } else if (kind === 'developer') {
+        next =
+          'Developer assistant (demo):\n' +
+          '- I can help you structure listings for projects (units, stages, documents, availability).\n' +
+          '- I can suggest what to automate (3D pipeline, approvals, lead routing, CRM sync).\n\n' +
+          'Ask: “How to publish 50 units quickly?” or “What data fields should we require for a new project?”'
+      }
+
+      setMessages((m) => m.map((msg) => (msg.id === assistantId ? { ...msg, text: next } : msg)))
+    } catch {
+      setMessages((m) =>
+        m.map((msg) =>
+          msg.id === assistantId
+            ? { ...msg, text: 'Network error. Please try again.' }
+            : msg,
+        ),
+      )
+    }
   }
 
   return (
@@ -83,8 +151,20 @@ export function AIAssistant() {
           >
             <div className="ai-panel__head">
               <div className="ai-panel__title">
-                <Bot size={20} aria-hidden />
-                <span>REAL assistant</span>
+                {kind === 'legal' ? (
+                  <Scale size={20} aria-hidden />
+                ) : kind === 'advisor' ? (
+                  <TrendingUp size={20} aria-hidden />
+                ) : (
+                  <HardHat size={20} aria-hidden />
+                )}
+                <span>
+                  {kind === 'legal'
+                    ? 'Legal assistant'
+                    : kind === 'advisor'
+                      ? 'Investor advisor'
+                      : 'Developer assistant'}
+                </span>
               </div>
               <button
                 type="button"
@@ -93,6 +173,29 @@ export function AIAssistant() {
                 aria-label="Close assistant"
               >
                 <X size={20} />
+              </button>
+            </div>
+            <div className="ai-panel__switch">
+              <button
+                type="button"
+                className={`ai-chip${kind === 'legal' ? ' ai-chip--active' : ''}`}
+                onClick={() => setKind('legal')}
+              >
+                <Scale size={16} /> Juridique
+              </button>
+              <button
+                type="button"
+                className={`ai-chip${kind === 'advisor' ? ' ai-chip--active' : ''}`}
+                onClick={() => setKind('advisor')}
+              >
+                <TrendingUp size={16} /> Conseiller
+              </button>
+              <button
+                type="button"
+                className={`ai-chip${kind === 'developer' ? ' ai-chip--active' : ''}`}
+                onClick={() => setKind('developer')}
+              >
+                <HardHat size={16} /> Dev
               </button>
             </div>
             <div className="ai-panel__messages">

@@ -10,7 +10,14 @@ export type User = {
   email: string
   name: string
   token: string
+  role: UserRole
 }
+
+export type UserRole =
+  | 'individual_investor'
+  | 'professional_investor'
+  | 'real_estate_agency'
+  | 'developer_fund'
 
 const STORAGE_KEY = 'realstate_auth'
 
@@ -20,6 +27,8 @@ function readStored(): User | null {
     if (!raw) return null
     const parsed = JSON.parse(raw) as User
     if (!parsed?.email || !parsed?.token) return null
+    // Backward compatible: if user was saved without role, assume individual.
+    if (!parsed.role) (parsed as unknown as { role?: UserRole }).role = 'individual_investor'
     return parsed
   } catch {
     return null
@@ -39,7 +48,7 @@ function setUser(next: User | null) {
 type AuthContextValue = {
   user: User | null
   login: (email: string, password: string) => Promise<void>
-  register: (name: string, email: string, password: string) => Promise<void>
+  register: (name: string, email: string, password: string, role: UserRole) => Promise<void>
   logout: () => void
 }
 
@@ -62,17 +71,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const user = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
   const login = useCallback(async (email: string, _password: string) => {
-    await new Promise((r) => setTimeout(r, 400))
-    const name = email.split('@')[0].replace(/[._]/g, ' ')
+    await new Promise((r) => setTimeout(r, 300))
+
+    // Demo auth: we only support one saved user in localStorage.
+    const stored = readStored()
+    if (!stored || stored.email !== email) {
+      throw new Error('Invalid credentials (demo). Please register first.')
+    }
+
     const token = btoa(`${email}:${Date.now()}`)
-    setUser({ email, name: name.charAt(0).toUpperCase() + name.slice(1), token })
+    setUser({ ...stored, token })
   }, [])
 
   const register = useCallback(
-    async (name: string, email: string, _password: string) => {
+    async (name: string, email: string, _password: string, role: UserRole) => {
       await new Promise((r) => setTimeout(r, 500))
       const token = btoa(`${email}:${Date.now()}`)
-      setUser({ email, name, token })
+      setUser({ email, name, token, role })
     },
     [],
   )

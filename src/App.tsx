@@ -11,6 +11,7 @@ import { PostListing } from './pages/PostListing'
 import { Dashboard } from './pages/Dashboard'
 import { MapPage } from './pages/MapPage'
 import { Contact } from './pages/Contact'
+import { ImportDataset } from './pages/ImportDataset'
 
 export default function App() {
   return (
@@ -22,13 +23,33 @@ export default function App() {
             <Route path="/browse" element={<Browse />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/import"
+              element={
+                <ProtectedRoute
+                  allowedRoles={[
+                    'professional_investor',
+                    'real_estate_agency',
+                    'developer_fund',
+                  ]}
+                >
+                  <ImportDataset />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/property/:id" element={<PropertyDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/post"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute
+                  allowedRoles={[
+                    'professional_investor',
+                    'real_estate_agency',
+                    'developer_fund',
+                  ]}
+                >
                   <PostListing />
                 </ProtectedRoute>
               }
@@ -36,7 +57,13 @@ export default function App() {
             <Route
               path="/dashboard"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute
+                  allowedRoles={[
+                    'professional_investor',
+                    'real_estate_agency',
+                    'developer_fund',
+                  ]}
+                >
                   <Dashboard />
                 </ProtectedRoute>
               }
