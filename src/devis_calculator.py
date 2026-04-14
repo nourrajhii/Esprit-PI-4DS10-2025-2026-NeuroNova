@@ -1,12 +1,15 @@
 """
-DevisCalculator v8.0 — Mapping amélioré
+DevisCalculator v9.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Corrections v8.0 :
-  - Suppression du filtre `unite` (colonne souvent absente/cassée dans le dataset)
-  - Ajout d'un filtre par catégorie en priorité, puis recherche sans filtre
-  - Mots-clés enrichis pour chaque poste
-  - Fallback par catégorie si aucun titre ne matche
-  - Seuils de prix réalistes par poste
+Nouveautés v9.0 :
+  - Gestion des étages : surface_habitable × nombre_etages
+  - Poste "escalier" ajouté automatiquement si nb_etages > 1
+    (prix par volée d'escalier, forfait pour structures métalliques/béton)
+  - Nouveaux types de projets commerciaux :
+      hotel, foyer, centre_esthetique, salle_sport, clinique, bureau,
+      salle_fetes, entrepot
+  - estimate_surfaces() accepte nombre_etages en paramètre
+  - build_devis() dispatch sur les nouveaux types
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
@@ -41,7 +44,10 @@ def _fmt_dt(v: float) -> str:
     return f"{_fmt(v)} DT"
 
 
-class DevisCalculator:
+from .devis_calculator_builders import DevisCalculatorBuilders
+
+
+class DevisCalculator(DevisCalculatorBuilders):
 
     def __init__(self):
         self._df: pd.DataFrame | None = None
@@ -101,7 +107,6 @@ class DevisCalculator:
 
         df = df.rename(columns=COL_MAP)
 
-        # Colonnes manquantes
         for col, default in [("titre", ""), ("categorie", "construction"),
                               ("prix", None), ("prix_min", None),
                               ("prix_max", None), ("unite", "unité")]:
@@ -127,7 +132,7 @@ class DevisCalculator:
         def _clean_price(val):
             if val is False or val is None:
                 return None
-            if isinstance(val, float) and (val != val):  # NaN
+            if isinstance(val, float) and (val != val):
                 return None
             try:
                 import re
@@ -154,14 +159,12 @@ class DevisCalculator:
         df["prix_min"]   = df["prix_min"].apply(_clean_price)
         df["prix_max"]   = df["prix_max"].apply(_clean_price)
 
-        # Titre fallback = catégorie si vide
         df["titre"] = df.apply(
             lambda r: r["titre_raw"] if r["titre_raw"] else r["categorie"].capitalize(),
             axis=1
         )
         df["titre_lower"] = df["titre"].str.lower()
 
-        # Prix moyen si absent mais fourchette présente
         mask = df["prix"].isna() & df["prix_min"].notna() & df["prix_max"].notna()
         df.loc[mask, "prix"] = (
             (df.loc[mask, "prix_min"] + df.loc[mask, "prix_max"]) / 2
@@ -180,25 +183,16 @@ class DevisCalculator:
     def search(self, keywords: list, categories: list = None,
                top_n: int = 1, price_min_filter: float = None,
                price_max_filter: float = None) -> list:
-        """
-        Recherche les meilleures lignes du dataset par score de matching sur les mots-clés.
-        
-        PLUS de filtre par unité (colonne souvent absente/cassée).
-        Filtre optionnel sur les catégories.
-        """
         if self._df is None or self._df.empty:
             return []
 
         df = self._df.copy()
 
-        # Filtre catégorie
         if categories:
             cats = [c.lower() for c in categories]
             df_cat = df[df["categorie"].isin(cats)]
-            # Si le filtre catégorie ne laisse rien, on cherche sans filtre
             df = df_cat if not df_cat.empty else df
 
-        # Filtre de prix réaliste
         if price_min_filter is not None:
             df = df[df["prix"] >= price_min_filter]
         if price_max_filter is not None:
@@ -209,11 +203,9 @@ class DevisCalculator:
 
         kws_lower = [k.lower() for k in keywords]
         df = df.copy()
-        # Score = nb de mots-clés présents dans le titre
         df["_score"] = df["titre_lower"].apply(
             lambda titre: sum(1 for kw in kws_lower if kw in titre)
         )
-        # Bonus si match sur la catégorie
         if categories:
             cats = [c.lower() for c in categories]
             df["_score"] += df["categorie"].apply(
@@ -223,7 +215,6 @@ class DevisCalculator:
         df = df[df["_score"] > 0].sort_values("_score", ascending=False)
 
         if df.empty:
-            # Fallback : retourner la meilleure ligne de la catégorie demandée
             if categories:
                 df = self._df[self._df["categorie"].isin([c.lower() for c in categories])].copy()
             if df.empty:
@@ -280,47 +271,148 @@ class DevisCalculator:
         return self._poste(description, 1, "forfait", r)
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SURFACES
+    # POSTE ESCALIER (helper réutilisable)
     # ──────────────────────────────────────────────────────────────────────────
 
-    def estimate_surfaces(self, terrain_m2: float, pieces: dict) -> dict:
-        has_jardin  = bool(pieces.get("jardin",  False))
-        has_piscine = bool(pieces.get("piscine", False))
+    def _add_escalier(self, postes: dict, nombre_etages: int,
+                      type_projet: str = "construction"):
+        """
+        Ajoute le(s) poste(s) escalier si nombre_etages > 1.
+        - nb_volées = nombre_etages - 1  (une volée entre chaque paire de niveaux)
+        - Hôtels/ERP ≥ 3 niveaux : double cage d'escalier (obligation réglementaire)
+        - Fallback forfait si absent du dataset.
+        """
+        nb_volees = nombre_etages - 1   # volées par cage
 
-        # Règles surfaces :
-        #   piscine demandée          → piscine 20% + jardin 20% (= 40% au total)
-        #   jardin seul, terrain >200 → jardin 20%
-        #   jardin seul, terrain ≤200 → jardin 10%
-        #   rien                      → 0%
-        if has_piscine:
-            ratio_piscine = 0.20
-            ratio_jardin  = 0.20   # jardin toujours inclus avec piscine
-        elif has_jardin:
-            ratio_piscine = 0.00
-            ratio_jardin  = 0.20 if terrain_m2 > 200 else 0.10
-        else:
-            ratio_piscine, ratio_jardin = 0.00, 0.00
+        # Double cage obligatoire pour hôtel/ERP avec ≥ 3 niveaux
+        nb_cages = 2 if (type_projet in ("hotel", "foyer", "clinique", "bureau",
+                                          "salle_fetes") and nombre_etages >= 3) else 1
 
-        surf_piscine = round(terrain_m2 * ratio_piscine, 1)
-        surf_jardin  = round(terrain_m2 * ratio_jardin,  1)
-        surf_allee   = round(terrain_m2 * 0.10,          1)
-        surf_hab     = max(
-            round(terrain_m2 - surf_piscine - surf_jardin - surf_allee, 1),
-            20.0
+        r = self.best(
+            ["escalier", "béton", "marche", "volée"],
+            categories=["construction"],
+        ) or self.best(
+            ["escalier", "marches", "structure"],
+            categories=["menuiserie"],
         )
 
-        cote = math.sqrt(surf_hab) * 1.2
+        nb_total_volees = nb_volees * nb_cages
+        cage_label = f"{nb_cages} cage{'s' if nb_cages > 1 else ''} × {nb_volees} volée{'s' if nb_volees > 1 else ''}"
+
+        # Prix plancher réaliste : une volée d'escalier béton en Tunisie = 1 000–3 000 DT
+        PRIX_MIN_REALISTE = 1_000   # DT/volée
+        PRIX_MID_REALISTE = 1_800
+        PRIX_MAX_REALISTE = 3_000
+
+        # Si dataset retourne un prix trop bas (marche/m² au lieu de volée), forcer forfait
+        use_dataset = r and r.get("mid", 0) >= 800
+
+        if use_dataset:
+            postes["escalier"] = self._poste(
+                f"Escalier(s) béton/marbre — {cage_label} ({nb_total_volees} volées total)",
+                nb_total_volees, "volée", r,
+            )
+        else:
+            postes["escalier"] = {
+                "description": f"Escalier(s) béton/marbre — {cage_label} ({nb_total_volees} volées total)",
+                "quantite":    nb_total_volees,
+                "unite":       "volée",
+                "prix_min_u":  PRIX_MIN_REALISTE,
+                "prix_mid_u":  PRIX_MID_REALISTE,
+                "prix_max_u":  PRIX_MAX_REALISTE,
+                "cout_min":    round(nb_total_volees * PRIX_MIN_REALISTE),
+                "cout_mid":    round(nb_total_volees * PRIX_MID_REALISTE),
+                "cout_max":    round(nb_total_volees * PRIX_MAX_REALISTE),
+                "fourchette":  f"{PRIX_MIN_REALISTE:,} – {PRIX_MAX_REALISTE:,} DT/volée".replace(",", " "),
+                "source":      "Prix marché tunisien 2025",
+            }
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # SURFACES — accepte nombre_etages
+    # ──────────────────────────────────────────────────────────────────────────
+
+    def estimate_surfaces(self, terrain_m2: float, pieces: dict,
+                          nombre_etages: int = 1) -> dict:
+        """
+        Calcule les surfaces du projet.
+
+        Règles surfaces extérieures :
+          parking  = 10% du terrain (20% si ≥3 niveaux)
+          jardin   = 0% si non demandé
+                   = 10% si jardin + terrain < 200 m²
+                   = 20% si jardin + terrain ≥ 200 m²
+          piscine  = 20% piscine + 20% jardin (forcé si piscine)
+          emprise  = terrain - parking - jardin - piscine
+          plafond  = 60% résidentiel, 65% commerce, 70% entrepôt/industriel
+        """
+        has_jardin    = bool(pieces.get("jardin",  False))
+        has_piscine   = bool(pieces.get("piscine", False))
+        nombre_etages = max(1, int(nombre_etages or 1))
+        type_projet   = pieces.get("_type_projet", "construction")
+
+        # ── Parking / allée ───────────────────────────────────────────────────
+        # Surface fixe réaliste selon taille terrain, pas un ratio aveugle.
+        if terrain_m2 <= 150:
+            surf_parking = round(terrain_m2 * 0.05, 1)   # 5% petit terrain
+        elif terrain_m2 <= 300:
+            surf_parking = round(terrain_m2 * 0.08, 1)   # 8% terrain moyen
+        elif nombre_etages >= 3:
+            surf_parking = round(terrain_m2 * 0.15, 1)   # 15% grand projet multi-niveaux
+        else:
+            surf_parking = round(terrain_m2 * 0.10, 1)   # 10% standard
+
+        # ── Jardin / Piscine ──────────────────────────────────────────────────
+        # Jardin = 0 si non explicitement demandé par l'utilisateur
+        if has_piscine:
+            surf_piscine = round(terrain_m2 * 0.20, 1)
+            surf_jardin  = round(terrain_m2 * 0.15, 1)
+        elif has_jardin:
+            surf_piscine = 0.0
+            surf_jardin  = round(terrain_m2 * (0.15 if terrain_m2 < 300 else 0.20), 1)
+        else:
+            surf_piscine = 0.0
+            surf_jardin  = 0.0   # PAS de jardin si non demandé
+
+        # ── Emprise bâtiment ──────────────────────────────────────────────────
+        exterieur    = surf_parking + surf_jardin + surf_piscine
+        emprise_brut = round(terrain_m2 - exterieur, 1)
+
+        # Plafond COS selon type de projet
+        if type_projet in ("entrepot", "salle_sport", "salle_fetes"):
+            max_ratio = 0.70
+        elif type_projet in ("cafe_commerce", "mixte_cafe_appart"):
+            max_ratio = 0.65
+        elif type_projet in ("hotel", "foyer", "bureau", "clinique",
+                             "mixte_maison_appart"):
+            max_ratio = 0.60
+        else:
+            max_ratio = 0.60
+
+        emprise_sol = round(min(emprise_brut, terrain_m2 * max_ratio), 1)
+        emprise_sol = max(emprise_sol, 20.0)
+
+        # Surface plancher totale (SHON) = emprise × étages
+        surf_plancher_total = round(emprise_sol * nombre_etages, 1)
+
+        # Coefficient d'utilisation (circulations, murs, gaines = ~15%)
+        surf_utile = round(surf_plancher_total * 0.85, 1)
+
+        cote = math.sqrt(emprise_sol) * 1.2
         return {
-            "terrain_total":     terrain_m2,
-            "surface_habitable": surf_hab,
-            "surface_jardin":    surf_jardin,
-            "surface_piscine":   surf_piscine,
-            "surface_allee":     surf_allee,
-            "surface_murs":      round(cote * 4 * 2.8, 1),
-            "surface_plafond":   surf_hab,
-            "surface_toiture":   round(surf_hab * 1.15, 1),
-            "has_jardin":        has_jardin,
-            "has_piscine":       has_piscine,
+            "terrain_total":        terrain_m2,
+            "emprise_sol":          emprise_sol,
+            "surface_plancher":     surf_plancher_total,   # SHON totale tous niveaux
+            "surface_habitable":    surf_utile,            # surface utile (sans circulations)
+            "surface_par_etage":    emprise_sol,           # surface d'un seul niveau
+            "nombre_etages":        nombre_etages,
+            "surface_jardin":       surf_jardin,
+            "surface_piscine":      surf_piscine,
+            "surface_allee":        surf_parking,
+            "surface_murs":         round(cote * 4 * 2.8 * nombre_etages, 1),
+            "surface_plafond":      surf_plancher_total,
+            "surface_toiture":      round(emprise_sol * 1.15, 1),
+            "has_jardin":           has_jardin,
+            "has_piscine":          has_piscine,
         }
 
     # ──────────────────────────────────────────────────────────────────────────
@@ -331,15 +423,37 @@ class DevisCalculator:
                     pieces: dict = None) -> dict:
         mode   = rag_prices.get("_meta", {}).get("mode", "construction")
         pieces = pieces or {}
-        if mode == "renovation":
+        nombre_etages = surfaces.get("nombre_etages", 1)
+
+        if mode == "mixte_cafe_appart":
+            return self._build_mixte_cafe_appart(surfaces, pieces, nombre_etages)
+        elif mode == "mixte_maison_appart":
+            return self._build_mixte_maison_appart(surfaces, pieces, nombre_etages)
+        elif mode == "renovation":
             return self._build_renovation(surfaces, pieces)
         elif mode == "cafe_commerce":
-            return self._build_cafe(surfaces, pieces)
+            return self._build_cafe(surfaces, pieces, nombre_etages)
+        elif mode == "hotel":
+            return self._build_hotel(surfaces, pieces, nombre_etages)
+        elif mode == "foyer":
+            return self._build_foyer(surfaces, pieces, nombre_etages)
+        elif mode == "centre_esthetique":
+            return self._build_centre_esthetique(surfaces, pieces, nombre_etages)
+        elif mode == "salle_sport":
+            return self._build_salle_sport(surfaces, pieces, nombre_etages)
+        elif mode == "clinique":
+            return self._build_clinique(surfaces, pieces, nombre_etages)
+        elif mode == "bureau":
+            return self._build_bureau(surfaces, pieces, nombre_etages)
+        elif mode == "salle_fetes":
+            return self._build_salle_fetes(surfaces, pieces, nombre_etages)
+        elif mode == "entrepot":
+            return self._build_entrepot(surfaces, pieces, nombre_etages)
         else:
-            return self._build_construction(surfaces, pieces)
+            return self._build_construction(surfaces, pieces, nombre_etages)
 
     # ──────────────────────────────────────────────────────────────────────────
-    # DEVIS CONSTRUCTION
+    # HELPER INTERNE
     # ──────────────────────────────────────────────────────────────────────────
 
     def _nb(self, pieces: dict, *keys) -> int:
@@ -355,388 +469,6 @@ class DevisCalculator:
                 continue
         return 0
 
-    def _build_construction(self, surf: dict, pieces: dict) -> dict:
-        p = {}
-        surf_hab     = surf["surface_habitable"]
-        surf_jardin  = surf["surface_jardin"]
-        surf_piscine = surf["surface_piscine"]
-        has_jardin   = surf["has_jardin"]
-        has_piscine  = surf["has_piscine"]
-
-        nb_ch  = self._nb(pieces, "chambres", "chambre")
-        nb_sal = self._nb(pieces, "salons", "salon") or 1
-        nb_sdb = self._nb(pieces, "salle_de_bain", "salles_de_bain") or 1
-        nb_wc  = self._nb(pieces, "wc") or 1
-        nb_cui = self._nb(pieces, "cuisines", "cuisine") or 1
-
-        nb_fen  = nb_ch + nb_cui + nb_sdb     # 1 fenêtre par chambre/cuisine/SDB
-        nb_pf   = nb_sal                       # 1 porte-fenêtre par salon
-        nb_pi   = nb_ch + nb_sal + nb_cui + nb_sdb + nb_wc  # 1 porte par pièce
-        nb_clim = max(1, nb_ch) + 1
-
-        # ── 1. Gros œuvre ──────────────────────────────────────────────────────
-        r = self.best(
-            ["construction", "maison", "agrandissement"],
-            categories=["construction"],
-            price_min_filter=5000  # On veut le prix par 100m², pas le prix au m²
-        )
-        if r:
-            coeff = max(1.0, round(surf_hab / 100, 1))
-            p["gros_oeuvre"] = {
-                "description": "Gros œuvre — fondations, murs, dalle, charpente",
-                "quantite":    coeff,
-                "unite":       "tranches 100m²",
-                "prix_min_u":  r["min"],
-                "prix_mid_u":  r["mid"],
-                "prix_max_u":  r["max"],
-                "cout_min":    round(coeff * r["min"]),
-                "cout_mid":    round(coeff * r["mid"]),
-                "cout_max":    round(coeff * r["max"]),
-                "fourchette":  f"{_fmt(r['min'])} – {_fmt(r['max'])} DT/tranche",
-                "source":      r["titre"],
-            }
-
-        # ── 2. Carrelage sol ───────────────────────────────────────────────────
-        r = self.best(
-            ["carrelage", "sol", "grès", "cérame", "pose"],
-            categories=["carrelage"],
-            price_max_filter=200  # prix au m²
-        )
-        if r:
-            p["carrelage_sol"] = self._poste(
-                f"Carrelage sol — fourniture + pose ({surf_hab:.0f} m²)",
-                surf_hab, "m²", r)
-
-        # ── 3. Faïence murale ──────────────────────────────────────────────────
-        surf_faience = (nb_sdb * 10) + 8  # 10m² par SDB + 8m² cuisine
-        r = self.best(
-            ["faïence", "murale", "salle", "bain", "cuisine"],
-            categories=["carrelage"],
-            price_max_filter=200
-        )
-        if r:
-            p["faience"] = self._poste(
-                f"Faïence murale — {nb_sdb} SDB + cuisine ({surf_faience} m²)",
-                surf_faience, "m²", r)
-
-        # ── 4. Peinture ────────────────────────────────────────────────────────
-        r = self.best(
-            ["peinture", "intérieure", "murs", "plafonds", "finitions"],
-            categories=["peinture"],
-            price_min_filter=500  # forfait, pas le prix au m²
-        )
-        if r:
-            p["peinture"] = self._poste_ff("Peinture intérieure — murs + plafonds (forfait)", r)
-
-        # ── 5. Électricité ─────────────────────────────────────────────────────
-        r = self.best(
-            ["installation", "électrique", "complète", "maison", "tableau"],
-            categories=["electricite"],
-        )
-        if r:
-            p["electricite"] = self._poste_ff("Installation électrique complète (forfait)", r)
-
-        # ── 6. Plomberie ───────────────────────────────────────────────────────
-        r = self.best(
-            ["plomberie", "réseau", "multicouche", "installation"],
-            categories=["plomberie"],
-            price_min_filter=500  # réseau complet, pas prix/point d'eau
-        )
-        if r:
-            p["plomberie"] = self._poste_ff("Plomberie complète — SDB, cuisine, WC (forfait)", r)
-
-        # ── 7. Fenêtres ────────────────────────────────────────────────────────
-        if nb_fen > 0:
-            r = self.best(
-                ["fenêtre", "pvc", "aluminium", "double", "vitrage"],
-                categories=["menuiserie"],
-            )
-            if r:
-                p["fenetre"] = self._poste(
-                    f"Fenêtres PVC/Aluminium — {nb_fen} unités",
-                    nb_fen, "unité", r)
-
-        # ── 8. Portes-fenêtres ─────────────────────────────────────────────────
-        if nb_pf > 0:
-            r = self.best(
-                ["porte-fenêtre", "aluminium", "coulissante", "salon"],
-                categories=["menuiserie"],
-            )
-            if r:
-                p["porte_fenetre"] = self._poste(
-                    f"Porte-fenêtre aluminium salon — {nb_pf} unité",
-                    nb_pf, "unité", r)
-
-        # ── 9. Porte blindée ───────────────────────────────────────────────────
-        r = self.best(
-            ["porte", "blindée", "entrée", "sécurité"],
-            categories=["menuiserie"],
-        )
-        if r:
-            p["porte_blindee"] = self._poste(
-                "Porte blindée extérieure — entrée principale", 1, "unité", r)
-
-        # ── 10. Portes intérieures ─────────────────────────────────────────────
-        if nb_pi > 0:
-            r = self.best(
-                ["porte", "intérieure", "bois", "chambre"],
-                categories=["menuiserie"],
-            )
-            if r:
-                p["porte_interieure"] = self._poste(
-                    f"Portes intérieures — {nb_pi} unités", nb_pi, "unité", r)
-
-        # ── 11. Cuisine équipée ────────────────────────────────────────────────
-        r = self.best(
-            ["cuisine", "équipée", "meubles", "plan", "travail"],
-            categories=["estimation_construction"],
-            price_min_filter=2000
-        )
-        if r:
-            p["cuisine_equipee"] = self._poste_ff(
-                "Cuisine équipée — meubles + plan de travail", r)
-
-        # ── 12. Salle de bain ──────────────────────────────────────────────────
-        if nb_sdb > 0:
-            r = self.best(
-                ["salle", "bain", "douche", "lavabo", "wc", "carrelage"],
-                categories=["estimation_construction"],
-                price_min_filter=2000
-            )
-            if r:
-                label = (f"Salle de bain complète — {nb_sdb} SDB"
-                         if nb_sdb > 1 else "Salle de bain complète")
-                p["salle_de_bain"] = self._poste(label, nb_sdb, "unité", r)
-
-        # ── 13. Chauffe-eau ────────────────────────────────────────────────────
-        r = self.best(
-            ["chauffe-eau", "électrique", "ballon", "cumulus"],
-            categories=["estimation_construction"],
-        )
-        if r:
-            p["chauffe_eau"] = self._poste_ff("Chauffe-eau électrique", r)
-
-        # ── 14. Climatisation ──────────────────────────────────────────────────
-        r = self.best(
-            ["climatiseur", "split", "inverter", "installation"],
-            categories=["climatisation"],
-            price_max_filter=2000  # prix par unité
-        )
-        if r:
-            p["climatisation"] = self._poste(
-                f"Climatisation split — {nb_clim} unités", nb_clim, "unité", r)
-
-        # ── 15. Dressing ───────────────────────────────────────────────────────
-        if nb_ch > 0:
-            r = self.best(
-                ["placard", "dressing", "chambre", "mélaminé"],
-                categories=["dressing"],
-            )
-            if r:
-                surf_dressing = nb_ch * 4
-                p["dressing"] = self._poste(
-                    f"Dressing/placards — {nb_ch} chambres ({surf_dressing} m²)",
-                    surf_dressing, "m²", r)
-
-        # ── 16. Raccordement eau ───────────────────────────────────────────────
-        r = self.best(
-            ["raccordement", "eau", "potable", "sonede", "branchement"],
-            categories=["estimation_construction"],
-            price_max_filter=1000
-        )
-        if r:
-            p["raccord_eau"] = self._poste_ff("Raccordement eau potable SONEDE", r)
-
-        # ── 17. Raccordement gaz ───────────────────────────────────────────────
-        r = self.best(
-            ["raccordement", "gaz", "steg", "compteur"],
-            categories=["estimation_construction"],
-        )
-        if r:
-            p["raccord_gaz"] = self._poste_ff("Raccordement gaz STEG", r)
-
-        # ── 18. Raccordement électricité ───────────────────────────────────────
-        r = self.best(
-            ["raccordement", "électricité", "steg", "basse", "tension"],
-            categories=["estimation_construction"],
-            price_min_filter=500
-        )
-        if r:
-            p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG", r)
-
-        # ── 19. Télésurveillance ───────────────────────────────────────────────
-        r = self.best(
-            ["télésurveillance", "alarme", "abonnement"],
-            categories=["estimation_construction"],
-            price_max_filter=500  # prix mensuel
-        )
-        if r:
-            r12 = {**r, "min": r["min"] * 12, "mid": r["mid"] * 12, "max": r["max"] * 12}
-            p["securite"] = self._poste_ff("Télésurveillance (12 mois)", r12)
-
-        # ── 20. Jardin ─────────────────────────────────────────────────────────
-        if has_jardin and surf_jardin > 0:
-            r = self.best(
-                ["aménagement", "jardin", "gazon", "pelouse"],
-                categories=["jardin"],
-            )
-            if r:
-                p["jardin"] = self._poste(
-                    f"Aménagement jardin — {surf_jardin:.0f} m²",
-                    surf_jardin, "m²", r)
-
-        # ── 21. Piscine ────────────────────────────────────────────────────────
-        if has_piscine and surf_piscine > 0:
-            r = self.best(
-                ["piscine", "construction", "béton"],
-                categories=["construction"],
-                price_min_filter=20000
-            )
-            if r:
-                p["piscine"] = self._poste_ff(
-                    f"Piscine construction — {surf_piscine:.0f} m²", r)
-
-        return self._finalize(surf, p)
-
-    # ──────────────────────────────────────────────────────────────────────────
-    # DEVIS RÉNOVATION
-    # ──────────────────────────────────────────────────────────────────────────
-
-    def _build_renovation(self, surf: dict, pieces: dict) -> dict:
-        p        = {}
-        surf_hab = surf["surface_habitable"]
-        nb_ch    = self._nb(pieces, "chambres", "chambre")
-        nb_sdb   = self._nb(pieces, "salle_de_bain", "salles_de_bain") or 1
-        nb_clim  = max(1, nb_ch) + 1
-        nb_fen   = nb_ch + 2
-
-        r = self.best(["peinture", "intérieure", "murs", "finitions"],
-                      categories=["peinture"], price_min_filter=500)
-        if r:
-            p["peinture"] = self._poste_ff("Peinture rénovation (forfait)", r)
-
-        r = self.best(["carrelage", "sol", "remplacement"], categories=["carrelage"],
-                      price_max_filter=200)
-        if r:
-            p["carrelage_sol"] = self._poste(
-                "Remplacement carrelage sol", surf_hab, "m²", r)
-
-        r = self.best(["faïence", "murale", "salle", "bain"], categories=["carrelage"],
-                      price_max_filter=200)
-        if r:
-            surf_f = nb_sdb * 10 + 8
-            p["faience"] = self._poste(
-                "Remplacement faïence — SDB + cuisine", surf_f, "m²", r)
-
-        r = self.best(["installation", "électrique", "tableau"],
-                      categories=["electricite"])
-        if r:
-            p["electricite"] = self._poste_ff("Rénovation électrique", r)
-
-        r = self.best(["plomberie", "réseau", "multicouche"], categories=["plomberie"],
-                      price_min_filter=500)
-        if r:
-            p["plomberie"] = self._poste_ff("Rénovation plomberie", r)
-
-        r = self.best(["fenêtre", "pvc", "aluminium"], categories=["menuiserie"])
-        if r:
-            p["fenetres"] = self._poste(
-                f"Remplacement fenêtres — {nb_fen} unités", nb_fen, "unité", r)
-
-        r = self.best(["climatiseur", "split", "inverter"],
-                      categories=["climatisation"], price_max_filter=2000)
-        if r:
-            p["climatisation"] = self._poste(
-                f"Climatisation — {nb_clim} unités", nb_clim, "unité", r)
-
-        r = self.best(["cuisine", "équipée", "meubles"],
-                      categories=["estimation_construction"], price_min_filter=2000)
-        if r:
-            p["cuisine_equipee"] = self._poste_ff("Rénovation cuisine équipée", r)
-
-        r = self.best(["salle", "bain", "douche", "lavabo"],
-                      categories=["estimation_construction"], price_min_filter=2000)
-        if r:
-            p["salle_de_bain"] = self._poste_ff("Rénovation salle de bain complète", r)
-
-        r = self.best(["faux", "plafond", "ba13"], categories=["renovation"])
-        if r:
-            p["faux_plafond"] = self._poste(
-                f"Faux plafond — {surf_hab:.0f} m²", surf_hab, "m²", r)
-
-        return self._finalize(surf, p)
-
-    # ──────────────────────────────────────────────────────────────────────────
-    # DEVIS CAFÉ / COMMERCE
-    # ──────────────────────────────────────────────────────────────────────────
-
-    def _build_cafe(self, surf: dict, pieces: dict) -> dict:
-        p        = {}
-        surf_hab = surf["surface_habitable"]
-        nb_clim  = max(2, round(surf_hab / 25))
-
-        r = self.best(["carrelage", "sol", "pose"], categories=["carrelage"],
-                      price_max_filter=200)
-        if r:
-            p["carrelage_sol"] = self._poste(
-                "Carrelage sol commercial", surf_hab, "m²", r)
-
-        r = self.best(["faïence", "murale"], categories=["carrelage"],
-                      price_max_filter=200)
-        if r:
-            p["faience"] = self._poste_ff("Faïence murale déco", r)
-
-        r = self.best(["peinture", "murs", "finitions"], categories=["peinture"],
-                      price_min_filter=500)
-        if r:
-            p["peinture"] = self._poste_ff("Peinture déco — murs + plafonds", r)
-
-        r = self.best(["installation", "électrique", "tableau"],
-                      categories=["electricite"])
-        if r:
-            p["electricite"] = self._poste_ff("Installation électrique commerce", r)
-
-        r = self.best(["plomberie", "réseau"], categories=["plomberie"],
-                      price_min_filter=500)
-        if r:
-            p["plomberie"] = self._poste_ff("Plomberie bar/cuisine/WC", r)
-
-        r = self.best(["climatiseur", "split"], categories=["climatisation"],
-                      price_max_filter=2000)
-        if r:
-            p["climatisation"] = self._poste(
-                f"Climatisation split — {nb_clim} unités", nb_clim, "unité", r)
-
-        r = self.best(["porte-fenêtre", "aluminium"], categories=["menuiserie"])
-        if r:
-            p["menuiserie"] = self._poste(
-                "Vitrine / porte commerce aluminium — 2 unités", 2, "unité", r)
-
-        r = self.best(["cuisine", "équipée"], categories=["estimation_construction"],
-                      price_min_filter=2000)
-        if r:
-            p["cuisine_equipee"] = self._poste_ff(
-                "Équipement cuisine / bar professionnel", r)
-
-        r = self.best(["salle", "bain", "douche", "wc"],
-                      categories=["estimation_construction"], price_min_filter=2000)
-        if r:
-            p["salle_de_bain"] = self._poste_ff("Sanitaires WC / toilettes commerce", r)
-
-        r = self.best(["raccordement", "eau", "sonede"],
-                      categories=["estimation_construction"], price_max_filter=1000)
-        if r:
-            p["raccord_eau"] = self._poste_ff("Raccordement eau SONEDE", r)
-
-        r = self.best(["raccordement", "électricité", "steg"],
-                      categories=["estimation_construction"])
-        if r:
-            p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG", r)
-
-        return self._finalize(surf, p)
-
-    # ──────────────────────────────────────────────────────────────────────────
-    # FINALISATION
     # ──────────────────────────────────────────────────────────────────────────
 
     def _finalize(self, surf: dict, postes: dict) -> dict:
@@ -762,7 +494,8 @@ class DevisCalculator:
 
         total_postes   = len(postes)
         postes_dataset = sum(1 for v in postes.values()
-                             if v.get("source", "") not in ("", "Dataset"))
+                             if v.get("source", "") not in ("", "Dataset",
+                                                             "Estimation forfaitaire"))
         accuracy_pct   = round(postes_dataset / total_postes * 100) if total_postes else 0
 
         if accuracy_pct >= 80:
@@ -799,12 +532,17 @@ class DevisCalculator:
         }
 
     def _resume(self, surf: dict) -> dict:
+        nb_et = surf.get("nombre_etages", 1)
         r = {
             "terrain":           f"{surf['terrain_total']:.0f} m²",
+            "surface_plancher":  f"{surf.get('surface_plancher', surf.get('surface_habitable', 0)):.0f} m²",
             "surface_habitable": f"{surf['surface_habitable']:.0f} m²",
             "surface_jardin":    f"{surf['surface_jardin']:.0f} m²",
             "surface_allee":     f"{surf['surface_allee']:.0f} m²",
         }
+        if nb_et > 1:
+            r["emprise_sol"]     = f"{surf.get('emprise_sol', 0):.0f} m²"
+            r["surface_par_etage"] = f"{surf.get('surface_par_etage', surf.get('emprise_sol', 0)):.0f} m²"
         if surf.get("surface_piscine", 0) > 0:
             r["surface_piscine"] = f"{surf['surface_piscine']:.0f} m²"
         return r
