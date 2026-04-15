@@ -985,5 +985,193 @@
       "is_calculation": true,
       "from_cache": false
     }
+  },
+  {
+    "hash": "d3a5e9ee5ef2",
+    "question": "Mon frère refuse de vendre notre bien en indivision, que puis-je faire ?",
+    "timestamp": "2026-04-14T20:11:21.785339",
+    "hits": 0,
+    "result": {
+      "answer": "**Droits d'Enregistrement et Vente en Indivision**\n\nEn Tunisie, la vente d'un bien immobilier en indivision peut être complexe. Voici quelques points clés à prendre en compte :\n\n1. **Taxe d'Enregistrement** : La taxe d'engagement est appliquée sur le prix de vente du bien. Le taux de cette taxe dépend du prix de vente :\n * Pour les ventes entre particuliers, le taux est de 6% pour les biens à un prix inférieur ou égal à 500 000 DT et de 8% pour les biens à un prix supérieur à 999 999 DT.\n * Le taux de 10% s'applique pour les biens à un prix supérieur à 1 000 000 DT.\n2. **Taxe CPF** : La taxe CPF est appliquée sur le prix de vente et représente une augmentation du taux d'engagement de 1%.\n3. **Frais notaire** : Les frais notaire peuvent varier entre 1% et 5% du prix de vente.\n4. **Vente en",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5308,
+          "similarity": 0.653,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "lorsque l'intérêt du vendeur l'exige, il a le devoir de faire vendre la chose  en présence de l'autorité compétente du l…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5519,
+          "similarity": 0.644,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 600",
+            "Art. 601"
+          ],
+          "snippet": "Article 600.- Le vendeur ne peut refuser de livrer la chose  vendue :  1) s’il a autorisé un tiers à toucher le prix ou …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5556,
+          "similarity": 0.643,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 284",
+            "Art. 285"
+          ],
+          "snippet": "Article 284.- Le créancier est en demeure lorsqu'il refuse, sans  juste cause, de recevoir la prestation que le débiteur…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "💰",
+        "label": "Loi de Finances 2025 (n°48-2024)"
+      },
+      "question_type": "fiscal",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "9297c900c97d",
+    "question": "Quels sont les frais à payer lors de l’achat d’un appartement en Tunisie ?",
+    "timestamp": "2026-04-14T20:16:33.844445",
+    "hits": 0,
+    "result": {
+      "answer": "Lors de l'achat d'un appartement en Tunisie, il existe plusieurs frais que vous devrez prendre en compte. Voici quelques-uns des principaux frais à payer :\n\n1. **Taxe foncière** : cette taxe est payée par le propriétaire de l'appartement et varie en fonction du montant de la valeur locative de l'immeuble.\n2. **Impôt sur les plus-values immobilières** : si vous achetez un appartement pour la première fois, vous devrez payer cet impôt sur les plus-values immobilières, qui peut aller jusqu'à 20% du prix d'achat.\n3. **Taxe de registration** (ou \"taxe de registration foncière\") : cette taxe est payée par le propriétaire pour l'enregistrement de la propriété dans le cadastre.\n4. **Frais notariaux** : ces frais sont payés au notaire qui assiste à la signature du contrat d'achat et peuvent varier en fonction de la complexité du processus.\n5. **Frais de notation** : les banques et les institutions financières exigent souvent une notation",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4759,
+          "similarity": 0.678,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 291"
+          ],
+          "snippet": "Article 291.- Aucune offre réelle n’est nécessaire de la part du  débiteur :  1) lorsque le créancier lui a déjà déclaré…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4871,
+          "similarity": 0.672,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 293"
+          ],
+          "snippet": "Article 293.- Pour que les offres réelles soient valables, il faut :  1) qu’elles soient faites au créancier ayant la ca…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4907,
+          "similarity": 0.671,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 981"
+          ],
+          "snippet": "Article 981 (Modifié par la loi n°57-23 du 25 septembre 1957).-  Cette redevance, payable par année et d’avance, est sus…"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": true,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "56c74d2f5e05",
+    "question": "Le propriétaire refuse de rendre la caution, que dit la loi ?",
+    "timestamp": "2026-04-14T20:19:30.195164",
+    "hits": 0,
+    "result": {
+      "answer": "Selon l'article 1494 du Code Civil Tunisien, si le propriétaire refuse de rendre la caution et que la solvabilité de la caution est insuffisante, il doit être donné un supplément de cautionnement ou une sûreté supplémentaire.\n\nVoici les points clés :\n\n1. Le créancier peut demander au propriétaire de renoncer à sa garantie si celle-ci est insuffisante.\n2. Si le propriétaire refuse, le créancier peut exiger un supplément de cautionnement ou une sûreté supplémentaire pour protéger son droit.\n3. Dans ce cas, le créancier peut poursuivre immédiatement le paiement de sa créance ou résilier le contrat qui a été conclu sous condition de cautionnement.\n\nAvertissement : Il est important de noter que ces dispositions ne s'appliquent pas dans les cas suivants :\n\n* Lorsque la caution a été donnée à l'insu du débiteur ou contre sa volonté.\n* Lorsque la caution a été donnée en vertu d'une convention par laquelle le créancier a",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4111,
+          "similarity": 0.709,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1494"
+          ],
+          "snippet": "Article 1494.- Lorsque la caution reçue par le créancier, en vertu  du contrat, est devenue insolvable, il doit en être …"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4435,
+          "similarity": 0.693,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1495",
+            "Art. 1496"
+          ],
+          "snippet": "Article 1495.- Le cautionnement n'entraîne pas solidarité, si elle  n'est expressément stipulée.   Dans ce dernier cas, …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4625,
+          "similarity": 0.684,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1504",
+            "Art. 1505"
+          ],
+          "snippet": "Article 1504.- La caution peut agir contre le créancier, afin d'être  déchargée de la dette, si le créancier diffère à r…"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
   }
 ]

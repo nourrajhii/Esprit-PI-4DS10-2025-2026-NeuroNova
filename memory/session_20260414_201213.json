@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260414_201213",
+  "created_at": "2026-04-14T20:12:13.306956",
+  "updated_at": "2026-04-14T20:12:13.319955",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Mon propriétaire veut augmenter le loyer, est-ce légal sans clause dans le contrat ?",
+      "timestamp": "2026-04-14T20:12:13.319955"
+    },
+    {
+      "role": "assistant",
+      "content": "**Augmentation du loyer sans clause contractuelle : une question de légitimité**\n\n1. **L'augmentation du loyer nécessite une mise à jour du contrat**: Pour augmenter le loyer, il est essentiel de consulter le propriétaire et de mettre à jour le contrat d'locatio-condominium pour éviter toute dispute ou litige.\n2. **La clause contractuelle doit être clairement exprimée**: La nouvelle tarification du loyer doit être explicitement mentionnée dans le contrat, avec une date précise d'entrée en vigueur, afin de prévenir tout malentendu.\n3. **Le propriétaire a le droit de consentir ou de refuser l'augmentation**: Le propriétaire dispose de la liberté de consentir ou de refuser l'augmentation du loyer, ce qui doit être communiqué au locataire avec clarté et précision.\n4. **L'augmentation du loyer peut être soumise à des conditions**: L'augmentation du loyer peut être soumise à certaines conditions, telles que la rénovation de l'immeuble ou la mise à jour des équipements, mais cela doit être explicitement mentionné dans le contrat.\n5. **Il est recommandé de consulter un avocat spécialisé en droit immobilier**: Avant d'augmenter le loyer, il est conseillé de consulter un avocat spécialisé en droit immobilier pour s'assurer que les conditions contractuelles sont respectées et pour éviter toute dispute ou litige.",
+      "timestamp": "2026-04-14T20:12:13.319955"
+    }
+  ]
+}

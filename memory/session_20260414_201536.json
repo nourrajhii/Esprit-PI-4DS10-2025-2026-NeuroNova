@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260414_201536",
+  "created_at": "2026-04-14T20:15:36.619863",
+  "updated_at": "2026-04-14T20:16:34.287949",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quels sont les frais à payer lors de l’achat d’un appartement en Tunisie ?",
+      "timestamp": "2026-04-14T20:16:34.287949"
+    },
+    {
+      "role": "assistant",
+      "content": "Lors de l'achat d'un appartement en Tunisie, il existe plusieurs frais que vous devrez prendre en compte. Voici quelques-uns des principaux frais à payer :\n\n1. **Taxe foncière** : cette taxe est payée par le propriétaire de l'appartement et varie en fonction du montant de la valeur locative de l'immeuble.\n2. **Impôt sur les plus-values immobilières** : si vous achetez un appartement pour la première fois, vous devrez payer cet impôt sur les plus-values immobilières, qui peut aller jusqu'à 20% du prix d'achat.\n3. **Taxe de registration** (ou \"taxe de registration foncière\") : cette taxe est payée par le propriétaire pour l'enregistrement de la propriété dans le cadastre.\n4. **Frais notariaux** : ces frais sont payés au notaire qui assiste à la signature du contrat d'achat et peuvent varier en fonction de la complexité du processus.\n5. **Frais de notation** : les banques et les institutions financières exigent souvent une notation",
+      "timestamp": "2026-04-14T20:16:34.287949"
+    }
+  ]
+}

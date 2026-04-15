@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260414_201834",
+  "created_at": "2026-04-14T20:18:34.766729",
+  "updated_at": "2026-04-14T20:19:30.210104",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Le propriétaire refuse de rendre la caution, que dit la loi ?",
+      "timestamp": "2026-04-14T20:19:30.210104"
+    },
+    {
+      "role": "assistant",
+      "content": "Selon l'article 1494 du Code Civil Tunisien, si le propriétaire refuse de rendre la caution et que la solvabilité de la caution est insuffisante, il doit être donné un supplément de cautionnement ou une sûreté supplémentaire.\n\nVoici les points clés :\n\n1. Le créancier peut demander au propriétaire de renoncer à sa garantie si celle-ci est insuffisante.\n2. Si le propriétaire refuse, le créancier peut exiger un supplément de cautionnement ou une sûreté supplémentaire pour protéger son droit.\n3. Dans ce cas, le créancier peut poursuivre immédiatement le paiement de sa créance ou résilier le contrat qui a été conclu sous condition de cautionnement.\n\nAvertissement : Il est important de noter que ces dispositions ne s'appliquent pas dans les cas suivants :\n\n* Lorsque la caution a été donnée à l'insu du débiteur ou contre sa volonté.\n* Lorsque la caution a été donnée en vertu d'une convention par laquelle le créancier a",
+      "timestamp": "2026-04-14T20:19:30.210104"
+    }
+  ]
+}

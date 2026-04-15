@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260414_201024",
+  "created_at": "2026-04-14T20:10:24.744868",
+  "updated_at": "2026-04-14T20:11:21.796228",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Mon frère refuse de vendre notre bien en indivision, que puis-je faire ?",
+      "timestamp": "2026-04-14T20:11:21.796228"
+    },
+    {
+      "role": "assistant",
+      "content": "**Droits d'Enregistrement et Vente en Indivision**\n\nEn Tunisie, la vente d'un bien immobilier en indivision peut être complexe. Voici quelques points clés à prendre en compte :\n\n1. **Taxe d'Enregistrement** : La taxe d'engagement est appliquée sur le prix de vente du bien. Le taux de cette taxe dépend du prix de vente :\n * Pour les ventes entre particuliers, le taux est de 6% pour les biens à un prix inférieur ou égal à 500 000 DT et de 8% pour les biens à un prix supérieur à 999 999 DT.\n * Le taux de 10% s'applique pour les biens à un prix supérieur à 1 000 000 DT.\n2. **Taxe CPF** : La taxe CPF est appliquée sur le prix de vente et représente une augmentation du taux d'engagement de 1%.\n3. **Frais notaire** : Les frais notaire peuvent varier entre 1% et 5% du prix de vente.\n4. **Vente en",
+      "timestamp": "2026-04-14T20:11:21.796228"
+    }
+  ]
+}

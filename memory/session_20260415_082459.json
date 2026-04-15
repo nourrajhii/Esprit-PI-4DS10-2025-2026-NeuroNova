@@ -1,0 +1,28 @@
+{
+  "session_id": "session_20260415_082459",
+  "created_at": "2026-04-15T08:24:59.161758",
+  "updated_at": "2026-04-15T08:31:42.562610",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quels sont les frais à payer lors de l’achat d’un appartement en Tunisie ?",
+      "timestamp": "2026-04-15T08:24:59.167223"
+    },
+    {
+      "role": "assistant",
+      "content": "Lors de l'achat d'un appartement en Tunisie, il existe plusieurs frais que vous devrez prendre en compte. Voici quelques-uns des principaux frais à payer :\n\n1. **Taxe foncière** : cette taxe est payée par le propriétaire de l'appartement et varie en fonction du montant de la valeur locative de l'immeuble.\n2. **Impôt sur les plus-values immobilières** : si vous achetez un appartement pour la première fois, vous devrez payer cet impôt sur les plus-values immobilières, qui peut aller jusqu'à 20% du prix d'achat.\n3. **Taxe de registration** (ou \"taxe de registration foncière\") : cette taxe est payée par le propriétaire pour l'enregistrement de la propriété dans le cadastre.\n4. **Frais notariaux** : ces frais sont payés au notaire qui assiste à la signature du contrat d'achat et peuvent varier en fonction de la complexité du processus.\n5. **Frais de notation** : les banques et les institutions financières exigent souvent une notation",
+      "timestamp": "2026-04-15T08:24:59.167223"
+    },
+    {
+      "role": "user",
+      "content": "Un plan d’aménagement ne respecte pas les orientations nationales, Qui contrôle cette conformité ?",
+      "timestamp": "2026-04-15T08:31:42.562610"
+    },
+    {
+      "role": "assistant",
+      "content": "**Conformité aux orientations nationales**\n\n1. Le plan d'aménagement doit être approuvé par l'arrêté du Gouverneur territorialement compétent.\n2. L'arrêté d'approbation du plan aménagement comporte une déclaration d'utilité publique des travaux projetés.\n3. Tout arrêté du Ministre chargé de l'Urbanisme fixe le contenu du dossier du projet.\n\n**Avertissement**\n\nIl est important de noter que les plans d'aménagement doivent être conformes aux orientations nationales en matière d'urbanisme et de développement durable. Il est donc recommandé de consulter les textes législatifs et réglementaires pour s'assurer de la conformité du plan d'aménagement avant sa mise en œuvre.\n\nEn tant qu'avocat expert en droit immobilier tunisien, je vous conseille de demander une copie du plan d'aménagement et de l'arrêté d'approbation pour vérifier que les travaux sont conformes aux orientations nationales.",
+      "timestamp": "2026-04-15T08:31:42.562610"
+    }
+  ]
+}
