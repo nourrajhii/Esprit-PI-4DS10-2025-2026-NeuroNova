@@ -1,0 +1,253 @@
+<div class="assistant-shell">
+  <div class="assistant-wrapper">
+    <header class="assistant-header">
+      <div class="assistant-header-content">
+        <div class="eyebrow">Real Estate Assistant</div>
+        <h1>Real Estate Advisor</h1>
+        <p>
+          Un assistant immobilier conversationnel qui vous propose une sélection
+          claire, pertinente et directement exploitable.
+        </p>
+      </div>
+
+      <button class="reset-btn" (click)="clearConversation()" type="button">
+        Nouveau chat
+      </button>
+    </header>
+
+    <main class="conversation-area">
+      <div *ngIf="messages.length === 0" class="welcome-panel fade-in">
+        <div class="welcome-badge">✨ Recherche immobilière intelligente</div>
+        <div class="welcome-icon">🏠</div>
+        <h2>Décrivez votre recherche</h2>
+        <p>
+          Exemple : Je cherche un appartement à louer à Bizerte avec 2 chambres
+          et un budget de 1200 DT
+        </p>
+
+        <div class="quick-prompts">
+          <button
+            *ngFor="let prompt of quickPrompts"
+            class="quick-prompt-chip"
+            (click)="useQuickPrompt(prompt)"
+            type="button"
+          >
+            {{ prompt }}
+          </button>
+        </div>
+      </div>
+
+      <div class="messages-stack" *ngIf="messages.length > 0 || loading">
+        <div
+          *ngFor="let msg of messages; trackBy: trackByMessage"
+          class="message-row fade-in"
+          [ngClass]="msg.role"
+        >
+          <div class="message-avatar">
+            <span *ngIf="msg.role === 'assistant'">AI</span>
+            <span *ngIf="msg.role === 'user'">YO</span>
+          </div>
+
+          <div class="message-block">
+            <div class="message-name">
+              {{ msg.role === 'assistant' ? 'Conseiller' : 'Vous' }}
+            </div>
+
+            <div class="message-bubble">
+              {{ msg.content }}
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="loading" class="message-row assistant fade-in">
+          <div class="message-avatar">
+            <span>AI</span>
+          </div>
+
+          <div class="message-block">
+            <div class="message-name">Conseiller</div>
+            <div class="message-bubble loading-bubble">
+              <div class="skeleton-line long"></div>
+              <div class="skeleton-line medium"></div>
+              <div class="skeleton-line short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section
+        class="result-flow fade-in"
+        *ngIf="lastResponse && lastResponse.is_real_estate_query"
+      >
+        <div class="inline-summary-card">
+          <div class="inline-summary-top">
+            <div>
+              <div class="eyebrow">Analyse</div>
+              <h3>Résumé de votre recherche</h3>
+            </div>
+            <div class="summary-count">
+              {{ lastResponse.total_found }} résultat(s)
+            </div>
+          </div>
+
+          <div class="summary-pills">
+            <span class="summary-pill">{{ getTransactionLabel() }}</span>
+            <span class="summary-pill">{{ getCategoryLabel() }}</span>
+            <span class="summary-pill">{{ getCityLabel() }}</span>
+            <span class="summary-pill">Budget min : {{ getBudgetMinLabel() }}</span>
+            <span class="summary-pill">Budget max : {{ getBudgetMaxLabel() }}</span>
+            <span class="summary-pill">Pièces : {{ getRoomsCriteriaLabel() }}</span>
+          </div>
+        </div>
+
+        <div class="insight-strip" *ngIf="lastResponse.market_stats && lastResponse.total_found > 0">
+          <div class="insight-box">
+            <span class="insight-label">Prix moyen</span>
+            <span class="insight-value">{{ formatPrice(lastResponse.market_stats.avg_price) }}</span>
+          </div>
+          <div class="insight-box">
+            <span class="insight-label">Médiane</span>
+            <span class="insight-value">{{ formatPrice(lastResponse.market_stats.median_price) }}</span>
+          </div>
+          <div class="insight-box">
+            <span class="insight-label">Prix/m² moyen</span>
+            <span class="insight-value">{{ formatPrice(lastResponse.market_stats.avg_price_per_m2) }}</span>
+          </div>
+        </div>
+
+        <div class="assistant-note-card">
+          <div class="assistant-note-title">Conseil du conseiller</div>
+          <div class="assistant-note-text">{{ getShortAdvice() }}</div>
+        </div>
+
+        <div class="property-section" *ngIf="getTopProperty() as topProperty">
+          <div class="section-title">Sélection recommandée</div>
+
+          <article class="featured-property-card">
+            <div class="featured-head">
+              <div class="featured-meta">
+                <div class="featured-badges">
+                  <span class="property-icon">{{ getPropertyIcon(topProperty) }}</span>
+                  <span class="property-type-badge">{{ getPropertyTypeLabel(topProperty) }}</span>
+                  <span class="property-quality-badge">{{ getPropertyBadge(topProperty) }}</span>
+                </div>
+
+                <h3>{{ topProperty.title }}</h3>
+                <p>{{ getPropertyLocation(topProperty) }}</p>
+              </div>
+
+              <div class="featured-price">
+                {{ formatPrice(topProperty.price) }}
+              </div>
+            </div>
+
+            <div class="feature-tags">
+              <span
+                class="feature-tag transaction"
+                [ngClass]="getTransactionBadgeClass(topProperty.transaction_type)"
+              >
+                {{ topProperty.transaction_type || '-' }}
+              </span>
+              <span class="feature-tag">{{ formatSurface(getPropertySurface(topProperty)) }}</span>
+              <span class="feature-tag">{{ formatRooms(getPropertyRooms(topProperty)) }}</span>
+              <span class="feature-tag">{{ formatBathrooms(getPropertyBathrooms(topProperty)) }}</span>
+              <span class="feature-tag highlight">{{ getPricePerM2Label(topProperty) }}</span>
+            </div>
+
+            <div class="featured-actions" *ngIf="hasListingUrl(topProperty)">
+              <a
+                class="primary-link-btn"
+                [href]="getListingUrl(topProperty)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir l’annonce
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="property-section" *ngIf="getOtherProperties().length > 0">
+          <div class="section-title">Autres suggestions</div>
+
+          <div class="property-feed">
+            <article
+              class="property-feed-card"
+              *ngFor="let property of getOtherProperties(); trackBy: trackByPropertyId"
+            >
+              <div class="property-feed-head">
+                <div class="property-feed-main">
+                  <div class="featured-badges">
+                    <span class="property-icon">{{ getPropertyIcon(property) }}</span>
+                    <span class="property-type-badge">{{ getPropertyTypeLabel(property) }}</span>
+                    <span class="property-quality-badge muted">{{ getPropertyBadge(property) }}</span>
+                  </div>
+
+                  <h4>{{ property.title }}</h4>
+                  <p>{{ getPropertyLocation(property) }}</p>
+                </div>
+
+                <div class="property-feed-price">
+                  {{ formatPrice(property.price) }}
+                </div>
+              </div>
+
+              <div class="feature-tags">
+                <span
+                  class="feature-tag transaction"
+                  [ngClass]="getTransactionBadgeClass(property.transaction_type)"
+                >
+                  {{ property.transaction_type || '-' }}
+                </span>
+                <span class="feature-tag">{{ formatSurface(getPropertySurface(property)) }}</span>
+                <span class="feature-tag">{{ formatRooms(getPropertyRooms(property)) }}</span>
+                <span class="feature-tag">{{ formatBathrooms(getPropertyBathrooms(property)) }}</span>
+                <span class="feature-tag highlight">{{ getPricePerM2Label(property) }}</span>
+              </div>
+
+              <div class="featured-actions" *ngIf="hasListingUrl(property)">
+                <a
+                  class="secondary-link-btn"
+                  [href]="getListingUrl(property)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Voir l’annonce
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="composer-bar">
+      <div class="composer-box">
+        <textarea
+          [(ngModel)]="userPrompt"
+          rows="3"
+          placeholder="Écrivez votre demande immobilière..."
+        ></textarea>
+
+        <div class="composer-actions">
+          <div class="composer-hint">
+            Recherche intelligente • Réponse naturelle • Suggestions ciblées
+          </div>
+
+          <button
+            class="send-btn"
+            (click)="sendMessage()"
+            [disabled]="loading || !userPrompt.trim()"
+            type="button"
+          >
+            Envoyer
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <div *ngIf="errorMessage" class="error-box fade-in">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

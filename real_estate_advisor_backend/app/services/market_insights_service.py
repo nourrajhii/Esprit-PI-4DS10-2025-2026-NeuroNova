@@ -32,7 +32,8 @@ def _is_valid_apt(apt) -> bool:
     price   = float(apt.price      or 0)
     surface = float(apt.surface_m2 or 0)
     rooms   = int(apt.rooms        or 0)
-    return price >= 100_000 and 20 <= surface <= 5000 and rooms <= 10
+    # ✅ Seuil abaissé à 1000 DT pour couvrir location + vente
+    return price >= 1_000 and 10 <= surface <= 10_000 and rooms <= 20
 
 
 def _percentile(values: list, p: float) -> float:

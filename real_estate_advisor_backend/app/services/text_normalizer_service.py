@@ -1,17 +1,15 @@
-import unicodedata
 import re
+import unicodedata
 
 
 def normalize_text(text: str) -> str:
     if not text:
         return ""
 
-    text = text.lower().strip()
-
-    text = unicodedata.normalize("NFD", text)
-    text = "".join(c for c in text if unicodedata.category(c) != "Mn")
-
-    text = re.sub(r"[^a-z0-9\s]", " ", text)
-    text = re.sub(r"\s+", " ", text).strip()
-
+    text = str(text).strip().lower()
+    text = "".join(
+        c for c in unicodedata.normalize("NFKD", text)
+        if not unicodedata.combining(c)
+    )
+    text = re.sub(r"\s+", " ", text)
     return text

@@ -1,134 +1,73 @@
-from app.models.apartment import Apartment
 from app.services.text_normalizer_service import normalize_text
-from app.services.apartment_classifier_service import classify_apartment_listing
 
 
-def matches_city(apartment_city: str, target_city: str) -> bool:
-    apt_city = normalize_text(apartment_city)
-    tgt_city = normalize_text(target_city)
+def normalize_transaction(value: str | None) -> str | None:
+    if not value:
+        return None
 
-    if not apt_city or not tgt_city:
-        return False
+    v = normalize_text(value)
 
-    return tgt_city in apt_city or apt_city in tgt_city
+    if v in ["location", "a louer", "à louer", "louer", "rent"]:
+        return "location"
 
+    if v in ["vente", "a vendre", "à vendre", "acheter", "buy", "sale"]:
+        return "vente"
 
-def matches_property_type(apartment_property_type: str, allowed_property_types: list[str]) -> bool:
-    apt_type = normalize_text(apartment_property_type)
-
-    if not apt_type:
-        return False
-
-    for allowed in allowed_property_types:
-        allowed_norm = normalize_text(allowed)
-        if allowed_norm in apt_type or apt_type in allowed_norm:
-            return True
-
-    return False
+    return v
 
 
-def matches_transaction_type(apartment_transaction_type: str, wanted_transaction_type: str) -> bool:
-    apt_tx = normalize_text(apartment_transaction_type)
-    wanted_tx = normalize_text(wanted_transaction_type)
+def filter_apartments_by_criteria(apartments, criteria: dict):
+    results = []
 
-    if not apt_tx or not wanted_tx:
-        return False
+    wanted_city = normalize_text(criteria.get("city")) if criteria.get("city") else None
+    wanted_transaction = normalize_transaction(criteria.get("transaction_type"))
+    wanted_rooms = criteria.get("rooms")
+    budget_max = criteria.get("budget_max")
+    budget_min = criteria.get("budget_min")
+    allowed_types = [normalize_text(x) for x in criteria.get("allowed_property_types", [])]
+    rooms_tolerance = criteria.get("rooms_tolerance", 0)
 
-    if wanted_tx == "vente":
-        vente_aliases = ["vente", "a vendre", "avendre", "vendre", "buy"]
-        return any(alias in apt_tx for alias in vente_aliases)
+    for a in apartments:
+        title = normalize_text(getattr(a, "title", ""))
+        city = normalize_text(getattr(a, "city", ""))
+        url = normalize_text(getattr(a, "url", ""))
+        transaction = normalize_transaction(getattr(a, "transaction_type", ""))
+        property_type = normalize_text(getattr(a, "property_type", ""))
 
-    if wanted_tx == "location":
-        location_aliases = ["location", "a louer", "alouer", "louer", "rent", "location saisonniere"]
-        return any(alias in apt_tx for alias in location_aliases)
+        # Ville stricte
+        if wanted_city:
+            city_match = (
+                wanted_city in city or
+                wanted_city in title or
+                wanted_city in url
+            )
+            if not city_match:
+                continue
 
-    return wanted_tx in apt_tx
+        # Transaction stricte
+        if wanted_transaction and transaction != wanted_transaction:
+            continue
 
+        # Type strict si fourni
+        if allowed_types:
+            type_match = any(
+                t in property_type or t in title or t in url
+                for t in allowed_types
+            )
+            if not type_match:
+                continue
 
-def filter_apartments_by_criteria(apartments: list[Apartment], criteria: dict) -> list[Apartment]:
-    results = apartments
+        price = float(getattr(a, "price", 0) or 0)
+        if budget_min is not None and price < budget_min:
+            continue
+        if budget_max is not None and price > budget_max:
+            continue
 
-    if criteria.get("city"):
-        filtered = [a for a in results if a.city and matches_city(a.city, criteria["city"])]
-        if filtered:
-            results = filtered
+        rooms = int(getattr(a, "rooms", 0) or 0)
+        if wanted_rooms is not None:
+            if abs(rooms - wanted_rooms) > rooms_tolerance:
+                continue
 
-    if criteria.get("category") or criteria.get("sub_type"):
-        filtered = [
-        a for a in results
-        if matches_requested_type(a, criteria)
-    ]
-    if filtered:
-        results = filtered
-
-    if criteria.get("transaction_type"):
-        filtered = [
-            a for a in results
-            if a.transaction_type and matches_transaction_type(a.transaction_type, criteria["transaction_type"])
-        ]
-        if filtered:
-            results = filtered
-
-    if criteria.get("budget_max") is not None:
-        filtered = [
-            a for a in results
-            if float(a.price or 0) <= float(criteria["budget_max"])
-        ]
-        if filtered:
-            results = filtered
-
-    if criteria.get("budget_min") is not None:
-        filtered = [
-            a for a in results
-            if float(a.price or 0) >= float(criteria["budget_min"])
-        ]
-        if filtered:
-            results = filtered
-
-    if criteria.get("rooms") is not None:
-        filtered = [
-            a for a in results
-            if int(a.rooms or 0) >= int(criteria["rooms"])
-        ]
-        if filtered:
-            results = filtered
-
-    if criteria.get("bathrooms") is not None:
-        filtered = [
-            a for a in results
-            if int(a.bathrooms or 0) >= int(criteria["bathrooms"])
-        ]
-        if filtered:
-            results = filtered
+        results.append(a)
 
     return results
-def matches_requested_type(apartment, criteria: dict) -> bool:
-    listing_class = classify_apartment_listing(
-        title=apartment.title,
-        property_type=apartment.property_type,
-        url=apartment.url
-    )
-
-    requested_category = criteria.get("category")
-    requested_sub_type = criteria.get("sub_type")
-
-    if requested_category and listing_class["category"] != requested_category:
-        return False
-
-    if requested_sub_type:
-        # cas souples
-        if requested_sub_type == "maison" and listing_class["sub_type"] in ["maison", "villa", "duplex"]:
-            return True
-
-        if requested_sub_type == "terrain" and listing_class["sub_type"] == "terrain":
-            return True
-
-        if requested_sub_type == "fonds_de_commerce" and listing_class["sub_type"] in ["fonds_de_commerce", "local_commercial", "commercial"]:
-            return True
-
-        if requested_sub_type == listing_class["sub_type"]:
-            return True
-
-        return False
-
-    return True
