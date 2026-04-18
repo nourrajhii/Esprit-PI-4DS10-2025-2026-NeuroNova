@@ -16,4 +16,8 @@ aiohttp
 scikit-learn
 numpy
 joblib
-
+torch
+diffusers
+transformers
+accelerate
+google-generativeai

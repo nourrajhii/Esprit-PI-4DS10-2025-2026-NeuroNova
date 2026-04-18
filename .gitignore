@@ -32,10 +32,17 @@ ENV/
 .idea/
 
 # Project specific
-*.xlsx
+!Evaluation_Report.xlsx
 *.log
 .gemini/
 .agent/
 brain/
 analyze_db.py
 check_db.py
+
+# Data & Bulky files
+downloads/
+pipeline/
+*.rar
+*.jpeg
+*.jpg

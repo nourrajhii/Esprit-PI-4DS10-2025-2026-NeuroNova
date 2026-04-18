@@ -71,11 +71,21 @@ def run_feature_engineering():
     n_raw = len(df)
     logger.info(f"  Loaded {n_raw} cleaned rows.")
 
+    # ── Focus ML Model exclusively on VENTE (Sales) ───────────────────────
+    df = df[df["transaction_type"] == "vente"].copy()
+    logger.info(f"  Filtered to {len(df)} 'vente' (sales) listings for pricing model.")
+    
+    # ── Duplicate & Fraud Removal (DSO 2) ─────────────────────────────────
+    df_valid = df[(df['price'] > 5000) & (df['surface_m2'] > 10)]
+    duplicates = df_valid[df_valid.duplicated(subset=['city', 'surface_m2', 'price', 'rooms', 'bathrooms'], keep=False)]
+    df = df.drop(duplicates.index)
+    logger.info(f"  Dropped {len(duplicates)} duplicate/spam listings (DSO Fraud Detection).")
+
     # ── IQR Outlier Removal (belt-and-suspenders after cleaning) ─────────
     for col in ["price", "surface_m2"]:
         Q1, Q3 = df[col].quantile(0.05), df[col].quantile(0.95)
         df = df[(df[col] >= Q1) & (df[col] <= Q3)]
-    logger.info(f"  After IQR filter: {len(df)} rows ({n_raw - len(df)} removed as outliers)")
+    logger.info(f"  After IQR filter: {len(df)} rows")
 
     # ── Derived numeric features ──────────────────────────────────────────
     df["price_per_m2"]   = (df["price"] / df["surface_m2"]).round(2)

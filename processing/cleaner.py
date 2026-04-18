@@ -149,6 +149,14 @@ async def run_cleaning_pipeline() -> int:
         title = _clean_text(item.title)
         desc  = _clean_text(item.description or "")
         city  = _normalize_city(item.city)
+        price = item.price or 0.0
+
+        # ── Infer Transaction Type (DSO Metadata Fix) ─────────────────────
+        txn = _map_transaction_type(item.transaction_type)
+        if txn == "vente": # Double check
+            txt = f"{title} {desc} {item.listing_url}".lower()
+            if "louer" in txt or "location" in txt or price < 20000:
+                txn = "location"
 
         # ── Geography filter ──────────────────────────────────────────────
         if not _is_tunisian(title, desc, city):
@@ -181,7 +189,7 @@ async def run_cleaning_pipeline() -> int:
             "city":             city,
             "zone":             _clean_text(item.zone) or city,
             "property_type":    _map_property_type(item.property_type),
-            "transaction_type": _map_transaction_type(item.transaction_type),
+            "transaction_type": txn,
             "surface_m2":       surface,
             "rooms":            max(rooms, 1),
             "bathrooms":        bathrooms,

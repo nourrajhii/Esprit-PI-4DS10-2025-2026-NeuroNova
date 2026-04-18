@@ -1,7 +1,7 @@
 {
-  "trained_at": "2026-03-04T00:42:29.903037",
-  "n_train": 821,
-  "n_test": 206,
+  "trained_at": "2026-04-18T12:02:41.693256",
+  "n_train": 356,
+  "n_test": 89,
   "n_features": 14,
   "features": [
     "surface_m2",
@@ -19,8 +19,8 @@
     "is_studio",
     "type_appartement"
   ],
-  "mae_log": 2.1973,
-  "rmse_log": 2.582,
-  "r2": 0.1422,
-  "mape_pct": 1133.04
+  "mae_log": 0.5191,
+  "rmse_log": 0.6438,
+  "r2": 0.0424,
+  "mape_pct": 62.18
 }
