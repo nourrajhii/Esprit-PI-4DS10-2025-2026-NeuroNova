@@ -1,5 +1,9 @@
 """
 app/models/response.py — Modèles Pydantic pour les réponses API
+
+CORRECTIONS v3 :
+- MetricItem : ajout des champs NLP (nlp_combined, nlp_tfidf, nlp_jaccard)
+  exposés dans la réponse API pour permettre le debug et l'affichage frontend
 """
 from pydantic import BaseModel
 from typing import Optional
@@ -17,7 +21,10 @@ class MetricItem(BaseModel):
     source_short: str
     source_icon: str
     raw_score: float
-    similarity: float
+    similarity: float          # score FAISS normalisé seul
+    nlp_combined: float = 0.0  # score combiné FAISS + TF-IDF + Jaccard (nouveau)
+    nlp_tfidf: float = 0.0     # score TF-IDF normalisé (nouveau)
+    nlp_jaccard: float = 0.0   # similarité Jaccard tokens (nouveau)
     score_emoji: str
     score_label: str
     article_refs: list[str]
@@ -48,4 +55,4 @@ class HealthResponse(BaseModel):
     status: str
     faiss_loaded: bool
     cache_entries: int
-    version: str = "2.0.0"
+    version: str = "3.0.0"

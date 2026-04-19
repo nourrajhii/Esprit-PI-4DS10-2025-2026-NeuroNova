@@ -1,10 +1,12 @@
 """
 app/services/vector_store.py — Singleton FAISS + utilitaires sources
 
-CORRECTIFS :
-- _db_cache initialisé au démarrage via init_db() appelé dans main.py startup
+CORRECTIONS v3 :
+- Exposition du score NLP combiné dans get_source_info (compatibilité rag.py v3)
+- _db_cache initialisé au démarrage via init_db() dans main.py startup
 - get_db() ne recharge JAMAIS depuis le disque si déjà chargé (vrai singleton)
 - reset_db_cache() force le rechargement uniquement à la demande
+- Ajout normalize_score_cosine() pour index cosinus (si recompilé avec cosine)
 """
 import json
 import re
@@ -16,7 +18,7 @@ from app.services.hardcoded import SOURCE_REGISTRY
 # ── Singleton ──────────────────────────────────────────────────────────────────
 
 _db_cache = None
-_db_initialized = False   # distingue "pas encore chargé" de "échec de chargement"
+_db_initialized = False
 
 
 def init_db():
@@ -86,32 +88,66 @@ def load_dynamic_sources() -> dict:
 
 
 def get_source_info(file_name: str) -> dict:
+    """
+    Retourne les métadonnées d'affichage pour une source.
+    Cherche dans : source_map.json → SOURCE_REGISTRY → fallback générique.
+    """
     dynamic = load_dynamic_sources()
     if file_name in dynamic:
         return dynamic[file_name]
     if file_name in SOURCE_REGISTRY:
         return SOURCE_REGISTRY[file_name]
-    nom = file_name.replace(".pdf", "").replace(".txt", "").replace("_", " ").title()
+    nom = (
+        file_name
+        .replace(".pdf", "")
+        .replace(".txt", "")
+        .replace("_", " ")
+        .title()
+    )
     return {"icon": "📄", "label": nom, "short": nom}
 
 
 # ── Scoring FAISS ──────────────────────────────────────────────────────────────
 
 def normalize_score(raw_score: float) -> float:
+    """
+    Convertit un score de distance L2 FAISS en similarité [0, 1].
+    Formule : 1 / (1 + distance)
+    → distance=0 → sim=1.0 (identique)
+    → distance=1 → sim=0.5
+    → distance=∞ → sim→0
+    """
     return round(1.0 / (1.0 + raw_score), 3)
 
 
+def normalize_score_cosine(raw_score: float) -> float:
+    """
+    Pour les index FAISS en cosinus, le score retourné est déjà une similarité
+    entre -1 et 1. On le ramène à [0, 1].
+    À utiliser si vous recompilez l'index avec IndexFlatIP (produit intérieur).
+    """
+    return round((raw_score + 1.0) / 2.0, 3)
+
+
 def score_label(sim: float) -> tuple[str, str]:
-    if sim >= 0.85:
+    """
+    Retourne un emoji et un label selon le score de similarité combiné.
+    Seuils appliqués au score NLP combiné (FAISS + TF-IDF + Jaccard).
+    """
+    if sim >= 0.80:
         return "🟢", "Excellent"
-    if sim >= 0.65:
+    if sim >= 0.60:
         return "🟡", "Bon"
-    if sim >= 0.45:
+    if sim >= 0.40:
         return "🟠", "Modéré"
     return "🔴", "Faible"
 
 
 def extract_article_refs(text: str) -> list[str]:
+    """
+    Extrait les références d'articles depuis le texte d'un chunk.
+    Supporte les formats français (Article N) et arabes (الفصل N).
+    """
     refs = []
     for a in re.findall(r'[Aa]rticle\s+(\d+)', text)[:3]:
         refs.append(f"Art. {a}")
@@ -119,4 +155,4 @@ def extract_article_refs(text: str) -> list[str]:
         refs.append(f"ف. {a}")
     if 'COC' in text:
         refs.append("COC")
-    return list(dict.fromkeys(refs))
+    return list(dict.fromkeys(refs))   # déduplique tout en gardant l'ordre

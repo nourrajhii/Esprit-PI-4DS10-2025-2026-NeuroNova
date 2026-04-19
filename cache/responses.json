@@ -1173,5 +1173,72 @@
       "is_calculation": false,
       "from_cache": false
     }
+  },
+  {
+    "hash": "76a03d2fdb66",
+    "question": "شخص يدعي أنه يملك نفس العقار\n\nكيف أثبت ملكيتي؟\nما هو دور الرسم العقاري؟\nما المحكمة المختصة",
+    "timestamp": "2026-04-19T21:25:15.017576",
+    "hits": 0,
+    "result": {
+      "answer": "**العنصر الأول:** إذا كان الشخص يدعي أنه يملك نفس العقار، يجب على الملازمين أو المستثمرين إجراء التحقق من ملكية العقار من خلال التحقق من الرسم العقاري. هذا يشمل التحقق من رقم الرسم العقاري، ووضع اليد على الرسم العقاري، ووضع الرسوم اللازمة.\n\n**العنصر الثاني:** دور الرسم العقاري هو تأكيد ملكية العقار وضمان أن العقار يملك شخص محدد. إذا لم يكن هناك رسم عقاري، فلا يمكن إجراء أي عمليات مالية أو استثمارية على العقار.\n\n**العنصر الثالث:** المحكمة المختصة فيما يتعلق بملكية العقار هي المحكمة الابتدائية للقضاء العدلي. إذا كان هناك خلاف حول ملكية العقار، يمكن الملازمين أو المستثمرين أن يطلبوا من المحكمة الابتدائية للقضاء العدلي إجراء التحقيق والتحديد الحقيقي لملكية العقار.\n\n**تنبيه قانوني واحد:** في حالة عدم وجود رسم عق",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "02_propriete.txt",
+          "source_label": "02 Propriete",
+          "source_short": "02 Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.4468,
+          "similarity": 0.691,
+          "nlp_combined": 0.3455,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        },
+        {
+          "rank": 2,
+          "source": "05_hypotheque_privileges.txt",
+          "source_label": "05 Hypotheque Privileges",
+          "source_short": "05 Hypotheque Privileges",
+          "source_icon": "📄",
+          "raw_score": 0.4579,
+          "similarity": 0.686,
+          "nlp_combined": 0.343,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الخامس - الرهن العقاري TITRE V - L'HYPOTHÈQUE"
+        },
+        {
+          "rank": 3,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.4713,
+          "similarity": 0.68,
+          "nlp_combined": 0.34,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "📚",
+        "label": "Base juridique générale"
+      },
+      "question_type": "general",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
   }
 ]

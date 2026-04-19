@@ -1,0 +1,38 @@
+{
+  "session_id": "session_20260419_205416",
+  "created_at": "2026-04-19T20:54:16.546229",
+  "updated_at": "2026-04-19T20:59:31.464330",
+  "summary": "Voici un résumé concise du droit de propriété en droit tunisien :\n\n**Définition et Principes Fondamentaux**\n\n* Le droit de propriété est un droit absolu et inalienable qui confère au propriétaire la pleine possession et le contrôle de l'immeuble ou des biens.\n* Les principes fondamentaux incluent la propriété absolue, la liberté de disposition et la protection contre l'expropriation abusive.\n\n**Expropriation et Indemnité**\n\n* L'expropriation d'un immeuble nécessite une indemnité juste versée au propriétaire par l'État ou l'autorité compétente.\n* La durée de prescription pour obtenir cette indemnité est fixée à 15 ans non immatriculé, 10 ans en cas de bonne foi et zéro en cas d'immatriculation.\n\n**Préemption et Copropriété**\n\n* Les propriétaires ont le droit de préemption sur les biens communs ou les travaux à effectuer dans le cadre de la copropriété.\n* Le droit de préemption est soumis à certaines conditions et limites, et les",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Mon propriétaire veut augmenter le loyer, est-ce légal sans clause dans le contrat ?",
+      "timestamp": "2026-04-19T20:55:51.829385"
+    },
+    {
+      "role": "assistant",
+      "content": "**Augmentation du Loyer : Un Droit ou un Devoir ?**\n\n1. **Droit de l'État à Augmenter les Loeys** : En Tunisie, il n'existe pas de droit absolu pour augmenter le loyer sans accord préalable entre le propriétaire et le locataire.\n2. **Contrat de Locaison** : Le contrat de locaison doit contenir des clauses précisant les conditions d'augmentation du loyer, notamment la durée de l'accord et les modalités de notification.\n3. **Notification Obligatoire** : Avant de mettre en œuvre une augmentation du loyer, le propriétaire doit notifier le locataire avec un délai raisonnable (généralement 2 mois).\n4. **Clause de Non-Renouvellement** : Si le contrat de locaison comporte une clause de non-renouvellement, l'augmentation du loyer peut être considérée comme une rupture du contrat.\n5. **Risques de Litige** : L'augmentation du loyer sans accord préalable peut entraîner des litiges entre le propriétaire et le",
+      "timestamp": "2026-04-19T20:55:51.829385"
+    },
+    {
+      "role": "user",
+      "content": "ما هي الوثائق اللازمة لشراء عقار في تونس؟",
+      "timestamp": "2026-04-19T20:58:36.295536"
+    },
+    {
+      "role": "assistant",
+      "content": "**وثائق شراء العقار في تونس**\n\n1. ** **: هو وثيقة أساسية تؤكد of the .\n2. ** **: وثيقة تؤكد أن المبيع ليس متزوجًا أو غير متزوج.\n3. ** non-/non-**: وثيقة تؤكد أن المبيع لا يوجد أي أو على العقار.\n4. ** TIB**: وثيقة تؤكد دفع جميع الضرائب والرسومassociated the .\n\n**تنبيه:** يجب أن تكون هذه الوثائق سارية في الوقت الذي يتم شراء العقار فيه.",
+      "timestamp": "2026-04-19T20:58:36.295536"
+    },
+    {
+      "role": "user",
+      "content": "اشتريت منزل وتبين أنه بدون رخصة بناء\n\nهل يمكنني تسجيله؟\nما العقوبات؟\nكيف أسوي الوضعية؟",
+      "timestamp": "2026-04-19T20:59:31.464330"
+    },
+    {
+      "role": "assistant",
+      "content": "1. لا يمكن تسجيل المنزل دون رخصة بناء، حيث يعد ذلك انتهاكًا للقانون.\n\n2. العقوبة هي إطلاق سراح المبنى واضطراب السوق.\n\n3. للاستغلال من الوضعية، يجب علىك إعادة بناء المبنى مع رخصة بناء صحيحة، ثم تسجيله في cơ sởات الاقتران.",
+      "timestamp": "2026-04-19T20:59:31.464330"
+    }
+  ]
+}
