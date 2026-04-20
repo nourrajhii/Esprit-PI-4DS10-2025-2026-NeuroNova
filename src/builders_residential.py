@@ -209,7 +209,7 @@ class BuildersResidential:
             if r:
                 p["piscine"] = self._poste_ff(f"Piscine construction — {surf_piscine:.0f} m²", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # RÉNOVATION
@@ -274,7 +274,7 @@ class BuildersResidential:
             p["faux_plafond"] = self._poste(
                 f"Faux plafond — {surf_hab:.0f} m²", surf_hab, "m²", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # MIXTE : MAISON/LOGEMENT RDC + APPARTEMENTS AUX ÉTAGES
@@ -469,4 +469,4 @@ class BuildersResidential:
             r12 = {**r, "min": r["min"] * 12, "mid": r["mid"] * 12, "max": r["max"] * 12}
             p["securite"] = self._poste_ff("Télésurveillance (12 mois)", r12)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))

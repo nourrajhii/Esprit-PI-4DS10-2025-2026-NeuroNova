@@ -1,20 +1,17 @@
 """
-DevisCalculator v9.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nouveautés v9.0 :
-  - Gestion des étages : surface_habitable × nombre_etages
-  - Poste "escalier" ajouté automatiquement si nb_etages > 1
-    (prix par volée d'escalier, forfait pour structures métalliques/béton)
-  - Nouveaux types de projets commerciaux :
-      hotel, foyer, centre_esthetique, salle_sport, clinique, bureau,
-      salle_fetes, entrepot
-  - estimate_surfaces() accepte nombre_etages en paramètre
-  - build_devis() dispatch sur les nouveaux types
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DevisCalculator v10.0 — avec Modèle ML de Prédiction
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Nouveautés v10.0 :
+  - Intégration du DevisPredictor (GradientBoosting + Ridge)
+  - setup_predictor() pour initialiser/charger le modèle ML
+  - _finalize() enrichi : appel predictor.adjust_devis() si entraîné
+  - Les totaux finaux sont blendés règles RAG (65%) + ML (35%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 import math
 import pandas as pd
+from typing import Optional
 
 # ── Surfaces standard par pièce (m²) ─────────────────────────────────────────
 SURF_PIECE = {
@@ -45,15 +42,74 @@ def _fmt_dt(v: float) -> str:
 
 
 from .devis_calculator_builders import DevisCalculatorBuilders
+from .price_predictor import DevisPredictor
 
 
 class DevisCalculator(DevisCalculatorBuilders):
 
     def __init__(self):
         self._df: pd.DataFrame | None = None
+        self.predictor: Optional[DevisPredictor] = None   # ← ML predictor
 
     # ──────────────────────────────────────────────────────────────────────────
-    # CHARGEMENT
+    # SETUP PREDICTOR ML
+    # ──────────────────────────────────────────────────────────────────────────
+
+    def setup_predictor(self, history_path: str = None, blend_alpha: float = 0.35):
+        """
+        Initialise le modèle ML de prédiction.
+
+        1. Tente de charger un modèle pré-entraîné depuis ./models/
+        2. Si history_path fourni, entraîne sur historique réel
+        3. Sinon, entraîne sur données synthétiques (bootstrap)
+
+        Parameters
+        ----------
+        history_path : str, optional
+            Chemin vers un CSV/Excel de vrais devis réels.
+            Colonnes requises : terrain_m2, surface_habitable, surface_plancher,
+            nombre_etages, nb_chambres, nb_salons, nb_cuisines, nb_sdb,
+            has_jardin, has_piscine, has_dressing, type_projet_enc, qualite_enc,
+            total_mid_rules, ratio_densite,
+            reel_total_min, reel_total_mid, reel_total_max
+        blend_alpha : float
+            Poids de la prédiction ML dans le résultat final (0–1).
+            0.20 = léger ajustement ML, 0.35 = défaut, 0.50+ = fort poids ML
+        """
+        self.predictor = DevisPredictor(blend_alpha=blend_alpha)
+
+        # 1. Essayer de charger un modèle en cache
+        try:
+            self.predictor = DevisPredictor.load()
+            self.predictor.blend_alpha = blend_alpha  # mettre à jour l'alpha
+            print(f"📦 Predictor ML chargé depuis le cache (α={blend_alpha})")
+            return
+        except FileNotFoundError:
+            pass
+
+        # 2. Charger l'historique réel si disponible
+        if history_path:
+            try:
+                if str(history_path).endswith(".csv"):
+                    hist = pd.read_csv(history_path)
+                else:
+                    hist = pd.read_excel(history_path)
+                self.predictor.train(hist)
+                self.predictor.save()
+                print(f"✅ Predictor entraîné sur historique réel ({len(hist)} devis)")
+                return
+            except Exception as e:
+                print(f"⚠️  Impossible de charger l'historique : {e}")
+
+        # 3. Bootstrap synthétique
+        print("📊 Entraînement predictor sur données synthétiques (bootstrap)...")
+        synth = DevisPredictor.generate_synthetic_history(n=200)
+        self.predictor.train(synth)
+        self.predictor.save()
+        print("✅ Predictor bootstrap prêt — remplacez par de vrais devis dès possible")
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # CHARGEMENT DATASET
     # ──────────────────────────────────────────────────────────────────────────
 
     def load_dataset(self, filepath: str):
@@ -276,15 +332,7 @@ class DevisCalculator(DevisCalculatorBuilders):
 
     def _add_escalier(self, postes: dict, nombre_etages: int,
                       type_projet: str = "construction"):
-        """
-        Ajoute le(s) poste(s) escalier si nombre_etages > 1.
-        - nb_volées = nombre_etages - 1  (une volée entre chaque paire de niveaux)
-        - Hôtels/ERP ≥ 3 niveaux : double cage d'escalier (obligation réglementaire)
-        - Fallback forfait si absent du dataset.
-        """
-        nb_volees = nombre_etages - 1   # volées par cage
-
-        # Double cage obligatoire pour hôtel/ERP avec ≥ 3 niveaux
+        nb_volees = nombre_etages - 1
         nb_cages = 2 if (type_projet in ("hotel", "foyer", "clinique", "bureau",
                                           "salle_fetes") and nombre_etages >= 3) else 1
 
@@ -299,12 +347,10 @@ class DevisCalculator(DevisCalculatorBuilders):
         nb_total_volees = nb_volees * nb_cages
         cage_label = f"{nb_cages} cage{'s' if nb_cages > 1 else ''} × {nb_volees} volée{'s' if nb_volees > 1 else ''}"
 
-        # Prix plancher réaliste : une volée d'escalier béton en Tunisie = 1 000–3 000 DT
-        PRIX_MIN_REALISTE = 1_000   # DT/volée
+        PRIX_MIN_REALISTE = 1_000
         PRIX_MID_REALISTE = 1_800
         PRIX_MAX_REALISTE = 3_000
 
-        # Si dataset retourne un prix trop bas (marche/m² au lieu de volée), forcer forfait
         use_dataset = r and r.get("mid", 0) >= 800
 
         if use_dataset:
@@ -328,41 +374,25 @@ class DevisCalculator(DevisCalculatorBuilders):
             }
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SURFACES — accepte nombre_etages
+    # SURFACES
     # ──────────────────────────────────────────────────────────────────────────
 
     def estimate_surfaces(self, terrain_m2: float, pieces: dict,
                           nombre_etages: int = 1) -> dict:
-        """
-        Calcule les surfaces du projet.
-
-        Règles surfaces extérieures :
-          parking  = 10% du terrain (20% si ≥3 niveaux)
-          jardin   = 0% si non demandé
-                   = 10% si jardin + terrain < 200 m²
-                   = 20% si jardin + terrain ≥ 200 m²
-          piscine  = 20% piscine + 20% jardin (forcé si piscine)
-          emprise  = terrain - parking - jardin - piscine
-          plafond  = 60% résidentiel, 65% commerce, 70% entrepôt/industriel
-        """
         has_jardin    = bool(pieces.get("jardin",  False))
         has_piscine   = bool(pieces.get("piscine", False))
         nombre_etages = max(1, int(nombre_etages or 1))
         type_projet   = pieces.get("_type_projet", "construction")
 
-        # ── Parking / allée ───────────────────────────────────────────────────
-        # Surface fixe réaliste selon taille terrain, pas un ratio aveugle.
         if terrain_m2 <= 150:
-            surf_parking = round(terrain_m2 * 0.05, 1)   # 5% petit terrain
+            surf_parking = round(terrain_m2 * 0.05, 1)
         elif terrain_m2 <= 300:
-            surf_parking = round(terrain_m2 * 0.08, 1)   # 8% terrain moyen
+            surf_parking = round(terrain_m2 * 0.08, 1)
         elif nombre_etages >= 3:
-            surf_parking = round(terrain_m2 * 0.15, 1)   # 15% grand projet multi-niveaux
+            surf_parking = round(terrain_m2 * 0.15, 1)
         else:
-            surf_parking = round(terrain_m2 * 0.10, 1)   # 10% standard
+            surf_parking = round(terrain_m2 * 0.10, 1)
 
-        # ── Jardin / Piscine ──────────────────────────────────────────────────
-        # Jardin = 0 si non explicitement demandé par l'utilisateur
         if has_piscine:
             surf_piscine = round(terrain_m2 * 0.20, 1)
             surf_jardin  = round(terrain_m2 * 0.15, 1)
@@ -371,13 +401,11 @@ class DevisCalculator(DevisCalculatorBuilders):
             surf_jardin  = round(terrain_m2 * (0.15 if terrain_m2 < 300 else 0.20), 1)
         else:
             surf_piscine = 0.0
-            surf_jardin  = 0.0   # PAS de jardin si non demandé
+            surf_jardin  = 0.0
 
-        # ── Emprise bâtiment ──────────────────────────────────────────────────
         exterieur    = surf_parking + surf_jardin + surf_piscine
         emprise_brut = round(terrain_m2 - exterieur, 1)
 
-        # Plafond COS selon type de projet
         if type_projet in ("entrepot", "salle_sport", "salle_fetes"):
             max_ratio = 0.70
         elif type_projet in ("cafe_commerce", "mixte_cafe_appart"):
@@ -391,19 +419,16 @@ class DevisCalculator(DevisCalculatorBuilders):
         emprise_sol = round(min(emprise_brut, terrain_m2 * max_ratio), 1)
         emprise_sol = max(emprise_sol, 20.0)
 
-        # Surface plancher totale (SHON) = emprise × étages
         surf_plancher_total = round(emprise_sol * nombre_etages, 1)
-
-        # Coefficient d'utilisation (circulations, murs, gaines = ~15%)
         surf_utile = round(surf_plancher_total * 0.85, 1)
 
         cote = math.sqrt(emprise_sol) * 1.2
         return {
             "terrain_total":        terrain_m2,
             "emprise_sol":          emprise_sol,
-            "surface_plancher":     surf_plancher_total,   # SHON totale tous niveaux
-            "surface_habitable":    surf_utile,            # surface utile (sans circulations)
-            "surface_par_etage":    emprise_sol,           # surface d'un seul niveau
+            "surface_plancher":     surf_plancher_total,
+            "surface_habitable":    surf_utile,
+            "surface_par_etage":    emprise_sol,
             "nombre_etages":        nombre_etages,
             "surface_jardin":       surf_jardin,
             "surface_piscine":      surf_piscine,
@@ -453,7 +478,7 @@ class DevisCalculator(DevisCalculatorBuilders):
             return self._build_construction(surfaces, pieces, nombre_etages)
 
     # ──────────────────────────────────────────────────────────────────────────
-    # HELPER INTERNE
+    # HELPERS INTERNES
     # ──────────────────────────────────────────────────────────────────────────
 
     def _nb(self, pieces: dict, *keys) -> int:
@@ -470,8 +495,19 @@ class DevisCalculator(DevisCalculatorBuilders):
         return 0
 
     # ──────────────────────────────────────────────────────────────────────────
+    # _finalize — MODIFIÉ : intègre la prédiction ML
+    # ──────────────────────────────────────────────────────────────────────────
 
-    def _finalize(self, surf: dict, postes: dict) -> dict:
+    def _finalize(self, surf: dict, postes: dict,
+                  pieces: dict = None, type_projet: str = "construction",
+                  qualite: str = "standard") -> dict:
+        """
+        Calcule les totaux, l'accuracy, puis applique la correction ML.
+
+        Paramètres pieces, type_projet, qualite sont optionnels mais nécessaires
+        pour la prédiction ML. Les builders les passent automatiquement via
+        _finalize_with_meta().
+        """
         if not postes:
             return {
                 "resume":   self._resume(surf),
@@ -499,19 +535,19 @@ class DevisCalculator(DevisCalculatorBuilders):
         accuracy_pct   = round(postes_dataset / total_postes * 100) if total_postes else 0
 
         if accuracy_pct >= 80:
-            qualite = "🟢 Excellente"
+            qualite_acc = "🟢 Excellente"
             note    = "La majorité des prix viennent directement du dataset."
         elif accuracy_pct >= 60:
-            qualite = "🟡 Bonne"
+            qualite_acc = "🟡 Bonne"
             note    = "Plus de la moitié des postes sont issus du dataset."
         elif accuracy_pct >= 40:
-            qualite = "🟠 Partielle"
+            qualite_acc = "🟠 Partielle"
             note    = "Une partie des postes n'avait pas de données dans le dataset."
         else:
-            qualite = "🔴 Faible"
+            qualite_acc = "🔴 Faible"
             note    = "Peu de postes couverts — enrichir le dataset est recommandé."
 
-        return {
+        result = {
             "resume": self._resume(surf),
             "postes": postes,
             "total": {
@@ -524,12 +560,24 @@ class DevisCalculator(DevisCalculatorBuilders):
             },
             "accuracy": {
                 "score":          accuracy_pct,
-                "qualite":        qualite,
+                "qualite":        qualite_acc,
                 "postes_dataset": postes_dataset,
                 "postes_total":   total_postes,
                 "detail":         note,
             },
         }
+
+        # ── PRÉDICTION ML — blend si predictor disponible ─────────────────────
+        if self.predictor and self.predictor.is_trained and pieces is not None:
+            try:
+                result = self.predictor.adjust_devis(
+                    result, surf, pieces, type_projet, qualite
+                )
+            except Exception as e:
+                print(f"⚠️  Predictor ML ignoré (erreur) : {e}")
+        # ─────────────────────────────────────────────────────────────────────
+
+        return result
 
     def _resume(self, surf: dict) -> dict:
         nb_et = surf.get("nombre_etages", 1)
@@ -541,7 +589,7 @@ class DevisCalculator(DevisCalculatorBuilders):
             "surface_allee":     f"{surf['surface_allee']:.0f} m²",
         }
         if nb_et > 1:
-            r["emprise_sol"]     = f"{surf.get('emprise_sol', 0):.0f} m²"
+            r["emprise_sol"]       = f"{surf.get('emprise_sol', 0):.0f} m²"
             r["surface_par_etage"] = f"{surf.get('surface_par_etage', surf.get('emprise_sol', 0)):.0f} m²"
         if surf.get("surface_piscine", 0) > 0:
             r["surface_piscine"] = f"{surf['surface_piscine']:.0f} m²"

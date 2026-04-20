@@ -103,6 +103,12 @@ async def startup_event():
     calculator = DevisCalculator()
     calculator.load_dataset("data/materiaux_cleaned.xlsx")
 
+    print("\n🤖 Initialisation du modèle ML de prédiction...")
+    calculator.setup_predictor(
+        history_path="data/historique_devis.csv",  # optionnel, ignoré si absent
+        blend_alpha=0.35
+    )
+
     is_ready = True
     print(f"\n✅ API prête sur http://127.0.0.1:8000")
     print(f"📖 Swagger UI : http://127.0.0.1:8000/docs")

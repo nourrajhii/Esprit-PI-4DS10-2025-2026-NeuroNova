@@ -90,7 +90,7 @@ class BuildersCommercial:
         if nombre_etages > 1:
             self._add_escalier(p, nombre_etages)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # HÔTEL
@@ -258,7 +258,7 @@ class BuildersCommercial:
             r12 = {**r, "min": r["min"] * 12, "mid": r["mid"] * 12, "max": r["max"] * 12}
             p["securite"] = self._poste_ff("Sécurité + vidéosurveillance (12 mois)", r12)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # FOYER
@@ -324,7 +324,7 @@ class BuildersCommercial:
             r12 = {**r, "min": r["min"] * 12, "mid": r["mid"] * 12, "max": r["max"] * 12}
             p["securite"] = self._poste_ff("Sécurité + accès contrôlé (12 mois)", r12)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # CENTRE ESTHÉTIQUE
@@ -382,7 +382,7 @@ class BuildersCommercial:
         if r:
             p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # SALLE DE SPORT
@@ -433,7 +433,7 @@ class BuildersCommercial:
         if r:
             p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG (triphasé)", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # CLINIQUE
@@ -489,7 +489,7 @@ class BuildersCommercial:
         if r:
             p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # BUREAUX
@@ -545,7 +545,7 @@ class BuildersCommercial:
             r12 = {**r, "min": r["min"] * 12, "mid": r["mid"] * 12, "max": r["max"] * 12}
             p["securite"] = self._poste_ff("Système de sécurité accès (12 mois)", r12)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # SALLE DES FÊTES
@@ -604,7 +604,7 @@ class BuildersCommercial:
         if r:
             p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG (triphasé)", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # ENTREPÔT
@@ -663,7 +663,7 @@ class BuildersCommercial:
         if r:
             p["raccord_elec"] = self._poste_ff("Raccordement électricité STEG (triphasé)", r)
 
-        return self._finalize(surf, p)
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))
 
     # ──────────────────────────────────────────────────────────────────────────
     # MIXTE : CAFÉ RDC + APPARTEMENTS
@@ -866,5 +866,4 @@ class BuildersCommercial:
                 f"Raccordements électricité STEG — {nb_unites} compteurs",
                 nb_unites, "forfait", r)
 
-        return self._finalize(surf, p)
-
+        return self._finalize(surf, p, pieces=pieces, type_projet=pieces.get("_type_projet", "construction"))

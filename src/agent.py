@@ -1154,6 +1154,40 @@ class ConstructionAgent:
             f"> {acc_detail}", "",
             "> ⚠️ *Hors honoraires architecte (5–8% du total) et taxes.*",
         ]
+
+        # ── BLOC ML — affiché si le predictor a ajusté le devis ──────────────
+        pred = devis.get("prediction")
+        if pred:
+            conf_icons = {"haute": "🟢", "moyenne": "🟡", "faible": "🔴"}
+            icon       = conf_icons.get(pred.get("confidence", "faible"), "⚪")
+            r2_val     = pred.get("r2_score")
+            r2_str     = f"R²={r2_val:.2f}" if r2_val is not None else "bootstrap"
+            alpha      = pred.get("blend_alpha", 0.35)
+            n_train    = pred.get("n_train", 0)
+            model_name = pred.get("model", "ML")
+
+            rules_min = pred.get("rules_min", 0)
+            rules_mid = pred.get("rules_mid", 0)
+            rules_max = pred.get("rules_max", 0)
+            ml_min    = pred.get("ml_min", 0)
+            ml_mid    = pred.get("ml_mid", 0)
+            ml_max    = pred.get("ml_max", 0)
+
+            lines += [
+                "", "---",
+                f"### 🤖 Prédiction ML — Confiance : {icon} {pred.get('confidence', '').capitalize()}",
+                "",
+                "| | MIN (DT) | MOY (DT) | MAX (DT) |",
+                "|:---|:---:|:---:|:---:|",
+                f"| 📐 Règles RAG seules | {_fmt(rules_min)} | {_fmt(rules_mid)} | {_fmt(rules_max)} |",
+                f"| 🤖 Prédiction ML seule | {_fmt(ml_min)} | {_fmt(ml_mid)} | {_fmt(ml_max)} |",
+                f"| **✅ Résultat blendé** | **{t_min}** | **{t_mid}** | **{t_max}** |",
+                "",
+                f"> *Blend α={alpha} ({int((1-alpha)*100)}% règles + {int(alpha*100)}% ML) "
+                f"• {model_name} • {r2_str} • {n_train} devis d'entraînement*",
+            ]
+        # ─────────────────────────────────────────────────────────────────────
+
         return "\n".join(lines)
 
     # ── Réinitialisation ──────────────────────────────────────────────────────
