@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstateMind | AI Real Estate Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface: rgba(20, 25, 40, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --primary: #4f46e5;
+            --secondary: #06b6d4;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15), transparent 25%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 i {
+            color: var(--secondary);
+        }
+
+        .card p.desc {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        /* Result Section */
+        .result-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .result-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            FONT-SIZE: 1.4rem;
+        }
+
+        .markdown-body {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            color: white;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .markdown-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .markdown-body strong {
+            color: #fff;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: rgba(79, 70, 229, 0.2);
+            border: 1px solid rgba(79, 70, 229, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #c7d2fe;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">EstateMind AI</div>
+        <div style="color: var(--text-muted); font-weight: 600;">Dual RAG Intelligence</div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Predict. Analyze. Invest.</h1>
+            <p>Our autonomous RAG agents analyze thousands of live listings and historical macros to provide highly deterministic pricing and investment intelligence.</p>
+        </div>
+
+        <div class="grid">
+            <!-- AGENT 1: PRICING -->
+            <div class="card">
+                <h2><i class="fa-solid fa-chart-pie"></i> Pricing Analyst</h2>
+                <p class="desc">Combines our ML Model with live database RAG to evaluate property value and generate explicative macroeconomic reports on your asset.</p>
+                
+                <div class="form-group">
+                    <label>City / Location</label>
+                    <input type="text" id="p-city" value="La Soukra" placeholder="e.g. La Soukra">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Surface (m²)</label>
+                        <input type="number" id="p-surface" value="150">
+                    </div>
+                    <div class="form-group">
+                        <label>City Tier</label>
+                        <select id="p-tier">
+                            <option value="1">1 - Rural / Standard</option>
+                            <option value="3">3 - Urban / Average</option>
+                            <option value="5" selected>5 - Prime / Luxury</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Rooms</label>
+                        <input type="number" id="p-rooms" value="3">
+                    </div>
+                    <div class="form-group">
+                        <label>Bathrooms</label>
+                        <input type="number" id="p-baths" value="2">
+                    </div>
+                </div>
+
+                <button class="btn" id="btn-predict" onclick="runPriceAgent()">
+                    <span>Analyze Valuation</span>
+                    <div class="loader" id="p-loader"></div>
+                </button>
+
+                <div class="result-box" id="p-result">
+                    <h3>Valuation Report</h3>
+                    <div class="price-tag" id="p-tag"></div>
+                    <div class="markdown-body" id="p-md"></div>
+                </div>
+            </div>
+
+            <!-- AGENT 2: INVESTMENT -->
+            <div class="card">
+                <h2><i class="fa-solid fa-seedling"></i> Investment Strategist</h2>
+                <p class="desc">Identifies undervalued deals from the system and cross-references them to explain why land banking or cash-flow is ideal right now.</p>
+                
+                <div class="form-group">
+                    <label>Maximum Budget (TND)</label>
+                    <input type="number" id="i-budget" value="450000" step="50000">
+                </div>
+                <div class="form-group">
+                    <label>Preferred City (Optional)</label>
+                    <input type="text" id="i-city" value="" placeholder="e.g. Ennasr">
+                </div>
+
+                <button class="btn" id="btn-invest" onclick="runInvestAgent()" style="background: linear-gradient(135deg, #0f766e, #06b6d4);">
+                    <span>Discover Opportunities</span>
+                    <div class="loader" id="i-loader"></div>
+                </button>
+
+                <div class="result-box" id="i-result">
+                    <h3>Investment Strategy</h3>
+                    <div class="markdown-body" id="i-md"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:8000/api";
+
+        async function runPriceAgent() {
+            const btn = document.getElementById('btn-predict');
+            const loader = document.getElementById('p-loader');
+            const resultBox = document.getElementById('p-result');
+            
+            btn.disabled = true;
+            loader.style.display = 'block';
+            resultBox.style.display = 'none';
+
+            const payload = {
+                city: document.getElementById('p-city').value,
+                surface_m2: parseFloat(document.getElementById('p-surface').value),
+                rooms: parseInt(document.getElementById('p-rooms').value),
+                bathrooms: parseInt(document.getElementById('p-baths').value),
+                city_tier: parseInt(document.getElementById('p-tier').value)
+            };
+
+            try {
+                const res = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                
+                if (data.status === 'success') {
+                    document.getElementById('p-tag').innerText = `ML Baseline: ${data.data.ml_price.toLocaleString(undefined, {maximumFractionDigits:0})} TND`;
+                    document.getElementById('p-md').innerHTML = marked.parse(data.data.report);
+                    resultBox.style.display = 'block';
+                } else {
+                    alert("Agent Error: " + data.detail);
+                }
+            } catch (err) {
+                alert("Server not responding. Did you start the FastAPI backend?");
+            } finally {
+                btn.disabled = false;
+                loader.style.display = 'none';
+            }
+        }
+
+        async function runInvestAgent() {
+            const btn = document.getElementById('btn-invest');
+            const loader = document.getElementById('i-loader');
+            const resultBox = document.getElementById('i-result');
+            
+            btn.disabled = true;
+            loader.style.display = 'block';
+            resultBox.style.display = 'none';
+
+            const payload = {
+                budget: parseFloat(document.getElementById('i-budget').value),
+                city: document.getElementById('i-city').value || null
+            };
+
+            try {
+                const res = await fetch(`${API_URL}/invest`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+                
+                if (data.status === 'success') {
+                    document.getElementById('i-md').innerHTML = marked.parse(data.data.report);
+                    resultBox.style.display = 'block';
+                } else {
+                    alert("Agent Error: " + data.detail);
+                }
+            } catch (err) {
+                alert("Server not responding. Please make sure the API is running.");
+            } finally {
+                btn.disabled = false;
+                loader.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
