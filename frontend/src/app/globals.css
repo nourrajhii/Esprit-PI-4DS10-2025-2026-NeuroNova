@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Police principale du template Property — Work Sans */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Couleurs du design system (property-1.0.0) */
+  --color-primary:   #00204a;
+  --color-secondary: #005555;
+  --color-bg:        #ffffff;
+  --color-bg-light:  #f8f9fa;
+  --color-bg-muted:  #efefef;
+  --color-text:      #212529;
+  --color-text-muted:#888888;
+
+  --foreground-rgb: 33, 37, 41;
+  --background-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Work Sans', system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+/* ── Composants réutilisables alignés sur le template ── */
+@layer components {
+  /* Bouton primaire */
+  .btn-primary {
+    @apply inline-block px-6 py-3 rounded bg-primary text-white font-medium
+           transition-all duration-300 relative top-0
+           hover:-top-0.5 hover:shadow-card-hover;
+  }
+
+  /* Bouton secondaire (outline) */
+  .btn-outline {
+    @apply inline-block px-6 py-3 rounded border-2 border-primary text-primary font-medium
+           transition-all duration-300
+           hover:bg-primary hover:text-white;
+  }
+
+  /* Carte de propriété */
+  .property-card {
+    @apply bg-white rounded shadow-card overflow-hidden transition-shadow duration-300
+           hover:shadow-card-hover;
+  }
+
+  /* Prix en vert teal (secondary) */
+  .price-tag {
+    @apply text-xl font-bold;
+    color: var(--color-secondary);
+  }
+
+  /* Badge de statut */
+  .status-badge {
+    @apply inline-block px-3 py-1 text-xs font-semibold rounded-full;
+  }
+
+  /* Section avec fond clair */
+  .section-light {
+    background-color: var(--color-bg-light);
+  }
+
+  /* Pagination custom */
+  .page-item {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-full font-bold
+           transition-colors duration-200;
+    background: rgba(0, 32, 74, 0.1);
+    color: var(--color-primary);
+  }
+  .page-item:hover,
+  .page-item.active {
+    background: var(--color-primary);
+    @apply text-white;
+  }
+
+  /* Texte avec dégradé (gradient-text du template) */
+  .gradient-text {
+    font-weight: 700;
+    background: linear-gradient(270deg, #f82a7e 0%, #752a90 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ── Bootstrap utility stubs (for property-1.0.0 template classes) ── */
+.list-unstyled { list-style: none; padding-left: 0; margin-bottom: 0; }
+.d-flex        { display: flex !important; }
+.d-block       { display: block !important; }
+.d-inline-block{ display: inline-block !important; }
+.align-items-center { align-items: center !important; }
+.align-items-stretch { align-items: stretch !important; }
+.justify-content-center { justify-content: center !important; }
+.text-center   { text-align: center !important; }
+.float-start   { float: left !important; }
+.float-end     { float: right !important; }
+.me-3          { margin-right: 1rem !important; }
+.me-2          { margin-right: 0.5rem !important; }
+.me-auto       { margin-right: auto !important; }
+.mb-2          { margin-bottom: 0.5rem !important; }
+.mb-3          { margin-bottom: 1rem !important; }
+.mb-4          { margin-bottom: 1.5rem !important; }
+.mb-5          { margin-bottom: 3rem !important; }
+.mt-1          { margin-top: 0.25rem !important; }
+.mt-5          { margin-top: 3rem !important; }
+.px-4          { padding-left: 1rem !important; padding-right: 1rem !important; }
+.py-2          { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.py-3          { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+.px-3          { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+.img-fluid     { max-width: 100%; height: auto; }
+.w-100         { width: 100% !important; }
+.text-white    { color: #fff !important; }
+.text-black-50 { color: rgba(0,0,0,0.5) !important; }
+.line-clamp-2  { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.form-control  { display: block; width: 100%; padding: 0.375rem 0.75rem; font-size: 1rem; background: #fff; border: 1px solid #dee2e6; border-radius: 0.375rem; outline: none; }
+.footer-social-icon:hover { background: #00204a !important; }
+
+/* ── Leaflet ── */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+/* ── Verdicts investisseur ── */
+.verdict-BUY    { @apply bg-green-100 text-green-800 border border-green-200; }
+.verdict-HOLD   { @apply bg-orange-100 text-orange-800 border border-orange-200; }
+.verdict-AVOID  { @apply bg-red-100 text-red-800 border border-red-200; }
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+.verdict-BUY    { @apply bg-green-100 text-green-800 border border-green-200; }
+.verdict-HOLD   { @apply bg-orange-100 text-orange-800 border border-orange-200; }
+.verdict-AVOID  { @apply bg-red-100 text-red-800 border border-red-200; }
