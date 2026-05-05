@@ -273,6 +273,8 @@ services:
       dockerfile: Dockerfile
     container_name: immo-viagra
     restart: unless-stopped
+    ports:
+      - "8000:8000"
     environment:
       <<: [*redis-env, *mongo-env, *gemini-env]
       RECOMMENDER_URL:  http://real-estate-advisor-backend:8001
@@ -311,15 +313,23 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_VIAGRA_URL:    http://${SERVER_HOST}:8000
-        NEXT_PUBLIC_BACKEND_URL:   http://${SERVER_HOST}:4000
-        NEXT_PUBLIC_VILLA3D_API_URL: http://${SERVER_HOST}:8056
+        # Use explicit IP/domain — ${SERVER_HOST} from .env
+        NEXT_PUBLIC_VIAGRA_URL:      ${NEXT_PUBLIC_VIAGRA_URL}
+        NEXT_PUBLIC_BACKEND_URL:     ${NEXT_PUBLIC_BACKEND_URL}
+        NEXT_PUBLIC_VILLA3D_API_URL: ${NEXT_PUBLIC_VILLA3D_API_URL}
     container_name: immo-frontend
     restart: unless-stopped
     ports:
       - "3001:3000"
     environment:
       NODE_ENV: production
+      # MongoDB env vars needed by Next.js API routes at runtime
+      MONGODB_URI: ${MONGODB_URI}
+      SCRAPED_DB_URI: ${SCRAPED_DB_URI}
+      DATABASE_URL: ${MONGODB_URI}
+      # Also pass PUBLIC vars at runtime for SSR
+      NEXT_PUBLIC_VIAGRA_URL: ${NEXT_PUBLIC_VIAGRA_URL}
+      NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL}
     depends_on:
       - viagra
       - backend
