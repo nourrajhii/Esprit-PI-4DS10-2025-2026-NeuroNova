@@ -1,0 +1,1445 @@
+[
+  {
+    "hash": "fe67feedd12f",
+    "question": "Qu'est-ce que le droit de propriété en droit tunisien",
+    "timestamp": "2026-03-30T20:52:24.833734",
+    "hits": 0,
+    "result": {
+      "answer": "**Le Droit de Propriété en Droit Tunisien**\n\n1. **Définition du Droit de Propriété** : Le droit de propriété est un droit absolu et inalienable qui confère au propriétaire la pleine possession et le contrôle de l'immeuble ou des biens, ainsi que les droits et les obligations associés à cette possession.\n\n2. **Principes Fondamentaux du Droit de Propriété** : Le droit de propriété est basé sur plusieurs principes fondamentaux, notamment la propriété absolue, la liberté de disposition et la protection contre l'expropriation abusive.\n\n3. **Expropriation et Indemnité** : L'expropriation d'un immeuble nécessite une indemnité juste, qui doit être versée au propriétaire par l'État ou l'autorité compétente. La durée de prescription pour obtenir cette indemnité est fixée à 15 ans non immatriculé, 10 ans en cas de bonne foi et zéro en cas d'immatriculation.\n\n4. **Préemption et Copropriété** : Dans le cadre de la copropriété, les propriétaires ont le droit de préemption sur les biens communs ou les travaux à effectuer, mais ce droit est soumis à certaines conditions et limites. Les syndics de copropriété sont également responsables des charges proportionnelles.\n\n5. **Hypothèque et Registre Foncier** : L'hypothèque est un moyen de s'assurer contre le débiteur, mais elle ne peut être exercée que par les créanciers légitimes. Le registre foncier est l'organisme chargé de la conservation des actes fonciers et de la garantie du droit de propriété.\n\n**Avertissement :** Il est important de noter que le droit tunisien peut être complexe et sujet à évolutions, il est donc recommandé de consulter un avocat spécialisé pour obtenir des informations précises et à jour sur les règles et réglementations en vigueur.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3729,
+          "similarity": 0.728,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 311",
+            "Art. 312"
+          ],
+          "snippet": "Article 311.- Le droit de rétention ne peut être exercé :  1) par le possesseur de mauvaise foi ;  2) par le créancier d…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3879,
+          "similarity": 0.721,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "Article  premier.-  Est  approuvée,  la  réorganisation  des  dispositions du « code des obligations et des contrats tun…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.396,
+          "similarity": 0.716,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 273"
+          ],
+          "snippet": "Article 273.- Lorsque le débiteur est en demeure, le créancier a le  droit de contraindre le débiteur à accomplir l'obli…"
+        },
+        {
+          "rank": 4,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3973,
+          "similarity": 0.716,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 572"
+          ],
+          "snippet": "Article 572.- Cependant, on peut vendre un droit incorporel, tel  que le droit de chasser ou de pêcher dans un lieu déte…"
+        },
+        {
+          "rank": 5,
+          "source": "06_copropriete_batiments.txt",
+          "source_label": "06 Copropriete Batiments",
+          "source_short": "06 Copropriete Batiments",
+          "source_icon": "📄",
+          "raw_score": 0.3981,
+          "similarity": 0.715,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 101",
+            "ف. 101"
+          ],
+          "snippet": "الفصل 101 / Article 101 : لا شفعة في ملكية الطبقات. Il n'y a pas de droit de préemption dans la copropriété par étages."
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🏛️",
+        "label": "مجلة الحقوق العينية — Code des Droits Réels"
+      },
+      "question_type": "droits_reels",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "6c39971aabbc",
+    "question": "إجراءات عدم دفع الإيجار",
+    "timestamp": "2026-03-30T20:55:05.314660",
+    "hits": 0,
+    "result": {
+      "answer": "**إجراءات عدم دفع الإيجار في تونس**\n\n1. **م mise en demeure écrite**: بعد انقضاء الفترة المحددة للدفع، يجب على المدير أو المالك أن يصدر مرسوماً بمنع المطالبة بالدفع، ويجب على المريض أن يتلقى هذا المرسم من قبل الحوissier.\n2. **دélai légal**: بعد مise en demeure، يجب على المريض أن يفيد المدير أو المالك بالدفع خلال فترة لا تقل عن 2 أشهر.\n3. **سaisine du juge cantonal**: إذا لم يتم دفع الإيجار، يجب على المدير أو المالك أن يصدر مرسوماً بلايement، ويجب على المريض أن يتلقى هذا المرسم من قبل الحوissier، وسيتم saisين الجudge cantonal.\n4. **Audience contradictoire**: بعد saisine الجudge cantonal، سيتم عقد audience contradictoire بين المدير أو المالك والمريد، وسيتم اتخاذ قرار بشأن عدم دفع الإيجار.\n5. **Jugement et signification par huissier**: إذا تم اتخاذ قرار بالعدم دفع، سيتم إصدار jugement، ويجب على المريض أن يتلقى هذا الجudge من قبل الحوissier.\n\n⚠️ يجب على المدير أو المالك أن يتعين على المريد أن يفيده بالدفع خلال فترة لا تقل عن 2 أشهر.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "07_preemption.txt",
+          "source_label": "07 Preemption",
+          "source_short": "07 Preemption",
+          "source_icon": "📄",
+          "raw_score": 0.5136,
+          "similarity": 0.661,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE VII — DROIT DE PRÉEMPTION (الشفعة)"
+        },
+        {
+          "rank": 2,
+          "source": "05_indivision.txt",
+          "source_label": "05 Indivision",
+          "source_short": "05 Indivision",
+          "source_icon": "📄",
+          "raw_score": 0.5393,
+          "similarity": 0.65,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE V — INDIVISION (الشيوع)"
+        },
+        {
+          "rank": 3,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.6262,
+          "similarity": 0.615,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        },
+        {
+          "rank": 4,
+          "source": "06_copropriete_batiments.txt",
+          "source_label": "06 Copropriete Batiments",
+          "source_short": "06 Copropriete Batiments",
+          "source_icon": "📄",
+          "raw_score": 0.6554,
+          "similarity": 0.604,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "TITRE VI — COPROPRIÉTÉ PAR ÉTAGES / APPARTEMENTS (ملكية الطبقات)"
+        },
+        {
+          "rank": 5,
+          "source": "02_propriete.txt",
+          "source_label": "02 Propriete",
+          "source_short": "02 Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.6613,
+          "similarity": 0.602,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "⚖️",
+        "label": "COC art. 726-798 — Bail / Expulsion"
+      },
+      "question_type": "expulsion",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "342ee0cce8da",
+    "question": "المشروع لا يتوافق مع خطة التطوير ، هل يمكن إصدار التصريح رغم ذلك، ما هي العقوبات في حالة المخالفة؟",
+    "timestamp": "2026-03-30T21:01:06.379158",
+    "hits": 0,
+    "result": {
+      "answer": "**[إصدار التصريح لمشروع لا يتوافق مع خطة التطوير]**\n\n1.  لا يمكن إصدار التصريح لمشروع لا يتوافق مع خطة التطوير.\n2.  في حالة المخالفة، يمكن أن تؤدي العقوبات إلى تعقيدات قانونية واقتصادية للفريق المشارك في المشروع.\n3.  قد يتعرض الفريق المشارك في المشروع لضغوطات قانونية واقتصادية كبيرة.\n4.  قد يُطلب من الفريق المشارك في المشروع إعادة التخطيط للمشروع وتوضيح الأسباب التي أدت إلى عدم توافق المشروع مع خطة التطوير.\n5.  قد تؤدي مخالفة هذا القانون إلى تعقيدات قانونية واقتصادية كبيرة للفريق المشارك في المشروع.\n\n⚠️ **لا يمكن إصدار التصريح لمشروع لا يتوافق مع خطة التطوير، ويمكن أن تؤدي مخالفتها إلى عقوبات قانونية واقتصادية.**",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.3662,
+          "similarity": 0.732,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        },
+        {
+          "rank": 2,
+          "source": "02_propriete.txt",
+          "source_label": "02 Propriete",
+          "source_short": "02 Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.3746,
+          "similarity": 0.727,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        },
+        {
+          "rank": 3,
+          "source": "02_cdr_propriete.txt",
+          "source_label": "02 Cdr Propriete",
+          "source_short": "02 Cdr Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.3746,
+          "similarity": 0.727,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        },
+        {
+          "rank": 4,
+          "source": "06_copropriete_batiments.txt",
+          "source_label": "06 Copropriete Batiments",
+          "source_short": "06 Copropriete Batiments",
+          "source_icon": "📄",
+          "raw_score": 0.3955,
+          "similarity": 0.717,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE VI — COPROPRIÉTÉ PAR ÉTAGES / APPARTEMENTS (ملكية الطبقات)"
+        },
+        {
+          "rank": 5,
+          "source": "04_propriete_prescription.txt",
+          "source_label": "04 Propriete Prescription",
+          "source_short": "04 Propriete Prescription",
+          "source_icon": "📄",
+          "raw_score": 0.4113,
+          "similarity": 0.709,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE IV — DROIT DE PROPRIÉTÉ (حق الملكية)"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "bb550594bc92",
+    "question": "Un plan d’aménagement ne respecte pas les orientations nationales, Qui contrôle cette conformité ?",
+    "timestamp": "2026-03-30T21:05:38.770851",
+    "hits": 0,
+    "result": {
+      "answer": "**Contrôle de la conformité des plans d'aménagement**\n\n1. **L'arrêté du Gouverneur territorialement compétent est le premier point de contrôle** pour vérifier si un plan d'aménagement respecte les orientations nationales, en vertu de l'article 19 du Code Aménagement / Urbanisme.\n2. **Le Ministre chargé de l'Urbanisme peut fixer le contenu du dossier du projet**, ce qui implique que son arrêté peut également être un point de contrôle pour la conformité des plans d'aménagement, en vertu de l'article 18 du Code Aménagement / Urbanisme.\n3. **Les schémas directeurs d'aménagement et les plans de protection** sont également des documents importants qui doivent être observés par les plans d'aménagement, pour garantir leur conformité avec les orientations nationales, en vertu de l'article 18 du Code Aménagement / Urbanisme.\n4. **Les communes et les administrations publiques peuvent également exercer un contrôle** sur la conformité des plans d'aménagement, en vertu de l'article 84 du Code Aménagement / Urbanisme, qui établit que leur responsabilité établie aux articles 83 et 18 s'applique également à elles.\n5. **Enfin, les parties concernées peuvent également contester la conformité** d'un plan d'aménagement, en demandant une copie du plan et en payant un montant fixé conformément à la législation en vigueur, en vertu de l'article 19 du Code Aménagement / Urbanisme.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.5352,
+          "similarity": 0.651,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 19"
+          ],
+          "snippet": "Article 19 : Les plans d'aménagement urbain sont approuvés par arrêté du Gouverneur territorialement compétent. Le plan …"
+        },
+        {
+          "rank": 2,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.554,
+          "similarity": 0.643,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "Un arrêté du Ministre chargé de l'Urbanisme fixe le contenu du dossier du projet. Les règlements d'urbanisme prévus par …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5551,
+          "similarity": 0.643,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "les mêmes conséquences que le défaut de retirement de la totalité.  Le tout, sauf les conventions contraires des parties…"
+        },
+        {
+          "rank": 4,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.5791,
+          "similarity": 0.633,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 18"
+          ],
+          "snippet": "Article 18 : Les plans d'aménagement urbain doivent observer les orientations figurant dans les schémas directeurs d'amé…"
+        },
+        {
+          "rank": 5,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.589,
+          "similarity": 0.629,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 83",
+            "Art. 84"
+          ],
+          "snippet": "Article 83.- Chacun est responsable du dommage moral ou  matériel qu'il a causé, non seulement par son fait, mais par sa…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🏙️",
+        "label": "Code de l'Aménagement du Territoire — Loi N°94-122"
+      },
+      "question_type": "urbanisme",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "af4163fd5603",
+    "question": "Mon propriétaire veut augmenter le loyer, est-ce légal sans clause dans le contrat ?",
+    "timestamp": "2026-03-30T21:09:08.464448",
+    "hits": 0,
+    "result": {
+      "answer": "**Augmentation du loyer sans clause contractuelle : une question de légitimité**\n\n1. **L'augmentation du loyer nécessite une mise à jour du contrat**: Pour augmenter le loyer, il est essentiel de consulter le propriétaire et de mettre à jour le contrat d'locatio-condominium pour éviter toute dispute ou litige.\n2. **La clause contractuelle doit être clairement exprimée**: La nouvelle tarification du loyer doit être explicitement mentionnée dans le contrat, avec une date précise d'entrée en vigueur, afin de prévenir tout malentendu.\n3. **Le propriétaire a le droit de consentir ou de refuser l'augmentation**: Le propriétaire dispose de la liberté de consentir ou de refuser l'augmentation du loyer, ce qui doit être communiqué au locataire avec clarté et précision.\n4. **L'augmentation du loyer peut être soumise à des conditions**: L'augmentation du loyer peut être soumise à certaines conditions, telles que la rénovation de l'immeuble ou la mise à jour des équipements, mais cela doit être explicitement mentionné dans le contrat.\n5. **Il est recommandé de consulter un avocat spécialisé en droit immobilier**: Avant d'augmenter le loyer, il est conseillé de consulter un avocat spécialisé en droit immobilier pour s'assurer que les conditions contractuelles sont respectées et pour éviter toute dispute ou litige.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3826,
+          "similarity": 0.723,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 700",
+            "Art. 701",
+            "Art. 702"
+          ],
+          "snippet": "Article 700.- La vente peut être faite à condition que l'acheteur ou  le vendeur aura le droit de se départir du contrat…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4186,
+          "similarity": 0.705,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 870",
+            "Art. 871"
+          ],
+          "snippet": "Article 870.- La clause résolutoire est de droit en faveur du  commettant après sommation faite au locateur :  a) lorsqu…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4278,
+          "similarity": 0.7,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 761",
+            "Art. 762",
+            "Art. 673"
+          ],
+          "snippet": "Article 761.- Néanmoins, si le vice de la chose louée est de nature  à compromettre sérieusement la santé ou la vie de c…"
+        },
+        {
+          "rank": 4,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4419,
+          "similarity": 0.694,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1301",
+            "Art. 1302",
+            "Art. 1303"
+          ],
+          "snippet": "Article 1301.- Est nulle et rend nul le contrat de société, toute  stipulation qui attribuerait à un associé une part da…"
+        },
+        {
+          "rank": 5,
+          "source": "08_loi17_avantages_fiscaux.txt",
+          "source_label": "08 Loi17 Avantages Fiscaux",
+          "source_short": "08 Loi17 Avantages Fiscaux",
+          "source_icon": "📄",
+          "raw_score": 0.4461,
+          "similarity": 0.691,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "--- DROITS ET OBLIGATIONS DU BAILLEUR (المكري) ---  Le bailleur (صاحب العقار/المكري) a le droit de : - Réviser le loyer …"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🔍",
+        "label": "مجلة الحقوق العينية + Code Urbanisme"
+      },
+      "question_type": "legalite_bien",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "06b051432610",
+    "question": "Un promoteur vend un appartement construit illégalement, Quelle est la responsabilité du promoteur ?",
+    "timestamp": "2026-03-30T21:15:07.621846",
+    "hits": 0,
+    "result": {
+      "answer": "**Responsabilité du promoteur pour une vente d'appartement construit illégalement**\n\n1. Le promoteur est responsable de la violation des règles de construction et de l'obtention non autorisée du permis de construire, ce qui constitue une infraction à l'article 305 du Code civil tunisien.\n2. La vente d'un appartement construit illégalement constitue un acte contraire à la loi et viole les dispositions de l'article 12 du Code pénal tunisien, qui interdit les actes contraires à l'ordre public.\n3. Le promoteur doit également répondre pour les dommages causés au propriétaire de l'appartement vendu, ainsi que pour les frais de réparation et de reconstruction des infrastructures non respectant les normes de construction.\n4. Il est possible que le promoteur soit également tenu responsable de la violation des dispositions du Code de l'urbanisme tunisien, qui réglemente les aspects techniques et réglementaires de la construction.\n5. Enfin, le promoteur peut être soumis à des sanctions pénales, notamment une amende et une peine d'emprisonnement, en vertu de l'article 305 du Code pénal tunisien.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5431,
+          "similarity": 0.648,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 1052",
+            "Art. 1053",
+            "Art. 1054"
+          ],
+          "snippet": "Article 1052.- S'il y a plusieurs séquestres, la solidarité entre eux  est de droit, d'après les règles établies pour le…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5514,
+          "similarity": 0.645,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 1036"
+          ],
+          "snippet": "Article 1036.- Si le dépôt consiste en choses fongibles,  l'entrepreneur ou entreposeur ne peut les mélanger avec d'autr…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5553,
+          "similarity": 0.643,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 36",
+            "Art. 37"
+          ],
+          "snippet": "Article 36.- La mise aux enchères est une proposition de contrat ;  elle est réputée acceptée par celui qui offre le der…"
+        },
+        {
+          "rank": 4,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5583,
+          "similarity": 0.642,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 25",
+            "Art. 26",
+            "Art. 27"
+          ],
+          "snippet": "Article 25.- Les réserves ou restrictions qui ne sont pas portées à  la connaissance de l'autre partie ne peuvent ni inf…"
+        },
+        {
+          "rank": 5,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5619,
+          "similarity": 0.64,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 883",
+            "Art. 884",
+            "Art. 885"
+          ],
+          "snippet": "Article 883.- Lorsque l'ouvrage a dû être interrompu pour une  cause indépendante de la volonté des parties, le commis d…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🔍",
+        "label": "مجلة الحقوق العينية + Code Urbanisme"
+      },
+      "question_type": "legalite_bien",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "4947ba3588e1",
+    "question": "Peut-on payer avant de signer un contrat avec un promoteur ?",
+    "timestamp": "2026-03-31T20:12:28.269943",
+    "hits": 0,
+    "result": {
+      "answer": "Il est possible de payer une partie du prix d'un bien immobilier avant de signer le contrat avec un promoteur, mais il est essentiel de prendre certaines précautions pour éviter les problèmes.\n\nVoici quelques points à considérer :\n\n1. **Vérifiez la clarté du contrat** : Assurez-vous que le contrat précise les montants payés et les conditions de paiement.\n2. **Obtenez une garantie** : Demandez à l'agent immobilier ou au promoteur d'obtenir une garantie écrite pour les travaux effectués ou les améliorations apportées au bien.\n3. **Paiement en plusieurs étapes** : Si vous payez une partie du prix, assurez-vous que le contrat prévoit des étapes de paiement spécifiques et que chaque paiement est conditionnel à l'acceptation par la part du promoteur.\n4. **Vérifiez les vices cachés** : Assurez-vous d'avoir vérifié les vices cachés du bien avant de payer une partie du prix.\n\nAvertissement :\n\nIl est important de noter que si vous",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5219,
+          "similarity": 0.657,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 124"
+          ],
+          "snippet": "Article 124.- Si la partie qui s'est réservée à la faculté de  résiliation meurt avant le délai, sans avoir exprimé sa v…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5334,
+          "similarity": 0.652,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 36",
+            "Art. 37"
+          ],
+          "snippet": "Article 36.- La mise aux enchères est une proposition de contrat ;  elle est réputée acceptée par celui qui offre le der…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5519,
+          "similarity": 0.644,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 1037",
+            "Art. 1038"
+          ],
+          "snippet": "Article 1037.- Le déposant est tenu de payer à l'entreposeur le prix  de magasinage ou d'entrepôt et de lui rembourser s…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "📜",
+        "label": "Code des Obligations et Contrats (COC)"
+      },
+      "question_type": "coc",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "ae5c400c9cea",
+    "question": "Ahmed construit une maison sur un terrain sans respecter le plan d’aménagement, Est-ce légal ? Quelles sont les conséquences ?",
+    "timestamp": "2026-03-31T20:18:30.157232",
+    "hits": 0,
+    "result": {
+      "answer": "**Vérification de la légalité d'un bien immobilier en Tunisie**\n\nIl est essentiel de suivre les étapes et les règles pour vérifier la légalité d'un bien immobilier en Tunisie. Voici quelques points clés à prendre en compte :\n\n1. **Obtention du titre foncier** : Il est obligatoire d'obtenir l'original du titre foncier ainsi qu'une attestation de son état dans les 3 mois précédant la transaction.\n2. **Certificat de non-hypothèque** : Il est nécessaire de demander un certificat de non-hypothèque (شهادة عدم تحميل) pour vérifier si le bien est libre d'hypothèques.\n3. **Permis de construire et certificat de conformité** : Si vous souhaitez construire ou modifier un bâtiment, il est essentiel de demander un permis de construire et de obtenir un certificat de conformité pour s'assurer que le projet respecte les normes de l'urbanisme.\n4. **Quittances TIB à jour** : Il",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.4757,
+          "similarity": 0.678,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 19"
+          ],
+          "snippet": "Article 19 : Les plans d'aménagement urbain sont approuvés par arrêté du Gouverneur territorialement compétent. Le plan …"
+        },
+        {
+          "rank": 2,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.4776,
+          "similarity": 0.677,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "Un arrêté du Ministre chargé de l'Urbanisme fixe le contenu du dossier du projet. Les règlements d'urbanisme prévus par …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4853,
+          "similarity": 0.673,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 612",
+            "Art. 613"
+          ],
+          "snippet": "Article 612.- La vente d’un édifice comprend celle du sol qui le  soutient, et des accessoires fixes et immobilisés, tel…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🔍",
+        "label": "مجلة الحقوق العينية + Code Urbanisme"
+      },
+      "question_type": "legalite_bien",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "660a3029b916",
+    "question": "ماهي شروط المتعلقة بكراء عقار فلاحي ?",
+    "timestamp": "2026-03-31T20:43:37.982284",
+    "hits": 0,
+    "result": {
+      "answer": "الاستجابة إلى السؤال:\n\nشروط الكراء العقاري الفلاحي في تونس:\n\n1. يجب أن يكون العقار فلاحيًا ويتوفر به الحقوق المحددة للفلاحة.\n2. يجب أن يُستخدم العقار للاستغناء من الضرائب والرسوم الحكومية.\n3. يجب أن يُشكل العقار جزءًا من ممتلكات الفلاحيين أو الأفراد الذين يرغبون في الاستثمار في هذا النوع من العقارات.\n\nتنبيه: يجب على المريض أن يقرأ القانون العقاري التونسي بشكل دقيق لتحديد الشروط الكاملة للكراء العقاري الفلاحي.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.4861,
+          "similarity": 0.673,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        },
+        {
+          "rank": 2,
+          "source": "02_immeubles.txt",
+          "source_label": "02 Immeubles",
+          "source_short": "02 Immeubles",
+          "source_icon": "📄",
+          "raw_score": 0.4889,
+          "similarity": 0.672,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE II — LES IMMEUBLES (العقارات)"
+        },
+        {
+          "rank": 3,
+          "source": "02_propriete.txt",
+          "source_label": "02 Propriete",
+          "source_short": "02 Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.4988,
+          "similarity": 0.667,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "⚖️",
+        "label": "COC art. 726-798 — Bail / Expulsion"
+      },
+      "question_type": "expulsion",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "7343a0bab945",
+    "question": "ماهي شروط التي يجب توفرها لابرام عقد بيع عقار",
+    "timestamp": "2026-03-31T20:45:57.987206",
+    "hits": 0,
+    "result": {
+      "answer": "العقد بيع العقار في تونس يحتاج إلى توافر شروط أساسية، وهي:\n\n1. **تأكيد صحة العقد**: يجب أن تكون العقد مكتوبة على الورق أو على أقراص إلكترونية، ويتضمنها جميع الشروط والشروط المطلوبة.\n2. **تأكيد صحة الأصول**: يجب أن يكون العقار الذي يُباع هو الأصل الحقيقي، وأن يكون له قيمة قانونية.\n3. **تأكيد صحة المبيعات السابقة**: إذا كان العقار قد تم بيعه قبل ذلك، يجب أن تكون هذه المبيعات سابقة ومتوافقة مع القانون.\n4. **تأكيد صحة الحقوق**: يجب أن يكون المباع حامل الحق في العقار، وأن يكون له الحق في البيع.\n\nإن لزم الأمر، يجب أن يُشير العقد إلى تنفيذ هذه الشروط وتوفرها.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "02_immeubles.txt",
+          "source_label": "02 Immeubles",
+          "source_short": "02 Immeubles",
+          "source_icon": "📄",
+          "raw_score": 0.4801,
+          "similarity": 0.676,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE II — LES IMMEUBLES (العقارات)"
+        },
+        {
+          "rank": 2,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.5042,
+          "similarity": 0.665,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        },
+        {
+          "rank": 3,
+          "source": "10_hypotheque.txt",
+          "source_label": "10 Hypotheque",
+          "source_short": "10 Hypotheque",
+          "source_icon": "📄",
+          "raw_score": 0.5386,
+          "similarity": 0.65,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "TITRE XI — HYPOTHÈQUE ET SÛRETÉS (الرهن العقاري والتأمينات)"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "📋",
+        "label": "Procédure notariale / Propriété foncière"
+      },
+      "question_type": "documents",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "d4c3e5954041",
+    "question": "Est-ce obligatoire d’avoir un contrat écrit pour vendre un bien ?",
+    "timestamp": "2026-03-31T21:00:05.705094",
+    "hits": 0,
+    "result": {
+      "answer": "Non, il n'est pas obligatoire d'avoir un contrat écrit pour vendre un bien immobilier en Tunisie. Cependant, il est recommandé de conclure un contrat écrit qui résume les conditions de la vente et les droits des parties concernées.\n\nVoici quelques points à prendre en compte :\n\n1. Le contrat doit être signé par le vendeur et l'acheteur.\n2. Il doit contenir les détails de la propriété, tels que le titre foncier et les coordonnées géographiques du bien.\n3. Les conditions de la vente, telles que le prix et les modalités de paiement, doivent être précisées.\n4. Le contrat doit également prévoir les droits des héritiers en cas de décès du vendeur ou de l'acheteur.\n\nAvertissement : Il est important de noter que si un contrat écrit n'est pas conclu, il peut être difficile de prouver les conditions de la vente et les droits des parties concernées en cas de litige. Il est donc recommandé de consulter un avocat spécialisé en droit immobilier pour vous assurer que votre transaction est régie par",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.39,
+          "similarity": 0.719,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 274",
+            "Art. 275"
+          ],
+          "snippet": "Article 274.- Si les parties sont convenues que le contrat sera  résolu dans les cas où l'une d'elles n'accomplirait pas…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3922,
+          "similarity": 0.718,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 273"
+          ],
+          "snippet": "Article 273.- Lorsque le débiteur est en demeure, le créancier a le  droit de contraindre le débiteur à accomplir l'obli…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.3932,
+          "similarity": 0.718,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 124"
+          ],
+          "snippet": "Article 124.- Si la partie qui s'est réservée à la faculté de  résiliation meurt avant le délai, sans avoir exprimé sa v…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "📋",
+        "label": "Procédure notariale / Propriété foncière"
+      },
+      "question_type": "documents",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "0371f699a0b3",
+    "question": "Peut-on construire sans respecter le plan d’aménagement urbain ?",
+    "timestamp": "2026-03-31T21:12:34.654853",
+    "hits": 0,
+    "result": {
+      "answer": "Non, il est interdit de construire sans respecter le plan d'aménagement urbain. Voici les raisons :\n\n1. **Obligation légale** : Les plans d'aménagement urbain sont approuvés par arrêté du Gouverneur territorialement compétent, ce qui constitue une obligation légale pour tout projet de construction.\n2. **Déclaration d'utilité publique** : L'arrêté d'approbation du plan d'aménagement comporte déclaration d'utilité publique des travaux projetés, ce qui signifie que le projet doit répondre à un intérêt public.\n3. **Règlement d'urbanisme** : Les règlements d'urbanisme prévus par la loi fixent les normes et les réglementations pour les projets de construction, y compris ceux liés aux plans d'aménagement urbain.\n\nEn cas de non-respect du plan d'aménagement urbain, il est possible de faire l'objet d'une amende et d'un ordre de démolition. Il est donc essentiel de respecter les règles et les rég",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.4103,
+          "similarity": 0.709,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 19"
+          ],
+          "snippet": "Article 19 : Les plans d'aménagement urbain sont approuvés par arrêté du Gouverneur territorialement compétent. Le plan …"
+        },
+        {
+          "rank": 2,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.4603,
+          "similarity": 0.685,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "Un arrêté du Ministre chargé de l'Urbanisme fixe le contenu du dossier du projet. Les règlements d'urbanisme prévus par …"
+        },
+        {
+          "rank": 3,
+          "source": "urbanisme.pdf",
+          "source_label": "Code de l'Aménagement du Territoire — Loi N°94-122",
+          "source_short": "Code Urbanisme",
+          "source_icon": "🏙️",
+          "raw_score": 0.5353,
+          "similarity": 0.651,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 16"
+          ],
+          "snippet": "Article 16 : La collectivité publique locale concernée se charge, en collaboration avec les services territorialement co…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "🏙️",
+        "label": "Code de l'Aménagement du Territoire — Loi N°94-122"
+      },
+      "question_type": "urbanisme",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "e7ad2ee9c155",
+    "question": "Le promoteur me donne un prix clé en main, combien je dois vraiment payer ? ?",
+    "timestamp": "2026-03-31T21:43:19.569207",
+    "hits": 0,
+    "result": {
+      "answer": "Selon l'article 768 du Code de la propriété immobilière tunisienne, le preneur doit payer le prix au terme fixé par le contrat, ou, à défaut, par l'usage local. Cela signifie que si vous avez un bail avec un prix fixe pour une période déterminée, vous devrez payer ce prix même si vous quittez la propriété avant la fin de cette période.\n\nIl est important de noter que les frais du paiement sont à la charge du preneur, selon l'article 768. Cela signifie que vous serez responsable des coûts associés au paiement du loyer, tels que les frais bancaires ou les impôts.\n\nEn résumé, le prix clé en main que vous avez reçu du promoteur est probablement le prix de vente de l'immeuble, mais cela ne signifie pas nécessairement que vous devrez payer ce prix si vous quittez la propriété avant la fin de votre bail. Vous devrez toujours respecter les conditions du contrat et payer le loyer au terme fixé.\n\n**Avertissement :** Il est essentiel de",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4268,
+          "similarity": 0.701,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 767",
+            "Art. 768",
+            "Art. 769"
+          ],
+          "snippet": "Article 767.- Le preneur est tenu de deux obligations principales :  a) de payer le prix de louage ;  b) de conserver la…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4678,
+          "similarity": 0.681,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 36",
+            "Art. 37"
+          ],
+          "snippet": "Article 36.- La mise aux enchères est une proposition de contrat ;  elle est réputée acceptée par celui qui offre le der…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4716,
+          "similarity": 0.68,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 770",
+            "Art. 771"
+          ],
+          "snippet": "Article 770.- Le prix de location doit être payé, pour les  immeubles, au lieu où se trouve la chose louée, et pour les …"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": true,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "d3a5e9ee5ef2",
+    "question": "Mon frère refuse de vendre notre bien en indivision, que puis-je faire ?",
+    "timestamp": "2026-04-14T20:11:21.785339",
+    "hits": 0,
+    "result": {
+      "answer": "**Droits d'Enregistrement et Vente en Indivision**\n\nEn Tunisie, la vente d'un bien immobilier en indivision peut être complexe. Voici quelques points clés à prendre en compte :\n\n1. **Taxe d'Enregistrement** : La taxe d'engagement est appliquée sur le prix de vente du bien. Le taux de cette taxe dépend du prix de vente :\n * Pour les ventes entre particuliers, le taux est de 6% pour les biens à un prix inférieur ou égal à 500 000 DT et de 8% pour les biens à un prix supérieur à 999 999 DT.\n * Le taux de 10% s'applique pour les biens à un prix supérieur à 1 000 000 DT.\n2. **Taxe CPF** : La taxe CPF est appliquée sur le prix de vente et représente une augmentation du taux d'engagement de 1%.\n3. **Frais notaire** : Les frais notaire peuvent varier entre 1% et 5% du prix de vente.\n4. **Vente en",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5308,
+          "similarity": 0.653,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "lorsque l'intérêt du vendeur l'exige, il a le devoir de faire vendre la chose  en présence de l'autorité compétente du l…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5519,
+          "similarity": 0.644,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 600",
+            "Art. 601"
+          ],
+          "snippet": "Article 600.- Le vendeur ne peut refuser de livrer la chose  vendue :  1) s’il a autorisé un tiers à toucher le prix ou …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.5556,
+          "similarity": 0.643,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [
+            "Art. 284",
+            "Art. 285"
+          ],
+          "snippet": "Article 284.- Le créancier est en demeure lorsqu'il refuse, sans  juste cause, de recevoir la prestation que le débiteur…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "💰",
+        "label": "Loi de Finances 2025 (n°48-2024)"
+      },
+      "question_type": "fiscal",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "9297c900c97d",
+    "question": "Quels sont les frais à payer lors de l’achat d’un appartement en Tunisie ?",
+    "timestamp": "2026-04-14T20:16:33.844445",
+    "hits": 0,
+    "result": {
+      "answer": "Lors de l'achat d'un appartement en Tunisie, il existe plusieurs frais que vous devrez prendre en compte. Voici quelques-uns des principaux frais à payer :\n\n1. **Taxe foncière** : cette taxe est payée par le propriétaire de l'appartement et varie en fonction du montant de la valeur locative de l'immeuble.\n2. **Impôt sur les plus-values immobilières** : si vous achetez un appartement pour la première fois, vous devrez payer cet impôt sur les plus-values immobilières, qui peut aller jusqu'à 20% du prix d'achat.\n3. **Taxe de registration** (ou \"taxe de registration foncière\") : cette taxe est payée par le propriétaire pour l'enregistrement de la propriété dans le cadastre.\n4. **Frais notariaux** : ces frais sont payés au notaire qui assiste à la signature du contrat d'achat et peuvent varier en fonction de la complexité du processus.\n5. **Frais de notation** : les banques et les institutions financières exigent souvent une notation",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4759,
+          "similarity": 0.678,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 291"
+          ],
+          "snippet": "Article 291.- Aucune offre réelle n’est nécessaire de la part du  débiteur :  1) lorsque le créancier lui a déjà déclaré…"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4871,
+          "similarity": 0.672,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 293"
+          ],
+          "snippet": "Article 293.- Pour que les offres réelles soient valables, il faut :  1) qu’elles soient faites au créancier ayant la ca…"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4907,
+          "similarity": 0.671,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 981"
+          ],
+          "snippet": "Article 981 (Modifié par la loi n°57-23 du 25 septembre 1957).-  Cette redevance, payable par année et d’avance, est sus…"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": true,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "56c74d2f5e05",
+    "question": "Le propriétaire refuse de rendre la caution, que dit la loi ?",
+    "timestamp": "2026-04-14T20:19:30.195164",
+    "hits": 0,
+    "result": {
+      "answer": "Selon l'article 1494 du Code Civil Tunisien, si le propriétaire refuse de rendre la caution et que la solvabilité de la caution est insuffisante, il doit être donné un supplément de cautionnement ou une sûreté supplémentaire.\n\nVoici les points clés :\n\n1. Le créancier peut demander au propriétaire de renoncer à sa garantie si celle-ci est insuffisante.\n2. Si le propriétaire refuse, le créancier peut exiger un supplément de cautionnement ou une sûreté supplémentaire pour protéger son droit.\n3. Dans ce cas, le créancier peut poursuivre immédiatement le paiement de sa créance ou résilier le contrat qui a été conclu sous condition de cautionnement.\n\nAvertissement : Il est important de noter que ces dispositions ne s'appliquent pas dans les cas suivants :\n\n* Lorsque la caution a été donnée à l'insu du débiteur ou contre sa volonté.\n* Lorsque la caution a été donnée en vertu d'une convention par laquelle le créancier a",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4111,
+          "similarity": 0.709,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1494"
+          ],
+          "snippet": "Article 1494.- Lorsque la caution reçue par le créancier, en vertu  du contrat, est devenue insolvable, il doit en être …"
+        },
+        {
+          "rank": 2,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4435,
+          "similarity": 0.693,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1495",
+            "Art. 1496"
+          ],
+          "snippet": "Article 1495.- Le cautionnement n'entraîne pas solidarité, si elle  n'est expressément stipulée.   Dans ce dernier cas, …"
+        },
+        {
+          "rank": 3,
+          "source": "COC.pdf",
+          "source_label": "Code des Obligations et Contrats (COC)",
+          "source_short": "COC",
+          "source_icon": "📜",
+          "raw_score": 0.4625,
+          "similarity": 0.684,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [
+            "Art. 1504",
+            "Art. 1505"
+          ],
+          "snippet": "Article 1504.- La caution peut agir contre le créancier, afin d'être  déchargée de la dette, si le créancier diffère à r…"
+        }
+      ],
+      "hardcoded_source": null,
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "76a03d2fdb66",
+    "question": "شخص يدعي أنه يملك نفس العقار\n\nكيف أثبت ملكيتي؟\nما هو دور الرسم العقاري؟\nما المحكمة المختصة",
+    "timestamp": "2026-04-19T21:25:15.017576",
+    "hits": 0,
+    "result": {
+      "answer": "**العنصر الأول:** إذا كان الشخص يدعي أنه يملك نفس العقار، يجب على الملازمين أو المستثمرين إجراء التحقق من ملكية العقار من خلال التحقق من الرسم العقاري. هذا يشمل التحقق من رقم الرسم العقاري، ووضع اليد على الرسم العقاري، ووضع الرسوم اللازمة.\n\n**العنصر الثاني:** دور الرسم العقاري هو تأكيد ملكية العقار وضمان أن العقار يملك شخص محدد. إذا لم يكن هناك رسم عقاري، فلا يمكن إجراء أي عمليات مالية أو استثمارية على العقار.\n\n**العنصر الثالث:** المحكمة المختصة فيما يتعلق بملكية العقار هي المحكمة الابتدائية للقضاء العدلي. إذا كان هناك خلاف حول ملكية العقار، يمكن الملازمين أو المستثمرين أن يطلبوا من المحكمة الابتدائية للقضاء العدلي إجراء التحقيق والتحديد الحقيقي لملكية العقار.\n\n**تنبيه قانوني واحد:** في حالة عدم وجود رسم عق",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "02_propriete.txt",
+          "source_label": "02 Propriete",
+          "source_short": "02 Propriete",
+          "source_icon": "📄",
+          "raw_score": 0.4468,
+          "similarity": 0.691,
+          "nlp_combined": 0.3455,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الثاني - حق الملكية TITRE II - LE DROIT DE PROPRIÉTÉ"
+        },
+        {
+          "rank": 2,
+          "source": "05_hypotheque_privileges.txt",
+          "source_label": "05 Hypotheque Privileges",
+          "source_short": "05 Hypotheque Privileges",
+          "source_icon": "📄",
+          "raw_score": 0.4579,
+          "similarity": 0.686,
+          "nlp_combined": 0.343,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الخامس - الرهن العقاري TITRE V - L'HYPOTHÈQUE"
+        },
+        {
+          "rank": 3,
+          "source": "04_servitudes.txt",
+          "source_label": "04 Servitudes",
+          "source_short": "04 Servitudes",
+          "source_icon": "📄",
+          "raw_score": 0.4713,
+          "similarity": 0.68,
+          "nlp_combined": 0.34,
+          "nlp_tfidf": 0.0,
+          "nlp_jaccard": 0.0,
+          "score_emoji": "🔴",
+          "score_label": "Faible",
+          "article_refs": [],
+          "snippet": "العنوان الرابع - حقوق الارتفاق TITRE IV - LES SERVITUDES"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "📚",
+        "label": "Base juridique générale"
+      },
+      "question_type": "general",
+      "lang": "ar",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "b1c4c6ef4371",
+    "question": "Quel est le role du notaire dans une transaction immobiliere",
+    "timestamp": "2026-05-04T20:06:39.210413",
+    "hits": 0,
+    "result": {
+      "answer": "Le rôle du notaire dans une transaction immobilière en Tunisie\n\n1. **Rédaction de l'acte de vente :** Le notaire est chargé de rédiger le contrat de vente, qui est un acte authentique obligatoire pour les immeubles immatriculés. Cet acte doit contenir toutes les informations essentielles relatives à la transaction, telles que l'identité complète des parties, la désignation précise du bien immobilier, le prix convenu et les éventuelles charges.\n\n2. **Garantie de la légalité et de la sécurité juridique :** En tant qu'officier public, le notaire s'assure que la transaction est conforme à la législation tunisienne en vigueur et qu'elle protège les droits de toutes les parties impliquées.\n\n3. **Formalisation du paiement et de la remise du prix :** Le notaire supervise et atteste du paiement du prix de vente par l'acheteur et de la remise du bien par le vendeur, formalisant ainsi ces étapes cruciales de la transaction.\n\n4. **Enregistrement et opposabilité aux tiers :** Bien que l'inscription au titre foncier soit gérée par la Direction de la Propriété Foncière, le notaire joue un rôle dans la préparation des documents nécessaires à cette inscription, qui rend la vente opposable aux tiers.\n\n**Avertissement :** Les informations fournies ici sont basées sur les textes juridiques que vous avez partagés. Pour une analyse complète et adaptée à votre situation spécifique, il est indispensable de consulter un professionnel du droit immobilier tunisien.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "06_enregistrement_foncier.txt",
+          "source_label": "06 Enregistrement Foncier",
+          "source_short": "06 Enregistrement Foncier",
+          "source_icon": "📄",
+          "raw_score": 0.1181,
+          "similarity": 0.894,
+          "nlp_combined": 0.5042,
+          "nlp_tfidf": 0.151,
+          "nlp_jaccard": 0.059,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "Étape 2 - Rédaction de l'acte: - Rédaction du contrat de vente devant notaire - Paiement et remise du prix - Signatures …"
+        },
+        {
+          "rank": 2,
+          "source": "10_hypotheque.txt",
+          "source_label": "10 Hypotheque",
+          "source_short": "10 Hypotheque",
+          "source_icon": "📄",
+          "raw_score": 0.0687,
+          "similarity": 0.936,
+          "nlp_combined": 0.4964,
+          "nlp_tfidf": 0.073,
+          "nlp_jaccard": 0.032,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "1. TITRE FONCIER (رسم الملكية) :    - Document fondamental, géré par la Direction de la Propriété Foncière (إدارة الملكي…"
+        },
+        {
+          "rank": 3,
+          "source": "10_hypotheque.txt",
+          "source_label": "10 Hypotheque",
+          "source_short": "10 Hypotheque",
+          "source_icon": "📄",
+          "raw_score": 0.1224,
+          "similarity": 0.891,
+          "nlp_combined": 0.4838,
+          "nlp_tfidf": 0.101,
+          "nlp_jaccard": 0.04,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "2. ACTES NOTARIÉS :    - Obligatoires pour les immeubles immatriculés    - Rédigés par notaire (عدل إشهاد), conservateur…"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "✨",
+        "label": "Gemini Flash"
+      },
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "9bdbec086c1f",
+    "question": "Quel est le rôle du notaire dans une transaction immobilière?",
+    "timestamp": "2026-05-04T20:38:18.015781",
+    "hits": 0,
+    "result": {
+      "answer": "Le rôle du notaire dans une transaction immobilière en Tunisie\n\n1. Le notaire est le professionnel habilité à rédiger l'acte de vente, qui constitue le contrat formel entre le vendeur et l'acheteur.\n2. Il assure la légalité et la validité de la transaction en vérifiant la conformité des documents, notamment le titre foncier.\n3. Il est responsable de l'enregistrement de la transaction auprès de la Direction de la Propriété Foncière, condition essentielle pour rendre la vente opposable aux tiers et pour que l'acheteur devienne officiellement propriétaire.\n4. Le notaire supervise le paiement du prix de vente et la remise du bien immobilier, garantissant ainsi le bon déroulement des opérations.\n\nAvertissement : Les informations fournies sont basées sur les extraits de textes juridiques disponibles et ne sauraient remplacer une consultation juridique complète et personnalisée.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "10_hypotheque.txt",
+          "source_label": "10 Hypotheque",
+          "source_short": "10 Hypotheque",
+          "source_icon": "📄",
+          "raw_score": 0.1311,
+          "similarity": 0.884,
+          "nlp_combined": 0.626,
+          "nlp_tfidf": 0.53,
+          "nlp_jaccard": 0.125,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "================================================================ HYPOTHÈQUE IMMOBILIÈRE / Rهن عقاري ====================…"
+        },
+        {
+          "rank": 2,
+          "source": "10_hypotheque.txt",
+          "source_label": "10 Hypotheque",
+          "source_short": "10 Hypotheque",
+          "source_icon": "📄",
+          "raw_score": 0.0687,
+          "similarity": 0.936,
+          "nlp_combined": 0.5252,
+          "nlp_tfidf": 0.146,
+          "nlp_jaccard": 0.067,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "1. TITRE FONCIER (رسم الملكية) :    - Document fondamental, géré par la Direction de la Propriété Foncière (إدارة الملكي…"
+        },
+        {
+          "rank": 3,
+          "source": "06_enregistrement_foncier.txt",
+          "source_label": "06 Enregistrement Foncier",
+          "source_short": "06 Enregistrement Foncier",
+          "source_icon": "📄",
+          "raw_score": 0.1181,
+          "similarity": 0.894,
+          "nlp_combined": 0.5042,
+          "nlp_tfidf": 0.151,
+          "nlp_jaccard": 0.059,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "Étape 2 - Rédaction de l'acte: - Rédaction du contrat de vente devant notaire - Paiement et remise du prix - Signatures …"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "✨",
+        "label": "Gemini Flash"
+      },
+      "question_type": "general",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  },
+  {
+    "hash": "d1c59829e040",
+    "question": "Quelles taxes s'appliquent à la vente d'un bien immobilier?",
+    "timestamp": "2026-05-04T20:41:27.761887",
+    "hits": 0,
+    "result": {
+      "answer": "**Taxes applicables à la vente d'un bien immobilier en Tunisie**\n\nVoici les taxes qui peuvent s'appliquer lors de la vente d'un bien immobilier en Tunisie, selon la nature de la transaction et le statut des parties :\n\n1. **Taxe sur la Valeur Ajoutée (TVA) :** La TVA s'applique aux logements neufs vendus par un promoteur agréé. Le taux est de 7% pour les prix inférieurs ou égaux à 400 000 DT, et de 13% pour les prix supérieurs à 400 000 DT. Il est important de noter qu'il n'y a pas de TVA sur les reventes de biens anciens entre particuliers.\n\n2. **Droits d'Enregistrement :** Ces droits sont dus lors de l'achat d'un bien ancien entre particuliers. Le taux varie en fonction du prix du bien : 6% pour les prix inférieurs à 500 000 DT, 8% pour les prix compris entre 500 000 DT et 999 999 DT, et 10% pour les prix d'un million de dinars et plus.\n\n3. **Taxe CPF (Caisse de Prévoyance des Fonctionnaires) :** Une taxe de 1% est appliquée sur tout achat immobilier, en plus des droits d'enregistrement.\n\n4. **Impôt sur les Sociétés (IS) pour les promoteurs :** Les promoteurs immobiliers sont soumis à un taux général d'IS de 20%. Cependant, les logements sociaux bénéficient d'une exonération de 50% de cet impôt.\n\n**Avertissement :** Les frais de notaire, bien qu'ils ne soient pas une taxe au sens strict, représentent un coût additionnel significatif pour l'acheteur, variant généralement entre 1% et 5% du prix du bien. De plus, pour les transactions impliquant des devises étrangères (TRE), des règles spécifiques s'appliquent, notamment une taxe CPF de 1% et des droits fixes.",
+      "metrics": [
+        {
+          "rank": 1,
+          "source": "08_loi17_avantages_fiscaux.txt",
+          "source_label": "08 Loi17 Avantages Fiscaux",
+          "source_short": "08 Loi17 Avantages Fiscaux",
+          "source_icon": "📄",
+          "raw_score": 0.0509,
+          "similarity": 0.952,
+          "nlp_combined": 0.6168,
+          "nlp_tfidf": 0.392,
+          "nlp_jaccard": 0.115,
+          "score_emoji": "🟡",
+          "score_label": "Bon",
+          "article_refs": [],
+          "snippet": "1. BIEN IMMOBILIER NEUF acheté auprès d'un promoteur immobilier agréé :    - Droit d'enregistrement : calculé sur la val…"
+        },
+        {
+          "rank": 2,
+          "source": "08_loi17_avantages_fiscaux.txt",
+          "source_label": "08 Loi17 Avantages Fiscaux",
+          "source_short": "08 Loi17 Avantages Fiscaux",
+          "source_icon": "📄",
+          "raw_score": 0.0558,
+          "similarity": 0.947,
+          "nlp_combined": 0.5811,
+          "nlp_tfidf": 0.272,
+          "nlp_jaccard": 0.13,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "2. BIEN IMMOBILIER ANCIEN (revente) :    - Prix inférieur à 499.999 DT : droit d'enregistrement de 6% du prix de vente  …"
+        },
+        {
+          "rank": 3,
+          "source": "08_loi17_avantages_fiscaux.txt",
+          "source_label": "08 Loi17 Avantages Fiscaux",
+          "source_short": "08 Loi17 Avantages Fiscaux",
+          "source_icon": "📄",
+          "raw_score": 0.0817,
+          "similarity": 0.924,
+          "nlp_combined": 0.5333,
+          "nlp_tfidf": 0.184,
+          "nlp_jaccard": 0.08,
+          "score_emoji": "🟠",
+          "score_label": "Modéré",
+          "article_refs": [],
+          "snippet": "Un particulier ne peut PAS forcer un autre particulier à vendre son bien immobilier. L'État peut exproprier mais doit : …"
+        }
+      ],
+      "hardcoded_source": {
+        "icon": "💰",
+        "label": "Loi de Finances 2025 (n°48-2024)"
+      },
+      "question_type": "fiscal",
+      "lang": "fr",
+      "is_calculation": false,
+      "from_cache": false
+    }
+  }
+]

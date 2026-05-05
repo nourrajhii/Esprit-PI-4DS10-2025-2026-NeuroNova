@@ -1,0 +1,28 @@
+{
+  "session_id": "session_20260415_092906",
+  "created_at": "2026-04-15T09:29:06.009072",
+  "updated_at": "2026-04-15T09:31:55.701932",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "J’achète un appartement neuf à 450 000 DT chez un promoteur, combien je dois payer en total ?",
+      "timestamp": "2026-04-15T09:29:06.013092"
+    },
+    {
+      "role": "assistant",
+      "content": "💰 **Devis total — appartement neuf chez promoteur**\n\n| | |\n|---|---|\n| Prix saisi | **450 000 DT** |\n| Type de prix retenu | **HT (supposé)** |\n| Prix HT | **450 000 DT** |\n| TVA | **13%** |\n| Montant TVA | **58 500 DT** |\n| Prix TTC | **508 500 DT** |\n| CPF 1% | **5 085 DT** |\n| **Total hors notaire** | **513 585 DT** |\n\nℹ️ droit fixe d’enregistrement (non inclus car variable selon l’acte).\nℹ️ frais de notaire non inclus (variables selon dossier).",
+      "timestamp": "2026-04-15T09:29:06.013092"
+    },
+    {
+      "role": "user",
+      "content": "المشروع لا يتوافق مع خطة التطوير ، هل يمكن إصدار التصريح رغم ذلك، ما هي العقوبات في حالة المخالفة؟",
+      "timestamp": "2026-04-15T09:31:55.701932"
+    },
+    {
+      "role": "assistant",
+      "content": "التصريح للاستفادة من مشروع تطوير غير موافق على خطة التطوير لا يمكن إصداره. \n\n1- في حالة عدم موافقة المشروع على خطة التطوير، يتعين على المطور إعادة النظر في المشروع وتقديم طلب جديد يتوافق مع الخطة.\n\n2- إذا لم يتم تقديم طلب جديد يتوافق مع الخطة، فلا يمكن إصدار التصريح للاستفادة من مشروع تطوير هذا المشروع.\n\n3- في حالة المخالفة للقواعد واللوائح المتعلقة بالتطوير العمراني، يمكن أن تؤدي إلى عقوبات مثل: \n - الحجز الدائم للمشروع.\n - إلغاء التصريح للاستفادة من المشروع.\n - الإجراءات القانونية المتبعة.",
+      "timestamp": "2026-04-15T09:31:55.701932"
+    }
+  ]
+}

@@ -1,5 +1,16 @@
 version: "3.9"
 
+# ─────────────────────────────────────────────────────────────────────────────
+#  EstateMind — Azure Cloud Deployment
+#  Usage:  docker-compose -f docker-compose.azure.yml up -d
+#
+#  Differences from local:
+#    - NO Ollama  (legal agent uses Gemini API only)
+#    - NO Villa3D SD model  (Tripo API still works, SD skipped)
+#    - Nginx reverse proxy on port 80
+#    - All NEXT_PUBLIC_ URLs point to VM public IP  (set SERVER_HOST in .env)
+# ─────────────────────────────────────────────────────────────────────────────
+
 networks:
   immo-net:
     driver: bridge
@@ -8,12 +19,15 @@ volumes:
   redis-data:
   chroma-data:
   mysql-data:
-  ollama-data:
 
 # ─── Shared env anchors ───────────────────────────────────────────────────────
-x-ollama-env: &ollama-env
-  OLLAMA_BASE_URL: http://ollama:11434
-  OLLAMA_HOST: http://ollama:11434
+x-gemini-env: &gemini-env
+  GEMINI_API_KEY: ${GEMINI_API_KEY}
+
+x-mongo-env: &mongo-env
+  MONGODB_URI: ${MONGODB_URI}
+  SCRAPED_DB_URI: ${SCRAPED_DB_URI:-${MONGODB_URI}}
+  DATABASE_URL: ${MONGODB_URI}
 
 x-redis-env: &redis-env
   REDIS_URL: redis://redis:6379
@@ -26,8 +40,6 @@ services:
     image: redis:7-alpine
     container_name: immo-redis
     restart: unless-stopped
-    ports:
-      - "6379:6379"
     volumes:
       - redis-data:/data
     networks:
@@ -38,17 +50,6 @@ services:
       timeout: 3s
       retries: 5
 
-  chromadb:
-    image: chromadb/chroma:latest
-    container_name: immo-chroma
-    restart: unless-stopped
-    ports:
-      - "8008:8000"
-    volumes:
-      - chroma-data:/chroma/chroma
-    networks:
-      - immo-net
-
   mysql:
     image: mysql:8.0
     container_name: immo-mysql
@@ -58,8 +59,6 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-real_estate_advisor_db}
       MYSQL_USER: ${MYSQL_USER:-advisor}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-advisorpass}
-    ports:
-      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -70,20 +69,7 @@ services:
       timeout: 5s
       retries: 10
 
-  ollama:
-    image: ollama/ollama:latest
-    container_name: immo-ollama
-    restart: "no"
-    profiles:
-      - llm
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama-data:/root/.ollama
-    networks:
-      - immo-net
-
-  # ── Node.js Backend (Auth / Listings / Stripe) ───────────────────────────────
+  # ── Node.js Backend ───────────────────────────────────────────────────────────
 
   backend:
     build:
@@ -94,11 +80,11 @@ services:
     ports:
       - "4000:4000"
     environment:
+      <<: *mongo-env
       PORT: 4000
-      NODE_ENV: ${NODE_ENV:-production}
-      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3001}
-      MONGODB_URI: ${MONGODB_URI:-${DATABASE_URL}}
-      SCRAPED_DB_URI: ${SCRAPED_DB_URI:-${DATABASE_URL}}
+      NODE_ENV: production
+      FRONTEND_URL: http://${SERVER_HOST}:3001
+      BACKEND_PUBLIC_URL: http://${SERVER_HOST}:4000
       JWT_SECRET: ${JWT_SECRET}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-15m}
@@ -112,7 +98,6 @@ services:
       TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
       TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
       TWILIO_WHATSAPP_FROM: ${TWILIO_WHATSAPP_FROM}
-      BACKEND_PUBLIC_URL: ${BACKEND_PUBLIC_URL:-http://localhost:4000}
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
       STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
       STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
@@ -121,12 +106,12 @@ services:
     networks:
       - immo-net
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4000/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4000/health', r => process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
       interval: 15s
       timeout: 5s
       retries: 5
 
-  # ── Agent services ───────────────────────────────────────────────────────────
+  # ── AI Agents ─────────────────────────────────────────────────────────────────
 
   dhia:
     build:
@@ -134,14 +119,9 @@ services:
       dockerfile: Dockerfile
     container_name: immo-dhia
     restart: unless-stopped
-    ports:
-      - "8055:8055"
     environment:
-      DATABASE_URL: ${DATABASE_URL}
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      <<: [*mongo-env, *gemini-env]
       SERPAPI_KEY: ${SERPAPI_KEY}
-    volumes:
-      - ./dhia:/app
     networks:
       - immo-net
     healthcheck:
@@ -156,11 +136,11 @@ services:
       dockerfile: Dockerfile
     container_name: immo-advisor-backend
     restart: unless-stopped
-    ports:
-      - "8001:8001"
     environment:
-      <<: *ollama-env
-      DATABASE_URL: ${DATABASE_URL}
+      <<: *mongo-env
+      # No Ollama in cloud — agent uses its own fallback
+      OLLAMA_BASE_URL: ""
+      OLLAMA_HOST: ""
     depends_on:
       - mysql
     networks:
@@ -177,10 +157,9 @@ services:
       dockerfile: Dockerfile
     container_name: immo-nour-devis
     restart: unless-stopped
-    ports:
-      - "8002:8002"
     environment:
-      <<: *ollama-env
+      OLLAMA_BASE_URL: ""
+      OLLAMA_HOST: ""
     networks:
       - immo-net
     healthcheck:
@@ -195,11 +174,10 @@ services:
       dockerfile: Dockerfile
     container_name: immo-nour2-legal
     restart: unless-stopped
-    ports:
-      - "8003:8003"
     environment:
-      <<: *ollama-env
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      <<: *gemini-env
+      OLLAMA_BASE_URL: ""
+      OLLAMA_HOST: ""
     networks:
       - immo-net
     healthcheck:
@@ -214,8 +192,6 @@ services:
       dockerfile: Dockerfile
     container_name: immo-forecast
     restart: unless-stopped
-    ports:
-      - "8004:8004"
     networks:
       - immo-net
     healthcheck:
@@ -230,8 +206,6 @@ services:
       dockerfile: Dockerfile
     container_name: immo-price-predictor
     restart: unless-stopped
-    ports:
-      - "8005:8005"
     environment:
       DHIA_URL: http://dhia:8055
     depends_on:
@@ -250,11 +224,9 @@ services:
       dockerfile: Dockerfile
     container_name: immo-investment-scorer
     restart: unless-stopped
-    ports:
-      - "8006:8006"
     environment:
+      <<: *gemini-env
       DHIA_URL: http://dhia:8055
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
     depends_on:
       - dhia
     networks:
@@ -271,8 +243,6 @@ services:
       dockerfile: Dockerfile
     container_name: immo-geo-advisor
     restart: unless-stopped
-    ports:
-      - "8007:8007"
     networks:
       - immo-net
     healthcheck:
@@ -287,8 +257,6 @@ services:
       dockerfile: Dockerfile
     container_name: immo-lifestyle-match
     restart: unless-stopped
-    ports:
-      - "8010:8010"
     networks:
       - immo-net
     healthcheck:
@@ -297,7 +265,7 @@ services:
       timeout: 5s
       retries: 3
 
-  # ── VIAGRA orchestrator ───────────────────────────────────────────────────────
+  # ── VIAGRA Orchestrator ───────────────────────────────────────────────────────
 
   viagra:
     build:
@@ -305,21 +273,17 @@ services:
       dockerfile: Dockerfile
     container_name: immo-viagra
     restart: unless-stopped
-    ports:
-      - "8000:8000"
     environment:
-      <<: *redis-env
-      DATABASE_URL:       ${DATABASE_URL}
-      GEMINI_API_KEY:     ${GEMINI_API_KEY}
-      RECOMMENDER_URL:    http://real-estate-advisor-backend:8001
-      DEVIS_URL:          http://nour:8002
-      LEGAL_URL:          http://nour2:8003
-      FORECAST_URL:       http://immo-forecast:8004
-      PRICE_URL:          http://price-predictor:8005
-      INVESTMENT_URL:     http://investment-scorer:8006
-      GEO_URL:            http://geo-advisor:8007
-      LIFESTYLE_URL:      http://lifestyle-match:8010
-      DHIA_URL:           http://dhia:8055
+      <<: [*redis-env, *mongo-env, *gemini-env]
+      RECOMMENDER_URL:  http://real-estate-advisor-backend:8001
+      DEVIS_URL:        http://nour:8002
+      LEGAL_URL:        http://nour2:8003
+      FORECAST_URL:     http://immo-forecast:8004
+      PRICE_URL:        http://price-predictor:8005
+      INVESTMENT_URL:   http://investment-scorer:8006
+      GEO_URL:          http://geo-advisor:8007
+      LIFESTYLE_URL:    http://lifestyle-match:8010
+      DHIA_URL:         http://dhia:8055
     depends_on:
       - redis
       - dhia
@@ -340,44 +304,16 @@ services:
       retries: 5
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
-  # ── Villa 3D API (SD+LoRA → Tripo3D) ─────────────────────────────────────────
-  # Note: "travail finale" directory name has a space — handled with quotes below
-
-  villa3d:
-    build:
-      context: "./travail finale"
-      dockerfile: Dockerfile
-    container_name: immo-villa3d
-    restart: unless-stopped
-    ports:
-      - "8056:8056"
-    environment:
-      TRIPO_API_KEY: ${TRIPO_API_KEY}
-      TRIPO_MODEL_VERSION: ${TRIPO_MODEL_VERSION:-v2.5-20250123}
-      TRIPO_POLL_TIMEOUT: ${TRIPO_POLL_TIMEOUT:-360}
-    volumes:
-      - "./travail finale/output:/app/output"
-    networks:
-      - immo-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8056/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
   # ── Frontend ──────────────────────────────────────────────────────────────────
-  # NEXT_PUBLIC_ vars are baked in at BUILD time — set SERVER_HOST in .env
-  # Local:      SERVER_HOST=localhost
-  # Production: SERVER_HOST=your-server-ip-or-domain
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_VIAGRA_URL: ${NEXT_PUBLIC_VIAGRA_URL:-http://localhost:8000}
-        NEXT_PUBLIC_BACKEND_URL: ${NEXT_PUBLIC_BACKEND_URL:-http://localhost:4000}
-        NEXT_PUBLIC_VILLA3D_API_URL: ${NEXT_PUBLIC_VILLA3D_API_URL:-http://localhost:8056}
+        NEXT_PUBLIC_VIAGRA_URL:    http://${SERVER_HOST}:8000
+        NEXT_PUBLIC_BACKEND_URL:   http://${SERVER_HOST}:4000
+        NEXT_PUBLIC_VILLA3D_API_URL: http://${SERVER_HOST}:8056
     container_name: immo-frontend
     restart: unless-stopped
     ports:
@@ -387,11 +323,27 @@ services:
     depends_on:
       - viagra
       - backend
-      - villa3d
     networks:
       - immo-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+
+  # ── Nginx Reverse Proxy ───────────────────────────────────────────────────────
+  # Routes everything through port 80:
+  #   /         → frontend  :3000
+  #   /api/     → backend   :4000
+  #   /viagra/  → viagra    :8000
+  #   /agents/  → individual agents
+
+  nginx:
+    image: nginx:alpine
+    container_name: immo-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.azure.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend
+      - viagra
+    networks:
+      - immo-net

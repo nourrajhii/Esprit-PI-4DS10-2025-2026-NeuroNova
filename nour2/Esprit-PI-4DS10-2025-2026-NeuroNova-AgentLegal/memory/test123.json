@@ -1,0 +1,18 @@
+{
+  "session_id": "test123",
+  "created_at": "2026-05-05T16:13:41.441230",
+  "updated_at": "2026-05-05T16:13:41.999355",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quels sont les droits du locataire en Tunisie?",
+      "timestamp": "2026-05-05T16:13:41.999355"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[Code des Obligations et Contrats (COC)]**\n• emporte la substitution du cessionnaire dans les droits et dans les\n• locataire, dans tous les cas où il l’aurait à l’encontre du preneur\n\n**[Code des Obligations et Contrats (COC)]**\n• soit au locataire, soit au sous-locataire, soit même à des tiers.\n• encore sur les lieux suffisent pour assurer ses droits.\n\n**[Code des Obligations et Contrats (COC)]**\n• subrogé à tous les droits et à toutes les obligations de son auteur,\n• résultant des locations et baux en cours, s'ils sont faits sans fraude, et\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-05T16:13:41.999355"
+    }
+  ]
+}

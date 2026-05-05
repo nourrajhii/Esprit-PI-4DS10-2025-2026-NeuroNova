@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260414_201806",
+  "created_at": "2026-04-14T20:18:06.553590",
+  "updated_at": "2026-04-14T20:18:06.854107",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "J’achète un appartement neuf à 480 000 DT chez un promoteur, combien je dois payer au total ?",
+      "timestamp": "2026-04-14T20:18:06.854107"
+    },
+    {
+      "role": "assistant",
+      "content": "💰 **Devis total — appartement neuf chez promoteur**\n\n| | |\n|---|---|\n| Prix saisi | **480 000 DT** |\n| Type de prix retenu | **HT (supposé)** |\n| Prix HT | **480 000 DT** |\n| TVA | **13%** |\n| Montant TVA | **62 400 DT** |\n| Prix TTC | **542 400 DT** |\n| CPF 1% | **5 424 DT** |\n| **Total hors notaire** | **547 824 DT** |\n\nℹ️ droit fixe d’enregistrement (non inclus car variable selon l’acte).\nℹ️ frais de notaire non inclus (variables selon dossier).",
+      "timestamp": "2026-04-14T20:18:06.854107"
+    }
+  ]
+}

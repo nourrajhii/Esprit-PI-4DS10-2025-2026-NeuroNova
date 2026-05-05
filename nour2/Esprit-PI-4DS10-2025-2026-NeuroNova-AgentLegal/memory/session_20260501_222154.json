@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260501_222154",
+  "created_at": "2026-05-01T22:21:54.614993",
+  "updated_at": "2026-05-01T22:21:54.624509",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quel est le rôle du notaire dans une transaction immobilière?",
+      "timestamp": "2026-05-01T22:21:54.624509"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[10 Hypotheque]**\n• HYPOTHÈQUE IMMOBILIÈRE / Rهن عقاري\n• ================================================================\n\n**[10 Hypotheque]**\n• - Toute transaction immobilière doit être inscrite pour être opposable aux tiers\n• - Document fondamental, géré par la Direction de la Propriété Foncière (إدارة الملكية العقارية)\n\n**[06 Enregistrement Foncier]**\n• - Rédaction du contrat de vente devant notaire\n• - Signatures de toutes les parties\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-01T22:21:54.624509"
+    }
+  ]
+}

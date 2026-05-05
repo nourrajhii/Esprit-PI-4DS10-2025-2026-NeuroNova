@@ -1,0 +1,28 @@
+{
+  "session_id": "session_20260505_162617",
+  "created_at": "2026-05-05T16:26:17.673103",
+  "updated_at": "2026-05-05T16:26:46.912877",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "ما هي الضرائب المطبقة على بيع العقار في تونس؟",
+      "timestamp": "2026-05-05T16:26:18.016010"
+    },
+    {
+      "role": "assistant",
+      "content": "**بناءً على النصوص القانونية التونسية:**\n\n**[06 Enregistrement Foncier]**\n• - إقرار بأداء الضرائب (عدم المديونية الجبائية)\n• - شهادة عدم الرهن (للتحقق من خلو العقار من الرهون)\n\n**[05 Hypotheque Privileges]**\n• Principes de l'hypothèque en Tunisie:\n• L'hypothèque ne peut être constituée que par acte authentique devant notaire.\n\n**[06 Enregistrement Foncier]**\n• - Rédaction du contrat de vente devant notaire\n• - Signatures de toutes les parties\n\n⚠️ *هذه إجابة تلقائية بدون نموذج ذكاء اصطناعي. استشر محامياً للتأكيد.*",
+      "timestamp": "2026-05-05T16:26:18.016010"
+    },
+    {
+      "role": "user",
+      "content": "quel est le droit de locataire",
+      "timestamp": "2026-05-05T16:26:46.912877"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[Code des Obligations et Contrats (COC)]**\n• soit au locataire, soit au sous-locataire, soit même à des tiers.\n• Article 788.- Le bailleur a le droit de rétention, pour les loyers\n\n**[Code des Obligations et Contrats (COC)]**\n• paiements anticipés faits au locataire principal, à moins :\n• Article 775.- Le sous-locataire est tenu directement envers le\n\n**[Code des Obligations et Contrats (COC)]**\n• locataire, dans tous les cas où il l’aurait à l’encontre du preneur\n• également action directe contre le sous-locataire pour le contraindre à\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-05T16:26:46.912877"
+    }
+  ]
+}

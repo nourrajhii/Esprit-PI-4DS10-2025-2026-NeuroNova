@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260504_203800",
+  "created_at": "2026-05-04T20:38:00.223966",
+  "updated_at": "2026-05-04T20:38:18.023342",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quel est le rôle du notaire dans une transaction immobilière?",
+      "timestamp": "2026-05-04T20:38:18.023342"
+    },
+    {
+      "role": "assistant",
+      "content": "Le rôle du notaire dans une transaction immobilière en Tunisie\n\n1. Le notaire est le professionnel habilité à rédiger l'acte de vente, qui constitue le contrat formel entre le vendeur et l'acheteur.\n2. Il assure la légalité et la validité de la transaction en vérifiant la conformité des documents, notamment le titre foncier.\n3. Il est responsable de l'enregistrement de la transaction auprès de la Direction de la Propriété Foncière, condition essentielle pour rendre la vente opposable aux tiers et pour que l'acheteur devienne officiellement propriétaire.\n4. Le notaire supervise le paiement du prix de vente et la remise du bien immobilier, garantissant ainsi le bon déroulement des opérations.\n\nAvertissement : Les informations fournies sont basées sur les extraits de textes juridiques disponibles et ne sauraient remplacer une consultation juridique complète et personnalisée.",
+      "timestamp": "2026-05-04T20:38:18.023342"
+    }
+  ]
+}

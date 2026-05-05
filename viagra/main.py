@@ -12,6 +12,15 @@ import certifi
 from motor.motor_asyncio import AsyncIOMotorClient
 import uvicorn
 
+# Load .env from this directory OR parent directory (local dev)
+try:
+    from dotenv import load_dotenv
+    _here = os.path.dirname(os.path.abspath(__file__))
+    load_dotenv(os.path.join(_here, ".env"), override=False)          # viagra/.env (optional)
+    load_dotenv(os.path.join(_here, "..", ".env"), override=False)    # project root .env
+except ImportError:
+    pass
+
 app = FastAPI(title="VIAGRA — IMMO-AI Orchestrator", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
@@ -1303,14 +1312,20 @@ async def market_summary():
 # ── Health ────────────────────────────────────────────────────────────────────
 @app.get("/health")
 async def health():
-    statuses = {}
-    async with httpx.AsyncClient(timeout=4) as client:
-        for name, url in AGENT_URLS.items():
-            try:
-                r = await client.get(f"{url}/health")
-                statuses[name] = "ok" if r.status_code == 200 else "degraded"
-            except Exception:
-                statuses[name] = "unreachable"
+    # Check all agents CONCURRENTLY (asyncio.gather) — never blocks more than 3s total
+    async def _check(name: str, url: str, client: httpx.AsyncClient) -> tuple:
+        try:
+            r = await client.get(f"{url}/health")
+            return name, "ok" if r.status_code == 200 else "degraded"
+        except Exception:
+            return name, "unreachable"
+
+    async with httpx.AsyncClient(timeout=3) as client:
+        results = await asyncio.gather(*[
+            _check(name, url, client) for name, url in AGENT_URLS.items()
+        ])
+    statuses = dict(results)
+
     redis_status = "ok"
     if redis_client:
         try:

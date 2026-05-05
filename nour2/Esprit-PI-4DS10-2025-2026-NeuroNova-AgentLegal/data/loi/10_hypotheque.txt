@@ -1,0 +1,230 @@
+TITRE XI — HYPOTHÈQUE ET SÛRETÉS (الرهن العقاري والتأمينات)
+================================================================
+
+الفصل 192 / Article 192 :
+مكاسب المدين ضمان لدائنيه يتحاصصون ثمنها إلا إذا كانت هناك أسباب قانونية في تفضيل بعضهم على بعض.
+Les biens du débiteur constituent le gage commun de ses créanciers qui se répartissent le prix, sauf causes légales de préférence.
+
+الفصل 194 / Article 194 — PRIVILÈGE :
+الامتياز حق عيني يعطيه القانون في تفضيل بعض الدائنين على بعض للخلاص من مكاسب المدين نظرا لصفة ديونهم.
+Le privilège est un droit réel que la loi accorde à certains créanciers en raison de la qualité de leur créance.
+
+الفصل 199 / Article 199 — CRÉANCES PRIVILÉGIÉES (par ordre de priorité) :
+الديون الممتازة بعموم المنقول والعقار :
+أولا : مصاريف تجهيز الميت / Frais funéraires
+ثانيا : ديون الأطباء والصيادلة عن الستة أشهر الأخيرة / Dettes médicales des 6 derniers mois
+ثالثا : المصاريف القضائية / Frais judiciaires
+رابعا : المبالغ المستحقة للخزينة العامة من ضرائب / Impôts et taxes
+خامسا : أجور العمال والخدم عن الستة أشهر الأخيرة / Salaires des 6 derniers mois
+
+الفصل 201 / Article 201 — HYPOTHÈQUE (الرهن) :
+الرهن عقد يخصص بموجبه المدين أو من يقوم مقامه شيئا منقولا أو عقارا لضمان الوفاء بالتزام ويخول للدائن الحق في استيفاء دينه من ذلك الشيء قبل غيره من الدائنين.
+Le gage est un contrat par lequel le débiteur ou un tiers affecte un meuble ou un immeuble en garantie d'une obligation et qui confère au créancier le droit de se payer sur cette chose par préférence aux autres créanciers.
+
+الفصل 205 / Article 205 :
+ما جاز بيعه جاز رهنه.
+Ce qui peut être vendu peut être hypothéqué.
+
+الفصل 208 / Article 208 :
+الرهن غير قابل للتجزئة ويبقى بكامله على كل جزء من الشيء الذي هو موضوعه ويضمن جملة الدين.
+L'hypothèque est indivisible et subsiste en entier sur chaque partie de la chose hypothéquée ; elle garantit l'intégralité de la dette.
+
+================================================================
+HYPOTHÈQUE IMMOBILIÈRE / Rهن عقاري
+================================================================
+
+الفصل 270 / Article 270 :
+الرهن المرتب على عقار يتبع العقار في أية يد ينتقل إليها.
+L'hypothèque établie sur un immeuble suit l'immeuble en quelques mains qu'il passe.
+→ Droit de suite de l'hypothèque.
+
+الفصل 271 / Article 271 — BIENS HYPOTHÉCABLES :
+لا تقبل الرهن العقاري إلا الحقوق العينية التالية :
+1) الملكية القابلة للبيع والشراء / La propriété cessible
+2) حق الانتفاع مدة قيامه / L'usufruit pendant sa durée
+3) الإنزال / L'enzal
+4) الأمفيتيوز مدة قيامه / L'emphytéose pendant sa durée
+5) حق الهواء / Le droit de superficie
+
+الفصل 272 / Article 272 :
+يشمل الرهن جميع ملحقات العقار المرهون وما زيد فيه من تحسينات.
+L'hypothèque s'étend à toutes les améliorations et accessoires de l'immeuble hypothéqué.
+
+الفصل 274 / Article 274 :
+الكتب المحرر ببلد أجنبي لا يمكن أن يرهن به عقار كائن بالبلاد التونسية.
+Un acte rédigé à l'étranger ne peut constituer hypothèque sur un immeuble situé en Tunisie.
+
+الفصل 275 / Article 275 :
+لا يصح الرهن العقاري إلا بكتب يعين به ذات العقار المرهون ومبلغ الدين.
+L'hypothèque immobilière n'est valable que par acte désignant l'immeuble hypothéqué et le montant de la dette.
+
+الفصل 278 / Article 278 (modifié loi n°46/1992) :
+لا يتكون الرهن العقاري إلا بعد ترسيمه.
+L'hypothèque immobilière ne prend naissance qu'après son inscription (au registre foncier).
+
+الفصل 280 / Article 280 :
+للدائنين الذين رسم رهنهم على عقار أن يتتبعوه أيا كانت اليد التي انتقل إليها.
+Les créanciers dont l'hypothèque est inscrite peuvent suivre l'immeuble en quelques mains qu'il soit passé.
+
+================================================================
+LIVRE SECOND — IMMEUBLES IMMATRICULÉS ET PROCÉDURES
+================================================================
+
+================================================================
+TITRE I — REGISTRE FONCIER (السجل العقاري)
+================================================================
+
+الفصل 303 / Article 303 :
+تخضع العقارات المسجلة للقواعد الواردة بالكتاب الأول وكذلك للأحكام التالية.
+Les immeubles immatriculés sont soumis aux règles du Livre premier et aux dispositions suivantes.
+
+الفصل 304 / Article 304 :
+لا تقبل التسجيل إلا الأراضي والمباني.
+Seuls les terrains et les bâtiments peuvent être immatriculés.
+
+الفصل 305 / Article 305 (modifié loi n°46/1992) — PRINCIPE FONDAMENTAL :
+كل حق عيني لا يتكون إلا بترسيمه بالسجل العقاري وابتداء من تاريخ ذلك الترسيم.
+Tout droit réel immobilier ne prend naissance que par son inscription au registre foncier et à compter de la date de cette inscription.
+→ PRINCIPE CLÉ : L'inscription au registre foncier est CONSTITUTIVE du droit réel (et non seulement déclarative).
+→ L'annulation de l'inscription ne peut être opposée au tiers de bonne foi qui a acquis des droits.
+
+الفصل 307 / Article 307 (modifié loi n°46/1992) :
+لا يسري مرور الزمن على الحق المرسم. وليس لأي كان أن يتمسك بالحوز مهما طالت مدته.
+La prescription ne court pas contre le droit inscrit. Nul ne peut invoquer la possession, quelle qu'en soit la durée.
+→ IMPORTANT : Pour les immeubles immatriculés, la prescription acquisitive ne s'applique PAS.
+
+الفصل 308 / Article 308 :
+جميع الحقوق العينية المرتبة على العقار في تاريخ التسجيل ترسم برسم الملكية. والحق غير المرسم يعتبر لاغيا.
+Tous les droits réels grevant l'immeuble lors de l'immatriculation sont inscrits au titre foncier. Le droit non inscrit est réputé nul.
+
+================================================================
+TITRE II — PROCÉDURE D'IMMATRICULATION
+================================================================
+
+الفصل 317 / Article 317 :
+التسجيل اختياري.
+L'immatriculation est volontaire.
+→ MAIS : le Décret n°3/1964 a rendu l'immatriculation obligatoire progressivement.
+
+الفصل 318 / Article 318 :
+يمكن أن يطلب التسجيل كل صاحب حق عيني عقاري.
+Tout titulaire d'un droit réel immobilier peut demander l'immatriculation.
+
+================================================================
+TITRE III — TITRE FONCIER (رسم الملكية / سند الملكية)
+================================================================
+
+الفصل 358 / Article 358 :
+تتولى إدارة الملكية العقارية إقامة رسم عقاري لكل عقار مسجل.
+La Direction de la Propriété Foncière établit un titre foncier pour chaque immeuble immatriculé.
+
+الفصل 361 / Article 361 :
+رسم الملكية والترسيم يحفظان الحق موضوعهما ما لم يقع إبطالهما أو التشطيب عليهما أو تعديلهما.
+Le titre foncier et l'inscription conservent le droit qu'ils constatent, sauf annulation, radiation ou modification.
+
+الفصل 364 / Article 364 (modifié loi n°10/1995) :
+يسلم لكل مالك سند مطابق للبيانات الثابتة بالرسم العقاري ممضى ومصادق على صحته من حافظ الملكية العقارية.
+Il est délivré à chaque propriétaire un titre conforme aux mentions du registre foncier, signé et certifié par le Conservateur de la Propriété Foncière.
+
+================================================================
+TITRE IV — PUBLICITÉ FONCIÈRE (الترسيم)
+================================================================
+
+الفصل 373 / Article 373 (modifié loi n°46/1992) — ACTES DEVANT ÊTRE PUBLIÉS :
+يجب إشهارها بطريق الترسيم برسم الملكية :
+أولا : جميع الصكوك والاتفاقات فيما بين الأحياء (بيع، هبة، رهن، ارتفاق...) سواء تعلقت بإنشاء حق عيني أو نقله أو تعديله أو انقضائه.
+ثانيا : الصكوك والأحكام القاضية بإحالة حق الاشتراك في الملكية بالجوار (القسمة...).
+
+Les actes devant être publiés par voie d'inscription au titre foncier :
+1. Tous les actes entre vifs (vente, donation, hypothèque, servitude...) relatifs à la constitution, la transmission, la modification ou l'extinction d'un droit réel.
+2. Les actes et jugements portant cession du droit de copropriété (partage...).
+→ CONSÉQUENCE : Les droits réels non publiés ne sont pas opposables aux tiers. Ils ne créent que des obligations personnelles.
+→ Les héritiers ou légataires ne peuvent pas disposer d'un droit réel compris dans la succession avant publication de la mutation par décès.
+
+الفصل 374 / Article 374 :
+يجب التنصيص على نقل الرهن العقاري الواقع بطريقة الحلول أو بغيرها من الطرق بالرسم العقاري.
+La transmission de l'hypothèque immobilière par subrogation ou autre moyen doit être mentionnée au titre foncier.
+
+الفصل 377 مكرر / Article 377 bis — AUTEURS HABILITÉS À RÉDIGER LES ACTES :
+يختص بتحرير الصكوك والاتفاقات الخاضعة للترسيم بالسجل العقاري :
+1) حافظ الملكية العقارية وأعوانه / Le Conservateur de la Propriété Foncière et ses agents
+2) عدول الإشهاد / Les notaires
+3) المحامون المباشرون غير المتمرنين / Les avocats en exercice (sauf stagiaires)
+→ NULS de plein droit les actes rédigés par d'autres personnes.
+
+================================================================
+TITRE V — REGISTRE FONCIER — RÉSERVATIONS ET INSCRIPTIONS PROVISOIRES
+================================================================
+
+الفصل 365 / Article 365 — MENTIONS PROVISOIRES OBLIGATOIRES :
+يمكن أن تقيد قيدا احتياطا برسم الملكية :
+أولا : الدعاوى الرامية إلى استصدار حكم ببطلان الحقوق العينية المرسمة أو إبطالها أو فسخها.
+ثانيا : الدعاوى الرامية إلى ترسيم جميع الأعمال التي تقتضي التفويت في عقار.
+Peuvent faire l'objet d'une inscription provisoire au titre foncier :
+1. Les actions visant à annuler, résoudre ou modifier des droits réels inscrits
+2. Les actions visant à inscrire des actes de disposition sur un immeuble
+
+الفصل 370 / Article 370 :
+يسقط القيد الاحتياطي ويصبح غير ذي مفعول بمضي ثلاثة أعوام في جميع الصور إلا إذا وقع تجديده.
+L'inscription provisoire devient caduque et sans effet après 3 ans, sauf renouvellement.
+
+================================================================
+RÉSUMÉ DES DÉLAIS IMPORTANTS (مهل مهمة)
+================================================================
+
+PRESCRIPTION ACQUISITIVE (التقادم المكسب) :
+- Immeuble non immatriculé : 15 ans (possession de mauvaise foi) / 10 ans (bonne foi + titre)
+- Entre héritiers/associés : 30 ans
+- Immeuble immatriculé : PAS de prescription
+
+PRÉEMPTION (الشفعة) :
+- Avec notification : 1 mois
+- Sans notification : 6 mois après inscription au registre foncier
+
+USUFRUIT (الانتفاع) :
+- Extinction par non-usage : 5 ans
+- Durée max pour personne morale : 30 ans
+
+SERVITUDES (الارتفاق) :
+- Extinction par non-usage : 15 ans
+
+HYPOTHÈQUE / INSCRIPTION PROVISOIRE :
+- Inscription provisoire (قيد احتياطي) : validité 3 ans renouvelable
+
+PARTAGE (القسمة) :
+- Action en partage : imprescriptible
+- Accord de non-partage : max 5 ans
+
+================================================================
+POINTS CLÉS PRATIQUES POUR L'IMMOBILIER TUNISIEN
+================================================================
+
+1. TITRE FONCIER (رسم الملكية) :
+   - Document fondamental, géré par la Direction de la Propriété Foncière (إدارة الملكية العقارية)
+   - Toute transaction immobilière doit être inscrite pour être opposable aux tiers
+   - L'acheteur ne devient propriétaire qu'à compter de l'inscription
+
+2. ACTES NOTARIÉS :
+   - Obligatoires pour les immeubles immatriculés
+   - Rédigés par notaire (عدل إشهاد), conservateur ou avocat autorisé
+   - Doivent mentionner : identité complète parties, désignation bien, prix, charges
+
+3. COPROPRIÉTÉ :
+   - Syndicat de copropriétaires obligatoire (نقابة المالكين)
+   - Règlement de copropriété obligatoire
+   - Charges communes proportionnelles aux quotes-parts
+   - Pas de droit de préemption dans la copropriété par étages
+
+4. HYPOTHÈQUE :
+   - Ne prend naissance qu'après inscription au registre foncier
+   - Suit l'immeuble en quelques mains qu'il passe (droit de suite)
+   - Indivisible : garantit la totalité de la dette
+
+5. EXPROPRIATION :
+   - Uniquement pour utilité publique (المصلحة العامة)
+   - Indemnité juste et préalable obligatoire
+   - Procédure : décret d'utilité publique → évaluation → paiement → transfert
+
+================================================================
+FIN DU FICHIER — مجلة الحقوق العينية (VERSION OPTIMISÉE IMMOBILIER)
+================================================================

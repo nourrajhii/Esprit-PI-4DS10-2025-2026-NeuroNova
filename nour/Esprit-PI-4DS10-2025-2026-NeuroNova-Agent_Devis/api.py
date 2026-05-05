@@ -88,14 +88,14 @@ async def startup_event():
     global retriever, calculator, is_ready
 
     print("=" * 60)
-    print("🚀 Démarrage de l'Agent RAG Construction...")
-    print(f"   Modèle LLM : {OLLAMA_MODEL}")
+    print("[START] Demarrage de l'Agent RAG Construction...")
+    print(f"   Modele LLM : {OLLAMA_MODEL}")
     print("=" * 60)
 
-    print("\n📂 Chargement du dataset...")
+    print("\n[LOAD] Chargement du dataset...")
     df = load_dataset("data/materiaux_cleaned.xlsx")
 
-    print("\n🗄️  Initialisation ChromaDB...")
+    print("\n[DB] Initialisation ChromaDB...")
     vector_store = MaterialVectorStore(persist_dir="./chroma_db")
     vector_store.index_dataset(df)
 
@@ -103,15 +103,15 @@ async def startup_event():
     calculator = DevisCalculator()
     calculator.load_dataset("data/materiaux_cleaned.xlsx")
 
-    print("\n🤖 Initialisation du modèle ML de prédiction...")
+    print("\n[ML] Initialisation du modele ML de prediction...")
     calculator.setup_predictor(
-        history_path="data/historique_devis.csv",  # optionnel, ignoré si absent
+        history_path="data/historique_devis.csv",  # optionnel, ignore si absent
         blend_alpha=0.35
     )
 
     is_ready = True
-    print(f"\n✅ API prête sur http://127.0.0.1:8000")
-    print(f"📖 Swagger UI : http://127.0.0.1:8000/docs")
+    print(f"\n[OK] API prete sur http://127.0.0.1:8000")
+    print(f"[DOCS] Swagger UI : http://127.0.0.1:8000/docs")
     print("=" * 60)
 
 

@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260501_220230",
+  "created_at": "2026-05-01T22:02:30.414018",
+  "updated_at": "2026-05-01T22:02:30.425029",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quelles sont les taxes pour acheter un appartement en Tunisie?",
+      "timestamp": "2026-05-01T22:02:30.425029"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[06 Enregistrement Foncier]**\n• PROCÉDURES DE TRANSFERT DE PROPRIÉTÉ EN TUNISIE\n• ================================================================\n\n**[08 Loi17 Avantages Fiscaux]**\n• Règles de la copropriété en Tunisie (issues de مجلة الحقوق العينية et législation spéciale) :\n\n**[05 Hypotheque Privileges]**\n• Privilèges immobiliers en Tunisie:\n• Privilège de l'État et des collectivités locales: garantit le recouvrement des impôts et taxes sur l'immeuble.\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-01T22:02:30.425029"
+    }
+  ]
+}

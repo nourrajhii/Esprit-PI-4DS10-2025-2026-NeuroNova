@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260505_162538",
+  "created_at": "2026-05-05T16:25:38.957630",
+  "updated_at": "2026-05-05T16:25:39.235061",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "si je veux acheter un terrain combien je paie l'etat",
+      "timestamp": "2026-05-05T16:25:39.235061"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[Code des Obligations et Contrats (COC)]**\n• en quittant, laisser le terrain dans le même état, et n'aura droit à\n• Toutefois, si le contrat est renouvelé, il n'aura droit à salaire que\n\n**[Code des Obligations et Contrats (COC)]**\n• consentement des contractants, l’un pour vendre, l’autre pour acheter,\n• tiers, que si elle est enregistrée à la recette des finances, sous réserve\n\n**[05 Hypotheque Privileges]**\n• Principes de l'hypothèque en Tunisie:\n• L'hypothèque ne peut être constituée que par acte authentique devant notaire.\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-05T16:25:39.235061"
+    }
+  ]
+}

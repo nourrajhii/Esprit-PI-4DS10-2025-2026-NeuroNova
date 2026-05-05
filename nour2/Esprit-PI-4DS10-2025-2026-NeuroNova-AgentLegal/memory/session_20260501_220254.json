@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260501_220254",
+  "created_at": "2026-05-01T22:02:54.295630",
+  "updated_at": "2026-05-01T22:02:54.303972",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "TVA immobilier Tunisie",
+      "timestamp": "2026-05-01T22:02:54.303972"
+    },
+    {
+      "role": "assistant",
+      "content": "**Sur la base des textes juridiques tunisiens :**\n\n**[08 Loi17 Avantages Fiscaux]**\n• --- TVA SUR L'IMMOBILIER RÉSIDENTIEL / الأداء على القيمة المضافة للعقارات السكنية ---\n\n**[08 Loi17 Avantages Fiscaux]**\n• INFORMATIONS PRATIQUES SUR L'ENREGISTREMENT IMMOBILIER EN TUNISIE\n• ================================================================\n\n**[08 Loi17 Avantages Fiscaux]**\n• Historique des reports TVA immobilier :\n• - En 2025 : TVA à 7% pour prix ≤ 400.000 DT, 13% pour prix > 400.000 DT\n\n⚠️ *Réponse extraite directement des textes (LLM hors ligne). Consultez un professionnel pour confirmation.*",
+      "timestamp": "2026-05-01T22:02:54.303972"
+    }
+  ]
+}

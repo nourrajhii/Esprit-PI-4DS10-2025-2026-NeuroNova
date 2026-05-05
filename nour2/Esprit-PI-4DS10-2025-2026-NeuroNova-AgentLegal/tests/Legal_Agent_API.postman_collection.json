@@ -1,0 +1,314 @@
+{
+  "info": {
+    "name": "Legal Agent API — Juridique Tunisien",
+    "description": "Collection complète pour tester l'assistant juridique immobilier tunisien",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "session_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔍 System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/health",
+            "description": "Vérifie que l'API, FAISS et le cache sont opérationnels."
+          }
+        },
+        {
+          "name": "Swagger UI",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/docs",
+            "description": "Documentation interactive FastAPI."
+          }
+        }
+      ]
+    },
+    {
+      "name": "💬 Chat — Salutations (chitchat)",
+      "item": [
+        {
+          "name": "Bonjour",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Bonjour\"\n}"
+            },
+            "description": "Doit répondre IMMÉDIATEMENT sans appeler le LLM juridique. question_type = chitchat."
+          }
+        },
+        {
+          "name": "Hello",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Hello\"\n}"
+            }
+          }
+        },
+        {
+          "name": "مرحبا (arabe)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"مرحبا\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "💰 Chat — Fiscalité & Calculs",
+      "item": [
+        {
+          "name": "TVA logement neuf 300k DT",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Calculer la TVA pour un logement neuf à 300 000 DT\"\n}"
+            },
+            "description": "Doit retourner is_calculation=true avec un tableau markdown."
+          }
+        },
+        {
+          "name": "Droits d'enregistrement 750k DT",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Combien de droits d'enregistrement pour un bien à 750 000 DT ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Mensualité crédit 200k / 8% / 20 ans",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Calculer la mensualité pour un crédit de 200 000 DT à 8% sur 20 ans\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Rendement locatif",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quel est le rendement locatif pour un bien à 400 000 DT avec un loyer de 1 200 DT/mois ?\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "⚖️ Chat — Questions juridiques",
+      "item": [
+        {
+          "name": "Expulsion locataire",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Comment expulser un locataire qui ne paie pas son loyer ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Documents vente immobilière",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quels sont les documents nécessaires pour vendre un bien immobilier ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Permis de construire",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quelle est la procédure pour obtenir un permis de construire en Tunisie ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Vérifier légalité bien",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Comment vérifier la légalité d'un bien immobilier avant achat ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Droits réels — prescription",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quel est le délai de prescription pour acquérir un bien par prescription en Tunisie ?\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Question en arabe — طرد مستأجر",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"ما هي إجراءات طرد مستأجر لم يدفع الإيجار منذ 3 أشهر؟\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧠 Chat — Conversation avec session",
+      "item": [
+        {
+          "name": "1. Première question (crée session)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.session_id) {",
+                  "    pm.collectionVariables.set('session_id', json.session_id);",
+                  "    console.log('Session ID sauvegardé:', json.session_id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quelles sont les étapes pour acheter un appartement en Tunisie ?\"\n}"
+            },
+            "description": "Sauvegarde automatiquement le session_id pour les questions suivantes."
+          }
+        },
+        {
+          "name": "2. Question de suivi (même session)",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/chat",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Et quels sont les frais à prévoir ?\",\n  \"session_id\": \"{{session_id}}\"\n}"
+            },
+            "description": "Utilise le session_id récupéré automatiquement."
+          }
+        }
+      ]
+    },
+    {
+      "name": "📂 Sessions",
+      "item": [
+        {
+          "name": "Lister toutes les sessions",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/sessions"
+          }
+        },
+        {
+          "name": "Détail d'une session",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/sessions/{{session_id}}"
+          }
+        },
+        {
+          "name": "Supprimer une session",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/sessions/{{session_id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔧 Admin",
+      "item": [
+        {
+          "name": "Recharger base FAISS",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/admin/reload-db",
+            "description": "Force le rechargement de la base vectorielle FAISS depuis le disque."
+          }
+        },
+        {
+          "name": "Vider le cache",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/admin/clear-cache"
+          }
+        },
+        {
+          "name": "Statistiques du cache",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/admin/cache-stats"
+          }
+        }
+      ]
+    }
+  ]
+}

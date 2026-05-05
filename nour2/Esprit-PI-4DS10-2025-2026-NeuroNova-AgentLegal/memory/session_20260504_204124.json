@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260504_204124",
+  "created_at": "2026-05-04T20:41:24.531634",
+  "updated_at": "2026-05-04T20:41:27.768489",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quelles taxes s'appliquent à la vente d'un bien immobilier?",
+      "timestamp": "2026-05-04T20:41:27.768489"
+    },
+    {
+      "role": "assistant",
+      "content": "**Taxes applicables à la vente d'un bien immobilier en Tunisie**\n\nVoici les taxes qui peuvent s'appliquer lors de la vente d'un bien immobilier en Tunisie, selon la nature de la transaction et le statut des parties :\n\n1. **Taxe sur la Valeur Ajoutée (TVA) :** La TVA s'applique aux logements neufs vendus par un promoteur agréé. Le taux est de 7% pour les prix inférieurs ou égaux à 400 000 DT, et de 13% pour les prix supérieurs à 400 000 DT. Il est important de noter qu'il n'y a pas de TVA sur les reventes de biens anciens entre particuliers.\n\n2. **Droits d'Enregistrement :** Ces droits sont dus lors de l'achat d'un bien ancien entre particuliers. Le taux varie en fonction du prix du bien : 6% pour les prix inférieurs à 500 000 DT, 8% pour les prix compris entre 500 000 DT et 999 999 DT, et 10% pour les prix d'un million de dinars et plus.\n\n3. **Taxe CPF (Caisse de Prévoyance des Fonctionnaires) :** Une taxe de 1% est appliquée sur tout achat immobilier, en plus des droits d'enregistrement.\n\n4. **Impôt sur les Sociétés (IS) pour les promoteurs :** Les promoteurs immobiliers sont soumis à un taux général d'IS de 20%. Cependant, les logements sociaux bénéficient d'une exonération de 50% de cet impôt.\n\n**Avertissement :** Les frais de notaire, bien qu'ils ne soient pas une taxe au sens strict, représentent un coût additionnel significatif pour l'acheteur, variant généralement entre 1% et 5% du prix du bien. De plus, pour les transactions impliquant des devises étrangères (TRE), des règles spécifiques s'appliquent, notamment une taxe CPF de 1% et des droits fixes.",
+      "timestamp": "2026-05-04T20:41:27.768489"
+    }
+  ]
+}

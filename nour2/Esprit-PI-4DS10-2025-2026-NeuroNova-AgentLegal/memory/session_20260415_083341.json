@@ -1,0 +1,18 @@
+{
+  "session_id": "session_20260415_083341",
+  "created_at": "2026-04-15T08:33:41.173051",
+  "updated_at": "2026-04-15T08:33:41.184402",
+  "summary": "",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Un plan d’aménagement ne respecte pas les orientations nationales, Qui contrôle cette conformité ?",
+      "timestamp": "2026-04-15T08:33:41.184402"
+    },
+    {
+      "role": "assistant",
+      "content": "**Contrôle de la conformité des plans d'aménagement**\n\n1. **L'arrêté du Gouverneur territorialement compétent est le premier point de contrôle** pour vérifier si un plan d'aménagement respecte les orientations nationales, en vertu de l'article 19 du Code Aménagement / Urbanisme.\n2. **Le Ministre chargé de l'Urbanisme peut fixer le contenu du dossier du projet**, ce qui implique que son arrêté peut également être un point de contrôle pour la conformité des plans d'aménagement, en vertu de l'article 18 du Code Aménagement / Urbanisme.\n3. **Les schémas directeurs d'aménagement et les plans de protection** sont également des documents importants qui doivent être observés par les plans d'aménagement, pour garantir leur conformité avec les orientations nationales, en vertu de l'article 18 du Code Aménagement / Urbanisme.\n4. **Les communes et les administrations publiques peuvent également exercer un contrôle** sur la conformité des plans d'aménagement, en vertu de l'article 84 du Code Aménagement / Urbanisme, qui établit que leur responsabilité établie aux articles 83 et 18 s'applique également à elles.\n5. **Enfin, les parties concernées peuvent également contester la conformité** d'un plan d'aménagement, en demandant une copie du plan et en payant un montant fixé conformément à la législation en vigueur, en vertu de l'article 19 du Code Aménagement / Urbanisme.",
+      "timestamp": "2026-04-15T08:33:41.184402"
+    }
+  ]
+}
