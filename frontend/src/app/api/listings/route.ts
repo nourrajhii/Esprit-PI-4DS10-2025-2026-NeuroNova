@@ -79,7 +79,8 @@ export async function GET(req: NextRequest) {
             .sort({ createdAt: -1 })
             .limit(1)
             .toArray()
-          for (const d of sDocs) govListings.push(normaliseListing({ ...d, source: 'seller', transaction_type: d.type }))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          for (const d of sDocs as any[]) govListings.push(normaliseListing({ ...d, source: 'seller', transaction_type: d.type }))
         }
       }
       return NextResponse.json({ listings: govListings, total: govListings.length, skip: 0, limit: govListings.length })
@@ -89,7 +90,8 @@ export async function GET(req: NextRequest) {
     const sellerDocs = sellerCol
       ? await sellerCol.find(sellerFilter).sort({ createdAt: -1 }).toArray()
       : []
-    const sellerListings = sellerDocs.map(d =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sellerListings = sellerDocs.map((d: any) =>
       normaliseListing({ ...d, source: 'seller', transaction_type: d.type, surface_m2: d.surface })
     )
 
