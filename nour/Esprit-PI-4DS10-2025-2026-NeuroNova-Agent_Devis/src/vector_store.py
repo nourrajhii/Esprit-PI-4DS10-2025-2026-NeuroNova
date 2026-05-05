@@ -6,7 +6,10 @@ from pathlib import Path
 
 class MaterialVectorStore:
     def __init__(self, persist_dir: str = "./chroma_db"):
-        self.client = chromadb.PersistentClient(path=persist_dir)
+        # Use EphemeralClient (in-memory) — PersistentClient's Rust HNSW backend
+        # is incompatible with ChromaDB ≥1.x on some platforms. The dataset is
+        # small (< 100 rows) so re-indexing on startup takes < 5 s.
+        self.client = chromadb.EphemeralClient()
 
         self.embed_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name="paraphrase-multilingual-MiniLM-L12-v2"
