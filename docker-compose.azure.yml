@@ -317,7 +317,8 @@ services:
         NEXT_PUBLIC_VIAGRA_URL:        ${NEXT_PUBLIC_VIAGRA_URL}
         NEXT_PUBLIC_ORCHESTRATOR_URL:  ${NEXT_PUBLIC_VIAGRA_URL}
         NEXT_PUBLIC_BACKEND_URL:       ${NEXT_PUBLIC_BACKEND_URL}
-        NEXT_PUBLIC_VILLA3D_API_URL:   ${NEXT_PUBLIC_VILLA3D_API_URL}
+        # Route villa3d through nginx (same origin as frontend) — eliminates CORS
+        NEXT_PUBLIC_VILLA3D_API_URL:   http://${SERVER_HOST}/villa3d
     container_name: immo-frontend
     restart: unless-stopped
     ports:
