@@ -50,17 +50,35 @@ def _require_key():
 # ── Tripo helpers (fully async) ───────────────────────────────────────────────
 
 async def _tripo_post(path: str, payload: dict) -> dict:
-    async with httpx.AsyncClient(timeout=TRIPO_TIMEOUT) as c:
-        r = await c.post(f"{TRIPO_BASE}{path}", json=payload, headers=_auth())
-        r.raise_for_status()
-        return r.json()
+    try:
+        async with httpx.AsyncClient(timeout=TRIPO_TIMEOUT) as c:
+            r = await c.post(f"{TRIPO_BASE}{path}", json=payload, headers=_auth())
+            if r.status_code == 401:
+                raise HTTPException(401, detail="Tripo API key is invalid or expired — update TRIPO_API_KEY on the server")
+            if r.status_code == 402 or r.status_code == 403:
+                raise HTTPException(402, detail="Tripo API credits exhausted — recharge at platform.tripo3d.ai")
+            r.raise_for_status()
+            return r.json()
+    except HTTPException:
+        raise
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(502, detail=f"Tripo API error {e.response.status_code}: {e.response.text[:200]}")
+    except Exception as e:
+        raise HTTPException(502, detail=f"Tripo connection error: {e}")
 
 
 async def _tripo_get(path: str) -> dict:
-    async with httpx.AsyncClient(timeout=TRIPO_TIMEOUT) as c:
-        r = await c.get(f"{TRIPO_BASE}{path}", headers=_auth())
-        r.raise_for_status()
-        return r.json()
+    try:
+        async with httpx.AsyncClient(timeout=TRIPO_TIMEOUT) as c:
+            r = await c.get(f"{TRIPO_BASE}{path}", headers=_auth())
+            if r.status_code == 401:
+                raise HTTPException(401, detail="Tripo API key is invalid or expired")
+            r.raise_for_status()
+            return r.json()
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(502, detail=f"Tripo connection error: {e}")
 
 
 async def _upload_image(img_bytes: bytes) -> str:
