@@ -337,6 +337,27 @@ services:
     networks:
       - immo-net
 
+  # ── Villa3D Cloud Stub (SD disabled, Tripo API only) ─────────────────────────
+  # Full SD+LoRA runs locally only (3.3GB model, GPU required)
+
+  villa3d-stub:
+    build:
+      context: ./services/villa3d-stub
+      dockerfile: Dockerfile
+    container_name: immo-villa3d
+    restart: unless-stopped
+    ports:
+      - "8056:8056"
+    environment:
+      TRIPO_API_KEY: ${TRIPO_API_KEY}
+    networks:
+      - immo-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8056/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
   # ── Nginx Reverse Proxy ───────────────────────────────────────────────────────
   # Routes everything through port 80:
   #   /         → frontend  :3000
