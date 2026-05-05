@@ -260,7 +260,7 @@ services:
     networks:
       - immo-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8010/health"]
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8010/health', timeout=5)"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -300,7 +300,7 @@ services:
     networks:
       - immo-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"]
       interval: 30s
       timeout: 10s
       retries: 5
