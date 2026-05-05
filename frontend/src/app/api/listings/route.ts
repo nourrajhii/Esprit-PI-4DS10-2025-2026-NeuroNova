@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getScrapedDb, normaliseListing } from '@/lib/mongo'
+import { getScrapedDb, getMainDb, normaliseListing } from '@/lib/mongo'
 import { ObjectId } from 'mongodb'
 
 export const dynamic = 'force-dynamic'
@@ -24,8 +24,15 @@ export async function GET(req: NextRequest) {
     const govMode  = searchParams.get('by_gov') === '1'   // return 1 per governorate
     const q        = searchParams.get('q') || ''
 
-    const db   = await getScrapedDb()
-    const col  = db.collection('listings')
+    const scrapedDb = await getScrapedDb()
+    const col       = scrapedDb.collection('listings')
+
+    // Also fetch seller-posted listings from main estatemind DB
+    let sellerCol: Awaited<ReturnType<typeof getMainDb>>['collection'] | null = null
+    try {
+      const mainDb = await getMainDb()
+      sellerCol = mainDb.collection('listings')
+    } catch { /* non-fatal — fall back to scraped only */ }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const filter: Record<string, any> = {}
@@ -40,6 +47,20 @@ export async function GET(req: NextRequest) {
     if (minPrice > 0) filter.price = { ...filter.price, $gte: minPrice }
     if (maxPrice > 0) filter.price = { ...filter.price, $lte: maxPrice }
 
+    // Seller listings use 'type' not 'transaction_type', and status must be active
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sellerFilter: Record<string, any> = { status: 'active' }
+    if (city)   sellerFilter.city = { $regex: city, $options: 'i' }
+    if (txType) sellerFilter.type = { $regex: txType, $options: 'i' }
+    if (rooms)  sellerFilter.rooms = rooms
+    if (q)      sellerFilter.$or = [
+      { title: { $regex: q, $options: 'i' } },
+      { description: { $regex: q, $options: 'i' } },
+      { city: { $regex: q, $options: 'i' } },
+    ]
+    if (minPrice > 0) sellerFilter.price = { ...sellerFilter.price, $gte: minPrice }
+    if (maxPrice > 0) sellerFilter.price = { ...sellerFilter.price, $lte: maxPrice }
+
     if (govMode) {
       // Return up to 2 representative listings per governorate (for map coverage)
       const govListings: Record<string, unknown>[] = []
@@ -50,16 +71,34 @@ export async function GET(req: NextRequest) {
           .limit(2)
           .toArray()
         for (const d of docs) govListings.push(normaliseListing(d))
+        // Add seller listings per gov too
+        if (sellerCol) {
+          const sDocs = await sellerCol
+            .find({ city: { $regex: gov, $options: 'i' }, status: 'active' })
+            .sort({ createdAt: -1 })
+            .limit(1)
+            .toArray()
+          for (const d of sDocs) govListings.push(normaliseListing({ ...d, source: 'seller', transaction_type: d.type }))
+        }
       }
       return NextResponse.json({ listings: govListings, total: govListings.length, skip: 0, limit: govListings.length })
     }
 
-    const [docs, total] = await Promise.all([
-      col.find(filter).sort({ _id: -1 }).skip(skip).limit(limit).toArray(),
+    // Fetch seller listings first (show them prominently), then scraped
+    const sellerDocs = sellerCol
+      ? await sellerCol.find(sellerFilter).sort({ createdAt: -1 }).toArray()
+      : []
+    const sellerListings = sellerDocs.map(d =>
+      normaliseListing({ ...d, source: 'seller', transaction_type: d.type, surface_m2: d.surface })
+    )
+
+    const [docs, scrapedTotal] = await Promise.all([
+      col.find(filter).sort({ _id: -1 }).skip(Math.max(0, skip - sellerDocs.length)).limit(limit - Math.min(sellerDocs.length, limit)).toArray(),
       col.countDocuments(filter),
     ])
 
-    const listings = docs.map(normaliseListing)
+    const listings = [...sellerListings, ...docs.map(normaliseListing)]
+    const total    = scrapedTotal + sellerDocs.length
     return NextResponse.json({ listings, total, skip, limit })
   } catch (err) {
     console.error('[API /listings]', err)
