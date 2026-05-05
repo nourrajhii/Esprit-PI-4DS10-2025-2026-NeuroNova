@@ -1,10 +1,5 @@
 import { MongoClient } from 'mongodb'
 
-const SCRAPED_URI = process.env.SCRAPED_DB_URI!
-const MAIN_URI    = process.env.MONGODB_URI!
-
-if (!SCRAPED_URI) throw new Error('SCRAPED_DB_URI is not set')
-
 // ── Connection cache (Next.js hot-reload safe) ────────────────────────────────
 declare global {
   // eslint-disable-next-line no-var
@@ -14,6 +9,9 @@ declare global {
 }
 
 async function getScrapedClient(): Promise<MongoClient> {
+  // Read env at runtime (not build time) so Docker builds succeed without secrets
+  const SCRAPED_URI = process.env.SCRAPED_DB_URI
+  if (!SCRAPED_URI) throw new Error('SCRAPED_DB_URI is not set')
   if (!global._mongoScrapedClient) {
     global._mongoScrapedClient = new MongoClient(SCRAPED_URI, { tls: true, tlsAllowInvalidCertificates: true })
     await global._mongoScrapedClient.connect()
@@ -22,8 +20,12 @@ async function getScrapedClient(): Promise<MongoClient> {
 }
 
 async function getMainClient(): Promise<MongoClient> {
+  const MAIN_URI    = process.env.MONGODB_URI
+  const SCRAPED_URI = process.env.SCRAPED_DB_URI
+  const uri = MAIN_URI || SCRAPED_URI
+  if (!uri) throw new Error('MONGODB_URI is not set')
   if (!global._mongoMainClient) {
-    global._mongoMainClient = new MongoClient(MAIN_URI || SCRAPED_URI, { tls: true, tlsAllowInvalidCertificates: true })
+    global._mongoMainClient = new MongoClient(uri, { tls: true, tlsAllowInvalidCertificates: true })
     await global._mongoMainClient.connect()
   }
   return global._mongoMainClient
