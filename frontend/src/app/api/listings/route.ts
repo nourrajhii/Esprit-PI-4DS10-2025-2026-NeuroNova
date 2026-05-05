@@ -28,7 +28,8 @@ export async function GET(req: NextRequest) {
     const col       = scrapedDb.collection('listings')
 
     // Also fetch seller-posted listings from main estatemind DB
-    let sellerCol: Awaited<ReturnType<typeof getMainDb>>['collection'] | null = null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let sellerCol: any = null
     try {
       const mainDb = await getMainDb()
       sellerCol = mainDb.collection('listings')
