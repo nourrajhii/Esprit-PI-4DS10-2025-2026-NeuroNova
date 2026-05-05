@@ -313,10 +313,11 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        # Use explicit IP/domain — ${SERVER_HOST} from .env
-        NEXT_PUBLIC_VIAGRA_URL:      ${NEXT_PUBLIC_VIAGRA_URL}
-        NEXT_PUBLIC_BACKEND_URL:     ${NEXT_PUBLIC_BACKEND_URL}
-        NEXT_PUBLIC_VILLA3D_API_URL: ${NEXT_PUBLIC_VILLA3D_API_URL}
+        # Use explicit IP/domain — set in .env
+        NEXT_PUBLIC_VIAGRA_URL:        ${NEXT_PUBLIC_VIAGRA_URL}
+        NEXT_PUBLIC_ORCHESTRATOR_URL:  ${NEXT_PUBLIC_VIAGRA_URL}
+        NEXT_PUBLIC_BACKEND_URL:       ${NEXT_PUBLIC_BACKEND_URL}
+        NEXT_PUBLIC_VILLA3D_API_URL:   ${NEXT_PUBLIC_VILLA3D_API_URL}
     container_name: immo-frontend
     restart: unless-stopped
     ports:
