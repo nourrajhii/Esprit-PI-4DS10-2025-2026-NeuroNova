@@ -83,6 +83,7 @@ services:
       <<: *mongo-env
       PORT: 4000
       NODE_ENV: production
+      SERVER_HOST: ${SERVER_HOST}
       FRONTEND_URL: http://${SERVER_HOST}:3001
       BACKEND_PUBLIC_URL: http://${SERVER_HOST}:4000
       JWT_SECRET: ${JWT_SECRET}
@@ -317,8 +318,8 @@ services:
         NEXT_PUBLIC_VIAGRA_URL:        ${NEXT_PUBLIC_VIAGRA_URL}
         NEXT_PUBLIC_ORCHESTRATOR_URL:  ${NEXT_PUBLIC_VIAGRA_URL}
         NEXT_PUBLIC_BACKEND_URL:       ${NEXT_PUBLIC_BACKEND_URL}
-        # Route villa3d through nginx (same origin as frontend) — eliminates CORS
-        NEXT_PUBLIC_VILLA3D_API_URL:   http://${SERVER_HOST}/villa3d
+        # Port 8056 direct — async stub handles CORS headers correctly
+        NEXT_PUBLIC_VILLA3D_API_URL:   http://${SERVER_HOST}:8056
     container_name: immo-frontend
     restart: unless-stopped
     ports:
