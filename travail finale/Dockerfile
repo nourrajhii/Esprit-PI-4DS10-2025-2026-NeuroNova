@@ -3,8 +3,10 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # System deps for Pillow, torch CPU, and trimesh
+# NOTE: libgl1-mesa-glx was removed in Debian Trixie (Debian 13).
+# Use libgl1 (the new umbrella package) — it pulls in the same OpenGL runtime.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential curl libglib2.0-0 libsm6 libxext6 libxrender-dev libgl1-mesa-glx \
+    build-essential curl libglib2.0-0 libsm6 libxext6 libxrender-dev libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
