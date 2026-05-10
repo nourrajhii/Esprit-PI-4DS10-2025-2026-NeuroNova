@@ -7,8 +7,13 @@ import {
   Loader2, TrendingUp, BarChart2, Sparkles, Brain,
   MapPin, Ruler, BedDouble, DollarSign, RefreshCw,
   Search, ExternalLink, CheckCircle, AlertTriangle, XCircle,
-  ChevronDown, ChevronUp, Building2, FileText,
+  ChevronDown, ChevronUp, Building2, FileText, Download,
+  ArrowUpRight, ArrowDownRight, Activity, Home, Calendar,
 } from 'lucide-react'
+import {
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip,
+  ResponsiveContainer, CartesianGrid, Legend, ReferenceLine,
+} from 'recharts'
 
 const BASE = process.env.NEXT_PUBLIC_ORCHESTRATOR_URL || 'http://localhost:8000'
 
@@ -18,7 +23,40 @@ const GOVERNORATS = [
   'Gafsa','Tozeur','Mahdia','Zaghouan','Sidi Bouzid','Kasserine',
 ]
 
-interface PredictResult { report?: string; ml_price?: number; error?: string }
+interface RoiPoint {
+  year: number
+  value_tnd: number
+  cumulative_rent_tnd: number
+  total_gain_tnd: number
+  roi_pct: number
+}
+interface Comparable {
+  label: string
+  price_per_m2: number
+  estimated_price: number
+}
+interface PredictResult {
+  report?: string
+  ml_price?: number
+  price_low?: number
+  price_high?: number
+  price_per_m2?: number
+  city_avg_per_m2?: number
+  national_avg_per_m2?: number
+  city_multiplier?: number
+  city?: string
+  surface_m2?: number
+  rooms?: number
+  rental_yield_pct?: number
+  annual_rent_tnd?: number
+  monthly_rent_tnd?: number
+  annual_appreciation_pct?: number
+  market_position?: 'above' | 'below' | 'average'
+  roi_projection?: RoiPoint[]
+  comparables?: Comparable[]
+  model?: string
+  error?: string
+}
 interface InvestScoring {
   verdict?: string; score?: number; roi_5y_pct?: number
   annual_rent_est_tnd?: number; rental_yield_pct?: number
@@ -81,6 +119,111 @@ function MarkdownReport({ text }: { text: string }) {
       })}
     </div>
   )
+}
+
+// ── Helpers for the rich prediction view ─────────────────────────────────────
+
+function MarketPositionBadge({ pos }: { pos: 'above' | 'below' | 'average' }) {
+  if (pos === 'above') return (
+    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-100 text-amber-800 text-xs font-bold border border-amber-200">
+      <ArrowUpRight className="w-3.5 h-3.5" /> Au-dessus du marché
+    </span>
+  )
+  if (pos === 'below') return (
+    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200">
+      <ArrowDownRight className="w-3.5 h-3.5" /> Sous le marché — opportunité
+    </span>
+  )
+  return (
+    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200">
+      <Activity className="w-3.5 h-3.5" /> Aligné sur le marché
+    </span>
+  )
+}
+
+const ACCENT_CLASSES: Record<string, string> = {
+  brand:   'bg-brand-50    text-brand-700    border-brand-100',
+  indigo:  'bg-indigo-50   text-indigo-700   border-indigo-100',
+  emerald: 'bg-emerald-50  text-emerald-700  border-emerald-100',
+  violet:  'bg-violet-50   text-violet-700   border-violet-100',
+  slate:   'bg-slate-50    text-slate-700    border-slate-200',
+}
+
+function KpiCard({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: string; accent: string }) {
+  const cls = ACCENT_CLASSES[accent] ?? ACCENT_CLASSES.slate
+  return (
+    <div className={`rounded-xl border p-3 ${cls}`}>
+      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider opacity-80">
+        {icon} <span className="truncate">{label}</span>
+      </div>
+      <p className="mt-1 text-sm font-black text-slate-900">{value}</p>
+    </div>
+  )
+}
+
+// ── CSV (UTF-8 BOM so Excel opens it cleanly) ────────────────────────────────
+function downloadPredictionCsv(
+  r: PredictResult,
+  inputs: { city: string; surface: string; rooms: string }
+) {
+  const esc = (v: string | number | undefined | null) => {
+    const s = String(v ?? '')
+    return s.includes(',') || s.includes('"') || s.includes('\n')
+      ? `"${s.replace(/"/g, '""')}"`
+      : s
+  }
+  const rows: (string | number)[][] = []
+  rows.push(['EstateMind — Rapport de Prédiction'])
+  rows.push(['Généré le', new Date().toLocaleString('fr-TN')])
+  rows.push([])
+  rows.push(['BIEN ANALYSÉ'])
+  rows.push(['Ville',      inputs.city])
+  rows.push(['Surface m²', inputs.surface])
+  rows.push(['Chambres',   inputs.rooms])
+  rows.push([])
+  rows.push(['ESTIMATION'])
+  rows.push(['Prix estimé (TND)',          r.ml_price ?? ''])
+  rows.push(['Fourchette basse (TND)',     r.price_low ?? ''])
+  rows.push(['Fourchette haute (TND)',     r.price_high ?? ''])
+  rows.push(['Prix au m² (TND)',           r.price_per_m2 ?? ''])
+  rows.push(['Moyenne ville TND/m²',       r.city_avg_per_m2 ?? ''])
+  rows.push(['Moyenne nationale TND/m²',   r.national_avg_per_m2 ?? ''])
+  rows.push(['Coefficient localisation',   r.city_multiplier ?? ''])
+  rows.push(['Positionnement marché',      r.market_position ?? ''])
+  rows.push([])
+  rows.push(['LOCATION & RENDEMENT'])
+  rows.push(['Loyer mensuel estimé (TND)', r.monthly_rent_tnd ?? ''])
+  rows.push(['Loyer annuel estimé (TND)',  r.annual_rent_tnd ?? ''])
+  rows.push(['Rendement brut (%)',         r.rental_yield_pct ?? ''])
+  rows.push(['Appréciation /an (%)',       r.annual_appreciation_pct ?? ''])
+  rows.push([])
+  rows.push(['PROJECTION DE VALEUR (10 ANS)'])
+  rows.push(['Année', 'Valeur (TND)', 'Loyer cumulé (TND)', 'Gain total (TND)', 'ROI (%)'])
+  for (const p of r.roi_projection ?? []) {
+    rows.push([p.year, p.value_tnd, p.cumulative_rent_tnd, p.total_gain_tnd, p.roi_pct])
+  }
+  rows.push([])
+  rows.push(['COMPARABLES'])
+  rows.push(['Référence', 'Prix au m² (TND)', 'Prix estimé total (TND)'])
+  for (const c of r.comparables ?? []) {
+    rows.push([c.label, c.price_per_m2, c.estimated_price])
+  }
+  rows.push([])
+  rows.push(['Modèle', r.model ?? ''])
+  rows.push(['Source', 'EstateMind — Données marché tunisien 2025'])
+
+  const csv = rows.map(row => row.map(esc).join(',')).join('\r\n')
+  const BOM = '﻿'   // Force Excel UTF-8
+  const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  const stamp = new Date().toISOString().slice(0, 10)
+  a.download = `estatemind-prediction-${inputs.city.toLowerCase().replace(/\s+/g, '-')}-${stamp}.csv`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
 }
 
 function VerdictBadge({ verdict }: { verdict: string }) {
@@ -239,8 +382,6 @@ function PredictContent() {
   }
 
   // ── derived values for single-property invest panel ────────────────────────
-  const report       = predResult?.report   as string | undefined
-  const mlPrice      = predResult?.ml_price as number | undefined
   const investReport = investResult?.report as string | undefined
   const verdict      = (investResult?.verdict   ?? investResult?.scoring?.verdict)   as string | undefined
   const score        = (investResult?.score     ?? investResult?.scoring?.score)     as number | undefined
@@ -306,18 +447,163 @@ function PredictContent() {
               {predLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
               {predLoading ? 'Analyse en cours…' : 'Estimer le prix'}
             </button>
-            {predResult && !predLoading && (
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
-                {(mlPrice !== undefined || report) && (
-                  <div className="bg-brand-50 px-4 py-3 flex flex-wrap gap-4 border-b border-slate-200">
-                    {mlPrice !== undefined && mlPrice > 0 && (
-                      <div><p className="text-xs text-slate-500">Prix ML brut</p><p className="font-bold text-brand-700">{formatTND(mlPrice)}</p></div>
+
+            {predResult?.error && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">{String(predResult.error)}</div>
+            )}
+
+            {predResult && !predLoading && !predResult.error && (
+              <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+                {/* Hero: main estimate with range + CSV download */}
+                <div className="bg-gradient-to-br from-brand-50 via-white to-indigo-50 rounded-xl border border-brand-100 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-brand-600 mb-0.5">Prix estimé</p>
+                      <p className="text-2xl font-black text-slate-900">{formatTND(predResult.ml_price ?? 0)}</p>
+                      {predResult.price_low !== undefined && predResult.price_high !== undefined && (
+                        <p className="text-[11px] text-slate-500 mt-1">
+                          Fourchette : <span className="font-semibold text-slate-700">{formatTND(predResult.price_low)}</span> — <span className="font-semibold text-slate-700">{formatTND(predResult.price_high)}</span>
+                        </p>
+                      )}
+                    </div>
+                    <button onClick={() => downloadPredictionCsv(predResult, { city, surface, rooms })}
+                      title="Télécharger Excel/CSV"
+                      className="flex items-center gap-1.5 bg-brand-600 hover:bg-brand-700 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-lg transition-colors shrink-0">
+                      <Download className="w-3 h-3" /> CSV
+                    </button>
+                  </div>
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    {predResult.market_position && (
+                      <MarketPositionBadge pos={predResult.market_position} />
                     )}
-                    <div><p className="text-xs text-slate-500">Bien analysé</p><p className="font-bold text-slate-800">{surface} m² · {rooms} ch. · {city}</p></div>
+                    <span className="text-[11px] text-slate-500">{surface} m² · {rooms} ch. · {city}</span>
+                  </div>
+                </div>
+
+                {/* KPI cards */}
+                <div className="grid grid-cols-2 gap-2">
+                  <KpiCard icon={<DollarSign className="w-3.5 h-3.5"/>} label="Prix au m²" value={`${(predResult.price_per_m2 ?? 0).toLocaleString('fr-TN')} TND`} accent="brand" />
+                  <KpiCard icon={<MapPin className="w-3.5 h-3.5"/>}     label={`Moy. ${predResult.city ?? city}`} value={`${(predResult.city_avg_per_m2 ?? 0).toLocaleString('fr-TN')} TND/m²`} accent="indigo" />
+                  <KpiCard icon={<Home className="w-3.5 h-3.5"/>}       label="Loyer mensuel" value={`${(predResult.monthly_rent_tnd ?? 0).toLocaleString('fr-TN')} TND`} accent="emerald" />
+                  <KpiCard icon={<TrendingUp className="w-3.5 h-3.5"/>} label="Rendement brut" value={`${predResult.rental_yield_pct ?? 0}%`} accent="emerald" />
+                  <KpiCard icon={<ArrowUpRight className="w-3.5 h-3.5"/>} label="Apprec. /an" value={`+${predResult.annual_appreciation_pct ?? 0}%`} accent="violet" />
+                  <KpiCard icon={<Activity className="w-3.5 h-3.5"/>}   label="Moy. nationale" value={`${(predResult.national_avg_per_m2 ?? 0).toLocaleString('fr-TN')} TND/m²`} accent="slate" />
+                </div>
+
+                {/* ROI projection chart */}
+                {predResult.roi_projection && predResult.roi_projection.length > 0 && (
+                  <div className="bg-white border border-slate-200 rounded-xl p-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-violet-600" />
+                        <h3 className="text-xs font-bold text-slate-800">Projection valeur (10 ans)</h3>
+                      </div>
+                    </div>
+                    <ResponsiveContainer width="100%" height={180}>
+                      <LineChart data={predResult.roi_projection} margin={{ top: 5, right: 8, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                        <XAxis dataKey="year" tick={{ fontSize: 10 }} />
+                        <YAxis tick={{ fontSize: 9 }} tickFormatter={(v) => `${(v/1000).toFixed(0)}k`} />
+                        <Tooltip
+                          formatter={(value: number) => [`${value.toLocaleString('fr-TN')} TND`]}
+                          contentStyle={{ fontSize: 11, borderRadius: 8 }}
+                        />
+                        <Legend wrapperStyle={{ fontSize: 10 }} />
+                        <ReferenceLine y={predResult.ml_price} stroke="#94a3b8" strokeDasharray="4 4" />
+                        <Line type="monotone" dataKey="value_tnd" name="Valeur" stroke="#7c3aed" strokeWidth={2} dot={{ r: 2 }} />
+                        <Line type="monotone" dataKey="cumulative_rent_tnd" name="Loyer cumulé" stroke="#10b981" strokeWidth={2} dot={{ r: 2 }} />
+                      </LineChart>
+                    </ResponsiveContainer>
+                    {predResult.roi_projection.length >= 11 && (
+                      <div className="mt-2 grid grid-cols-2 gap-2 text-center">
+                        <div className="bg-violet-50 rounded-lg py-1.5 border border-violet-100">
+                          <p className="text-[9px] text-violet-700 font-semibold">5 ANS</p>
+                          <p className="text-xs font-bold text-violet-900">{formatTND(predResult.roi_projection[5].value_tnd)}</p>
+                          <p className="text-[9px] text-emerald-600 font-semibold">+{predResult.roi_projection[5].roi_pct}%</p>
+                        </div>
+                        <div className="bg-violet-50 rounded-lg py-1.5 border border-violet-100">
+                          <p className="text-[9px] text-violet-700 font-semibold">10 ANS</p>
+                          <p className="text-xs font-bold text-violet-900">{formatTND(predResult.roi_projection[10].value_tnd)}</p>
+                          <p className="text-[9px] text-emerald-600 font-semibold">+{predResult.roi_projection[10].roi_pct}%</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
-                {report && <div className="p-4 max-h-96 overflow-y-auto"><MarkdownReport text={report} /></div>}
-                {predResult?.error && <div className="p-4 text-red-600 text-sm">{String(predResult.error)}</div>}
+
+                {/* Comparables chart */}
+                {predResult.comparables && predResult.comparables.length > 0 && (
+                  <div className="bg-white border border-slate-200 rounded-xl p-3">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <BarChart2 className="w-3.5 h-3.5 text-brand-600" />
+                      <h3 className="text-xs font-bold text-slate-800">Comparables (TND/m²)</h3>
+                    </div>
+                    <ResponsiveContainer width="100%" height={180}>
+                      <BarChart data={[
+                        { label: 'Votre bien', value: predResult.price_per_m2 ?? 0 },
+                        ...predResult.comparables.map(c => ({ label: c.label, value: c.price_per_m2 })),
+                      ]} margin={{ top: 5, right: 8, left: 0, bottom: 30 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                        <XAxis dataKey="label" tick={{ fontSize: 9 }} angle={-15} textAnchor="end" height={45} interval={0} />
+                        <YAxis tick={{ fontSize: 9 }} tickFormatter={(v) => `${(v/1000).toFixed(1)}k`} />
+                        <Tooltip
+                          formatter={(value: number) => [`${value.toLocaleString('fr-TN')} TND/m²`]}
+                          contentStyle={{ fontSize: 11, borderRadius: 8 }}
+                        />
+                        <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                )}
+
+                {/* Comparables table */}
+                {predResult.comparables && predResult.comparables.length > 0 && (
+                  <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <div className="px-3 py-2 bg-slate-50 border-b border-slate-200 flex items-center gap-1.5">
+                      <FileText className="w-3.5 h-3.5 text-slate-600" />
+                      <h3 className="text-xs font-bold text-slate-800">Détail des comparables</h3>
+                    </div>
+                    <table className="w-full text-xs">
+                      <thead className="text-[10px] uppercase tracking-wider text-slate-500 bg-slate-50/50">
+                        <tr>
+                          <th className="text-left px-3 py-1.5 font-semibold">Réf.</th>
+                          <th className="text-right px-3 py-1.5 font-semibold">TND/m²</th>
+                          <th className="text-right px-3 py-1.5 font-semibold">Total</th>
+                          <th className="text-right px-3 py-1.5 font-semibold">Δ</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {predResult.comparables.map((c, i) => {
+                          const diff = predResult.ml_price ? ((c.estimated_price - predResult.ml_price) / predResult.ml_price) * 100 : 0
+                          return (
+                            <tr key={i} className="border-t border-slate-100 hover:bg-slate-50">
+                              <td className="px-3 py-1.5 text-slate-700">{c.label}</td>
+                              <td className="px-3 py-1.5 text-right font-medium text-slate-800">{c.price_per_m2.toLocaleString('fr-TN')}</td>
+                              <td className="px-3 py-1.5 text-right font-medium text-slate-800">{formatTND(c.estimated_price)}</td>
+                              <td className={`px-3 py-1.5 text-right font-bold ${diff > 0 ? 'text-emerald-600' : diff < 0 ? 'text-red-500' : 'text-slate-400'}`}>
+                                {diff > 0 ? '+' : ''}{diff.toFixed(1)}%
+                              </td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {/* Markdown report */}
+                {predResult.report && (
+                  <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                    <div className="px-3 py-2 bg-slate-50 border-b border-slate-200 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-brand-600" />
+                      <h3 className="text-xs font-bold text-slate-800">Rapport d&apos;analyse</h3>
+                    </div>
+                    <div className="p-3 max-h-72 overflow-y-auto">
+                      <MarkdownReport text={predResult.report} />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

@@ -955,30 +955,31 @@ async def dhia_predict(request: Request):
     except Exception:
         pass
 
-    if dhia_data:
-        # dhia returns {output: {ml_price, report, ...}} — forward directly
-        out = dhia_data.get("output", dhia_data)
-        if out.get("report") or out.get("ml_price"):
-            return dhia_data
-
-    # 2) Fallback: price-predictor service
+    # 2) Fallback: price-predictor service (only call if dhia didn't return)
     raw_pp = None
-    try:
-        async with httpx.AsyncClient(timeout=httpx.Timeout(connect=2, read=10, write=5, pool=5)) as c:
-            resp = await c.post(f"{AGENT_URLS['price_predictor']}/invoke", json={
-                "input": body, "context": {}
-            })
-            if resp.status_code == 200:
-                raw_pp = resp.json()
-    except Exception:
-        pass
+    if not dhia_data:
+        try:
+            async with httpx.AsyncClient(timeout=httpx.Timeout(connect=2, read=10, write=5, pool=5)) as c:
+                resp = await c.post(f"{AGENT_URLS['price_predictor']}/invoke", json={
+                    "input": body, "context": {}
+                })
+                if resp.status_code == 200:
+                    raw_pp = resp.json()
+        except Exception:
+            pass
 
-    # 3) Pure-local fallback — VIAGRA's own heuristic (no external call needed)
+    # 3) Always enrich the response with derived numeric metrics (range, ROI, comparables)
     city  = body.get("city", "Tunis")
     surf  = float(body.get("surface_m2", 100))
     rooms = int(body.get("rooms", 3))
 
-    if raw_pp:
+    dhia_report = None
+    if dhia_data:
+        dout = dhia_data.get("output", dhia_data)
+        price = dout.get("ml_price") or dout.get("predicted_price_tnd") or _predict_price({"city": city, "surface_m2": surf, "rooms": rooms})
+        pm2   = dout.get("price_per_m2") or dout.get("price_per_m2_tnd") or (round(price / surf) if surf > 0 else 0)
+        dhia_report = dout.get("report")
+    elif raw_pp:
         raw   = raw_pp.get("output", raw_pp)
         price = raw.get("predicted_price_tnd", 0) or _predict_price({"city": city, "surface_m2": surf, "rooms": rooms})
         pm2   = raw.get("price_per_m2_tnd", 0)
@@ -988,36 +989,104 @@ async def dhia_predict(request: Request):
 
     ck   = city.lower().strip()
     mult = _CITY_MULT.get(ck, 1.0)
-    report = (
+
+    # ── Derived metrics (range, comparables, ROI projection, rental yield) ─────
+    price_low  = round(price * 0.88)
+    price_high = round(price * 1.15)
+    if pm2 <= 0:
+        pm2 = round(price / surf) if surf > 0 else 0
+    city_avg_per_m2     = round(_BASE_M2 * mult)
+    national_avg_per_m2 = _BASE_M2
+    # Rental yield ~5.5% gross in Tunisia (slightly higher in popular areas)
+    rental_yield_pct   = round((4.5 + (mult - 1.0) * 1.5) * 10) / 10  # 1 decimal
+    annual_rent_estim  = round(price * rental_yield_pct / 100)
+    monthly_rent_estim = round(annual_rent_estim / 12)
+    # 5-year appreciation ~6% / year compounded for mid-tier cities (more for prime)
+    annual_appreciation_pct = round((4.0 + mult * 1.2) * 10) / 10
+    # ROI projection over 10 years (price appreciation only)
+    roi_projection = []
+    for yr in range(0, 11):
+        future_value = round(price * ((1 + annual_appreciation_pct / 100) ** yr))
+        cumulative_rent = round(annual_rent_estim * yr)
+        gain = future_value - price + cumulative_rent
+        roi_pct = round((gain / price) * 100, 1) if price > 0 else 0
+        roi_projection.append({
+            "year": yr,
+            "value_tnd": future_value,
+            "cumulative_rent_tnd": cumulative_rent,
+            "total_gain_tnd": gain,
+            "roi_pct": roi_pct,
+        })
+    # Market position vs city average price/m²
+    if pm2 > city_avg_per_m2 * 1.1:
+        market_position = "above"   # surévalué vs moyenne ville
+    elif pm2 < city_avg_per_m2 * 0.9:
+        market_position = "below"   # sous-évalué (opportunité)
+    else:
+        market_position = "average"
+
+    # Comparables (synthetic — derived from city stats, plausible spread)
+    comparables = [
+        {"label": f"Médiane {city}", "price_per_m2": city_avg_per_m2, "estimated_price": round(city_avg_per_m2 * surf)},
+        {"label": "Moyenne nationale", "price_per_m2": national_avg_per_m2, "estimated_price": round(national_avg_per_m2 * surf)},
+        {"label": "Bas de fourchette", "price_per_m2": round(pm2 * 0.85), "estimated_price": price_low},
+        {"label": "Haut de fourchette", "price_per_m2": round(pm2 * 1.15), "estimated_price": price_high},
+    ]
+
+    pos_label = {"above": "supérieur à", "below": "inférieur à", "average": "aligné sur"}[market_position]
+    # Prefer Gemini/dhia narrative report when available, otherwise build one locally
+    if dhia_report:
+        report = dhia_report
+    else:
+        report = (
         f"# Estimation de Prix — {city}\n\n"
         f"## Résultat\n"
         f"| Indicateur | Valeur |\n|---|---|\n"
         f"| **Prix estimé** | **{price:,.0f} TND** |\n"
+        f"| Fourchette | {price_low:,.0f} — {price_high:,.0f} TND |\n"
         f"| Prix au m² | {pm2:,.0f} TND/m² |\n"
+        f"| Moyenne {city} | {city_avg_per_m2:,.0f} TND/m² |\n"
+        f"| Moyenne nationale | {national_avg_per_m2:,.0f} TND/m² |\n"
         f"| Surface | {surf:.0f} m² |\n"
-        f"| Chambres | {rooms} |\n"
-        f"| Ville | {city} |\n\n"
+        f"| Chambres | {rooms} |\n\n"
         f"## Analyse du marché\n"
         f"- Coefficient localisation {city} : **{mult:.2f}x** (base {_BASE_M2} TND/m²)\n"
-        f"- Estimation calibrée sur les données scrappées du marché tunisien 2025\n"
-        f"- Fourchette indicative : **{price*0.88:,.0f} — {price*1.15:,.0f} TND**\n\n"
+        f"- Positionnement : prix au m² **{pos_label}** la moyenne de {city}\n"
+        f"- Appréciation annuelle estimée : **+{annual_appreciation_pct}% / an**\n"
+        f"- Rendement locatif brut estimé : **{rental_yield_pct}%**\n"
+        f"- Loyer mensuel estimé : **{monthly_rent_estim:,.0f} TND/mois** ({annual_rent_estim:,.0f} TND/an)\n\n"
+        f"## Projection de valeur (10 ans)\n"
+        f"- Valeur à 5 ans : **{roi_projection[5]['value_tnd']:,.0f} TND** (ROI cumulé : +{roi_projection[5]['roi_pct']}%)\n"
+        f"- Valeur à 10 ans : **{roi_projection[10]['value_tnd']:,.0f} TND** (ROI cumulé : +{roi_projection[10]['roi_pct']}%)\n\n"
         f"## Recommandation\n"
         f"- Comparer avec les annonces actives sur Ballouchi et DarCom pour affiner\n"
         f"- Prix final négociable : prévoir **5–10% de marge** de négociation\n\n"
-        f"*Source : Modèle heuristique EstateMind · Données marché tunisien*"
-    )
+        f"*Source : Modèle heuristique EstateMind · Données marché tunisien 2025*"
+        )
     return {
         "output": {
-            "ml_price":     price,
-            "price_per_m2": pm2,
-            "city":         city,
-            "surface_m2":   surf,
-            "rooms":        rooms,
-            "report":       report,
-            "model":        "heuristic-v2-local",
+            "ml_price":               price,
+            "price_low":              price_low,
+            "price_high":             price_high,
+            "price_per_m2":           pm2,
+            "city_avg_per_m2":        city_avg_per_m2,
+            "national_avg_per_m2":    national_avg_per_m2,
+            "city_multiplier":        mult,
+            "city":                   city,
+            "surface_m2":             surf,
+            "rooms":                  rooms,
+            "rental_yield_pct":       rental_yield_pct,
+            "annual_rent_tnd":        annual_rent_estim,
+            "monthly_rent_tnd":       monthly_rent_estim,
+            "annual_appreciation_pct": annual_appreciation_pct,
+            "market_position":        market_position,
+            "roi_projection":         roi_projection,
+            "comparables":            comparables,
+            "report":                 report,
+            "model":                  ("dhia-ml+enriched" if dhia_data else ("price-predictor+enriched" if raw_pp else "heuristic-v3-detailed")),
         },
         "agent":      "price-heuristic",
-        "confidence": 0.72,
+        "confidence": (0.85 if dhia_data else (0.78 if raw_pp else 0.72)),
     }
 
 
